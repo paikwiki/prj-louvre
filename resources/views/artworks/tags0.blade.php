@@ -1,1 +1,2 @@
-artworks tags
+a=gettype({{temp}});
+artworks {{$a}} tag

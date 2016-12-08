@@ -34,8 +34,10 @@ Route::get('/students', function () {
 Route::post('/students/add', function(){
   return view('students.add');
 });
-Route::get('/students/seq', function () {
-    return view('students.seq0');
+Route::get('/students/{seq}', function ($seq) {
+    return view('students.seq0',[
+      'temp'=> $seq
+    ]);
 });
 Route::put('/students/seq/modify', function () {
     return view('students.seq0_modify');
@@ -51,22 +53,37 @@ Route::post('/artworks/add', function () {
 Route::get('/artworks/search', function () {
     return view('artworks.search');
 });
-Route::get('/artworks/seq', function () {
-    return view('artworks.seq0');
+
+Route::get('/artworks/{var}', function ($var) {
+    return view('artworks.seq0',[
+      'temp'=>$var
+    ]);
 });
-Route::put('/artworks/seq/modify', function () {
-    return view('artworks.seq0_modify');
+
+Route::get ('/artworks',function ($var) {
+return view('artworks.tags0',[ /** 확인하기 **/
+    'temp'=>$var
+  ]);
 });
-Route::get('/artworks/tags', function () {
-    return view('artworks.tags0');
+
+
+
+
+Route::put('/artworks/{var}/modify', function ($var) {/**고쳐야함 컨트롤러 보기**/
+    return view('artworks.seq0_modify',[
+      'temp'=>$var
+    ]);
 });
+
 
 
 Route::get('/albums', function () {
     return view('albums.index');
 });
-Route::get('/albums/seq', function () {
-    return view('albums.seq0');
+Route::get('/albums/{seq}', function ($seq) {
+    return view('albums.seq0',[
+      'temp'=>$seq
+    ]);
 });
 
 

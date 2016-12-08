@@ -14,8 +14,8 @@ class CreateTypesTable extends Migration
     public function up()
     {
         Schema::create('types', function (Blueprint $table) {
-            $table->increments('typ_seq')->unique();
-            $table->string('atw_type');
+            $table->increments('id')->unique();
+            $table->string('name');
             $table->timestamps();
         });
     }

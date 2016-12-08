@@ -1,1 +1,1 @@
-album seq0
+album {{$temp}}

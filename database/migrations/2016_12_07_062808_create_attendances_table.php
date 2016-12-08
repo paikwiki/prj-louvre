@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStudentsAttendanceTable extends Migration
+class CreateAttendancesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateStudentsAttendanceTable extends Migration
      */
     public function up()
     {
-        Schema::create('students_attendance', function (Blueprint $table) {
-            $table->integer('std_seq');
-            $table->integer('cls_seq');
+        Schema::create('attendances', function (Blueprint $table) {
+            $table->integer('id')->unique();
+            $table->integer('student_id');
             $table->integer('mon');
             $table->integer('tue');
             $table->integer('wed');
@@ -34,6 +34,6 @@ class CreateStudentsAttendanceTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('students_attendance');
+        Schema::dropIfExists('attendances');
     }
 }

@@ -14,13 +14,13 @@ class CreateArtworksTable extends Migration
     public function up()
     {
         Schema::create('artworks', function (Blueprint $table) {
-            $table->increments('atw_seq')->unique();
-            $table->string('atw_pic');
-            $table->string('atw_name');
-            $table->date('atw_date');
-            $table->integer('typ_seq');
-            $table->integer('std_seq');
-            $table->string('atw_size')->nullable();
+            $table->increments('id')->unique();
+            $table->string('photo');
+            $table->string('name');
+            $table->date('date');
+            $table->integer('type_id');
+            $table->integer('student_id');
+            $table->string('size')->nullable();
             $table->integer('engagement');
             $table->integer('completeness');
             $table->string('feedback')->nullable();
