@@ -11,16 +11,17 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('users');
 });
 
 Route::get('/home', function () {
-    return view('home');
+    return view('students.index', ['studentsUrl' => '/students']);
 });
 
 Route::get('/users', function () {
-    return view('users.index');
-});
+    return view('users.index', ['home' => '/home']);
+})->name('users');;
+
 Route::get('/users/login', function () {
     // return view('users.login');
     return view('login', ['home' => '/home']);
@@ -34,7 +35,7 @@ Route::get('/users/find', function () {
 
 
 Route::get('/students', function () {
-    return view('students.index', ['uuurl' => '/students']);
+    return view('students.index', ['studentsUrl' => '/students']);
 });
 Route::post('/students/add', function(){
   return view('students.add');
