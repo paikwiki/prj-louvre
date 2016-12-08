@@ -13,9 +13,10 @@ class CreateAttendancesTable extends Migration
      */
     public function up()
     {
+      Schema::disableForeignKeyConstraints();
         Schema::create('attendances', function (Blueprint $table) {
-            $table->integer('id')->unique();
-            $table->integer('student_id');
+            $table->increments('id')->unique();
+            $table->integer('student_id')->unsigned();
             $table->integer('mon');
             $table->integer('tue');
             $table->integer('wed');
@@ -23,8 +24,12 @@ class CreateAttendancesTable extends Migration
             $table->integer('fri');
             $table->integer('sat');
             $table->integer('sun');
-            $table->timestamps();
         });
+        Schema::table('attendances',function($table){
+        $table->timestamps();
+        $table->foreign('student_id')->references('id')->on('students');
+        $table->engine = 'InnoDB';
+      });
     }
 
     /**
