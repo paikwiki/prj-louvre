@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,11 +13,17 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/home', function () {
+    return view('home');
+});
+
 Route::get('/users', function () {
     return view('users.index');
 });
 Route::get('/users/login', function () {
-    return view('users.login');
+    // return view('users.login');
+    return view('login', ['home' => '/home']);
 });
 Route::get('/users/join', function () {
     return view('users.join');
@@ -29,7 +34,7 @@ Route::get('/users/find', function () {
 
 
 Route::get('/students', function () {
-    return view('students.index');
+    return view('students.index', ['uuurl' => '/students']);
 });
 Route::post('/students/add', function(){
   return view('students.add');

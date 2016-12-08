@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css" href="css/reset.css">
+  <link rel='stylesheet/less' type='text/css' href='css/styless.less'>
+	<script src="css/less.min.js" type="text/javascript"></script>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <title>Login</title>
+</head>
+<body>
+<div class="g-wrapper">
+  <div class="header">
+    <div class="logo-box">
+      <h1 class="logo"><a href="2-1.html">Louvre</a></h1>
+    </div>
+    <ul>
+      <li><a href="2-1.html">학생리스트</a></li>
+      <li><a href="3-1.html">검색</a></li>
+      <li><a href="2-6.html">촬영</a></li>
+      <li><a href="5-1.html">앨범</a></li>
+      <li><a href="6-1.html">설정</a></li>
+    </ul>
+  </div>
+  <div class="c-wrapper">
+    <div class="content">
+      <div class="a-photo-box">
+        <img src="http://placehold.it/640x480" alt="" class="a-photo">
+      </div>
+      <div class="a-add-box">
+        <form class="a-add" method="get" action="2-5.html" role="">
+          <div class="section a-info">
+            <label for="a-name">작품명</label>
+            <input type="text" id="a-name">
+            <select name="a-type" id="a-type">
+              <option value="0">유형A</option>
+              <option value="1">유형B</option>
+              <option value="2">유형C</option>
+              <option value="2">유형D</option>
+            </select>
+            <input type="date"></input>
+          </div>
+          <div class="section a-points">
+            <div class="width-half">
+              <label for="a-engagement">몰입도</label>
+              <select name="a-engagement" id="a-engagement">
+                <option value="10">10</option>
+                <option value="9">9</option>
+                <option value="8">8</option>
+                <option value="7">7</option>
+                <option value="6">6</option>
+                <option value="5">5</option>
+                <option value="4">4</option>
+                <option value="3">3</option>
+                <option value="2">2</option>
+                <option value="1">1</option>
+                <option value="0">0</option>
+              </select>
+            </div>
+            <div class="width-half">
+              <label for="a-completeness">완성도</label>
+              <select name="a-completeness" id="a-completeness">
+                <option value="10">10</option>
+                <option value="9">9</option>
+                <option value="8">8</option>
+                <option value="7">7</option>
+                <option value="6">6</option>
+                <option value="5">5</option>
+                <option value="4">4</option>
+                <option value="3">3</option>
+                <option value="2">2</option>
+                <option value="1">1</option>
+                <option value="0">0</option>
+              </select>
+            </div>
+          </div>
+
+
+          <button>등록하기</button>
+        </form>
+      </div>
+    </div> <!-- /.content -->
+  </div> <!-- /.c-wrapper -->
+  <div class="footer">
+    <!-- no data -->
+  </div> <!-- /.footer -->
+</div> <!-- /.g-wrapper -->
+</body>
+</html>
