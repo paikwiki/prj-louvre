@@ -7,10 +7,10 @@ use Illuminate\Http\Request;
 class StudentsController extends Controller
 {
 
-  public function __construct()
-  {
-      $this->middleware('auth');
-  }
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     /**
      * Display a listing of the resource.
@@ -31,7 +31,6 @@ class StudentsController extends Controller
 
       return view('students.index', [
         'studentsUrl' => '/students',
-        'intro' => 0,
       ]);
     }
 
@@ -44,7 +43,6 @@ class StudentsController extends Controller
     {
       return view('students.add', [
         'studentsUrl' => '/students',
-        'intro' => 0,
       ]);
     }
 
@@ -70,13 +68,9 @@ class StudentsController extends Controller
     {
         if ((int)$id)
         {
-          return view('students.show', [
-            'intro' => 0
-          ]);
+          return view('students.show');
         } else {
-          return view('students.add', [
-            'intro' => 0
-          ]);
+          return view('students.add');
         }
     }
 

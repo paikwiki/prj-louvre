@@ -13,7 +13,8 @@
 | 3.students
 | 4.artworks
 | 5.albums
-|
+| 6.settings
+| 7.auth
 */
 
 // 1.home
@@ -23,21 +24,20 @@ Route::get('/', function () {
 
 // 2.users
 Route::get('/users', function () {
-    return view('users.index', [
-      'intro' => 1
-    ]);
+
+    if(auth()->check())
+    {
+        return view('students.index');
+    }
+    return view('users.index');
 })->name('users');
 
 Route::get('/users/join', function () {
-    return view('users.join', [
-      'intro' => 1
-    ]);
+    return view('users.join');
 });
 
 Route::get('/users/find', function () {
-    return view('users.find', [
-      'intro' => 1
-    ]);
+    return view('users.find');
 });
 
 Route::get('/users/logout', function () {
@@ -49,44 +49,45 @@ Route::get('/users/logout', function () {
 // 3.students
 Route::resource('students', 'StudentsController');
 
-
-// Route::get('tags/{slug}/articles', [
-//     'as' => 'tags.articles.index',
-//     'uses' => 'ArticlesController@index',
-// ]);
-
 // 4.artworks
 Route::resource('artworks', 'ArtworksController');
 
-
-// Route::get('/artworks', function () {
-//     return view('artworks.index', [
-//       'intro' => 0
-//     ]);
-// });
-
-
 // 5.albums
 Route::get('/albums', function () {
-    return view('albums.index', [
-      'intro' => 0
+    if (auth()->check())
+    {
+      return view('albums.index');
+    }
+
+    return redirect('users');
+});
+
+Route::get('/albums/{seq}', function ($seq) {
+    return view('albums.seq0',[
+      'temp'=>$seq
     ]);
 });
+
 
 // 6.settings
 Route::get('/settings', function () {
-    return view('settings.index', [
-      'intro' => 0
-    ]);
+    if (auth()->check())
+    {
+      return view('settings.index');
+    }
+
+    return redirect('users');
 });
 
+// 7.auth
+Auth::routes();
 
 // Route::post('/students/add', function(){
 //   return view('students.add');
 // });
-Route::put('/students/seq/modify', function () {
-    return view('students.seq0_modify');
-});
+// Route::put('/students/seq/modify', function () {
+//     return view('students.seq0_modify');
+// });
 
 
 // Route::post('/artworks/add', function () {
@@ -115,12 +116,6 @@ Route::put('/students/seq/modify', function () {
 // });
 
 
-Route::get('/albums/{seq}', function ($seq) {
-    return view('albums.seq0',[
-      'temp'=>$seq
-    ]);
-});
-
 // Route::get('students', function () {
 //     return view('students.index', [
 //       'studentsUrl' => '/students'
@@ -132,6 +127,4 @@ Route::get('/albums/{seq}', function ($seq) {
 //     ]);
 // });
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index');
+// Route::get('/home', 'HomeController@index');
