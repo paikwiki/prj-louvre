@@ -8,4 +8,8 @@ class Student extends Model
 {
   protected $fillable = ['name','e-mail','password'];
 
+  public function students()
+  {
+    return $this->belongsTo(Tag::class);
+  }
 }

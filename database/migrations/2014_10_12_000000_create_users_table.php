@@ -20,13 +20,13 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('name');
             $table->string('email')->unique();
-            $table->integer('class_id')->unsigned();
+            $table->integer('course_id')->unsigned();
             $table->rememberToken();
             $table->timestamps();
 
         });
         Schema::table('users',function ($table){
-                $table->foreign('class_id')->references('id')->on('classes');
+                $table->foreign('course_id')->references('id')->on('courses');
                 $table->engine = 'InnoDB';
               });
     }

@@ -23,7 +23,7 @@ class CreateStudentsTable extends Migration
             $table->string('profile_pic')->nullable();
             $table->string('birth')->nullable();
             $table->string('enroll_date');
-            $table->integer('class_id')->unsigned();
+            $table->integer('course_id')->unsigned();
             $table->string('purpose');
             $table->string('status');
             $table->string('comment')->nullable();
@@ -32,7 +32,7 @@ class CreateStudentsTable extends Migration
         });
         Schema::table('students',function ($table){
           $table->foreign('user_id')->references('id')->on('users');
-          $table->foreign('class_id')->references('id')->on('classes');
+          $table->foreign('course_id')->references('id')->on('courses');
           $table->engine = 'InnoDB';
         });
     }
