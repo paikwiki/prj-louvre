@@ -131,3 +131,7 @@ Route::get('/albums/{seq}', function ($seq) {
 //       'intro' => 0
 //     ]);
 // });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
