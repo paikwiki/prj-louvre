@@ -7,7 +7,7 @@
   <ul>
     @for ($i = 0; $i < 4; $i++)
       <li>
-        <div class="photo-box"><a href="2-2.html"><img src="" alt="" class="photo"></a></div>
+        <div class="photo-box"><a href="/students/1"><img src="" alt="" class="photo"></a></div>
         <div class="info-box">
           <a href="/students/1">이름</a>
         </div>
@@ -23,7 +23,7 @@
   <ul>
     @for ($i = 0; $i < 4; $i++)
       <li>
-        <div class="photo-box"><a href="2-2.html"><img src="" alt="" class="photo"></a></div>
+        <div class="photo-box"><a href="students/1"><img src="" alt="" class="photo"></a></div>
         <div class="info-box">
           <a href="/students/1">이름</a>
         </div>
