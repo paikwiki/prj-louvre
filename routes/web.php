@@ -26,7 +26,7 @@ Route::get('/users', function () {
     return view('users.index', [
       'intro' => 1
     ]);
-})->name('users');;
+})->name('users');
 
 Route::get('/users/join', function () {
     return view('users.join', [
@@ -38,6 +38,12 @@ Route::get('/users/find', function () {
     return view('users.find', [
       'intro' => 1
     ]);
+});
+
+Route::get('/users/logout', function () {
+    auth()->logout();
+
+    return redirect('users');
 });
 
 // 3.students

@@ -6,6 +6,16 @@ use Illuminate\Http\Request;
 
 class StudentsController extends Controller
 {
+
+    // /**
+    // * ArticlesController constructor.
+    // */
+    // public function __construct()
+    // {
+    //   // parent::__construct();
+    //   $this->middleware('auth');
+    // }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,6 +23,16 @@ class StudentsController extends Controller
      */
     public function index()
     {
+
+      $credentials = [
+        'email' => 'paikwiki@gmail.com',
+        'password' => 'password'
+      ];
+
+      if(! auth()->attempt($credentials)) {
+        return redirect('users');
+      }
+
       return view('students.index', [
         'studentsUrl' => '/students',
         'intro' => 0,
