@@ -1,107 +1,46 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" type="text/css" href="css/reset.css">
-  <link rel='stylesheet/less' type='text/css' href='css/styless.less'>
-	<script src="css/less.min.js" type="text/javascript"></script>
-  <link rel="stylesheet" type="text/css" href="css/style.css">
-  <title>Login</title>
-</head>
-<body>
-<div class="g-wrapper">
-  <div class="header">
-    <div class="logo-box">
-      <h1 class="logo"><a href="2-1.html">Louvre</a></h1>
-    </div>
-    <ul>
-      <li><a href="{{ $studentsUrl }}">학생리스트</a></li>
-      <li><a href="3-1.html">검색</a></li>
-      <li><a href="2-6.html">촬영</a></li>
-      <li><a href="5-1.html">앨범</a></li>
-      <li><a href="6-1.html">설정</a></li>
-    </ul>
-  </div>
-  <div class="c-wrapper">
-    <div class="content">
-      <div class="students students-today">
-        <h2>오늘의 수강생</h2>
-        <ul>
-          <li>
-            <div class="photo-box"><a href="2-2.html"><img src="" alt="" class="photo"></a></div>
-            <div class="info-box">
-              <a href="2-2.html">이름</a>
-            </div>
-            <div class="call-box">
-              <a href="tel://000-000-0000">Call</a>
-            </div>
-          </li>
-          <li>
-            <div class="photo-box"><a href="2-2.html"><img src="" alt="" class="photo"></a></div>
-            <div class="info-box">
-              <a href="2-2.html">이름</a>
-            </div>
-            <div class="call-box">
-              <a href="tel://000-000-0000">Call</a>
-            </div>
-          </li>
-        </ul>
-      </div>
-      <div class="students stuendts-all">
-        <h2>수강생 전체 목록</h2>
-        <ul>
-          <li>
-            <div class="photo-box"><a href="2-2.html"><img src="" alt="" class="photo"></a></div>
-            <div class="info-box">
-              <a href="2-2.html">이름</a>
-            </div>
-            <div class="call-box">
-              <a href="tel://000-000-0000">Call</a>
-            </div>
-          </li>
-          <li>
-            <div class="photo-box"><a href="2-2.html"><img src="" alt="" class="photo"></a></div>
-            <div class="info-box">
-              <a href="2-2.html">이름</a>
-            </div>
-            <div class="call-box">
-              <a href="tel://000-000-0000">Call</a>
-            </div>
-          </li>
-          <li>
-            <div class="photo-box"><a href="2-2.html"><img src="" alt="" class="photo"></a></div>
-            <div class="info-box">
-              <a href="2-2.html">이름</a>
-            </div>
-            <div class="call-box">
-              <a href="tel://000-000-0000">Call</a>
-            </div>
-          </li>
-          <li>
-            <div class="photo-box"><a href="2-2.html"><img src="" alt="" class="photo"></a></div>
-            <div class="info-box">
-              <a href="2-2.html">이름</a>
-            </div>
-            <div class="call-box">
-              <a href="tel://000-000-0000">전화하기</a>
-            </div>
-          </li>
-        </ul>
-      </div>
-      <div class="student-add-box">
-        <div class="student-add-btn">
-          <a href="2-4.html">학생 추가</a>
+@extends('layouts.master')
+
+
+@section('content')
+<div class="students students-today">
+  <h2>오늘의 수강생</h2>
+  <ul>
+    @for ($i = 0; $i < 4; $i++)
+      <li>
+        <div class="photo-box"><a href="/students/1"><img src="" alt="" class="photo"></a></div>
+        <div class="info-box">
+          <a href="/students/1">이름</a>
         </div>
-      </div>
+        <div class="call-box">
+          <a href="tel://000-000-0000">Call</a>
+        </div>
+      </li>
+    @endfor
+  </ul>
+</div>
+<div class="students stuendts-all">
+  <h2>수강생 전체 목록</h2>
+  <ul>
+    @for ($i = 0; $i < 4; $i++)
+      <li>
+        <div class="photo-box"><a href="students/1"><img src="" alt="" class="photo"></a></div>
+        <div class="info-box">
+          <a href="/students/1">이름</a>
+        </div>
+        <div class="call-box">
+          <a href="tel://000-000-0000">Call</a>
+        </div>
+      </li>
+    @endfor
+  </ul>
+</div>
+<div class="student-add-box">
+  <div class="student-add-btn">
+    <a href="students/add">학생 추가</a>
+  </div>
+</div>
+@endsection
 
+@section('footer')
 
-    </div> <!-- /.content -->
-  </div> <!-- /.c-wrapper -->
-  <div class="footer">
-    <!-- no data -->
-  </div> <!-- /.footer -->
-</div> <!-- /.g-wrapper -->
-</body>
-</html>
+@endsection
