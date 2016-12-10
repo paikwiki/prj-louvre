@@ -10,7 +10,7 @@ class Tag extends Model
 
     public function tags()
     {
-      return $this->BelongstoManyThrough(Artwork::Class, Artwork_tag::Class);
+      return $this->BelongstoMany(Artwork::Class);
     }
 
 }

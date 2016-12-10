@@ -17,7 +17,7 @@ class Artwork extends Model
     }
     public function tags()
     {
-      return $this->belongsToManyThrough(Tag::class, Artwork_tag::class);
+      return $this->belongsToMany(Tag::class) ;
     }
     public function albums()
     {
