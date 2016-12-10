@@ -19,7 +19,6 @@ class ArtworksController extends Controller
     public function index()
     {
       return view('artworks.search', [
-        'intro' => 0,
       ]);
     }
 
@@ -55,15 +54,12 @@ class ArtworksController extends Controller
          if ((int)$id)
          {
            return view('artworks.show', [
-             'intro' => 0
            ]);
          } elseif ($id == 'add') {
            return view('artworks.add', [
-             'intro' => 0
            ]);
          } else {
            return view('artworks.serchresult', [
-             'intro' => 0
            ]);
          }
      }

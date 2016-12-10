@@ -8,8 +8,9 @@ class Tag extends Model
 {
     protected $fillable = ['name'];
 
-    public function artworks()
+    public function tags()
     {
-      return $this->hasMany(Artwork::class);
+      return $this->BelongstoManyThrough(Artwork_tag::Class);
     }
+
 }

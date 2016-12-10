@@ -15,7 +15,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'uid', 'name', 'email', 'course_id',
+
     ];
 
     /**
@@ -26,4 +27,10 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    public function students()
+    {
+      return $this->belongsto(Course::class);//나중에삭제해야함.
+      return $this->hasMany(Student::class);
+      return $this->has(Album::class);
+    }
 }
