@@ -41,13 +41,11 @@
           Login
       </button>
 
-      <a class="btn btn-link" href="{{ url('/password/reset') }}">
-          Forgot Your Password?
-      </a>
+      <a href="/users/join">회원가입</a> / <a href="{{ url('/password/reset') }}">ID,PW 찾기</a>
     </div>
   </form>
 
-  <a href="/users/join">회원가입</a> / <a href="/users/find">ID,PW 찾기</a>
+
   <div class="sns-login">
     <ul>
       <li><a href="">Twitter</a></li>
