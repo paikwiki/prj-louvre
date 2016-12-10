@@ -54,17 +54,11 @@ class ArtworksController extends Controller
      {
          if ((int)$id)
          {
-           return view('artworks.show', [
-             'intro' => 0
-           ]);
-         } elseif ($id == 'add') {
-           return view('artworks.add', [
-             'intro' => 0
-           ]);
+           return view('artworks.show');
+         } elseif ($id == 'create') {
+           return view('artworks.create');
          } else {
-           return view('artworks.serchresult', [
-             'intro' => 0
-           ]);
+           return view('artworks.serchresult');
          }
      }
 

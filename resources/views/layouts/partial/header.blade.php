@@ -3,7 +3,7 @@
     <h1 class="logo"><a href="/">mini:MUE</a></h1>
   </div>
   @if(auth()->check())
-    <ul>
+    <ul class="clearfix">
       <li><a href="/students">학생리스트</a></li>
       <li><a href="/artworks">검색</a></li>
       <li><a href="/artworks/add">촬영</a></li>
