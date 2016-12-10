@@ -46,7 +46,58 @@ body {
     max-width: 100%;
   }
 
+
+  // ===================
+  //  푸터
+  // ===================
+  .footer {
+    display: none;
+  }
+
+  // ===================
+  //  오늘의 수강생
+  // ===================
+
+  .students {
+    h2 {
+      padding: 20px 10px;
+      background-color: #ccc;
+    }
+    ul {
+      li {
+        margin-bottom: 10px;
+        div {
+          float: left;
+          a {
+            display: block;
+            height: 50px;
+            line-height: 50px;
+          }
+        }
+        .photo-box {
+          width: 20%;
+          background-color: #eee;
+          img {
+            display: block;
+            margin: 0 auto;
+          }
+        }
+        .info-box {
+          width: 50%;
+          a {
+            padding-left: 20px;
+          }
+        }
+        .call-box {
+          float: right;
+          width: 10%;
+        }
+      }
+    }
+  }
+  // ===================
   // 학생 상세 페이지
+  // ===================
   .s-profile {
     position: relative;
     margin: 10px 0 20px 0;
@@ -121,21 +172,27 @@ body {
       .section {
         margin-bottom: 10px;
         padding: 20px;
-        .s-total-all {
-
+        h2 {
+          padding: 10px 10px;
+          background-color: #ccc;
         }
-        .s-total-detail {
-          ul {
-            li {
-              margin-bottom: 10px;
-            }
-            li:last-child {
-              margin-bottom: 0;
-            }
+        .s-total-all {
+          p {
+            padding: 10px;
           }
-
+        }
+        ul {
+          padding-top: 10px;
+          li {
+            margin-bottom: 10px;
+            padding: 0 10px;
+          }
+          li:last-child {
+            margin-bottom: 0;
+          }
         }
       }
+
     } // /.info-box
     .artworks-box {
       ul {

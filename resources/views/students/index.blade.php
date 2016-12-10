@@ -3,35 +3,39 @@
 
 @section('content')
 <div class="students students-today">
-  <h2>오늘의 수강생</h2>
-  <ul>
-    @for ($i = 0; $i < 4; $i++)
-      <li>
-        <div class="photo-box"><a href="/students/1"><img src="" alt="" class="photo"></a></div>
-        <div class="info-box">
-          <a href="/students/1">이름</a>
-        </div>
-        <div class="call-box">
-          <a href="tel://000-000-0000">Call</a>
-        </div>
-      </li>
-    @endfor
+  <h2>오늘의 수강생! - {{ $weekdayOfToday }}</h2>
+  <ul class="clearfix">
+    @if( !$todayStudents )
+      <li class="clearfix">오늘의 수강생이 없습니다.</li>
+    @else
+      @foreach( $todayStudents as $todayStudent)
+        <li class="clearfix">
+          <div class="photo-box"><a href="/students/{{ $todayStudent->id }}"><img src="http://{{ $todayStudent->profile_pic ? $todayStudent->profile_pic : 'placehold.it/50x50' }}" alt="" class="photo"></a></div>
+          <div class="info-box">
+            <a href="/students/{{ $todayStudent->id }}">{{ $todayStudent->name }}</a>
+          </div>
+          <div class="call-box">
+            <a href="tel://{{ $todayStudent->tel }}">Call</a>
+          </div>
+        </li>
+      @endforeach
+    @endif
   </ul>
 </div>
-<div class="students stuendts-all">
+<div class="students stuendts-all clearfix">
   <h2>수강생 전체 목록</h2>
-  <ul>
-    @for ($i = 0; $i < 4; $i++)
-      <li>
-        <div class="photo-box"><a href="students/1"><img src="" alt="" class="photo"></a></div>
+  <ul class="clearfix">
+    @foreach( $students as $student)
+      <li class="clearfix">
+        <div class="photo-box"><a href="/students/{{ $student->id }}"><img src="http://{{ $todayStudent->profile_pic ? $todayStudent->profile_pic : 'placehold.it/50x50' }}" alt="" class="photo"></a></div>
         <div class="info-box">
-          <a href="/students/1">이름</a>
+          <a href="/students/{{ $student->id }}">{{ $student->name }}</a>
         </div>
         <div class="call-box">
-          <a href="tel://000-000-0000">Call</a>
+          <a href="tel://{{ $student->tel }}">Call</a>
         </div>
       </li>
-    @endfor
+    @endforeach
   </ul>
 </div>
 <div class="student-add-box">

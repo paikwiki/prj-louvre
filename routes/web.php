@@ -27,7 +27,7 @@ Route::get('/users', function () {
 
     if(auth()->check())
     {
-        return view('students.index');
+        return redirect('students');
     }
     return view('users.index');
 })->name('users');

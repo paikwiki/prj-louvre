@@ -9,19 +9,24 @@
   </div>
   <div class="student-info-box">
     <ul class="student-info">
-      <li>뭐시기</li>
-      <li>1900.10.01</li>
-      <li>선생님 / 1900.10.01 / 월, 수</li>
+      <li>{{  $student->name }}</li>
+      <li>{{  $student->birth }}</li>
+      <li>
+        {{  $userName }} / {{  $student->enroll_date }} /
+        @foreach( $attends as $attend )
+          {{ $attend.' ' }}
+        @endforeach
+      </li>
     </ul>
   </div>
   <div class="contact-box">
     <ul>
-      <li><a href="tel://000-000-0000">전화하기</a></li>
-      <li><a href="mailto://paikwiki@gmail.com">메일보내기</a></li>
+      <li><a href="tel://{{  $student->tel }}">전화하기</a></li>
+      <li><a href="mailto://{{  $student->email }}">메일보내기</a></li>
     </ul>
   </div>
   <div class="student-modify-box">
-    <a href="2-3.html">수정하기</a>
+    <a href="/students/create">수정하기</a>
   </div>
 </div> <!-- /.s-profile -->
 <div class="tab-selector clearfix">
@@ -34,30 +39,32 @@
   <div class="tab-box info-box">
     <div class="section summary-box">
       <ul>
-        <li>등록한지 101일 됐어요.</li>
+        <li>등록한지 {{ $dDay }}일 됐어요.</li>
         <li>유화를 많이 그렸어요.</li>
         <li>현재 소묘를 그리고 있어요.</li>
-        <li>앞으로 전시회 개최 하고 싶어요.</li>
+        <li>앞으로 하고 싶은 건 "{{ $student->purpose }}"입니다.</li>
       </ul>
     </div>
     <div class="section s-total clearfix">
       <div class="width-half s-total-all">
-        총 작품 68개
+        <h2>총 작품</h2>
+        <p>{{ $artworksCount }}점</p>
       </div>
       <div class="width-half s-total-detail">
+        <h2>태그 보기</h2>
         <ul>
-          <li><p><span>유화</span> 00개</p></li>
-          <li><p><span>일러스트</span> 00개</p></li>
-          <li><p><span>수채화</span> 00개</p></li>
+          @foreach ( $eachTagCounts as $key=>$value )
+          <li><p><span>{{ $key }}</span> {{ $value }}개</p></li>
+          @endforeach
         </ul>
       </div>
     </div>
     <div class="section s-average clearfix">
       <div class="width-half">
-        몰입도 9.7
+        몰입도 {{ $engagementAvg }}
       </div>
       <div class="width-half">
-        작품 완성도 3.4
+        작품 완성도 {{ $completenessAvg }}
       </div>
     </div>
     <div class="section s-graph-box clearfix">
@@ -73,22 +80,27 @@
     </div>
     <div class="section s-comment-box clearfix">
       <div class="s-comment">
-        코멘트가 들어가는 자리입니다.
+        <h2>코멘트 모아보기</h2>
+        <ul>
+            @foreach( $artworks as $artwork )
+              <li>{{ $artwork->feedback }}</li>
+            @endforeach
+        </ul>
       </div>
     </div>
   </div>
   <div class="tab-box artworks-box clearfix">
     <ul>
-      @for ($i=0; $i<10; $i++)
+      @foreach( $artworks as $artwork )
         <li>
-          <a href="/artworks/1">
-            <img src="http://placehold.it/120x120" alt="">
+          <a href="/artworks/{{ $artwork->id }}">
+            <img src="http://{{ $artwork->photo ? $artwork->photo : 'placehold.it/120x120' }}" alt="">
             <p>
-              작품명
+              {{ $artwork->name }}
             </p>
           </a>
         </li>
-      @endfor
+      @endforeach
     </ul>
   </div>
 </div>
