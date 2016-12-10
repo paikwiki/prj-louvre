@@ -41,7 +41,7 @@ class StudentsController extends Controller
      */
     public function create()
     {
-      return view('students.add', [
+      return view('students.create', [
         'studentsUrl' => '/students',
       ]);
     }
@@ -70,7 +70,7 @@ class StudentsController extends Controller
         {
           return view('students.show');
         } else {
-          return view('students.add');
+          return view('students.create');
         }
     }
 

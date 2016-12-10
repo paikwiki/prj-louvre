@@ -36,7 +36,7 @@
 </div>
 <div class="student-add-box">
   <div class="student-add-btn">
-    <a href="students/add">학생 추가</a>
+    <a href="students/create">학생 추가</a>
   </div>
 </div>
 @endsection
