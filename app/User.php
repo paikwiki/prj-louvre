@@ -27,10 +27,16 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-    public function students()
+    public function courses()
     {
       return $this->belongsto(Course::class);//나중에삭제해야함.
+    }
+    public function students()
+    {
       return $this->hasMany(Student::class);
+    }
+    public function albums()
+    {
       return $this->has(Album::class);
     }
 }

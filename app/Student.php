@@ -8,11 +8,20 @@ class Student extends Model
 {
   protected $fillable = ['name','tel','e-mail', 'user_id', 'profile_pic', 'birth', 'enroll_date', 'course_id', 'purpose', 'status', 'comment' ];
 
-  public function students()
+  public function users()
   {
-    return $this->has(Attendance::class);
-    return $this->hasMany(Artwork::class);
     return $this->belongsto(User::class);
+  }
+  public function artworks()
+  {
+    return $this->hasMany(Artwork::class);
+  }
+  public function attendances()
+  {
+    return $this->hasMany(Attendance::class);
+  }
+  public function courses()
+  {
     return $this->belongsto(Course::class);
   }
 }

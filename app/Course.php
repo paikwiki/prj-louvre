@@ -9,9 +9,12 @@ class Course extends Model
 {
     protected $fillable = ['name'];
 
-    public function courses()
+    public function students()
     {
       return $this->hasMany(Student::class);
+    }
+    public function users()
+    {
       return $this->hasMany(User::class);
     }
 }
