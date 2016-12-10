@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Artwork_tag extends Model
 {
+    protected $table = 'artwork_tag';
+
     protected $fillable = ['artwork_id','tag_id'];
   /*  public function artwork_tag()
     {

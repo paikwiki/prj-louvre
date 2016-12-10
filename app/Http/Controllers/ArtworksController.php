@@ -53,7 +53,15 @@ class ArtworksController extends Controller
      {
          if ((int)$id)
          {
-           return view('artworks.show');
+           $artwork = \App\Artwork::whereId($id)->first();
+           $type = \App\Type::whereId($artwork->type_id)->first();
+           $student = \App\Student::whereId($artwork->student_id)->first();
+
+           return view('artworks.show', [
+             'artwork' => $artwork,
+             'type' => $type,
+             'student' => $student,
+           ]);
          } elseif ($id == 'create') {
            return view('artworks.create');
          } else {

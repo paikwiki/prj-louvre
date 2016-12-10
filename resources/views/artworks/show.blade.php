@@ -2,13 +2,12 @@
 
 
 @section('content')
-
 <div class="a-photo-box">
   <img src="http://placehold.it/640x480" alt="" class="a-photo">
   <a href="#" class="like-btn">좋아요!</a>
 </div>
 <div class="section a-info">
-  작품명(유형) / 학생명 / #태그 #태그 / 2016.12.28.
+  {{ $artwork->name }}({{ $type->name }}) / {{ $student->name }} / #태그 #태그 / {{ $artwork->date }}
 </div>
 <div class="section a-point">
   <div class="width-half a-engagement">
@@ -23,7 +22,6 @@
     한줄 코멘트
   </div>
 </div>
-
 
 @endsection
 
