@@ -7,19 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 class Artwork extends Model
 {
     protected $fillable = ['photo', 'name', 'date', 'type_id', 'student_id', 'size', 'engagement', 'completeness', 'feedback'];
-    public function students()
+    public function student()
     {
       return $this->belongsTo(Student::class);
     }
-    public function types()
+    public function type()
     {
       return $this->belongsTo(Type::class);
     }
-    public function tags()
+    public function tag()
     {
       return $this->belongsToMany(Tag::class) ;
     }
-    public function albums()
+    public function album()
     {
       return $this->has(Album::class);
     }

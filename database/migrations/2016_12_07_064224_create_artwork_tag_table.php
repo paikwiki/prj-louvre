@@ -18,8 +18,6 @@ class CreateArtworkTagTable extends Migration
             $table->integer('id')->nullable();
             $table->integer('artwork_id')->unsigned();
             $table->integer('tag_id')->unsigned();
-            $table->integer('artwork_id')->unique();
-            $table->integer('tag_id')->unique();
         });
         Schema::table('artwork_tag', function( $table){
           $table->foreign('artwork_id')->references('id')->on('artworks');
