@@ -3,7 +3,7 @@
 
 @section('content')
 
-<div class="s-profile">
+<div class="s-profile clearfix">
   <div class="profile-pic-box">
     <img src="http://placehold.it/50x50" alt="" class="profile-pic">
   </div>
@@ -24,7 +24,7 @@
     <a href="2-3.html">수정하기</a>
   </div>
 </div> <!-- /.s-profile -->
-<div class="tab-selector">
+<div class="tab-selector clearfix">
   <ul>
     <li><a href="#" class="tab-info">정보</a></li>
     <li><a href="#" class="tab-artworks">작품</a></li>
@@ -32,7 +32,7 @@
 </div>
 <div class="box-container">
   <div class="tab-box info-box">
-    <div class="summary-box">
+    <div class="section summary-box">
       <ul>
         <li>등록한지 101일 됐어요.</li>
         <li>유화를 많이 그렸어요.</li>
@@ -40,7 +40,7 @@
         <li>앞으로 전시회 개최 하고 싶어요.</li>
       </ul>
     </div>
-    <div class="section s-total">
+    <div class="section s-total clearfix">
       <div class="width-half s-total-all">
         총 작품 68개
       </div>
@@ -52,7 +52,7 @@
         </ul>
       </div>
     </div>
-    <div class="section s-average">
+    <div class="section s-average clearfix">
       <div class="width-half">
         몰입도 9.7
       </div>
@@ -60,33 +60,35 @@
         작품 완성도 3.4
       </div>
     </div>
-    <div class="section s-graph-box">
+    <div class="section s-graph-box clearfix">
       <div class="width-full">
-        강의 몰입도
+        강의 몰입도 그래프
       </div>
       <div class="width-full">
         작품 완성도 그래프
       </div>
     </div>
-    <div class="section s-tagcloud">
+    <div class="section s-tagcloud clearfix">
       태그 클라우드
     </div>
-    <div class="section s-comment-box">
+    <div class="section s-comment-box clearfix">
       <div class="s-comment">
         코멘트가 들어가는 자리입니다.
       </div>
     </div>
   </div>
-  <div class="tab-box artworks-box">
+  <div class="tab-box artworks-box clearfix">
     <ul>
-      <li><a href="/artworks/1"><img src="http://placehold.it/50x50" alt=""></a></li>
-      <li><a href="/artworks/1"><img src="http://placehold.it/50x50" alt=""></a></li>
-      <li><a href="/artworks/1"><img src="http://placehold.it/50x50" alt=""></a></li>
-      <li><a href="/artworks/1"><img src="http://placehold.it/50x50" alt=""></a></li>
-      <li><a href="/artworks/1"><img src="http://placehold.it/50x50" alt=""></a></li>
-      <li><a href="/artworks/1"><img src="http://placehold.it/50x50" alt=""></a></li>
-      <li><a href="/artworks/1"><img src="http://placehold.it/50x50" alt=""></a></li>
-      <li><a href="/artworks/1"><img src="http://placehold.it/50x50" alt=""></a></li>
+      @for ($i=0; $i<10; $i++)
+        <li>
+          <a href="/artworks/1">
+            <img src="http://placehold.it/120x120" alt="">
+            <p>
+              작품명
+            </p>
+          </a>
+        </li>
+      @endfor
     </ul>
   </div>
 </div>

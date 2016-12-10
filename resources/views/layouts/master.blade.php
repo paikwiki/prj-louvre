@@ -20,7 +20,7 @@
     </div> <!-- /.content -->
   </div> <!-- /.c-wrapper -->
   <div class="footer">
-    @yield('footer')
+    @include('layouts.partial.footer')
   </div> <!-- /.footer -->
 </div> <!-- /.g-wrapper -->
 </body>
