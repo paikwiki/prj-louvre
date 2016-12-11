@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ArtworksController extends Controller
+class AlbumsController extends Controller
 {
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -18,8 +19,26 @@ class ArtworksController extends Controller
      */
     public function index()
     {
-      return view('artworks.search', [
-      ]);
+        $artworks = \App\Artwork::get();
+        $albumArtworksObjs = \App\Album::where('user_id', 1)->get();
+        $albumArtworksIds = [];
+        $albumArtworks = [];
+
+        foreach( $albumArtworksObjs as $albumArtworksObj )
+        {
+          array_push($albumArtworksIds, $albumArtworksObj->artwork_id);
+        }
+        // var_dump($albumArtworksIds);
+
+        foreach( $albumArtworksIds as $albumArtworksId )
+        {
+          array_push($albumArtworks, $artworks->where('id', $albumArtworksId)->first());
+        }
+        // var_dump($albumArtworks);
+
+        return view('albums.index', [
+          'albumArtworks' => $albumArtworks
+        ]);
     }
 
     /**
@@ -29,7 +48,7 @@ class ArtworksController extends Controller
      */
     public function create()
     {
-      return view('artworks.create');
+        //
     }
 
     /**
@@ -49,25 +68,10 @@ class ArtworksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-     public function show($id)
-     {
-         if ((int)$id)
-         {
-           $artwork = \App\Artwork::whereId($id)->first();
-           $type = \App\Type::whereId($artwork->type_id)->first();
-           $student = \App\Student::whereId($artwork->student_id)->first();
-
-           return view('artworks.show', [
-             'artwork' => $artwork,
-             'type' => $type,
-             'student' => $student,
-           ]);
-         } elseif ($id == 'create') {
-           return view('artworks.create');
-         } else {
-           return view('artworks.serchresult');
-         }
-     }
+    public function show($id)
+    {
+        //
+    }
 
     /**
      * Show the form for editing the specified resource.

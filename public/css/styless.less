@@ -1,3 +1,4 @@
+@deviceWidth: 360px;
 body {
   background-color: #666;
   // // 임시 설정
@@ -14,33 +15,50 @@ body {
     }
   }
   .g-wrapper {
+    position: relative;
     margin: 0 auto;
-    width: 360px;
+    width: @deviceWidth;
     min-height: 640px;
     background-color: #fff;
     font-size: 14px;
   }
-  .header {
-    h1 {
-      padding: 20px 10px;
-    }
-    ul {
-      li {
-        float: left;
-        width: 20%;
-        text-align: center;
-        background-color: #ddd;
-        a {
-          display: block;
-          width: 100%;
-          padding: 12px 0;
+  .header-box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    .header {
+      margin: 0 auto;
+      width: @deviceWidth;
+      height: 100px;
+      h1 {
+        height: 60px;
+        line-height: 60px;
+        background-color: #fff;
+      }
+      ul {
+        height: 40px;
+        li {
+          float: left;
+          width: 20%;
+          height: 40px;
+          text-align: center;
+          background-color: #ddd;
+          a {
+            display: block;
+            width: 100%;
+            padding: 12px 0;
+          }
+        }
+        li:nth-child(2n) {
+          background-color: #aaa;
         }
       }
-      li:nth-child(2n) {
-        background-color: #aaa;
-      }
-    }
-  }
+    } // /.header
+  } // /.header-box
+  .c-wrapper {
+    margin-top: 100px;
+  } // /.c-wrapper
 
   // 작은 요소들
   img {

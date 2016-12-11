@@ -53,20 +53,7 @@ Route::resource('students', 'StudentsController');
 Route::resource('artworks', 'ArtworksController');
 
 // 5.albums
-Route::get('/albums', function () {
-    if (auth()->check())
-    {
-      return view('albums.index');
-    }
-
-    return redirect('users');
-});
-
-Route::get('/albums/{seq}', function ($seq) {
-    return view('albums.seq0',[
-      'temp'=>$seq
-    ]);
-});
+Route::resource('albums', 'AlbumsController');
 
 
 // 6.settings
@@ -128,3 +115,18 @@ Auth::routes();
 // });
 
 // Route::get('/home', 'HomeController@index');
+
+// Route::get('/albums', function () {
+//     if (auth()->check())
+//     {
+//       return view('albums.index');
+//     }
+//
+//     return redirect('users');
+// });
+//
+// Route::get('/albums/{seq}', function ($seq) {
+//     return view('albums.seq0',[
+//       'temp'=>$seq
+//     ]);
+// });
