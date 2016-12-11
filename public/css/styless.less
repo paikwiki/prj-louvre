@@ -1,4 +1,4 @@
-@deviceWidth: 360px;
+@deviceWidth: 480px;
 body {
   background-color: #666;
   // // 임시 설정
@@ -17,7 +17,7 @@ body {
   .g-wrapper {
     position: relative;
     margin: 0 auto;
-    width: @deviceWidth;
+    max-width: @deviceWidth;
     min-height: 640px;
     background-color: #fff;
     font-size: 14px;
@@ -30,7 +30,7 @@ body {
     z-index: 999;
     .header {
       margin: 0 auto;
-      width: @deviceWidth;
+      max-width: @deviceWidth;
       height: 100px;
       h1 {
         height: 60px;
