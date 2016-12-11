@@ -22,7 +22,7 @@
   <div class="contact-box">
     <ul>
       <li><a href="tel://{{  $student->tel }}">전화하기</a></li>
-      <li><a href="mailto://{{  $student->email }}">메일보내기</a></li>
+      <li><a href="mailto:{{  $student->email }}">메일보내기</a></li>
     </ul>
   </div>
   <div class="student-modify-box">
