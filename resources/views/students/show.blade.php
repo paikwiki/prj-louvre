@@ -31,12 +31,12 @@
 </div> <!-- /.s-profile -->
 <div class="tab-selector clearfix">
   <ul>
-    <li><a href="#" class="tab-info">정보</a></li>
-    <li><a href="#" class="tab-artworks">작품</a></li>
+    <li><a href="#" class="tab-info tab01">정보</a></li>
+    <li><a href="#" class="tab-artworks tab02">작품</a></li>
   </ul>
 </div>
 <div class="box-container">
-  <div class="tab-box info-box">
+  <div class="tab-box info-box tab-content01 clearfix show">
     <div class="section summary-box">
       <ul>
         <li>등록한지 {{ $dDay }}일 됐어요.</li>
@@ -89,7 +89,7 @@
       </div>
     </div>
   </div>
-  <div class="tab-box artworks-box clearfix">
+  <div class="tab-box artworks-box tab-content02 clearfix hide">
     <ul>
       @foreach( $artworks as $artwork )
         <li>
