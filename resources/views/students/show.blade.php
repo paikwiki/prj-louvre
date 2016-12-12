@@ -83,7 +83,9 @@
         <h2>코멘트 모아보기</h2>
         <ul>
             @foreach( $artworks as $artwork )
-              <li>{{ $artwork->feedback }}</li>
+              <li>
+                <a href="/artworks/{{ $artwork->id }}">{{ $artwork->feedback }}</a>
+              </li>
             @endforeach
         </ul>
       </div>

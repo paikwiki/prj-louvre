@@ -25,9 +25,10 @@ class StudentsController extends Controller
       $students = \App\Student::get();
 
       //요일 구하기
-      $weekdayArr = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
-      // $weekdayOfToday = $weekdayArr[date("w")];
-      $weekdayOfToday = 'thu';
+      $weekdayArr = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat', ];
+      var_dump(date('w'));
+      $weekdayOfToday = $weekdayArr[date("w")];
+      // $weekdayOfToday = 'thu';
       // var_dump($weekdayOfToday);
 
       // 오늘의 수강생 아이디 확인하기

@@ -11,15 +11,15 @@
 </div>
 <div class="section a-point">
   <div class="width-half a-engagement">
-    몰입도 7.9
+    몰입도 {{ $artwork->engagement }}
   </div>
   <div class="width-half a-point">
-    완성도 5.6
+    완성도 {{ $artwork->completeness }}
   </div>
 </div>
 <div class="section a-comment-box">
   <div class="a-comment">
-    한줄 코멘트
+    {{ $artwork->feedback }}
   </div>
 </div>
 
