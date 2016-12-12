@@ -7,7 +7,11 @@
   <a href="#" class="like-btn">좋아요!</a>
 </div>
 <div class="section a-info">
-  {{ $artwork->name }}({{ $type->name }}) / {{ $student->name }} / #태그 #태그 / {{ $artwork->date }}
+  {{ $artwork->name }}({{ $type->name }}) / {{ $student->name }} /
+  @foreach ( $tags as $tag )
+    #{{ $tag->name }}&nbsp;
+  @endforeach
+   / {{ $artwork->date }}
 </div>
 <div class="section a-point">
   <div class="width-half a-engagement">

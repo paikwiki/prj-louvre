@@ -56,11 +56,20 @@ class ArtworksController extends Controller
            $artwork = \App\Artwork::whereId($id)->first();
            $type = \App\Type::whereId($artwork->type_id)->first();
            $student = \App\Student::whereId($artwork->student_id)->first();
+           $artworkTagObjArr= \App\Artwork_tag::where('artwork_id', $id)->get();
+           $tagIdArr = []; //tag 찍기
+           foreach ($artworkTagObjArr as $key=>$artworkTagObj) {
+             $tagIdArr[$key] = $artworkTagObj->tag_id;
+            //  var_dump($key .' / '. $tagIdArr[$key]);
+             $tags[$key] = \App\Tag::whereId($tagIdArr[$key])->first();
+           }
+
 
            return view('artworks.show', [
              'artwork' => $artwork,
              'type' => $type,
              'student' => $student,
+             'tags' => $tags,
            ]);
          } elseif ($id == 'create') {
            return view('artworks.create');

@@ -13,7 +13,9 @@
           <div class="photo-box"><a href="/students/{{ $todayStudent->id }}"><img src="http://{{ $todayStudent->profile_pic ? $todayStudent->profile_pic : 'placehold.it/50x50' }}" alt="" class="photo"></a></div>
           <div class="info-box">
             <a href="/students/{{ $todayStudent->id }}">{{ $todayStudent->name }}</a>
-            <p> 화, 수</p>
+{{--            <p>        @foreach( $attends as $attend )
+                    {{ $attend.' ' }}
+                  @endforeach</p>--}}
           </div>
           <div class="call-box">
             <a href="tel://{{ $todayStudent->tel }}">Call</a>
@@ -21,7 +23,7 @@
         </li>
       @endforeach
     @endif
-  </ul>
+  </ul> 
 </div>
 <div class="students stuendts-all clearfix">
   <h2>수강생 전체 목록</h2>
