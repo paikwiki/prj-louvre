@@ -2,14 +2,14 @@
 
 
 @section('content')
-{{-- <form class="s-add" action="{{ route('student.store') }}" method="POST" enctype="multipart/form-data"> --}}
-  <form class="s-add" action="/students/1" method="get" enctype="multipart/form-data">
+<form class="s-add" action="{{ route('student.store') }}" method="POST" enctype="multipart/form-data">
+{{--  <form class="s-add" action="/students/1" method="get" enctype="multipart/form-data"> --}}
 
   {!! csrf_field() !!}
   <div class="section a-info">
     <ul>
       <li>
-        <label for="s-name">학생명</label><input type="text" id="s-name">
+        <label for="s-name">학생명</label><input type="text" id="s-name" value="{{ old('s-name') }}">
       </li>
       <li>
         <label for="s-tel">전화번호</label><input type="text" id="s-tel">
@@ -30,7 +30,7 @@
         <label for="s-purpose">수강 목적</label><input type="text" id="s-purpose">
       </li>
     </ul>
-    <button>등록하기</button>
+    <button type="summit">등록하기</button>
   </div>
 </form>
 @endsection

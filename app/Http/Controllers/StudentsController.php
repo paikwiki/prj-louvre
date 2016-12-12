@@ -38,7 +38,7 @@ class StudentsController extends Controller
       {
         array_push($todayStudentIdArr, $todayStudentId->id);
       }
-
+      // var_dump($todayStudentIdArr);
       // 오늘의 수강생 목록 만들기
       $todayStudents = [];
       foreach( $todayStudentIdArr as $todayStudentId ) {
