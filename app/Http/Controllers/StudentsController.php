@@ -27,7 +27,7 @@ class StudentsController extends Controller
 
       //요일 구하기
       $weekdayArr = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat', ];
-      var_dump(date('w'));
+      // var_dump(date('w'));
       $weekdayOfToday = $weekdayArr[date("w")];
       // $weekdayOfToday = 'thu';
       // var_dump($weekdayOfToday);
