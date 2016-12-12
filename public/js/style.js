@@ -8,3 +8,9 @@ $(function(){
     $('.tab-content02').removeClass('hide').addClass('show');
   });
 });
+
+$('.header').click(function(){
+    
+    $(this).addClass('current')
+    
+    });
