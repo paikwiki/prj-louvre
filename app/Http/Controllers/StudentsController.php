@@ -51,13 +51,23 @@ class StudentsController extends Controller
       //수강생 요일 보여주기
       $attendances = \App\Attendance::get();
 
+      //생일 보내기
+      $birthdayArr=[];
+      foreach($students as $student)
+      {
+        $birthTemp = $student->birth;
+        $birthday = substr($birthTemp,-5);
+        array_push($birthdayArr, $birthday);
+      }
+      $tod=date("m-d");
 
       return view('students.index', [
         'students' => $students,
         'todayStudents' => $todayStudents,
         'weekdayOfToday' => $weekdayOfToday,
         'attendances' => $attendances,
-
+        'birthdayArr' => $birthdayArr,
+        'tod' => $tod,
       ]);
     }
 
@@ -96,13 +106,12 @@ class StudentsController extends Controller
         // 'status' => [],
         // 'comment' => [],
       ];
-      var_dump($request->all());
+      // var_dump($request->all());
       $validator = \Validator::make($request->all(), $rules);
       if ($validator->fails()) {
         var_dump('발리데이터 실패');
         return back()->withErrors($validator)->withInput();
       }
-      // $student = \App\User::find(1)->student()->create($request->all());
 
       $student = \App\User::find(1)->student()->create([
         'name' => $request['name'],
@@ -138,18 +147,11 @@ class StudentsController extends Controller
         'fri' => $attendValueArr[5],
         'sat' => $attendValueArr[6],
       ]);
-      // $student->attendance()->sync($attendValueArr);
-
-// $attendance = new \App\Attendance;
-// $attendance->create([
-//   'student_id' => $student->id,
-// ]);
 
       if (! $student) {
         return back()->with('flash_message', '글이 저장되지 않았습니다.')->withInput();
       }
-      // return redirect(route('students.index'))->with('flash_message', '작성하신 글이 저장되었습니다.');
-      return redirect('students')->with('flash_message', '작성하신 글이 저장되었습니다.');
+      return redirect('students/'.$student->id)->with('flash_message', '작성하신 글이 저장되었습니다.');
     }
 
     /**

@@ -22,20 +22,22 @@
           <div class="photo-box"><a href="/students/{{ $todayStudent->id }}"><img src="http://{{ $todayStudent->profile_pic ? $todayStudent->profile_pic : 'placehold.it/50x50' }}" alt="" class="photo"></a></div>
           <div class="info-box">
             <a href="/students/{{ $todayStudent->id }}">{{ $todayStudent->name }}</a>
-            <p>             @foreach ($attendances as $attendance)
-                          @if( $attendance->student_id == $todayStudent->id )
-                            @if($attendance->mon==1 )월&nbsp; @endif
-                            @if($attendance->tue==1)화&nbsp; @endif
-                            @if($attendance->wed==1)수&nbsp; @endif
-                            @if($attendance->thu==1)목&nbsp; @endif
-                            @if($attendance->fri==1)금&nbsp; @endif
-                            @if($attendance->sat==1)토&nbsp; @endif
-                            @if($attendance->sun==1)일&nbsp; @endif
-
-                          @endif
-                        @endforeach
+            <p>
+              @foreach ($attendances as $attendance)
+                @if( $attendance->student_id == $todayStudent->id )
+                  @if($attendance->mon==1)<span>월</span>@endif
+                  @if($attendance->tue==1)<span>화</span>@endif
+                  @if($attendance->wed==1)<span>수</span>@endif
+                  @if($attendance->thu==1)<span>목</span>@endif
+                  @if($attendance->fri==1)<span>금</span>@endif
+                  @if($attendance->sat==1)<span>토</span>@endif
+                  @if($attendance->sun==1)<span>일</span>@endif
+                @endif
+              @endforeach
             </p>
-
+            @if($birthdayArr[($todayStudent->id)-1]==$tod)
+              <p>생일축하^^</p>
+            @endif
           </div>
           <div class="call-box">
             <a href="tel://{{ $todayStudent->tel }}">Call</a>
@@ -56,18 +58,19 @@
           <p>
             @foreach ($attendances as $attendance)
               @if( $attendance->student_id == $student->id )
-                @if( $attendance->mon ==1 )월&nbsp; @endif
-                @if($attendance->tue==1)화&nbsp; @endif
-                @if($attendance->wed==1)수&nbsp; @endif
-                @if($attendance->thu==1)목&nbsp; @endif
-                @if($attendance->fri==1)금&nbsp; @endif
-                @if($attendance->sat==1)토&nbsp; @endif
-                @if($attendance->sun==1)일&nbsp; @endif
-
+                @if( $attendance->mon ==1 )<span>월</span>@endif
+                @if($attendance->tue==1)<span>화</span>@endif
+                @if($attendance->wed==1)<span>수</span>@endif
+                @if($attendance->thu==1)<span>목</span>@endif
+                @if($attendance->fri==1)<span>금</span>@endif
+                @if($attendance->sat==1)<span>토</span>@endif
+                @if($attendance->sun==1)<span>일</span>@endif
               @endif
             @endforeach
-
         </p>
+        @if($birthdayArr[($student->id)-1]==$tod)
+        <p>생일축하^^</p>
+        @endif
         </div>
         <div class="call-box">
           <a href="tel://{{ $student->tel }}">Call</a>

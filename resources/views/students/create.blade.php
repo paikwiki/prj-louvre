@@ -74,7 +74,6 @@
           <label for="sat">
              <span>토</span> 
           </label>
-        </select>
       </li>
     </ul>
     <button type="summit">등록하기</button>
