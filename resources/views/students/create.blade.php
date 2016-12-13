@@ -42,16 +42,38 @@
       <li>
         <label for="status">학적 상태</label><input type="text" id="status" name="status" value="재학">
       </li>
-      <li>
-        <label for="attendance">수강요일</label>
+      <li class="attendance-day">
+        <label class="inner-day" for="attendance">수강요일</label>
+        
         <!-- <select type="checkbox" id="attendance" name="attendance"> -->
-          <input type="checkbox" name="sun">일
-          <input type="checkbox" name="mon">월
-          <input type="checkbox" name="tue">화
-          <input type="checkbox" name="wed">수
-          <input type="checkbox" name="thu">목
-          <input type="checkbox" name="fri">금
-          <input type="checkbox" name="sat">토
+          <input type="checkbox" id="sun" name="sun">
+          <label for="sun">
+             <span>일</span> 
+          </label>
+          <input type="checkbox" id="mon" name="mon">
+          <label for="mon">
+             <span>월</span> 
+          </label>
+          <input type="checkbox" id="tue" name="tue">
+          <label for="tue">
+             <span>화</span> 
+          </label>
+          <input type="checkbox" id="wed" name="wed">
+          <label for="wed">
+             <span>수</span> 
+          </label>
+          <input type="checkbox" id="thu" name="thu">
+          <label for="thu">
+             <span>목</span> 
+          </label>
+          <input type="checkbox" id="fri" name="fri">
+          <label for="fri">
+             <span>금</span> 
+          </label>
+          <input type="checkbox" id="sat" name="sat">
+          <label for="sat">
+             <span>토</span> 
+          </label>
         </select>
       </li>
     </ul>

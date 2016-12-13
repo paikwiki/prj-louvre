@@ -45,7 +45,7 @@
     @endif
   </ul>
 </div>
-<div class="students stuendts-all clearfix">
+<div class="students students-all clearfix">
   <h2>수강생 전체 목록</h2>
   <ul class="clearfix">
     @foreach( $students as $student)
