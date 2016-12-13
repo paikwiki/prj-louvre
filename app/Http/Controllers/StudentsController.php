@@ -73,7 +73,9 @@ class StudentsController extends Controller
      */
     public function create()
     {
-      return view('students.create');
+      $student = new \App\Student;
+      // var_dump($student);
+      return view('students.create', compact('student'));
     }
 
 
@@ -85,7 +87,74 @@ class StudentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+      $rules = [
+        'name' => 'required',
+        // 'tel' => [],
+        // 'email' => [],
+        // 'user_id' => [],
+        // 'profile_pic' => [],
+        // 'birth' => [],
+        // 'enroll_date' => [],
+        // 'course_id' => [],
+        // 'purpose' => [],
+        // 'status' => [],
+        // 'comment' => [],
+      ];
+      var_dump($request->all());
+      $validator = \Validator::make($request->all(), $rules);
+      if ($validator->fails()) {
+        var_dump('발리데이터 실패');
+        return back()->withErrors($validator)->withInput();
+      }
+      // $student = \App\User::find(1)->student()->create($request->all());
+
+      $student = \App\User::find(1)->student()->create([
+        'name' => $request['name'],
+        'tel' => $request['tel'],
+        'email' => $request['email'],
+        'user_id' => $request['user_id'],
+        'profile_pic' => $request['profile_pic'],
+        'birth' => $request['birth'],
+        'enroll_date' => $request['enroll_date'],
+        'course_id' => $request['course_id'],
+        'purpose' => $request['purpose'],
+        'status' => $request['status'],
+        'comment' => $request['comment'],
+      ]);
+      // 요일
+      $weekdayNameArr = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+      $attendValueArr = [];
+      foreach( $weekdayNameArr as $key=>$weekdayName )
+      {
+        if( $request[$weekdayName] == 'on' )
+        {
+          $attendValueArr[$key] = 1;
+        } else {
+          $attendValueArr[$key] = 0;
+        }
+      }
+      $student->attendance()->create([
+        'sun' => $attendValueArr[0],
+        'mon' => $attendValueArr[1],
+        'tue' => $attendValueArr[2],
+        'wed' => $attendValueArr[3],
+        'thu' => $attendValueArr[4],
+        'fri' => $attendValueArr[5],
+        'sat' => $attendValueArr[6],
+      ]);
+      // $student->attendance()->sync($attendValueArr);
+
+// $attendance = new \App\Attendance;
+// $attendance->create([
+//   'student_id' => $student->id,
+// ]);
+
+      if (! $student) {
+        return back()->with('flash_message', '글이 저장되지 않았습니다.')->withInput();
+      }
+      // return redirect(route('students.index'))->with('flash_message', '작성하신 글이 저장되었습니다.');
+      return redirect('students')->with('flash_message', '작성하신 글이 저장되었습니다.');
     }
 
     /**
@@ -119,7 +188,6 @@ class StudentsController extends Controller
         $now = new \DateTime();
         $dDay = date_diff($start, $now)->days;
         // var_dump($dDay);
-
 
         // 작품 가져오기
         $artworks = \App\Artwork::where('student_id', $id)->get();
@@ -160,9 +228,22 @@ class StudentsController extends Controller
           $engagementSum += $artwork->engagement;
           $completenessSum += $artwork->completeness;
         }
-        $engagementAvg = round($engagementSum/count($artworks), 2);
-        $completenessAvg = round($completenessSum/count($artworks), 2);
 
+        // 참여도 평균
+        if ( $engagementSum > 0 )
+        {
+          $engagementAvg = round($engagementSum/count($artworks), 2);
+        } else {
+          $engagementAvg = 0;
+        }
+
+        // 완성도 평균
+        if ( $completenessSum > 0 )
+        {
+          $completenessAvg = round($completenessSum/count($artworks), 2);
+        } else {
+          $completenessAvg = 0;
+        }
 
         return view('students.show', [
           'student' => $student,
@@ -175,7 +256,6 @@ class StudentsController extends Controller
           'completenessAvg' => $completenessAvg,
           'dDay' => $dDay,
         ]);
-
     }
 
     /**
