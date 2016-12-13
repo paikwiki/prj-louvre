@@ -13,9 +13,7 @@
       <li>{{  $student->birth }}</li>
       <li>
         {{  $userName }} / {{  $student->enroll_date }} /
-        @foreach( $attends as $attend )
-          {{ $attend.' ' }}
-        @endforeach
+        {{$attend}}
       </li>
     </ul>
   </div>
