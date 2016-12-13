@@ -4,15 +4,20 @@
 @section('content')
 
 <div class="s-profile clearfix">
-  <div class="profile-pic-box">
-    <img src="http://placehold.it/50x50" alt="" class="profile-pic">
+  <div class="profile-artwork">
+      <img src="/image/final-image/artwork01.png" alt="">
+  </div>
+  <div class="profile-div">
+      <div class="profile-pic-box">
+        <img src="http://placehold.it/96x96" alt="" class="profile-pic">
+      </div>
   </div>
   <div class="student-info-box">
     <ul class="student-info">
       <li>{{  $student->name }}</li>
-      <li>{{  $student->birth }}</li>
+      <li>{{  $student->enroll_date }}</li>
       <li>
-        {{  $userName }} / {{  $student->enroll_date }} /
+        {{  $userName }} /
         @foreach($attends as $attend)
           @if($attend == 'mon')월&nbsp;@endif
           @if($attend == 'tue')화&nbsp;@endif
