@@ -13,7 +13,9 @@
       <li>{{  $student->birth }}</li>
       <li>
         {{  $userName }} / {{  $student->enroll_date }} /
-        {{$attend}}
+        @foreach($attends as $attend)
+          {{$attend}}&nbsp;
+        @endforeach
       </li>
     </ul>
   </div>
@@ -96,12 +98,12 @@
           <a href="/artworks/{{ $artwork->id }}">
             <img src="http://{{ $artwork->photo ? $artwork->photo : 'placehold.it/120x120' }}" alt=""> </a>
             <figcaption>
-                <a href="/artworks/{{ $artwork->id }}"> 
+                <a href="/artworks/{{ $artwork->id }}">
                         {{ $artwork->name }}</a>
             </figcaption>
-         
+
         </figure>
-    
+
       @endforeach
     </div>
   </div>
