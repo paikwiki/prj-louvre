@@ -14,9 +14,20 @@
           <div class="photo-box"><a href="/students/{{ $todayStudent->id }}"><img src="http://{{ $todayStudent->profile_pic ? $todayStudent->profile_pic : 'placehold.it/50x50' }}" alt="" class="photo"></a></div>
           <div class="info-box">
             <a href="/students/{{ $todayStudent->id }}">{{ $todayStudent->name }}</a>
-{{--            <p>        @foreach( $attends as $attend )
-                    {{ $attend.' ' }}
-                  @endforeach</p>--}}
+            <p>             @foreach ($attendances as $attendance)
+                          @if( $attendance->student_id == $todayStudent->id )
+                            @if($attendance->mon==1 )월&nbsp; @endif
+                            @if($attendance->tue==1)화&nbsp; @endif
+                            @if($attendance->wed==1)수&nbsp; @endif
+                            @if($attendance->thu==1)목&nbsp; @endif
+                            @if($attendance->fri==1)금&nbsp; @endif
+                            @if($attendance->sat==1)토&nbsp; @endif
+                            @if($attendance->sun==1)일&nbsp; @endif
+
+                          @endif
+                        @endforeach
+            </p>
+
           </div>
           <div class="call-box">
             <a href="tel://{{ $todayStudent->tel }}">Call</a>
@@ -24,7 +35,7 @@
         </li>
       @endforeach
     @endif
-  </ul> 
+  </ul>
 </div>
 <div class="students stuendts-all clearfix">
   <h2>수강생 전체 목록</h2>
@@ -34,7 +45,21 @@
         <div class="photo-box"><a href="/students/{{ $student->id }}"><img src="http://{{ $todayStudent->profile_pic ? $todayStudent->profile_pic : 'placehold.it/50x50' }}" alt="" class="photo"></a></div>
         <div class="info-box">
           <a href="/students/{{ $student->id }}">{{ $student->name }}</a>
-          <p> 화, 수</p>
+          <p>
+            @foreach ($attendances as $attendance)
+              @if( $attendance->student_id == $student->id )
+                @if( $attendance->mon ==1 )월&nbsp; @endif
+                @if($attendance->tue==1)화&nbsp; @endif
+                @if($attendance->wed==1)수&nbsp; @endif
+                @if($attendance->thu==1)목&nbsp; @endif
+                @if($attendance->fri==1)금&nbsp; @endif
+                @if($attendance->sat==1)토&nbsp; @endif
+                @if($attendance->sun==1)일&nbsp; @endif
+
+              @endif
+            @endforeach
+
+        </p>
         </div>
         <div class="call-box">
           <a href="tel://{{ $student->tel }}">Call</a>

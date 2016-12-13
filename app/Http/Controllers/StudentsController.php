@@ -23,7 +23,6 @@ class StudentsController extends Controller
     {
 
       $students = \App\Student::get();
-      // $student2 = \App\Student::where('id', $id)->first();//수강일구하기용
 
       //요일 구하기
       $weekdayArr = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat', ];
@@ -39,30 +38,26 @@ class StudentsController extends Controller
       {
         array_push($todayStudentIdArr, $todayStudentId->id);
       }
-      // var_dump($todayStudentIdArr);
+      //  var_dump($todayStudentIdArr);
       // 오늘의 수강생 목록 만들기
       $todayStudents = [];
-      foreach( $todayStudentIdArr as $todayStudentId ) {
+      foreach( $todayStudentIdArr as $todayStudentId   ) {
         $target = $students->where('id', $todayStudentId)->first();
         array_push($todayStudents, $target);
         // var_dump($target->name);
+        // if($target->id = $todayStudentIdArr)
+
       }
-      // 수강일 구하기
-      // $attendanceInfo = \App\Attendance::where('student_id', $id)->first();
-      // $weekdayArr = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
-      // $attends = [];
-      // foreach ($weekdayArr as $weekday) {
-      //   if( $attendanceInfo->$weekday == 1 )
-      //   {
-      //     array_push($attends, $weekday);
-      //   }
-      // }
+      //수강생 요일 보여주기
+      $attendances = \App\Attendance::get();
+
+
       return view('students.index', [
-        // 'student2' => $student2,
         'students' => $students,
         'todayStudents' => $todayStudents,
         'weekdayOfToday' => $weekdayOfToday,
-        // 'attends' => $attends,
+        'attendances' => $attendances,
+
       ]);
     }
 
