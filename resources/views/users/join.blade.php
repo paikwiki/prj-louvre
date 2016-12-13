@@ -1,4 +1,6 @@
-@extends('layouts.master')
+@extends('layouts.master', [
+'intro' => 'true'
+])
 
 
 @section('content')

@@ -3,6 +3,7 @@
 
 @section('content')
 <div class="students students-today">
+ 
   <h2>오늘의 수강생! - {{ $weekdayOfToday }}</h2>
   <ul class="clearfix">
     @if( !$todayStudents )

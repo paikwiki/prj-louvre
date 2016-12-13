@@ -92,18 +92,20 @@
     </div>
   </div>
   <div class="tab-box artworks-box tab-content02 clearfix hide">
-    <ul>
+    <div class="artworks">
       @foreach( $artworks as $artwork )
-        <li>
+        <figure class="myartwork">
           <a href="/artworks/{{ $artwork->id }}">
-            <img src="http://{{ $artwork->photo ? $artwork->photo : 'placehold.it/120x120' }}" alt="">
-            <p>
-              {{ $artwork->name }}
-            </p>
-          </a>
-        </li>
+            <img src="http://{{ $artwork->photo ? $artwork->photo : 'placehold.it/120x120' }}" alt=""> </a>
+            <figcaption>
+                <a href="/artworks/{{ $artwork->id }}"> 
+                        {{ $artwork->name }}</a>
+            </figcaption>
+         
+        </figure>
+    
       @endforeach
-    </ul>
+    </div>
   </div>
 </div>
 <div class="student-add-box">

@@ -12,7 +12,7 @@
   <title>Project Louvre</title>
 </head>
 <body>
-<div class="g-wrapper">
+<div class="g-wrapper {{ isset($intro) ? 'intro' : '' }}">
   @include('layouts.partial.header')
 
   <div class="c-wrapper">

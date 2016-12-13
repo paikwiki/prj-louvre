@@ -37,7 +37,7 @@ body {
       max-width: @deviceWidth;
       height: 100px;
       h1 {
-        height: 50px;
+        height: 64px;
         line-height: 50px;
         background-color: #fff;
       }
@@ -74,9 +74,8 @@ body {
             
               
            
-              }  
+            }  
           }
-         
         }
        
           
@@ -153,14 +152,21 @@ body {
     } // /.header
   } // /.header-box
   .c-wrapper {
+      
       position: relative;
-    margin-top: 100px;
+    margin-top: 114px;
       .content {
+          
           position: relative;
+//          width : 96%;
+//            margin : 0 auto;
+          background-color: rgb(200,200,200);
+          padding-top: 0.1px;
       }
   } // /.c-wrapper
-
-  // 작은 요소들
+    /////////
+  // 작은 요소들 (자기학생)
+////////////
   img {
     max-width: 100%;
   }
@@ -170,6 +176,158 @@ body {
   .hide {
     display: none;
   }
+  
+.tab-content02{
+    margin : 10px;
+            .artworks{
+                column-count: 2;
+                column-gap: 10px;
+
+                figure{
+                    
+                    display: inline-block;
+               
+                    padding : 10px;
+                    border : 1px solid black;
+                    background-color : #fff;
+                    margin-bottom : 10px;
+                    box-shadow: 3px 3px 5px gray;
+                    figcaption{
+                        text-align: center;
+                        text-decoration: none;
+                        padding-top : 10px;
+                        border-top : 1px solid black;
+                                a{
+                                    text-decoration: none;
+                                    color : black;
+                                }
+                            }
+                    img{
+                        width :100%;
+                    }
+                        }            
+                    }        
+       
+                }
+    
+
+
+
+  // ===================
+  // 인트로
+  // ===================
+.intro {
+    .header-box {
+        display: none;
+    }
+    .c-wrapper {
+        margin-top: 0;
+        
+        .content {
+            background-color : #fff;
+        }
+    }
+}
+
+.intro-logo {
+    position : relative;
+    display: block;
+    margin: 0px auto;
+    margin-top : 80px;
+    margin-bottom: 60px;
+    width : 400px;
+    height : 80px;
+    background-image: url('/image/intro-image/logo-minimue.png');
+    background-repeat: no-repeat;
+    background-size : 400px;
+    background-positon : center;
+    text-indent: -9999px;
+}
+
+
+.instruction {
+    position : relative;
+    text-align: center;
+    font-size : 25px;
+    font-weight: bold;
+    margin: 30px auto;
+}
+
+
+.sns-login {
+  height: 120px;    
+    
+    ul{
+        
+    
+        li {
+
+            float : left;
+            margin : 30px;
+            text-indent: -9999px;
+
+
+
+        }
+        .item01 a{
+            display : block;
+            background-image: url('/image/intro-image/128x128twitter.png');
+            background-size: 60px;
+            background-position : center;
+            background-repeat: no-repeat;
+            width : 60px;
+            height : 60px;
+        }
+        .item02 a{
+            display : block;
+            width : 60px;
+            height : 60px;
+            background-image: url('/image/intro-image/128x128facebook.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 60px;
+        }
+        .item03 a{
+            display : block;
+            width : 60px;
+            height : 60px;
+            background-image: url('/image/intro-image/128x128kakaotalk.png');
+            background-size : 60px;
+            background-position : center;
+            background-repeat: no-repeat;
+        }
+        .item04 a{
+            display : block;
+            width : 60px;
+            height : 60px;
+            background-image : url('/image/intro-image/128x128instagram.png');
+            background-size : 60px;
+            background-position : center;
+            background-repeat: no-repeat;
+            
+        }
+        
+  }
+}
+.user-agreement {
+    
+    margin : 0 auto;
+    text-align: center;
+    line-height: 140%;
+    span {
+        font-weight: bold;
+    }
+}
+
+
+
+
+
+
+
+
+
+
 
 
   // ===================
@@ -183,16 +341,30 @@ body {
   //  오늘의 수강생
   // ===================
 
+
+
   .students {
+    position: relative;
+    background-color: #fff; 
+    width : 96%;
+    margin: 0 auto;
+    box-shadow: 4px 4px 2px grey;
+    top : 20px;
+   
+    opacity: 0;
+     transition : top 0.6s, opacity 0.6s; 
+    
     h2 {
       padding: 5px 12px;
         padding-bottom: 6px;
-        border-top : 2px solid #d2d2d2;
+        border-top : 1px solid #d2d2d2;
       background-color: #f3f3f3;
-        
-        font-size: 14px;
-        font-weight: 700;
+        height : 29px;
+        font-size: 16px;
+        font-weight: normal;
+        margin-top : 20px;
     }
+      
     ul {
       li {
         margin-bottom: 0px;
@@ -209,9 +381,9 @@ body {
             
           img {
             display: block;
-            width :60px;
-            height : 60px;
-            border-radius: 30px;
+            width :57px;
+            height : 57px;
+            border-radius: 28.5px;
             margin: 0 auto;
           }
         }
@@ -223,8 +395,8 @@ body {
             height: 30px;
             line-height: 32px;
             padding-left: 00px;
-            font-weight: 500;
-            font-size : 18px;
+            font-weight: bold;
+            font-size : 16px;
               
             color : rgb(0,0,0);
             text-decoration: none;
@@ -236,7 +408,7 @@ body {
                 padding-left : 2px;
                 width :35px;
                 font-size: 12px;
-                font-weight: lighter;
+                font-weight: normal;
 
                 color: #7e7e84;
 
@@ -256,14 +428,22 @@ body {
                 background-position: center;
                 background-repeat: no-repeat;
                 background-size: cover;
-                margin-top: 5px;
+                margin-top: 10px;
+               
             }
             
         }
       }
     }
   } // /.students
- 
+.students.motion {
+    top : 0px;
+    opacity : 1;
+    
+    
+}
+
+
 .student-add-box {
     
     position : fixed;
@@ -288,24 +468,35 @@ body {
   // ===================
   // 학생 상세 페이지
   // ===================
+
+
   .s-profile {
     position: relative;
     margin: 10px 0 20px 0;
     padding: 20px 0;
     width: 100%;
     background-color: #eee;
+    
     .profile-pic-box {
+
+      margin : 0 30px;
       float: left;
-      width: 25%;
+        img{     
+             border-radius: 25px;
+            }
     }
     .student-info-box {
+
       float: left;
-      width: 45%;
+      width: 40%;
+
     }
     .contact-box {
-      float: left;
-      padding-top: 20px;
-      width: 30%;
+        
+      float: right;
+      padding-top: 14px;
+      width: 15%;
+        margin-right :30px;
 
     }
     .student-modify-box {
@@ -317,7 +508,10 @@ body {
         width: 20px;
         height: 20px;
         text-indent: -9999px;
-        background-color: #ccc;
+        background-color: ;
+        background-image: url('/image/icon_modify.png');
+        background-size: 20px;
+        background-repeat : no-repeat;
       }
     }
   } // /.s-profile
@@ -341,7 +535,11 @@ body {
         }
       }
     }
-  } // /.tab-selector
+  } 
+
+// /.tab-selector
+
+
   .box-container {
     .tab-box {
 
@@ -404,3 +602,36 @@ body {
     }
   }
 
+/////////////////
+// album_index 앨범앨범앨범
+///////////
+.album-box {
+
+    margin : 10px ;
+    .album-artworks{
+        column-count: 2;
+        column-gap: 10px;
+        
+        figure{
+            display: inline-block;
+            padding : 10px;
+            border : 1px solid black;
+            background-color : #fff;
+            margin-bottom : 10px;
+            box-shadow: 3px 3px 5px gray;
+            figcaption{
+                text-align: center;
+                text-decoration: none;
+                padding-top : 10px;
+                border-top : 1px solid black;
+                a{
+                    text-decoration: none;
+                    color : black;
+                }
+            }
+            img{
+                width :100%;
+            }
+        }
+    }
+}
