@@ -116,7 +116,7 @@
 </div>
 <div class="student-add-box">
   <div class="student-add-btn">
-    <a href="/artworks/add">작품 추가</a>
+    <a href="/artworks/create">작품 추가</a>
   </div>
 </div>
 
