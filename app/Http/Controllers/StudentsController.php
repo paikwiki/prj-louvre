@@ -106,7 +106,7 @@ class StudentsController extends Controller
         // 'status' => [],
         // 'comment' => [],
       ];
-      var_dump($request->all());
+      // var_dump($request->all());
       $validator = \Validator::make($request->all(), $rules);
       if ($validator->fails()) {
         var_dump('발리데이터 실패');

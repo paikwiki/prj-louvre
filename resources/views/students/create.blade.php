@@ -52,7 +52,6 @@
           <input type="checkbox" name="thu">목
           <input type="checkbox" name="fri">금
           <input type="checkbox" name="sat">토
-        </select>
       </li>
     </ul>
     <button type="summit">등록하기</button>

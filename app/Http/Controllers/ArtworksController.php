@@ -29,7 +29,16 @@ class ArtworksController extends Controller
      */
     public function create()
     {
-      return view('artworks.create');
+      $artwork = new \App\Artwork;
+      $students = \App\Student::get();
+      $tags = \App\Tag::get();
+      $types = \App\Type::get();
+      return view('artworks.create', [
+        'artwork' => $artwork,
+        'students' => $students,
+        'tags' => $tags,
+        'types' => $types,
+      ]);
     }
 
     /**
@@ -40,7 +49,50 @@ class ArtworksController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = [
+          'name' => 'required',
+        ];
+        $validator = \Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+          return back()->withErrors($validator)->withInput();
+        }
+        $artwork = \App\Artwork::create([
+          // 'photo' => $request['photo'],
+          'photo' => 'placehold.it/640x480',
+          'name' => $request['name'],
+          'date' => $request['date'],
+          'type_id' => $request['type_id'],
+          'student_id' => $request['student_id'],
+          'size' => $request['size'],
+          'engagement' => $request['engagement'],
+          'completeness' => $request['completeness'],
+          'feedback' => $request['feedback'],
+        ]);
+        // $artwork->tag()->sync($request->input('tags'));
+        // $aTags = explode(",", $request['tags']);
+        // foreach ( $aTags as $key=>$aTag )
+        // {
+        //   $aTags[$key] = trim($aTag);
+        // }
+
+        $selectTags = [];
+
+        for( $i=0; $i<20; $i++ )
+        {
+          $selectTag = 'tag'.($i+1);
+          if( $request[$selectTag] == 'on' )
+          {
+            array_push($selectTags, $i+1);
+          }
+        }
+
+        $artwork->tag()->sync($selectTags);
+
+        if (! $artwork) {
+          return back()->with('flash_message', '작품이 저장되지 않았습니다.')->withInput();
+        }
+        return redirect('artworks/'.$artwork->id)->with('flash_message', '작품이 저장됐습니다.');
+
     }
 
     /**
