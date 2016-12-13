@@ -64,7 +64,9 @@ body {
           width: 20%;
           height: 50px;
           text-align: center;
-          background-color: rgb(255,255,255);
+        
+          background-color: #222631;
+          
           a {
             display: block;
             width: 100%;
@@ -82,7 +84,7 @@ body {
         .item01 {
           a {
               display: block;
-              background-image: url("/image/3px_man.png");
+              background-image: url("/image/final-image/icon_man.png");
                 background-size: 30px;
               background-position: center;
               background-repeat: no-repeat;
@@ -93,7 +95,7 @@ body {
         .item02 {
           a {
               display: block;
-              background-image: url("/image/3px_search.png");
+              background-image: url("/image/final-image/icon_search.png");
                 background-size: 27.5px;
               background-position: center;
               background-repeat: no-repeat;
@@ -105,7 +107,7 @@ body {
         .item03 {
           a{
               display: block;
-              background-image: url("/image/3px_camera3-12.png");
+              background-image: url("/image/final-image/icon_camera.png");
                 background-size: 38.5px;
               background-position: center;
               background-repeat: no-repeat;
@@ -117,7 +119,7 @@ body {
         .item04{
           a{
               display: block;
-              background-image: url("/image/3px_album.png");
+              background-image: url("/image/final-image/icon_album.png");
                 background-size: 34px;
               background-position: center;
               background-repeat: no-repeat;
@@ -130,7 +132,7 @@ body {
           a{
              
               display: block;
-              background-image: url("/image/3px_setting.png");
+              background-image: url("/image/final-image/icon_setting.png");
                 background-size: 32px;
               background-position: center;
               background-repeat: no-repeat;
@@ -140,7 +142,7 @@ body {
         }
           
         li:nth-child(2n) {
-          background-color: rgb(255,255,255);
+          background-color: #222631;
             border-top : 0px solid black;
             border-left : 0px solid rgb(230,230,230);
             border-right : 0px solid rgb(230,230,230);
@@ -160,7 +162,7 @@ body {
           position: relative;
 //          width : 96%;
 //            margin : 0 auto;
-          background-color: rgb(200,200,200);
+          background-color: #f8f9fb;
           padding-top: 0.1px;
           padding-bottom: 10px;
          
@@ -231,6 +233,86 @@ body {
     }
 }
 
+.login-box {
+    .form-horizontal{
+          
+    
+        .form-group01{
+            text-align: center;
+            
+            label {
+                display : block;
+                margin : 0 auto;
+                transform : translateY(25px);
+                opacity: 0.4;
+                transition : transform 0.5s, opacity 0.6s;
+            }
+
+            input {
+                border : none;
+                margin: 6px 0px;
+                background-color : rgb(240,240,240);
+                padding :6px 0px;
+                width : 260px;
+                text-indent : 6px;
+                
+             
+            }
+            .focused {
+                    transform : translateY(12px);
+                    opacity : 0;
+                }
+            }
+        
+   
+        
+        .form-group03{
+            text-align: right;  
+            font-size : 70%;
+            margin :10px 40px 0px 0px;
+
+        }
+        
+        
+        .form-group04{
+            text-align: center;
+          
+                        
+            button {
+                margin : 6px 0px;
+                border : none;
+                background : rgb(40,40,40);
+                width : 140px;
+                height : 27px;
+                cursor: pointer;
+                font-weight: bolder;
+                font-size : 15px;
+               color:white;
+            }
+            
+            a{
+                display: inline-block;
+                margin-top : 20px;
+                text-decoration: none;
+                color : black;
+            }
+            a:hover {
+                color : rgb(240,50,50);
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
 .intro-logo {
     position : relative;
     display: block;
@@ -250,7 +332,8 @@ body {
 .instruction {
     position : relative;
     text-align: center;
-    font-size : 25px;
+    font-size : 20px;
+    line-height: 25px;
     font-weight: bold;
     margin: 30px auto;
 }
@@ -261,13 +344,14 @@ body {
     margin : 0 auto;
     
     ul{
-        
+        width : 40%;
+        margin : 0 auto;
     
         li {
 
             float : left;
-           
-            margin : 30px 27px;
+           width : 25%;
+            margin : 30px 0;
             text-indent: -9999px;
    
 
@@ -276,39 +360,42 @@ body {
         .item01 a{
             display : block;
             background-image: url('/image/intro-image/128x128twitter.png');
-            background-size: 60px;
+            background-size: 30px;
             background-position : center;
             background-repeat: no-repeat;
-            width : 60px;
-            height : 60px;
+            width : 30px;
+            height : 30px;
+            margin: 0 auto;
         }
         .item02 a{
             display : block;
-            width : 60px;
-            height : 60px;
+            width : 30px;
+            height : 30px;
             background-image: url('/image/intro-image/128x128facebook.png');
             background-position: center;
             background-repeat: no-repeat;
-            background-size: 60px;
+            background-size: 30px;
+            margin: 0 auto;
         }
         .item03 a{
             display : block;
-            width : 60px;
-            height : 60px;
+            width : 30px;
+            height : 30px;
             background-image: url('/image/intro-image/128x128kakaotalk.png');
-            background-size : 60px;
+            background-size : 30px;
             background-position : center;
             background-repeat: no-repeat;
+            margin: 0 auto;
         }
         .item04 a{
             display : block;
-            width : 60px;
-            height : 60px;
+            width : 30px;
+            height : 30px;
             background-image : url('/image/intro-image/128x128instagram.png');
-            background-size : 60px;
+            background-size : 30px;
             background-position : center;
             background-repeat: no-repeat;
-            
+            margin: 0 auto;
         }
         
   }
@@ -423,7 +510,7 @@ body {
           width: 10%;
             a {
                 
-                text-indent: 6000px;
+                text-indent: -6000px;
                 display: block;
                background-image: url("/image/button_call.png"); 
                 width : 30px;
@@ -497,7 +584,7 @@ body {
             }
             span{
                 padding : 5px;
-                border : 1px solid black;`
+                border : 1px solid black;
             }
             
             input:checked + label > span{
@@ -523,30 +610,38 @@ body {
 
   .s-profile {
     position: relative;
-    margin: 10px 0 20px 0;
-    padding: 20px 0;
     width: 100%;
-    background-color: #eee;
-    
-    .profile-pic-box {
+    background-color: #fff;
+      .profile-div{
+         
+          position : relative;
+            top : 0px;
+          left : 50%;
+          margin-top : -10%;
+          margin-left : -10%;
+          max-width : 20%;
+          
+          
+            .profile-pic-box {
+                
+                   img{     
+                     border-radius: 48px;
 
-      margin : 0 30px;
-      float: left;
-        img{     
-             border-radius: 25px;
+                    
+                    }
             }
-    }
+    }          
     .student-info-box {
 
-      float: left;
-      width: 40%;
+      text-align: center;
+      width: 100%;
 
     }
     .contact-box {
         
-      float: right;
+     
       padding-top: 14px;
-      width: 15%;
+      width: 100%;
         margin-right :30px;
 
     }
