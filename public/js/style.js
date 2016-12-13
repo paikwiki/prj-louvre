@@ -9,8 +9,10 @@ $(function(){
   });
 });
 
-$('.header').click(function(){
-    
-    $(this).addClass('current')
-    
-    });
+
+$(document).ready(function(){
+   setTimeout(function(){
+       $('.students').addClass('motion');
+   }, 100); 
+   
+});
