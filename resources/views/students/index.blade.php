@@ -3,8 +3,16 @@
 
 @section('content')
 <div class="students students-today">
- 
-  <h2>오늘의 수강생! - {{ $weekdayOfToday }}</h2>
+
+  <h2>오늘의 수강생! -
+    @if($weekdayOfToday=='mon' )월 @endif
+    @if($weekdayOfToday=='tue' )화 @endif
+    @if($weekdayOfToday=='wed' )수 @endif
+    @if($weekdayOfToday=='thu' )목 @endif
+    @if($weekdayOfToday=='fri' )금 @endif
+    @if($weekdayOfToday=='sat' )토 @endif
+    @if($weekdayOfToday=='sun' )일 @endif
+ </h2>
   <ul class="clearfix">
     @if( !$todayStudents )
       <li class="clearfix">오늘의 수강생이 없습니다.</li>

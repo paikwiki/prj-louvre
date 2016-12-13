@@ -14,7 +14,13 @@
       <li>
         {{  $userName }} / {{  $student->enroll_date }} /
         @foreach($attends as $attend)
-          {{$attend}}&nbsp;
+          @if($attend == 'mon')월&nbsp;@endif
+          @if($attend == 'tue')화&nbsp;@endif
+          @if($attend == 'wed')수&nbsp;@endif
+          @if($attend == 'thu')목&nbsp;@endif
+          @if($attend == 'fri')금&nbsp;@endif
+          @if($attend == 'sat')토&nbsp;@endif
+          @if($attend == 'sun')일&nbsp;@endif
         @endforeach
       </li>
     </ul>
