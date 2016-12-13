@@ -102,7 +102,6 @@ class StudentsController extends Controller
         var_dump('발리데이터 실패');
         return back()->withErrors($validator)->withInput();
       }
-      // $student = \App\User::find(1)->student()->create($request->all());
 
       $student = \App\User::find(1)->student()->create([
         'name' => $request['name'],
@@ -138,18 +137,11 @@ class StudentsController extends Controller
         'fri' => $attendValueArr[5],
         'sat' => $attendValueArr[6],
       ]);
-      // $student->attendance()->sync($attendValueArr);
-
-// $attendance = new \App\Attendance;
-// $attendance->create([
-//   'student_id' => $student->id,
-// ]);
 
       if (! $student) {
         return back()->with('flash_message', '글이 저장되지 않았습니다.')->withInput();
       }
-      // return redirect(route('students.index'))->with('flash_message', '작성하신 글이 저장되었습니다.');
-      return redirect('students')->with('flash_message', '작성하신 글이 저장되었습니다.');
+      return redirect('students/'.$student->id)->with('flash_message', '작성하신 글이 저장되었습니다.');
     }
 
     /**
