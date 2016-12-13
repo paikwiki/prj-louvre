@@ -35,6 +35,10 @@
                           @endif
                         @endforeach
             </p>
+            <p> dd
+
+
+            </p>
 
           </div>
           <div class="call-box">
@@ -66,6 +70,13 @@
 
               @endif
             @endforeach
+
+        </p>
+        <p>
+
+          @if($birthdayArr[($student->id)-1]==$tod)
+          생일축하^^
+          @endif
 
         </p>
         </div>

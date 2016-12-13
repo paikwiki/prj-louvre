@@ -50,13 +50,27 @@ class StudentsController extends Controller
       }
       //수강생 요일 보여주기
       $attendances = \App\Attendance::get();
+      //생일 보내기
+      $birthdayArr=[];
+      foreach($students as $student)
+      {
 
+       $birthTemp = $student->birth;
+       $birthday = substr($birthTemp,-5);
+       array_push($birthdayArr, $birthday);
+      }
+
+      var_dump(date("m-d"));
+      var_dump($birthdayArr);
+      $tod=date("m-d");
 
       return view('students.index', [
         'students' => $students,
         'todayStudents' => $todayStudents,
         'weekdayOfToday' => $weekdayOfToday,
         'attendances' => $attendances,
+        'birthdayArr' => $birthdayArr,
+        'tod' => $tod,
 
       ]);
     }
