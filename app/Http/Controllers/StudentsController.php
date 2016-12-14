@@ -109,7 +109,7 @@ class StudentsController extends Controller
       // var_dump($request->all());
       $validator = \Validator::make($request->all(), $rules);
       if ($validator->fails()) {
-        var_dump('발리데이터 실패');
+        // var_dump('발리데이터 실패');
         return back()->withErrors($validator)->withInput();
       }
 

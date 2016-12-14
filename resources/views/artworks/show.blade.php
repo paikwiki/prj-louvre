@@ -10,7 +10,7 @@
     <div class="a-info-full">
         <div class="a-info">
             <p>작품명 : <span>{{ $artwork->name }}</span>({{ $type->name }})</p>
-            <p>학생이름 : <span>{{ $student->name }}</span></p>
+            <p>학생이름 : <a href="/students/{{ $student->id }}"<span>{{ $student->name }}</span><a></p>
 
           <p><span>@foreach ( $tags as $tag )
             #{{ $tag->name }}&nbsp;

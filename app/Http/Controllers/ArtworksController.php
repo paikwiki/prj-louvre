@@ -51,6 +51,8 @@ class ArtworksController extends Controller
     {
         $rules = [
           'name' => 'required',
+          'files' => ['array'],
+          'files.*' => ['mimes:jpg,jpeg,png,bmp,gif', 'max:30000'],
         ];
         $validator = \Validator::make($request->all(), $rules);
         if ($validator->fails()) {
