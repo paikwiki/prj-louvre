@@ -49,6 +49,98 @@ class ArtworksController extends Controller
      */
     public function store(Request $request)
     {
+
+      if($request['testName'] == 'louvre' ) {
+        // $artworks= \App\Artwork::get();
+        // $students = \App\Student::get();
+        // $tags = \App\Tag::get();
+        // $types = \App\Type::get();
+        // $artwork_tags = \App\Artwork_tag::get();
+        $result_n=[];
+        $result_d=[];
+        $result_tp=[];
+        $result_tg=[];
+        $result_a_d=[];
+        $result_types=[];
+        $val = $request["search_word"];
+        $op_val = $request["a_type"];
+        $result_aw_names=[];
+        $result_tag1=[];
+        $result_tags=[];
+        $val2 = '%'.$val.'%';
+        // var_dump('==========='.$val.'============');
+        //작품이름관련
+        if($op_val ==0)
+        {
+          $result_aw_names=\App\Artwork::where('name', 'like', $val2)->get();
+          if(isset($result_aw_names))
+          {
+          // $result_aw_names=\App\Artwork::where('name', 'like', '%수채화%')->get();
+          // var_dump($result_aw_names);
+            foreach($result_aw_names as $result_aw_name)
+            {
+              array_push($result_n,$result_aw_name->id);
+            }
+          }
+        }
+        //작품날짜관련
+        if($op_val == 1)
+        {
+          $result_aw_dates=\App\Artwork::where('date','like', $val2)->get();
+          if(isset($result_aw_dates))
+          {
+            foreach($result_aw_dates as $result_aw_date)
+            {
+              array_push($result_a_d, $result_aw_date);
+            }
+            foreach($result_a_d as $result_a_ds)
+            {
+              array_push($result_d,$result_a_ds->id);
+            }
+          }
+        }
+          //작품유형관련
+          if($op_val == 2)
+          {
+            $result_type0=\App\Type::where('name','like', $val2)->first();
+            if(isset($result_type0))
+            {
+              $result_types=\App\Artwork::where('type_id',$result_type0->id)->get();
+              foreach($result_types as $result_type)
+              {
+                array_push($result_tp,$result_type->id);
+              }
+            }
+          }
+        //작품태그관련
+
+        if($op_val == 3)
+        {
+          $result_tag0=\App\Tag::where('name','like', $val2)->first();
+          //비슷한 태그 없다는 가정 하에 first  아니면 get필요!  <-아마도..?
+          if(isset($result_tag0))
+          {
+            $result_tag1=\App\Artwork_tag::where('tag_id',$result_tag0->id)->get();
+            foreach($result_tag1 as $result_tag11)
+            {
+              array_push($result_tags,\App\Artwork::where('id',$result_tag11->artwork_id)->first());
+            }
+            foreach($result_tags as $result_tag)
+            {
+              array_push($result_tg, $result_tag ->id);
+            }
+          }
+        }
+          $sum_result=count($result_n)+count($result_d)+count($result_tg)+count($result_tp);
+        return view('artworks.serchresult', [
+            'result_aw_names' => $result_aw_names,
+          'result_a_d' => $result_a_d,
+          'result_types' => $result_types,
+          'result_tags' => $result_tags,
+          'sum_result' => $sum_result,
+          'op_val' => $op_val,
+        ]);
+      }
         $rules = [
           'name' => 'required',
           'files' => ['array'],
@@ -128,7 +220,7 @@ class ArtworksController extends Controller
          } elseif ($id == 'create') {
            return view('artworks.create');
          } else {
-           return view('artworks.serchresult');
+           return view('artworks.search');
          }
      }
 
@@ -164,5 +256,9 @@ class ArtworksController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function searchresult($val)
+    {
+      return 'asdf';
     }
 }
