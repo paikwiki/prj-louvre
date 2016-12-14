@@ -57,7 +57,7 @@
          <div class="dotdotdot">
              <img src='/image/final-image/dotdotdot.png'>
          </div>
-         
+
           <ul>
             <li>등록한지 <span>"{{ $dDay }}"</span>일 됐어요.</li>
             <li><span>"유화"</span>를 많이 그렸어요.</li>
@@ -69,9 +69,9 @@
             <span>총 작품</span>
             <p>{{ $artworksCount }}점</p>
             </div>
-            
+
             <div class="s-total-detail">
-            
+
             <ul>
               @foreach ( $eachTagCounts as $key=>$value )
               <li><p>{{ $key }}<span> {{ $value }}개</span></p></li>
@@ -80,7 +80,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="section s-average clearfix">
         <div class="edge-triangle"></div>
 
@@ -97,12 +97,12 @@
         작품 완성도 그래프
       </div>
     </div>
-   
+
     <div class="section s-tagcloud clearfix">
      <div class="edge-triangle"></div>
       태그 클라우드
     </div>
-    
+
     <div class="section s-comment-box clearfix">
      <div class="edge-triangle"></div>
       <div class="s-comment">
@@ -116,16 +116,16 @@
         </ul>
       </div>
     </div>
-    
+
   </div>
-  
-  
+
+
   <div class="tab-box artworks-box tab-content02 clearfix hide">
     <div class="artworks">
       @foreach( $artworks as $artwork )
         <figure class="myartwork">
           <a href="/artworks/{{ $artwork->id }}">
-            <img src="http://{{ $artwork->photo ? $artwork->photo : 'placehold.it/120x120' }}" alt=""> </a>
+            <img src="{{ $artwork->photo }}" alt=""> </a>
             <figcaption>
                 <a href="/artworks/{{ $artwork->id }}">
                         {{ $artwork->name }}</a>

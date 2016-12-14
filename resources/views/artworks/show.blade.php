@@ -4,7 +4,7 @@
 @section('content')
 <div class='a-wrap'>
     <div class="a-photo-box">
-      <img src="http://placehold.it/640x480" alt="" class="a-photo">
+      <img src="{{ $artwork->photo }}" alt="" class="a-photo">
       <a href="#" class="like-btn">좋아요!</a>
     </div>
     <div class="a-info-full">

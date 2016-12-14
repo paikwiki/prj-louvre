@@ -58,9 +58,19 @@ class ArtworksController extends Controller
         if ($validator->fails()) {
           return back()->withErrors($validator)->withInput();
         }
+
+// 사진 경로 따고 옮기기
+$url = $_FILES["photo"]["tmp_name"];
+$target_dir = "files/";
+$target_file = $target_dir . basename($_FILES["photo"]["name"]);
+move_uploaded_file($_FILES["photo"]["tmp_name"], $target_file);
+
+// 사진 경로를 photo에 저장하기
+$photoUrl = '/files/'.$_FILES["photo"]["name"];
+
         $artwork = \App\Artwork::create([
           // 'photo' => $request['photo'],
-          'photo' => 'placehold.it/640x480',
+          'photo' => $photoUrl,
           'name' => $request['name'],
           'date' => $request['date'],
           'type_id' => $request['type_id'],
@@ -94,6 +104,8 @@ class ArtworksController extends Controller
           return back()->with('flash_message', '작품이 저장되지 않았습니다.')->withInput();
         }
         return redirect('artworks/'.$artwork->id)->with('flash_message', '작품이 저장됐습니다.');
+
+
 
     }
 
