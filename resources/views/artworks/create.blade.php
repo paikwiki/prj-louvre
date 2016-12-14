@@ -6,9 +6,13 @@
     {!! csrf_field() !!}
     <ul>
       <li class="addpicture">
-        <label for="photo"> <img src='/image/final-image/icon_plus.png' alt='작품 사진'><span>작품을 추가하세요</span> </label>
-        <input type="file" id="photo" name="photo" value="{{ old('photo') }}">
+        <label for="imgInp"> <img src='/image/final-image/icon_plus.png' alt='작품 사진'><span>작품을 추가하세요</span> </label>
+        <input type="file" id="imgInp" name="photo" value="{{ old('photo') }}" >
+        
       </li>
+      
+      <img id="blah" src="#" alt="your image"/>
+      
       <div class='write-box'>
           <li>
             <label for="name">작품명</label><input type="text" id="name" name="name">
@@ -65,6 +69,7 @@
             <button><span class="icon-cancel"></span>취소</button>
             <button type="submit"><span class="icon-submit"></span>저장</button>
             </div>
+            
   </form>
 </div>
 @endsection

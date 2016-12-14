@@ -41,3 +41,27 @@ $(function(){
  
 });
 
+$(function(){
+    $("#blah").addClass('hide');
+        
+              function readURL(input) {
+                  
+                  $(".addpicture").addClass('hide');
+                  
+                  
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#blah').attr('src', e.targFet.result);
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+
+            $("#imgInp").change(function(){
+                readURL(this);
+                 $("#blah").removeClass('hide');
+            });
+    
+               
+});
