@@ -9,7 +9,7 @@
   </div>
   <div class="profile-div">
       <div class="profile-pic-box">
-        <img src="http://placehold.it/96x96" alt="" class="profile-pic">
+        <img src="{{ $student->profile_pic ? $student->profile_pic : 'http://placehold.it/96x96' }}" alt="" class="profile-pic">
       </div>
   </div>
   <div class="student-info-box">

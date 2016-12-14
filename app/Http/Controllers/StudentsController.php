@@ -113,12 +113,22 @@ class StudentsController extends Controller
         return back()->withErrors($validator)->withInput();
       }
 
+      // 사진 경로 따고 옮기기
+      $url = $_FILES["profile_pic"]["tmp_name"];
+      $target_dir = "pfpic/";
+      $target_file = $target_dir . basename($_FILES["profile_pic"]["name"]);
+      move_uploaded_file($_FILES["profile_pic"]["tmp_name"], $target_file);
+
+      // 사진 경로를 profile_pic에 저장하기
+      $profilePicUrl = '/pfpic/'.$_FILES["profile_pic"]["name"];
+
+
       $student = \App\User::find(1)->student()->create([
         'name' => $request['name'],
         'tel' => $request['tel'],
         'email' => $request['email'],
         'user_id' => $request['user_id'],
-        'profile_pic' => $request['profile_pic'],
+        'profile_pic' => $profilePicUrl,
         'birth' => $request['birth'],
         'enroll_date' => $request['enroll_date'],
         'course_id' => $request['course_id'],
