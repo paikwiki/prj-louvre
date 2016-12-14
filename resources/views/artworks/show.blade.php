@@ -10,8 +10,8 @@
     <div class="a-info-full">
         <div class="a-info">
             <p>작품명 : <span>{{ $artwork->name }}</span>({{ $type->name }})</p>
-            <p>학생이름 : <span>{{ $student->name }}</span></p> 
-            
+            <p>학생이름 : <a href="/students/{{ $student->id }}"<span>{{ $student->name }}</span><a></p>
+
           <p><span>@foreach ( $tags as $tag )
             #{{ $tag->name }}&nbsp;
           @endforeach</span></p>
@@ -19,7 +19,7 @@
         </div>
         <div class="a-point">
           <div class="width-half a-engagement">
-            <p>{{ $artwork->engagement }}</p> <span>몰입도</span> 
+            <p>{{ $artwork->engagement }}</p> <span>몰입도</span>
           </div>
           <div class="width-half a-point">
              <p>{{ $artwork->completeness }}</p> <span>완성도</span>
