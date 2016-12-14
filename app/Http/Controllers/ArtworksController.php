@@ -1,16 +1,12 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
-
 class ArtworksController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
     }
-
     /**
      * Display a listing of the resource.
      *
@@ -21,7 +17,6 @@ class ArtworksController extends Controller
       return view('artworks.search', [
       ]);
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -40,7 +35,6 @@ class ArtworksController extends Controller
         'types' => $types,
       ]);
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -170,7 +164,6 @@ class ArtworksController extends Controller
         ]);
 
         $selectTags = [];
-
         for( $i=0; $i<20; $i++ )
         {
           $selectTag = 'tag'.($i+1);
@@ -179,15 +172,12 @@ class ArtworksController extends Controller
             array_push($selectTags, $i+1);
           }
         }
-
         $artwork->tag()->sync($selectTags);
-
         if (! $artwork) {
           return back()->with('flash_message', '작품이 저장되지 않았습니다.')->withInput();
         }
         return redirect('artworks/'.$artwork->id)->with('flash_message', '작품이 저장됐습니다.');
     }
-
     /**
      * Display the specified resource.
      *
@@ -208,8 +198,6 @@ class ArtworksController extends Controller
             //  var_dump($key .' / '. $tagIdArr[$key]);
              $tags[$key] = \App\Tag::whereId($tagIdArr[$key])->first();
            }
-
-
            return view('artworks.show', [
              'artwork' => $artwork,
              'type' => $type,
@@ -222,7 +210,6 @@ class ArtworksController extends Controller
            return view('artworks.serchresult');
          }
      }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -233,7 +220,6 @@ class ArtworksController extends Controller
     {
         //
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -245,7 +231,6 @@ class ArtworksController extends Controller
     {
         //
     }
-
     /**
      * Remove the specified resource from storage.
      *

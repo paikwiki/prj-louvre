@@ -51,6 +51,9 @@ Route::resource('students', 'StudentsController');
 
 // 4.artworks
 Route::resource('artworks', 'ArtworksController');
+// Route::get('/artworks/searchres', function() {
+//   return view('artworks.searchres');
+// });
 
 // 5.albums
 Route::resource('albums', 'AlbumsController');
