@@ -1,16 +1,12 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
-
 class ArtworksController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
     }
-
     /**
      * Display a listing of the resource.
      *
@@ -21,7 +17,6 @@ class ArtworksController extends Controller
       return view('artworks.search', [
       ]);
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -40,7 +35,6 @@ class ArtworksController extends Controller
         'types' => $types,
       ]);
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -49,13 +43,7 @@ class ArtworksController extends Controller
      */
     public function store(Request $request)
     {
-
       if($request['testName'] == 'louvre' ) {
-        // $artworks= \App\Artwork::get();
-        // $students = \App\Student::get();
-        // $tags = \App\Tag::get();
-        // $types = \App\Type::get();
-        // $artwork_tags = \App\Artwork_tag::get();
         $result_n=[];
         $result_d=[];
         $result_tp=[];
@@ -68,15 +56,13 @@ class ArtworksController extends Controller
         $result_tag1=[];
         $result_tags=[];
         $val2 = '%'.$val.'%';
-        // var_dump('==========='.$val.'============');
+
         //작품이름관련
         if($op_val ==0)
         {
           $result_aw_names=\App\Artwork::where('name', 'like', $val2)->get();
           if(isset($result_aw_names))
           {
-          // $result_aw_names=\App\Artwork::where('name', 'like', '%수채화%')->get();
-          // var_dump($result_aw_names);
             foreach($result_aw_names as $result_aw_name)
             {
               array_push($result_n,$result_aw_name->id);
@@ -113,7 +99,6 @@ class ArtworksController extends Controller
             }
           }
         //작품태그관련
-
         if($op_val == 3)
         {
           $result_tag0=\App\Tag::where('name','like', $val2)->first();
@@ -150,9 +135,20 @@ class ArtworksController extends Controller
         if ($validator->fails()) {
           return back()->withErrors($validator)->withInput();
         }
+        // 사진 경로 따고 옮기기
+        $url = $_FILES["photo"]["tmp_name"];
+        $target_dir = "files/";
+        $target_file = $target_dir . basename($_FILES["photo"]["name"]);
+        move_uploaded_file($_FILES["photo"]["tmp_name"], $target_file);
+        // 사진 경로를 photo에 저장하기
+        if ( isset($_FILES["photo"]["name"]) ) {
+          $photoUrl = '/files/'.$_FILES["photo"]["name"];
+        } else {
+          $profilePicUrl = '/files/noimg.png';
+        }
         $artwork = \App\Artwork::create([
           // 'photo' => $request['photo'],
-          'photo' => 'placehold.it/640x480',
+          'photo' => $photoUrl,
           'name' => $request['name'],
           'date' => $request['date'],
           'type_id' => $request['type_id'],
@@ -162,15 +158,7 @@ class ArtworksController extends Controller
           'completeness' => $request['completeness'],
           'feedback' => $request['feedback'],
         ]);
-        // $artwork->tag()->sync($request->input('tags'));
-        // $aTags = explode(",", $request['tags']);
-        // foreach ( $aTags as $key=>$aTag )
-        // {
-        //   $aTags[$key] = trim($aTag);
-        // }
-
         $selectTags = [];
-
         for( $i=0; $i<20; $i++ )
         {
           $selectTag = 'tag'.($i+1);
@@ -179,16 +167,12 @@ class ArtworksController extends Controller
             array_push($selectTags, $i+1);
           }
         }
-
         $artwork->tag()->sync($selectTags);
-
         if (! $artwork) {
           return back()->with('flash_message', '작품이 저장되지 않았습니다.')->withInput();
         }
         return redirect('artworks/'.$artwork->id)->with('flash_message', '작품이 저장됐습니다.');
-
     }
-
     /**
      * Display the specified resource.
      *
@@ -209,8 +193,6 @@ class ArtworksController extends Controller
             //  var_dump($key .' / '. $tagIdArr[$key]);
              $tags[$key] = \App\Tag::whereId($tagIdArr[$key])->first();
            }
-
-
            return view('artworks.show', [
              'artwork' => $artwork,
              'type' => $type,
@@ -220,10 +202,9 @@ class ArtworksController extends Controller
          } elseif ($id == 'create') {
            return view('artworks.create');
          } else {
-           return view('artworks.search');
+           return view('artworks.serchresult');
          }
      }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -234,7 +215,6 @@ class ArtworksController extends Controller
     {
         //
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -246,7 +226,6 @@ class ArtworksController extends Controller
     {
         //
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -256,9 +235,5 @@ class ArtworksController extends Controller
     public function destroy($id)
     {
         //
-    }
-    public function searchresult($val)
-    {
-      return 'asdf';
     }
 }
