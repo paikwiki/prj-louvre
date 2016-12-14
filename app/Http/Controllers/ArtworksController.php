@@ -59,14 +59,14 @@ class ArtworksController extends Controller
           return back()->withErrors($validator)->withInput();
         }
 
-// 사진 경로 따고 옮기기
-$url = $_FILES["photo"]["tmp_name"];
-$target_dir = "files/";
-$target_file = $target_dir . basename($_FILES["photo"]["name"]);
-move_uploaded_file($_FILES["photo"]["tmp_name"], $target_file);
+        // 사진 경로 따고 옮기기
+        $url = $_FILES["photo"]["tmp_name"];
+        $target_dir = "files/";
+        $target_file = $target_dir . basename($_FILES["photo"]["name"]);
+        move_uploaded_file($_FILES["photo"]["tmp_name"], $target_file);
 
-// 사진 경로를 photo에 저장하기
-$photoUrl = '/files/'.$_FILES["photo"]["name"];
+        // 사진 경로를 photo에 저장하기
+        $photoUrl = '/files/'.$_FILES["photo"]["name"];
 
         $artwork = \App\Artwork::create([
           // 'photo' => $request['photo'],
