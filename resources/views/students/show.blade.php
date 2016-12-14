@@ -14,9 +14,9 @@
   </div>
   <div class="student-info-box">
     <ul class="student-info">
-      <li>{{  $student->name }}</li>
-      <li>{{  $student->enroll_date }}</li>
-      <li>
+      <li class='student-name'>{{  $student->name }}</li>
+      <li class='student-enroll-date'>{{  $student->enroll_date }}</li>
+      <li class='student-attendant-day'>
         {{  $userName }} /
         @foreach($attends as $attend)
           @if($attend == 'mon')월&nbsp;@endif
@@ -32,8 +32,8 @@
   </div>
   <div class="contact-box">
     <ul>
-      <li><a href="tel://{{  $student->tel }}">전화하기</a></li>
-      <li><a href="mailto:{{  $student->email }}">메일보내기</a></li>
+      <li class='icon-call'><a href="tel://{{  $student->tel }}"><img src='/image/final-image/icon_call.png' alt="전화하기"></a><span>Phone</span></li>
+      <li class='icon-mail'><a href="mailto:{{  $student->email }}"><img src='/image/final-image/icon_mail.png' alt="메일보내기"></a><span>Mail</span></li>
     </ul>
   </div>
   <div class="student-modify-box">
@@ -49,36 +49,47 @@
 <div class="box-container">
   <div class="tab-box info-box tab-content01 clearfix show">
     <div class="section summary-box">
-      <ul>
-        <li>등록한지 {{ $dDay }}일 됐어요.</li>
-        <li>유화를 많이 그렸어요.</li>
-        <li>현재 소묘를 그리고 있어요.</li>
-        <li>앞으로 하고 싶은 건 "{{ $student->purpose }}"입니다.</li>
-      </ul>
+        <div class="edge-triangle">
+        </div>
+         <div class="icon-summary">
+             <img src='/image/final-image/icon_translate.png'><span>Summary</span>
+         </div>
+         <div class="dotdotdot">
+             <img src='/image/final-image/dotdotdot.png'>
+         </div>
+         
+          <ul>
+            <li>등록한지 <span>"{{ $dDay }}"</span>일 됐어요.</li>
+            <li><span>"유화"</span>를 많이 그렸어요.</li>
+            <li>현재 <span>"소묘"</span>를 그리고 있어요.</li>
+            <li>앞으로 하고 싶은 건 <span>"{{ $student->purpose }}"</span>입니다.</li>
+          </ul>
+          <div class="s-total">
+            <div class="s-total-all">
+            <span>총 작품</span>
+            <p>{{ $artworksCount }}점</p>
+            </div>
+            
+            <div class="s-total-detail">
+            
+            <ul>
+              @foreach ( $eachTagCounts as $key=>$value )
+              <li><p>{{ $key }}<span> {{ $value }}개</span></p></li>
+              @endforeach
+            </ul>
+            </div>
+        </div>
     </div>
-    <div class="section s-total clearfix">
-      <div class="width-half s-total-all">
-        <h2>총 작품</h2>
-        <p>{{ $artworksCount }}점</p>
-      </div>
-      <div class="width-half s-total-detail">
-        <h2>태그 보기</h2>
-        <ul>
-          @foreach ( $eachTagCounts as $key=>$value )
-          <li><p><span>{{ $key }}</span> {{ $value }}개</p></li>
-          @endforeach
-        </ul>
-      </div>
-    </div>
+    
     <div class="section s-average clearfix">
+        <div class="edge-triangle"></div>
+
       <div class="width-half">
         몰입도 {{ $engagementAvg }}
       </div>
       <div class="width-half">
         작품 완성도 {{ $completenessAvg }}
       </div>
-    </div>
-    <div class="section s-graph-box clearfix">
       <div class="width-full">
         강의 몰입도 그래프
       </div>
@@ -86,12 +97,16 @@
         작품 완성도 그래프
       </div>
     </div>
+   
     <div class="section s-tagcloud clearfix">
+     <div class="edge-triangle"></div>
       태그 클라우드
     </div>
+    
     <div class="section s-comment-box clearfix">
+     <div class="edge-triangle"></div>
       <div class="s-comment">
-        <h2>코멘트 모아보기</h2>
+        코멘트 모아보기
         <ul>
             @foreach( $artworks as $artwork )
               <li>
@@ -101,7 +116,10 @@
         </ul>
       </div>
     </div>
+    
   </div>
+  
+  
   <div class="tab-box artworks-box tab-content02 clearfix hide">
     <div class="artworks">
       @foreach( $artworks as $artwork )

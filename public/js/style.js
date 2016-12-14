@@ -1,11 +1,16 @@
 $(function(){
+    $('.tab01').addClass('highlight');
   $('.tab01').on('click', function() {
     $('.tab-content02').removeClass('show').addClass('hide');
     $('.tab-content01').removeClass('hide').addClass('show');
+      $('.tab01').addClass('highlight');
+      $('.tab02').removeClass('highlight');
   });
   $('.tab02').on('click', function() {
-    $('.tab-content01').removeClass('show').addClass('hide');
+    $('.tab-content01').removeClass('show highlight').addClass('hide');
     $('.tab-content02').removeClass('hide').addClass('show');
+      $('.tab01').removeClass('highlight');
+      $('.tab02').addClass('highlight');
   });
 });
 
@@ -35,3 +40,4 @@ $(function(){
     });
  
 });
+
