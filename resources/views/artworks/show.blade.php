@@ -7,7 +7,7 @@
   <a href="#" class="like-btn">좋아요!</a>
 </div>
 <div class="section a-info">
-  {{ $artwork->name }}({{ $type->name }}) / {{ $student->name }} /
+  {{ $artwork->name }}({{ $type->name }}) / <a href="/students/{{ $student->id }}">{{ $student->name }}</a> /
   @foreach ( $tags as $tag )
     #{{ $tag->name }}&nbsp;
   @endforeach
