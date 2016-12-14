@@ -12,8 +12,6 @@ class StudentsController extends Controller
         $this->middleware('auth');
     }
 
-
-
     /**
      * Display a listing of the resource.
      *
@@ -21,9 +19,7 @@ class StudentsController extends Controller
      */
     public function index()
     {
-
       $students = \App\Student::get();
-
       //요일 구하기
       $weekdayArr = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat', ];
       // var_dump(date('w'));
@@ -120,8 +116,11 @@ class StudentsController extends Controller
       move_uploaded_file($_FILES["profile_pic"]["tmp_name"], $target_file);
 
       // 사진 경로를 profile_pic에 저장하기
-      $profilePicUrl = '/pfpic/'.$_FILES["profile_pic"]["name"];
-
+      if ( isset($_FILES["profile_pic"]["name"]) ) {
+        $profilePicUrl = '/pfpic/'.$_FILES["profile_pic"]["name"];
+      } else {
+        $profilePicUrl = '/pfpic/noimg.png';
+      }
 
       $student = \App\User::find(1)->student()->create([
         'name' => $request['name'],

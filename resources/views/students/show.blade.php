@@ -110,7 +110,7 @@
         <ul>
             @foreach( $artworks as $artwork )
               <li>
-                <a href="/artworks/{{ $artwork->id }}">{{ $artwork->feedback }}</a>
+                <a href="/artworks/{{ $artwork->id }}">{{ $artwork->feedback }}</a> - <span>{{ $artwork->date }}</span>
               </li>
             @endforeach
         </ul>
@@ -128,7 +128,7 @@
             <img src="{{ $artwork->photo }}" alt=""> </a>
             <figcaption>
                 <a href="/artworks/{{ $artwork->id }}">
-                        {{ $artwork->name }}</a>
+                  {{ $artwork->name }}</a>
             </figcaption>
 
         </figure>
@@ -139,7 +139,7 @@
 </div>
 <div class="student-add-box">
   <div class="student-add-btn">
-    <a href="/artworks/create">작품 추가</a>
+    <a href="/artworks/create?std_id={{  $student->id }}">작품 추가</a>
   </div>
 </div>
 

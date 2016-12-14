@@ -3,15 +3,17 @@
 
 @section('content')
 <div class="search-box">
-  <form class="search" method="get" action="artworks/tags" role="">
-    <select name="a-type" id="a-type">
+  <form class="search" method="post" action="{{ route('artworks.store') }}" role="">
+    {!! csrf_field() !!}
+<input type="hidden" id="search-word" name="testName" value="louvre">
+    <select name="a_type" id="a-type">
       <option value="0">작품명</option>
-      <option value="1">학생명</option>
-      <option value="2">학생명</option>
-      <option value="3">태그검색</option>
+      <option value="1">날짜</option>
+      <option value="2">유형</option>
+      <option value="3">태그</option>
     </select>
-    <input type="text" id="search-word" placeholder="">
-    <button>검색</button>
+    <input type="text" id="search-word" name="search_word" placeholder="">
+    <button type="submit">검색</button>
   </form>
 </div>
 <div class="search-recent">

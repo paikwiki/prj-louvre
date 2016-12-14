@@ -5,7 +5,7 @@
 <div class='a-wrap'>
     <div class="a-photo-box">
       <img src="{{ $artwork->photo }}" alt="" class="a-photo">
-      <a href="#" class="like-btn">좋아요!</a>
+      <a href="{{-- albums.store --}}" class="like-btn">좋아요!</a>
     </div>
     <div class="a-info-full">
         <div class="a-info">
