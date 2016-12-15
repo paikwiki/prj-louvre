@@ -2,9 +2,10 @@
 
 
 @section('content')
-<form class="s-add" action="{{ route('students.store') }}" method="POST" enctype="multipart/form-data">
+<form class="s-mod" action="{{ route('students.update', $student->id) }}" method="POST" enctype="multipart/form-data">
 
   {!! csrf_field() !!}
+  {!! method_field('PUT') !!}
   <div class="a-info form-group">
     @if(session()->has('flash_message'))
       <div class="alert alert-info" role="alert">
@@ -17,36 +18,36 @@
         <label for="profile-pic">
             <img src='/image/final-image/icon_input_profile.png'>
         </label>
-        <input type="file" id="profile-pic" name="profile_pic" value="{{ old('profile_pic') }}">
+        <input type="file" id="profile-pic" name="profile_pic" value="{{ old('profile_pic', $student->profile_pic) }}">
       </li>
      </div>
 
      <div class="top-right">
           <div class="top-right-top">
               <li class="name">
-                <label for="name">학생명</label><input type="text" id="name" name="name" value="{{ old('name') }}">
+                <label for="name">학생명</label><input type="text" id="name" name="name" value="{{ old('name', $student->name) }}">
               </li>
               <li class="birth">
-                <label for="birth">생년월일</label><input type="date" id="birth" name="birth" value="{{ old('birth') }}">
+                <label for="birth">생년월일</label><input type="date" id="birth" name="birth" value="{{ old('birth', $student->birth) }}">
               </li>
          </div>
-         
+
           <li>
-            <label for="tel">전화번호</label><input type="text" id="tel" name="tel" value="{{ old('tel') }}">
+            <label for="tel">전화번호</label><input type="text" id="tel" name="tel" value="{{ old('tel', $student->tel) }}">
           </li>
           <li>
-            <label for="email">이메일</label><input type="email" id="email" name="email" value="{{ old('email') }}">
+            <label for="email">이메일</label><input type="email" id="email" name="email" value="{{ old('email', $student->email) }}">
           </li>
       </div>
       <div class='bottom'>
           <li>
-            <label for="enroll-date">등록일</label><input type="date" id="enroll-date" name="enroll_date" value="{{ old('enroll_date') }}">
+            <label for="enroll-date">등록일</label><input type="date" id="enroll-date" name="enroll_date" value="{{ old('enroll_date',$student->enroll_date) }}">
           </li>
           <li>
-            <label for="purpose">수강 목적</label><input type="text" id="purpose" name="purpose" value="{{ old('purpose') }}">
+            <label for="purpose">수강 목적</label><input type="text" id="purpose" name="purpose" value="{{ old('purpose',$student->purpose) }}">
           </li>
           <li>
-            <label for="comment">메모</label><input type="text" id="comment" name="comment" value="{{ old('comment') }}">
+            <label for="comment">메모</label><input type="text" id="comment" name="comment" value="{{ old('comment',$student->comment) }}">
           </li>
           <li>
             <label for="course-id">수강반</label><input type="text" id="course-id" name="course_id" value="1">

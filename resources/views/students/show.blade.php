@@ -37,7 +37,7 @@
     </ul>
   </div>
   <div class="student-modify-box">
-    <a href="/students/create">수정하기</a>
+    <a href="/students/{{$student->id}}/edit">수정하기</a>
   </div>
 </div> <!-- /.s-profile -->
 <div class="tab-selector clearfix">

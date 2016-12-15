@@ -7,10 +7,10 @@
 <div class="search-result-box">
   <div class="search-result-text">
     <p>총 {{$sum_result or 'Default'}}개의 결과가 있습니다.</p>
-    <p>작품명검색결과:
+{{--    <p>작품명검색결과:
       @foreach ($result_aw_names as $result_name)
       {{$result_name->name or 'Default'}} &nbsp;&nbsp;
-      @endforeach </p>
+      @endforeach </p> --}}
   </div>
   <div class="search-result-artworks">
     @foreach( $result_aw_names as $result_name )
@@ -27,10 +27,6 @@
 <div class="search-result-box">
   <div class="search-result-text">
     <p>총 {{$sum_result or 'Default'}}개의 결과가 있습니다.</p>
-    <p>날짜검색결과:
-      @foreach($result_a_d as $result_date)
-      {{$result_date->name or 'Default'}} &nbsp;&nbsp;
-      @endforeach</p>
     </div>
     <div class="search-result-artworks">
       @foreach( $result_a_d as $result_date )
@@ -46,10 +42,6 @@
 <div class="search-result-box">
   <div class="search-result-text">
     <p>총 {{$sum_result or 'Default'}}개의 결과가 있습니다.</p>
-    <p>유형검색결과:
-      @foreach($result_types as $result_type)
-      {{$result_type->name or 'Default'}}&nbsp;&nbsp;
-      @endforeach</p>
   </div>
   <div class="search-result-artworks">
     @foreach( $result_types as $result_type )
@@ -66,10 +58,6 @@
 <div class="search-result-box">
   <div class="search-result-text">
     <p>총 {{$sum_result or 'Default'}}개의 결과가 있습니다.</p>
-    <p>태그검색결과:
-      @foreach($result_tags as $result_tag)
-      {{$result_tag->name or 'Default'}} &nbsp;&nbsp;
-      @endforeach</p>
   </div>
   <div class="search-result-artworks">
     @foreach( $result_tags as $result_tag )

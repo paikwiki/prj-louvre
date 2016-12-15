@@ -270,9 +270,10 @@ class StudentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(\App\Student $student)
     {
-        //
+        return view('students.edit', compact('student'));
+        // var_dump($student);
     }
 
     /**
@@ -282,10 +283,24 @@ class StudentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, \App\Student $student)
     {
-        //
-    }
+      // var_dump($student->id);
+        // $student=\App\Student::where('id',$id)->get();
+        $student ->update([
+          'name' => $request['name'],
+          'tel' => $request['tel'],
+          'email' => $request['email'],
+          'profile_pic' => $request['profile_pic'],
+          'birth' => $request['birth'],
+          'enroll_date' => $request['enroll_date'],
+          // 'course_id' => $request['course_id'],
+          'purpose' => $request['purpose'],
+          // 'status' => $request['status'],
+          'comment' => $request['comment'],
+        ]);
+        return redirect(route('students.show',$student->id));
+      }
 
     /**
      * Remove the specified resource from storage.
