@@ -196,7 +196,7 @@ class StudentsController extends Controller
         // var_dump($dDay);
 
         // 작품 가져오기
-        $artworks = \App\Artwork::where('student_id', $id)->get();
+        $artworks = \App\Artwork::where('student_id', $id)->orderBy('id', 'desc')->get();
 
         // 총 작품 수 구하기
         $artworksCount = count($artworks);

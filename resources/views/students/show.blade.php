@@ -5,7 +5,8 @@
 
 <div class="s-profile clearfix">
   <div class="profile-artwork">
-      <img src="/image/final-image/artwork01.png" alt="">
+      {{-- <img src="/image/final-image/artwork01.png" alt=""> --}}
+      <img src="{{ $artworks[0]->photo }}" alt="" />
   </div>
   <div class="profile-div">
       <div class="profile-pic-box">
