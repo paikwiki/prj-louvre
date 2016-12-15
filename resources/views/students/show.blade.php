@@ -61,8 +61,8 @@
 
           <ul>
             <li>등록한지 <span>"{{ $dDay }}"</span>일 됐어요.</li>
-            <li><span>"유화"</span>를 많이 그렸어요.</li>
-            <li>현재 <span>"소묘"</span>를 그리고 있어요.</li>
+            <li><span>{{--"{{$type}}"--}}유화</span>를 많이 그렸어요.</li>
+            <li>최근에 <span>"{{$artwork_recent->name}}"</span>를 그렸어요.</li>
             <li>앞으로 하고 싶은 건 <span>"{{ $student->purpose }}"</span>입니다.</li>
           </ul>
           <div class="s-total">

@@ -193,10 +193,43 @@ class StudentsController extends Controller
         $start = new \DateTime($startDateTime);
         $now = new \DateTime();
         $dDay = date_diff($start, $now)->days;
+        $a=[];
         // var_dump($dDay);
 
         // 작품 가져오기
         $artworks = \App\Artwork::where('student_id', $id)->orderBy('id', 'desc')->get();
+        //최근 작품
+        $artwork_recent=\App\Artwork::where('student_id', $id)->orderBy('id', 'desc')->first();
+        //많이 그린 작품
+        // $typesmany=\App\Type::get();
+        // foreach($typesmany as $typesman)
+        // {
+        //   for($i=1;$i<=count($typesman);$i++)
+        //   {
+        //     if($typesman->id==$i)
+        //     {
+        //       $a[$i]++;
+        //     }
+        //   }
+        // }
+        // for($i=1; $i <= count($a); $i++)
+        // {
+        //   for($j=1; $j <= count($a); $j++)
+        //   {
+        //     if(max($a[$i]=$j))
+        //     {
+        //       $k=$j;
+        //     }
+        //   }
+        // }
+        // foreach($typeman as $typema)
+        // {
+        //   if($typema->id == $k)
+        //   {
+        //     $type=$typema->name;
+        //   }
+        // }
+
 
         // 총 작품 수 구하기
         $artworksCount = count($artworks);
@@ -261,6 +294,8 @@ class StudentsController extends Controller
           'engagementAvg' => $engagementAvg,
           'completenessAvg' => $completenessAvg,
           'dDay' => $dDay,
+          'artwork_recent' =>$artwork_recent,
+          // 'type' =>$type,
         ]);
     }
 
