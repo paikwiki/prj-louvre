@@ -298,6 +298,7 @@ class StudentsController extends Controller
           'purpose' => $request['purpose'],
           // 'status' => $request['status'],
           'comment' => $request['comment'],
+
         ]);
         return redirect(route('students.show',$student->id));
       }
