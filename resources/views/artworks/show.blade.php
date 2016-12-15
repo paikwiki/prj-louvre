@@ -5,7 +5,13 @@
 <div class='a-wrap'>
     <div class="a-photo-box">
       <img src="{{ $artwork->photo }}" alt="" class="a-photo">
-      <a href="{{-- albums.store --}}" class="like-btn">좋아요!</a>
+      <form class="like-btn" action="{{ route('albums.store') }}" method="POST" enctype="multipart/form-data">
+
+        {!! csrf_field() !!}
+        <input type="hidden" name="aid" value="{{ $artwork->id }}">
+        <button type="submit" name="button">좋아요</button>
+      </form>
+        {{-- <a href="{{ route('albums.store', $artwork->id) }}" class="like-btn">좋아요!</a> --}}
     </div>
     <div class="a-info-full">
         <div class="a-info">

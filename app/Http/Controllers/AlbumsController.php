@@ -59,7 +59,27 @@ class AlbumsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      // $rules = [
+      // ];
+      // $validator = \Validator::make($request->all(), $rules);
+      // if ($validator->fails()) {
+      //   var_dump('발리데이터 실패');
+      //   return back()->withErrors($validator)->withInput();
+      // }
+
+      if (!$albums = \App\Album::where('artwork_id', $request['aid'])->first())
+      {
+        $album = new \App\Album;
+        $album->create([
+          'user_id' => 1,
+          'artwork_id' => $request['aid'],
+        ]);
+        if (! $album) {
+          return back()->with('flash_message', '작품을 앨범에 담지 못 했습니다.')->withInput();
+        }
+        return redirect('artworks/'.$request['aid'])->with('flash_message', '작품을 앨범에 담았습니다.');
+      }
+      return redirect('artworks/'.$request['aid'])->with('flash_message', '이미 앨범에 있는 작품입니다.');
     }
 
     /**
