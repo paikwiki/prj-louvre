@@ -60,7 +60,7 @@ class ArtworksController extends Controller
         //작품이름관련
         if($op_val ==0)
         {
-          $result_aw_names=\App\Artwork::where('name', 'like', $val2)->get();
+          $result_aw_names=\App\Artwork::where('name', 'like', $val2)->orderBy('id', 'desc')->get();
           if(isset($result_aw_names))
           {
             foreach($result_aw_names as $result_aw_name)
@@ -72,7 +72,7 @@ class ArtworksController extends Controller
         //작품날짜관련
         if($op_val == 1)
         {
-          $result_aw_dates=\App\Artwork::where('date','like', $val2)->get();
+          $result_aw_dates=\App\Artwork::where('date','like', $val2)->orderBy('id', 'desc')->get();
           if(isset($result_aw_dates))
           {
             foreach($result_aw_dates as $result_aw_date)
@@ -91,7 +91,7 @@ class ArtworksController extends Controller
             $result_type0=\App\Type::where('name','like', $val2)->first();
             if(isset($result_type0))
             {
-              $result_types=\App\Artwork::where('type_id',$result_type0->id)->get();
+              $result_types=\App\Artwork::where('type_id',$result_type0->id)->orderBy('id', 'desc')->get();
               foreach($result_types as $result_type)
               {
                 array_push($result_tp,$result_type->id);
@@ -106,7 +106,7 @@ class ArtworksController extends Controller
           //비슷한 태그 없다는 가정 하에 first  아니면 get필요!  <-아마도..?
           if(isset($result_tag0))
           {
-            $result_tag1=\App\Artwork_tag::where('tag_id',$result_tag0->id)->get();
+            $result_tag1=\App\Artwork_tag::where('tag_id',$result_tag0->id)->orderBy('id', 'desc')->get();
             foreach($result_tag1 as $result_tag11)
             {
               array_push($result_tags,\App\Artwork::where('id',$result_tag11->artwork_id)->first());
