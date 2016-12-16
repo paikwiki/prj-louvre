@@ -17,11 +17,53 @@
   </form>
 </div>
 <div class="search-recent">
-  <h2>최근검색</h2>
+  <h2>최근검색어</h2>
   <ul>
-    <li><a href="#">수채화</a></li>
-    <li><a href="#">김지훈</a></li>
-    <li><a href="#">기초반</a></li>
+    <li>
+      <a href="">
+        <span class="item-name">유웅기</span>
+      </a>
+      <div class="box">
+        <span class="search-date">12.25</span>
+        <a><span class="close-btn">x</a>
+      </div>
+    </li>
+    <li>
+      <a href="">
+        <span class="item-name">타이포그래피</span>
+      </a>
+      <div class="box">
+        <span class="search-date">12.24</span>
+        <a><span class="close-btn">x</a>
+      </div>
+    </li>
+    <li>
+      <a href="">
+        <span class="item-name">손승우</span>
+      </a>
+      <div class="box">
+        <span class="search-date">12.24</span>
+        <a><span class="close-btn">x</a>
+      </div>
+    </li>
+    <li>
+      <a href="">
+        <span class="item-name">정준수</span>
+      </a>
+      <div class="box">
+        <span class="search-date">12.23</span>
+        <a><span class="close-btn">x</a>
+      </div>
+    </li>
+    <li>
+      <a href="">
+        <span class="item-name">유화</span>
+      </a>
+      <div class="box">
+        <span class="search-date">12.19</span>
+        <a><span class="close-btn">x</a>
+      </div>
+    </li>
   </ul>
 </div>
 @endsection

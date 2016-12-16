@@ -138,8 +138,8 @@
     </div>
   </div>
 </div>
-<div class="student-add-box">
-  <div class="student-add-btn">
+<div class="artwork-add-box">
+  <div class="artwork-add-btn">
     <a href="/artworks/create?std_id={{  $student->id }}">작품 추가</a>
   </div>
 </div>

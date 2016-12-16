@@ -18,41 +18,43 @@ $(function(){
 $(document).ready(function(){
    setTimeout(function(){
        $('.students').addClass('motion');
-   }, 100); 
-   
+   }, 100);
+
 });
 
 
 $(function(){
-    
+
    $('.form-group01 > input').focus(function(){
                   $(this).siblings().addClass('focused');
                   });
-    
+
     $('.form-group01 > input').blur(function(){
-        
+
         if($(this).val() == ''){
-        
+
         $(this).siblings().removeClass('focused');
         }
-        
-        
+
+
     });
- 
+
 });
 
 $(function(){
     $("#blah").addClass('hide');
-        
+
               function readURL(input) {
-                  
                   $(".addpicture").addClass('hide');
-                  
-                  
+
+
                 if (input.files && input.files[0]) {
                     var reader = new FileReader();
                     reader.onload = function (e) {
-                        $('#blah').attr('src', e.targFet.result);
+                        $('#blah').attr('src', e.target.result);
+                        $('#blah').css({
+                          display: 'block'
+                        })
                     }
                     reader.readAsDataURL(input.files[0]);
                 }
@@ -62,6 +64,6 @@ $(function(){
                 readURL(this);
                  $("#blah").removeClass('hide');
             });
-    
-               
+
+
 });
