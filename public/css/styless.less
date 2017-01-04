@@ -424,15 +424,22 @@ body {
 
             }
             .photo-box {
+              margin-left: 5px;
               width: 20%;
-              background-color: ;
-
-              img {
+              a {
                 display: block;
-                width :57px;
-                height : 57px;
-                border-radius: 28.5px;
-                margin: 0 auto;
+                width :58px;
+                height : 58px;
+                border-radius: 29px;
+                overflow: hidden;
+                img {
+                  // display: block;
+                  // width: auto;
+                  width: 100%;
+                  height: 100%;
+                  // border-radius: 28.5px;
+                  // margin: 0 auto;
+                }
               }
             }
             .info-box {
@@ -509,128 +516,113 @@ body {
         /////////////////
         // 학생 추가
         /////////////////
-
-        .form-group{
-          width : 94%;
-          margin : 0px 3%;
-
-          ul{
-
-            width : 100%;
-
-            margin : 0 auto;
-            background : #fff;
-            box-shadow: 2px 3px 5px 0px gray;
-            .top-left {
-              position: relative;
-              display: block;
-              top : 40px;
-              left : 40px;
-              width : 120px;
-              float: left;
-              img{cursor: pointer;}
-              input {
-                display: none;
-
-              }
-            }
-
-            .top-right {
-              position :relative;
-              display: block;
-              top:10px;
-              left : 30%;
-              width: 200px;
-
-              margin: 20px 0px 20px 60px;
-
-
-              .top-right-top{
-
-
-                .name{
-
-                  input {
-                    width: 70px;
-                  }
-                }
-                .birth {
-                  input{
-                    width : 120px;
-                  }
-
-                }
-              }
-            }
-
-            .bottom {
-              display: block;
-
-              left : 20px;
-              margin : 20px;
-              li{
-                margin : 20px 10px 0px;
-              }
-            }
-            li{
+        .s-info {
+          margin : 15px 15px 0 15px;
+          background : #fff;
+          box-shadow: 2px 3px 5px 0px gray;
+          ul {
+            li {
               display: inline-block;
-
               margin-top : 20px;
-
-
               label{
                 display: block;
-
                 transform: translateY(-5px);
-                text-indent: 4px;
               }
               input {
                 border: none;
                 padding: 3px 0;
                 background : rgb(70,70,70);
                 color :aliceblue;
-
               }
             }
-
-
-            .attendance-day{
-              padding-bottom: 20px;
-              label{
-                display: inline-block;
-              }
-              .inner-day {
-
-
-              }
-
-
-              input{
-
-                width : 0px;
-                height : 0px;
-              }
-              span{
-                padding : 5px;
-                border : 1px solid black;
-              }
-
-              input:checked + label > span{
-                background-color: #9e9e9e;
-              }
-
-            }
-
-
           }
-          .attend {
-            button{
-
-
+          .top-left {
+            float: left;
+            padding: 30px;
+            padding-top: 60px;
+            width : 50%;
+            label {
               display: block;
-              margin: 0 auto;
+              cursor: pointer;
+              // img
             }
-            margin : 20px;
+            input {
+              display: none;
+            }
+          }
+          .top-right {
+            float: right;
+            padding: 30px;
+            width : 50%;
+            // margin: 20px 0px 20px 60px;
+            li {
+              input {
+                width: 100%;
+              }
+              #birth {
+                width: 70%;
+              }
+            }
+          }
+          .bottom {
+            padding: 30px;
+            ul {
+              li {
+                display: block;
+                label {
+                  // display: block;
+                  float: left;
+                  width: 20%;
+                  @media all and (max-width: 640px){
+                    width: 100%;
+                  }
+                }
+              }
+              .comment-box {
+                input {
+                  width: 80%;
+                  min-height: 60px;
+                }
+              }
+              .attendance-day {
+                padding-bottom: 20px;
+                label{
+                  // display: inline-block;
+                  width: inherit;
+                  margin-right: 4px;
+                }
+                .inner-day {
+                  @media all and (max-width: 640px){
+                    width: 100%;
+                    margin-bottom: 10px;
+                  }
+                }
+                input{
+                  display: none;
+                  width : 0px;
+                  height : 0px;
+                }
+                span{
+                  padding : 5px;
+                  border : 1px solid black;
+                }
+                input:checked + label > span{
+                  background-color: #9e9e9e;
+                }
+              }
+              .attend {
+                margin-top : 40px;
+                button{
+                  display: block;
+                  padding: 10px;
+                  margin: 0 auto;
+                }
+              }
+              .course-id-box,
+              .status-box {
+                display: none;
+              }
+            }
           }
         }
 
@@ -696,39 +688,53 @@ body {
               label {
                 color: #c7c7c7;
               }
-              .text-input {
-                // display: block;
-                margin-right: 5%;
-                width: 70%;
+              .a-name {
+                width: 60%;
                 height: 30px;
                 border: 0;
                 font-size: 14px;
                 // color: #c7c7c7;
                 // border-bottom: 1px solid #ebebeb;
               }
+              .type-id {
+                float: right;
+                margin-top: 10px;
+                width: 35%;
+              }
+              .date {
+                width: 50%;
+              }
             }
-            .tags {
+            .tags-box {
               height: inherit;
+              line-height: 35px;
+              padding-top: 10px;
+              padding-bottom: 10px;
               label {
                 // display: block;
                 span {
                   border: 1px solid #ececec;
                   padding: 4px;
+                  word-break: keep-all;
                 }
               }
               input:checked + label > span{
-                background-color: #9e9e9e;
+                background-color: #71767a;
               }
               input {
                 display: none;
               }
             }
-          }
-          //    transform:
-          li {
-            // margin-top: 25px;
-            input {
-              text-indent: 2px;
+            .feedback-box {
+              height: inherit;
+              line-height: inherit;
+              .feedback {
+                display: block;
+                margin-top: 10px;
+                margin-bottom: 10px;
+                width: 100%;
+                height: 40px;
+              }
             }
           }
         }
@@ -756,7 +762,7 @@ body {
             border : 2px solid black;
             box-shadow: 2px 3px 5px 0px gray;
 
-            a {
+            button {
               position : absolute;
               display: block;
               width : 40px;
@@ -766,9 +772,12 @@ body {
               background-size: cover;
               background-position: center;
               text-indent: -999px;
-              top : 77%;
-              right : 5%;
-              opacity: 0.6;
+              bottom : 2%;
+              right : 2%;
+              opacity: 0.8;
+              cursor: pointer;
+              border: 0;
+              background-color: inherit;;
             }
           }
 
@@ -842,14 +851,14 @@ body {
           #search-word {
             // display: block;
             height: 20px;
-            width: 59%;
+            width: 54%;
             margin-right: 2.5%;
             border: 0;
             border-bottom: 1px solid #797979;
             background: none;
           }
           button {
-            width: 10%;
+            width: 15%;
           }
         }
         .search-recent {
@@ -1115,7 +1124,7 @@ body {
             li {
               float: left;
               width: 50%;
-              a {
+              div {
                 display: block;
                 width: 100%;
                 padding: 10px 0;
@@ -1123,6 +1132,7 @@ body {
                 text-decoration: none;
                 font-size: 18px;
                 color: @mmBlack;
+                cursor: pointer;
               }
               a:hover {
                 font-weight: bold;
@@ -1143,6 +1153,10 @@ body {
 
               .summary-box {
                 position : relative;
+                padding: 20px;
+                background: #fff;
+                border : 0.4px solid #ebebeb;
+                box-shadow: 2px 3px 5px 0px rgb(70,70,70);
                 .edge-triangle {
                   position: absolute;
                   background-image: url(/image/final-image/edge-triangle.png);
@@ -1153,11 +1167,6 @@ body {
                   top : 0px;
                   left : 0px;
                 }
-
-                padding: 20px;
-                background: #fff;
-                border : 0.4px solid #ebebeb;
-                box-shadow: 2px 3px 5px 0px rgb(70,70,70);
                 .icon-summary {
                   display: flex;
                   justify-content: center;
@@ -1183,13 +1192,9 @@ body {
                     height: 10px;
                   }
                 }
-
                 ul {
                   text-align: center;
                   font-size: 14px;
-
-
-
                   li {
                     span{
                       font-weight: bold;
@@ -1241,8 +1246,6 @@ body {
                       font-weight : bold;
                       font-size: 200%;
                     }
-
-
                   }
                   .s-total-detail {
                     float : left;
@@ -1260,6 +1263,58 @@ body {
                       }
                       li:last-child {
                         margin-bottom: 0;
+                      }
+                    }
+                  }
+                }
+              }
+              .s-average {
+                h2 {
+                  text-align: center;
+                  background: none;
+                }
+                p {
+                  text-align: center;
+                  font-size: 16px;
+                  font-weight: bold;
+                }
+              }
+              .s-tagcloud {
+                h2 {
+                  text-align: center;
+                  background: none;
+                }
+                ul {
+                  margin-top: 10px;
+                  padding: 0 5%;
+                  li {
+                    float: left;
+                    margin-right: 5px;
+                    line-height: 35px;
+                    span {
+                      border: 1px solid #ececec;
+                      padding: 4px;
+                      word-break: keep-all;
+                    }
+                  }
+                }
+              }
+              .s-comment-box {
+                .s-comment {
+                  ul {
+                    margin-top: 10px;
+                    margin-left: 20px;
+                    li {
+                      list-style: circle;
+                      text-indent: -5px;
+                      line-height: 20px;
+                      a {
+                        text-decoration: none;
+                        color: @mmBlack;
+                      }
+                      span {
+                        font-size: 10px;
+                        color: @mmGray;
                       }
                     }
                   }
@@ -1299,7 +1354,7 @@ body {
 
               figure{
                 display: inline-block;
-                padding : 10px;
+                padding : 4px;
                 border : 0px solid gray;
                 background-color : #fff;
                 margin-bottom : 10px;

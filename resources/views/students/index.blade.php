@@ -21,7 +21,7 @@
         <li class="clearfix">
           <div class="photo-box"><a href="/students/{{ $todayStudent->id }}"><img src="{{ $todayStudent->profile_pic ? $todayStudent->profile_pic : 'http://placehold.it/50x50' }}" alt="" class="photo"></a></div>
           <div class="info-box">
-            <a href="/students/{{ $todayStudent->id }}">{{ $todayStudent->name }}</a>
+            <a href="/students/{{ $todayStudent->id }}">{{ $todayStudent->name }} </a>
             <p>
               @foreach ($attendances as $attendance)
                 @if( $attendance->student_id == $todayStudent->id )
