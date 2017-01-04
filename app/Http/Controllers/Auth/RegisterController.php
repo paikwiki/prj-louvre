@@ -64,11 +64,11 @@ class RegisterController extends Controller
     {
         $pswd = $data['password'];
         var_dump($pswd);
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            // 'password' => bcrypt($pswd),
             'uid' => $data['uid'],
             'course_id' => 1,
         ]);
