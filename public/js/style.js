@@ -24,7 +24,7 @@ $(document).ready(function(){
 
 
 $(function(){
-
+    
    $('.form-group01 > input').focus(function(){
                   $(this).siblings().addClass('focused');
                   });

@@ -7,7 +7,7 @@
 body {
   background-color: #666;
   font-family: "Nanum Gothic";
-
+ 
   // 공통
   .section {
     .width-half {
@@ -163,22 +163,28 @@ body {
           column-gap: 10px;
 
           figure{
-
+             
+            font-size: 0px;    
+            
             display: inline-block;
-
+        
             padding : 10px;
-            border : 1px solid black;
+//            border : 1px solid black;
             background-color : #fff;
             margin-bottom : 10px;
-            box-shadow: 3px 3px 5px gray;
+            box-shadow: 0px 2px 4px 0px #ddd;
+           
+              
             figcaption{
               text-align: center;
               text-decoration: none;
               padding-top : 10px;
-              border-top : 1px solid black;
+              
+            
               a{
                 text-decoration: none;
                 color : black;
+            font-size: 14px;
               }
             }
             img{
@@ -278,16 +284,17 @@ body {
         }
       }
       .intro-logo {
+        
         position : relative;
         display: block;
         margin: 0px auto;
         margin-top : 80px;
         margin-bottom: 60px;
-        width : 400px;
+        max-width : 400px;
         height : 80px;
         background-image: url('/image/intro-image/logo-minimue.png');
         background-repeat: no-repeat;
-        background-size : 400px;
+        background-size : 100%;
         background-positon : center;
         text-indent: -9999px;
       }
@@ -993,8 +1000,11 @@ body {
           width: 100%;
           background-color: #fff;
           .profile-artwork {
-            height: 320px;
+            height: 203.5px;
             overflow: hidden;
+              img{ width : 100%;
+                
+              }
           }
           .profile-div{
             position: relative;
@@ -1085,8 +1095,8 @@ body {
           }
           .student-modify-box {
             position: absolute;
-            top: 280px;
-            right: 14.5px;
+            top: 219px;
+            right: 15.5px;
             a {
               display: block;
               width: 20px;
@@ -1293,7 +1303,7 @@ body {
                 border : 0px solid gray;
                 background-color : #fff;
                 margin-bottom : 10px;
-                box-shadow: 2px 3px 5px 0px gray;
+                box-shadow: 0px 2px 4px 0px #ddd;
                 figcaption{
                   text-align: center;
                   text-decoration: none;
@@ -1306,6 +1316,7 @@ body {
                 }
                 img{
                   width :100%;
+                    filter : hue-rotate(140deg);
                 }
               }
             }
