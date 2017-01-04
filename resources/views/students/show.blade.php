@@ -18,7 +18,7 @@
       <li class='student-name'>{{  $student->name }}</li>
       <li class='student-enroll-date'>{{  $student->enroll_date }}</li>
       <li class='student-attendant-day'>
-        {{  $userName }} /
+        {{  $userName }} 선생님 /
         @foreach($attends as $attend)
           @if($attend == 'mon')월&nbsp;@endif
           @if($attend == 'tue')화&nbsp;@endif
@@ -43,8 +43,8 @@
 </div> <!-- /.s-profile -->
 <div class="tab-selector clearfix">
   <ul>
-    <li><a href="#" class="tab-info tab01">정보</a></li>
-    <li><a href="#" class="tab-artworks tab02">작품</a></li>
+    <li><div class="tab-info tab01">정보</div></li>
+    <li><div href="" class="tab-artworks tab02">작품</div></li>
   </ul>
 </div>
 <div class="box-container">
@@ -86,22 +86,26 @@
         <div class="edge-triangle"></div>
 
       <div class="width-half">
-        몰입도 {{ $engagementAvg }}
+        <h2>몰입도</h2>
+        <p>{{ $engagementAvg }}</p>
       </div>
       <div class="width-half">
-        작품 완성도 {{ $completenessAvg }}
+        <h2>작품 완성도</h2>
+        <p>{{ $completenessAvg }}</p>
       </div>
       <div class="width-full">
-        강의 몰입도 그래프
-      </div>
-      <div class="width-full">
-        작품 완성도 그래프
+        <img src="/image/s-graph.jpg" alt="" />
       </div>
     </div>
 
     <div class="section s-tagcloud clearfix">
+      <h2>태그 클라우드</h2>
      <div class="edge-triangle"></div>
-      태그 클라우드
+     <ul>
+       @foreach ( $eachTagCounts as $key=>$value )
+         <li><span>{{ $key }}</span></li>
+       @endforeach
+     </ul>
     </div>
 
     <div class="section s-comment-box clearfix">
@@ -111,7 +115,7 @@
         <ul>
             @foreach( $artworks as $artwork )
               <li>
-                <a href="/artworks/{{ $artwork->id }}">{{ $artwork->feedback }}</a> - <span>{{ $artwork->date }}</span>
+                <a href="/artworks/{{ $artwork->id }}">{{ $artwork->feedback }}</a> <span>{{ $artwork->date }}</span>
               </li>
             @endforeach
         </ul>

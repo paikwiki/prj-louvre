@@ -16,8 +16,8 @@
       <ul>
         <li>
           <!-- <label for="name">작품명</label> -->
-          <input type="text" id="name" name="name" class="text-input" placeholder="작품명">
-          <select id="type-id" name="type_id">
+          <input type="text" id="name" name="name" class="a-name" placeholder="작품명">
+          <select id="type-id" class="type-id" name="type_id">
             <option>유형 선택</option>
             @foreach ( $types as $key=>$type )
               <option value="{{ $key+1 }}">{{ $type->name }}</option>
@@ -35,7 +35,7 @@
         </li>
         <li>
           <label for="date">등록일</label>
-          <input type="date" id="date" name="date">
+          <input type="date" id="date" class="date" name="date">
         </li>
         <li>
           <label for="completeness">완성도</label>
@@ -47,7 +47,7 @@
           <input type="range" id="engagement" min="0" max="10" name="engagement">
           <div id="output"></div>
         </li>
-        <li class="tags">
+        <li class="tags-box">
           @foreach ( $tags as $key=>$tag )
             <input type="checkbox" id="tag{{ $key+1 }}" name="tag{{ $key+1 }}"><label for="tag{{ $key+1 }}"><span>{{ $tag->name }}</span></label>
           @endforeach
@@ -58,9 +58,9 @@
           <input type="text" id="tags" name="tags"><span>(콤마로 구분)</span>
         </li>
         --}}
-        <li>
+        <li class="feedback-box">
           <!-- <label for="feedback">코멘트</label> -->
-          <input type="text" id="feedback" name="feedback" class="text-input" placeholder="코멘트">
+          <input type="textarea" id="feedback" name="feedback" class="feedback" placeholder="코멘트">
         </li>
       </ul>
       <div class='buttons'>
