@@ -56,7 +56,7 @@
     </div>
     <div class="form-group02">
       <label for="studio">소속학원</label>
-      <input type="text" id="studio">
+      <input type="text" id="studio" name="course_name">
     </div>
     <div class="form-group02 form-group">
       <div class="col-md-6 col-md-offset-4">
