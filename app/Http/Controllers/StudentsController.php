@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon; //오늘의 date호출용
 
 class StudentsController extends Controller
 {
@@ -75,8 +77,9 @@ class StudentsController extends Controller
     public function create()
     {
       $student = new \App\Student;
+      $current_user_course = Auth::user()->course->name;
       // var_dump($student);
-      return view('students.create', compact('student'));
+      return view('students.create', compact('student','current_user_course'));
     }
 
 
@@ -122,7 +125,8 @@ class StudentsController extends Controller
         $profilePicUrl = '/pfpic/noimg.png';
       }
 
-      $student = \App\User::find(1)->student()->create([
+      //$student = /App/User::find(Auth::user()->id)->student()->create([
+      $student = Auth::user()->student()->create([
         'name' => $request['name'],
         'tel' => $request['tel'],
         'email' => $request['email'],
@@ -130,7 +134,7 @@ class StudentsController extends Controller
         'profile_pic' => $profilePicUrl,
         'birth' => $request['birth'],
         'enroll_date' => $request['enroll_date'],
-        'course_id' => $request['course_id'],
+        'course_id' => Auth::user()->course->id,
         'purpose' => $request['purpose'],
         'status' => $request['status'],
         'comment' => $request['comment'],
@@ -160,6 +164,22 @@ class StudentsController extends Controller
       if (! $student) {
         return back()->with('flash_message', '글이 저장되지 않았습니다.')->withInput();
       }
+
+      //student를 신규생성할때 artwork가 없으므로 student상세보기를 할수 없기에 임시방편
+      \App\Artwork::create([
+        // 'photo' => $request['photo'],
+        'photo' => "http://www.pacinno.eu/wp-content/uploads/2014/05/placeholder1.png",
+        'name' => "sample작품",
+        'date' => Carbon::now(),
+        'type_id' => 1,
+        'student_id' => $student->id,
+        'size' => "0호",
+        'engagement' => 10,
+        'completeness' => 10,
+        'feedback' => "sample작품입니다.",
+      ]);
+
+
       return redirect('students/'.$student->id)->with('flash_message', '작성하신 글이 저장되었습니다.');
     }
 
@@ -198,6 +218,8 @@ class StudentsController extends Controller
 
         // 작품 가져오기
         $artworks = \App\Artwork::where('student_id', $id)->orderBy('id', 'desc')->get();
+
+
         //최근 작품
         $artwork_recent=\App\Artwork::where('student_id', $id)->orderBy('id', 'desc')->first();
         //많이 그린 작품
@@ -283,6 +305,7 @@ class StudentsController extends Controller
         } else {
           $completenessAvg = 0;
         }
+
 
         return view('students.show', [
           'student' => $student,

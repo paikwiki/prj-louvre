@@ -46,8 +46,8 @@
         <li class="comment-box">
           <label for="comment">메모</label><input type="textarea" id="comment" name="comment" value="{{ old('comment') }}">
         </li>
-        <li class="course-id-box">
-          <label for="course-id">수강반</label><input type="text" id="course-id" name="course_id" value="1">
+        <li class="course-name-box">
+          <label for="course-name">수강반</label><input type="text" id="course-name" name="course_name" value={{$current_user_course}}>
         </li>
         <li class="status-box">
           <label for="status">학적 상태</label><input type="text" id="status" name="status" value="재학">
