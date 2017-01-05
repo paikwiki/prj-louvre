@@ -6,51 +6,48 @@
 
   {!! csrf_field() !!}
   <div class="s-info form-group">
+       <div class="edge-triangle">
+        </div>
     @if(session()->has('flash_message'))
       <div class="alert alert-info" role="alert">
         {{ session('flash_message') }}
       </div>
     @endif
     <div class="top-box clearfix">
-     <div class="top-left">
-      <label for="profile-pic">
-        <img src='/image/final-image/icon_input_profile.png'>
-      </label>
-      <input type="file" id="profile-pic" name="profile_pic" value="{{ old('profile_pic') }}">
-    </div>
-    <div class="top-right">
-      <ul>
-        <li class="name">
-          <label for="name">학생명</label><input type="text" id="name" name="name" value="{{ old('name') }}">
-        </li>
-        <li class="birth">
-          <label for="birth">생년월일</label><input type="date" id="birth" name="birth" value="{{ old('birth') }}">
-        </li>
-        <li>
-          <label for="tel">전화번호</label><input type="text" id="tel" name="tel" value="{{ old('tel') }}">
-        </li>
-        <li>
-          <label for="email">이메일</label><input type="email" id="email" name="email" value="{{ old('email') }}">
-        </li>
-      </ul>
+        <div class="edge-triangle">
+        </div>
+    <div class="s-box1">    
+        
+         <div class="top-left">
+          <label for="profile-pic">
+            <img src='/image/final-image/icon_input_profile.png'>
+          </label>
+          <input type="file" id="profile-pic" name="profile_pic" value="{{ old('profile_pic') }}">
+        </div>
+        
+        <div class="top-right">
+            
+              <div class="name">
+              <label for="name"></label><input type="text" id="name" name="name" value="{{ old('name') }}"placeholder="학생명">
+               </div>
+                <div class="birth">
+              <label for="birth"></label><input type="date" id="birth" name="birth" value="{{ old('birth') }}">
+               </div>
+            
+            <div class="phone">
+              <label for="tel"></label><input type="text" id="tel" name="tel" value="{{ old('tel') }}"placeholder="전화번호">
+            </div>
+            <div class="email">
+              <label for="email"></label><input type="email" id="email" name="email" value="{{ old('email') }}" placeholder="이메일">
+            </div>
+        </div>
     </div>
   </div>
     <div class="bottom">
       <ul>
-        <li>
-          <label for="enroll-date">등록일</label><input type="date" id="enroll-date" name="enroll_date" value="{{ old('enroll_date') }}">
-        </li>
-        <li>
-          <label for="purpose">수강 목적</label><input type="text" id="purpose" name="purpose" value="{{ old('purpose') }}">
-        </li>
-        <li class="comment-box">
-          <label for="comment">메모</label><input type="textarea" id="comment" name="comment" value="{{ old('comment') }}">
-        </li>
-        <li class="course-id-box">
-          <label for="course-id">수강반</label><input type="text" id="course-id" name="course_id" value="1">
-        </li>
-        <li class="status-box">
-          <label for="status">학적 상태</label><input type="text" id="status" name="status" value="재학">
+        <li class="enroll-date">
+          <label for="enroll-date">등록일</label>
+          <input type="date" id="enroll-date" name="enroll_date" value="{{ old('enroll_date') }}">
         </li>
         <li class="attendance-day">
           <label class="inner-day" for="attendance">수강요일</label>
@@ -84,6 +81,25 @@
                <span>토</span>
             </label>
         </li>
+        <li>
+          <label for="purpose">수강 목적</label><input type="text" id="purpose" name="purpose" value="{{ old('purpose') }}">
+        </li>
+        <li class="comment-box">
+          <label for="comment">메모</label><textarea cols="52" rows= "4"id="comment" name="comment" value="{{ old('comment') }}"></textarea>
+          
+<!--          <input type="textarea" placeholder="메모하세요">-->
+        </li>
+        <li class="course-id-box">
+          <label for="course-id">수강반</label><input type="text" id="course-id" name="course_id" value="1">
+        </li>
+        <li class="status-box">
+          <label>학적 상태</label>
+          <label for="yes" class="radiobutton">재학</label>
+          <input type="radio" id="yes" name="status" value="재학" >
+          <label for="no" class="radiobutton">휴학</label>
+          <input type="radio" id="no" name="status" value="휴학">
+        </li>
+
         <li>
           <div class="attend">
             <button type="summit">등록하기</button>
