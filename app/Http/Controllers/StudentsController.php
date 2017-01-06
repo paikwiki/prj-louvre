@@ -235,7 +235,24 @@ class StudentsController extends Controller
         $artworksCount = count($artworks);
         // var_dump($artworksCount);
 
-        // 지금까지한 유형 구하기
+        // 작품 유형 가져오기
+        $artworkTypeArr = [];
+        foreach( $artworks as $artwork )
+        {
+          array_push($artworkTypeArr, $artwork->type->name);
+        }
+
+        $eachTypeCounts = array_count_values($artworkTypeArr);
+        arsort($eachTypeCounts);
+        // dd($eachTypeCounts);
+
+        $maxType = array_search(max($eachTypeCounts),$eachTypeCounts);
+        // var_dump(array_pop($eachTypeCounts));
+        // dd($eachTypeCounts);
+        // $test = ['a'=>1,'b'=>5,'c'=>5];
+        // dd(array_search(max($test),$test));
+
+        // 지금까지한 태그 구하기
         $tagArr = \App\Tag::get();
         $artworkTagArr = \App\Artwork_tag::get();
         $artworkTags = [];
@@ -291,11 +308,12 @@ class StudentsController extends Controller
           'artworks' => $artworks,
           'artworksCount' => $artworksCount,
           'eachTagCounts' => $eachTagCounts,
+          'eachTypeCounts' => $eachTypeCounts,
           'engagementAvg' => $engagementAvg,
           'completenessAvg' => $completenessAvg,
           'dDay' => $dDay,
-          'artwork_recent' =>$artwork_recent,
-          // 'type' =>$type,
+          'artwork_recent' => $artwork_recent,
+          'maxType' => $maxType,
         ]);
     }
 

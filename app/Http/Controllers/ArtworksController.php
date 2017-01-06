@@ -204,8 +204,6 @@ class ArtworksController extends Controller
              'student' => $student,
              'tags' => $tags,
            ]);
-         } elseif ($id == 'create') {
-           return view('artworks.create');
          } else {
            return view('artworks.serchresult');
          }

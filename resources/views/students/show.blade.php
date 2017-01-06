@@ -61,7 +61,7 @@
 
           <ul>
             <li>등록한지 <span>"{{ $dDay }}"</span>일 됐어요.</li>
-            <li><span>{{--"{{$type}}"--}}유화</span>를 많이 그렸어요.</li>
+            <li><span>{{ $maxType }}</span>를 가장 많이 그렸어요.</li>
             <li>최근에 <span>"{{$artwork_recent->name}}"</span>를 그렸어요.</li>
             <li>앞으로 하고 싶은 건 <span>"{{ $student->purpose }}"</span>입니다.</li>
           </ul>
@@ -72,9 +72,8 @@
             </div>
 
             <div class="s-total-detail">
-
             <ul>
-              @foreach ( $eachTagCounts as $key=>$value )
+              @foreach ( $eachTypeCounts as $key=>$value )
               <li><p>{{ $key }}<span> {{ $value }}개</span></p></li>
               @endforeach
             </ul>
