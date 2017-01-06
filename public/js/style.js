@@ -24,7 +24,7 @@ $(document).ready(function(){
 
 
 $(function(){
-
+    
    $('.form-group01 > input').focus(function(){
                   $(this).siblings().addClass('focused');
                   });
@@ -35,9 +35,19 @@ $(function(){
 
         $(this).siblings().removeClass('focused');
         }
-
-
     });
+    
+   $('.form-group02 > input').focus(function(){
+                  $(this).siblings().addClass('focused');
+                  });
+
+    $('.form-group02 > input').blur(function(){
+
+        if($(this).val() == ''){
+
+        $(this).siblings().removeClass('focused');
+        }
+    });    
 
 });
 

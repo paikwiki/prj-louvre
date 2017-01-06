@@ -98,7 +98,7 @@
     </div>
 
     <div class="section s-tagcloud clearfix">
-      <h2>태그 클라우드</h2>
+      <img src="/image/final-image/icon_tag.png" alt=""><h2>태그 클라우드</h2>
      <div class="edge-triangle"></div>
      <ul>
        @foreach ( $eachTagCounts as $key=>$value )

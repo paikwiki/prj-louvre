@@ -6,13 +6,11 @@
 @section('content')
 
 <div class="intro-logo">
-    mini:mue
+    <img src="/image/intro-image/logo-minimue.png" alt="mini:mue">    
 </div>
 
-<div class="instruction">
-   미니뮤에서 작품을 쉽고 체계적으로
-   <br>
-   관리하실 수 있습니다. 
+<div class="subtitle">
+   The Artwork Portfolio System
 </div>
 
 <div class="login-box">
@@ -20,23 +18,23 @@
     {{ csrf_field() }}
 
     <div class="form-group01 {{ $errors->has('email') ? ' has-error' : '' }}">
-        <label for="email" class="col-md-4 control-label">E-Mail</label>
+        <label for="email" class="col-md-4 control-label focused">이메일</label>
           <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
 
           @if ($errors->has('email'))
               <span class="help-block">
-                  <strong>{{ $errors->first('email') }}</strong>
+                  <br><strong>{{ $errors->first('email') }}</strong>
               </span>
           @endif
     </div>
 
     <div class="form-group01 {{ $errors->has('password') ? ' has-error' : '' }}">
-        <label for="password" class="col-md-4 control-label">Password</label>
+        <label for="password" class="col-md-4 control-label">비밀번호를 입력하세요</label>
           <input id="password" type="password" class="form-control" name="password" required>
 
           @if ($errors->has('password'))
               <span class="help-block">
-                  <strong>{{ $errors->first('password') }}</strong>
+                  <br><strong>{{ $errors->first('password') }}</strong>
               </span>
           @endif
     </div>
