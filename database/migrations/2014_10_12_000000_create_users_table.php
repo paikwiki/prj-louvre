@@ -38,6 +38,9 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
+        Schema::table('comments',function (Blueprint $table){
+          $table->dropForegin('comments_course_id_foreign');
+        })
         Schema::drop('users');
     }
 }

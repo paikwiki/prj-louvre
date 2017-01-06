@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
+
 use App\User;
 use Validator;
-use App\Http\Controllers\Controller;
+use App\Course;
 use Illuminate\Foundation\Auth\RegistersUsers;
-
+use App\Http\Controllers\Controller;
 class RegisterController extends Controller
 {
     /*
@@ -65,12 +66,16 @@ class RegisterController extends Controller
         $pswd = $data['password'];
         var_dump($pswd);
 
+        // course_name으로 검색결과 나중에 해봐야지
+        //$course_id = Users::where('name', '=', $data['course_name'])->first().id;
+        $course = Course::create(['name'=>$data['course_name'],]);
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'uid' => $data['uid'],
-            'course_id' => 1,
+            'course_id' => $course['id'],
         ]);
     }
 }
