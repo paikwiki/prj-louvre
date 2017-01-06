@@ -21,7 +21,8 @@ class StudentsController extends Controller
      */
     public function index()
     {
-      $students = \App\Student::get();
+      $currentUser = Auth::user();
+      $students = Auth::user()->student()->get();
       //요일 구하기
       $weekdayArr = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat', ];
       // var_dump(date('w'));
@@ -29,7 +30,38 @@ class StudentsController extends Controller
       // $weekdayOfToday = 'thu';
       // var_dump($weekdayOfToday);
 
-      // 오늘의 수강생 아이디 확인하기
+/***************/
+/***바뀐코드*****///student collection에 계속 이상한 null객체 생겨서 에러남. 그래서 다시짬.
+/*****시작******/
+
+      // 모든선생님들의 '오늘의 수강생' 아이디 확인하기
+      $todayAttendances = \App\Attendance::where($weekdayOfToday, 1)->get();
+      $todayStudents = [];
+      foreach($todayAttendances as $todayAttendance)
+      {
+        array_push($todayStudents, $todayAttendance->student);
+      }
+
+      // '오늘의 수강생'중 '오늘의 나의 수강생'구하기
+      $todayMyStudents = [];
+      foreach($todayStudents as $todayStudent)
+      {
+        if($todayStudent->course_id==Auth::user()->course_id)
+        {array_push($todayMyStudents, $todayStudent);}
+
+      }
+
+/***************/
+/***바뀐코드*****/
+/*****끝******/
+
+
+
+/*******************/
+/***바뀌기 전코드***/
+/******시작*******/
+
+      /*
       $todayStudentIds = \App\Attendance::where($weekdayOfToday, 1)->get();
       $todayStudentIdArr = [];
       foreach($todayStudentIds as $todayStudentId)
@@ -46,8 +78,16 @@ class StudentsController extends Controller
         // if($target->id = $todayStudentIdArr)
 
       }
+
+/*******************/
+/***바뀌기 전코드***/
+/******끝*********/
+
+
+
       //수강생 요일 보여주기
       $attendances = \App\Attendance::get();
+
 
       //생일 보내기
       $birthdayArr=[];
@@ -57,15 +97,16 @@ class StudentsController extends Controller
         $birthday = substr($birthTemp,-5);
         array_push($birthdayArr, $birthday);
       }
-      $tod=date("m-d");
+      $today=date("m-d");
+
 
       return view('students.index', [
         'students' => $students,
-        'todayStudents' => $todayStudents,
+        'todayStudents' => $todayMyStudents,
         'weekdayOfToday' => $weekdayOfToday,
         'attendances' => $attendances,
         'birthdayArr' => $birthdayArr,
-        'tod' => $tod,
+        'today' => $today,
       ]);
     }
 
