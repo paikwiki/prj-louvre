@@ -2,7 +2,6 @@
 
 
 @section('content')
-
 <div class="s-profile clearfix">
   <div class="profile-artwork">
       {{-- <img src="/image/final-image/artwork01.png" alt=""> --}}
@@ -92,8 +91,8 @@
         <h2>작품 완성도</h2>
         <p>{{ $completenessAvg }}</p>
       </div>
-      <div class="width-full">
-        <img src="/image/s-graph.jpg" alt="" />
+      <div id="graph-wrapper" class="width-full">
+        <div id="graph"></div>
       </div>
     </div>
 
@@ -146,7 +145,40 @@
     <a href="/artworks/create?std_id={{  $student->id }}">작품 추가</a>
   </div>
 </div>
-
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script type="text/javascript">
+  var graphData = {!! $graphData !!};
+</script>
+<script src="/js/graph.js" charset="utf-8"></script>
+<style>
+#graph-wrapper {
+  width: 100%;
+}
+#graph {
+  width: 100%;
+}
+.y.axisRight text {
+  fill: orange;
+}
+.y.axisLeft text {
+  fill: steelblue;
+}
+.axis path,
+.axis line {
+fill: none;
+stroke: #000;
+shape-rendering: crispEdges;
+}
+.bar1 {
+fill: steelblue;
+}
+.bar2 {
+fill: orange;
+}
+.x.axis path {
+display: none;
+}
+</style>
 @endsection
 
 @section('footer')
