@@ -3,9 +3,10 @@
 
 @section('content')
 <div class="s-profile clearfix">
-  <div class="profile-artwork">
-      {{-- <img src="/image/final-image/artwork01.png" alt=""> --}}
+  <div class="profile-artwork" style="background-image: url('{{ $artworks[0]->photo }}');">
+    {{--
       <img src="{{ $artworks[0]->photo ? $artworks[0]->photo : "http://placehold.it/96x96"}}" alt="" />
+    --}}
   </div>
   <div class="profile-div">
       <div class="profile-pic-box">
@@ -84,11 +85,11 @@
         <div class="edge-triangle"></div>
 
       <div class="width-half">
-        <h2>몰입도</h2>
+        <h2>몰입도 평균</h2>
         <p>{{ $engagementAvg }}</p>
       </div>
       <div class="width-half">
-        <h2>작품 완성도</h2>
+        <h2>난이도 평균</h2>
         <p>{{ $completenessAvg }}</p>
       </div>
       <div id="graph-wrapper" class="width-full">

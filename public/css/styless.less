@@ -926,9 +926,10 @@ body {
           background-color: #f8f9fb;
           .a-photo-box {
             position : relative;
-            border : 2px solid black;
-            box-shadow: 2px 3px 5px 0px gray;
-
+            // border : 2px solid black;
+            img {
+              box-shadow: 2px 3px 5px 0px gray;
+            }
             button {
               position : absolute;
               display: block;
@@ -938,7 +939,7 @@ body {
               background-repeat: no-repeat;
               background-size: cover;
               background-position: center;
-              text-indent: -999px;
+              text-indent: -99999px;
               bottom : 2%;
               right : 2%;
               opacity: 0.8;
@@ -1176,11 +1177,14 @@ body {
           width: 100%;
           background-color: #fff;
           .profile-artwork {
-            height: 203.5px;
+            height: 204px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             overflow: hidden;
-              img{ width : 100%;
-
-              }
+              // img{
+              //   width : 100%;
+              // }
           }
           .profile-div{
             position: relative;
