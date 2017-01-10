@@ -42,8 +42,8 @@
 </div> <!-- /.s-profile -->
 <div class="tab-selector clearfix">
   <ul>
-    <li><div class="tab-info tab01">정보</div></li>
-    <li><div href="" class="tab-artworks tab02">작품</div></li>
+    <li class="tab-item tab-info tab01"><div class=tab-text>정보</div></li>
+    <li class="tab-item tab-artworks tab02"><div class="tab-text">작품</div></li>
   </ul>
 </div>
 <div class="box-container">
@@ -149,36 +149,7 @@
 <script type="text/javascript">
   var graphData = {!! $graphData !!};
 </script>
-<script src="/js/graph.js" charset="utf-8"></script>
-<style>
-#graph-wrapper {
-  width: 100%;
-}
-#graph {
-  width: 100%;
-}
-.y.axisRight text {
-  fill: orange;
-}
-.y.axisLeft text {
-  fill: steelblue;
-}
-.axis path,
-.axis line {
-fill: none;
-stroke: #000;
-shape-rendering: crispEdges;
-}
-.bar1 {
-fill: steelblue;
-}
-.bar2 {
-fill: orange;
-}
-.x.axis path {
-display: none;
-}
-</style>
+<script src="/js/student.js" charset="utf-8"></script>
 @endsection
 
 @section('footer')
