@@ -3,6 +3,7 @@
 
 @section('content')
 
+
 @if($op_val ==0)
 <div class="search-result-box">
   <div class="search-result-text">
@@ -13,7 +14,7 @@
       @endforeach </p> --}}
   </div>
   <div class="search-result-artworks">
-    @foreach( $result_aw_names as $result_name )
+    @foreach( $result_n as $result_name )
       <figure class="a-item">
         <a href="/artworks/{{ $result_name->id }}"><img src="{{ $result_name->photo }}" alt=""></a>
         <figcaption>
@@ -34,7 +35,7 @@
     <p>총 {{$sum_result or 'Default'}}개의 결과가 있습니다.</p>
     </div>
     <div class="search-result-artworks">
-      @foreach( $result_a_d as $result_date )
+      @foreach( $result_d as $result_date )
         <figure class="a-item">
           <a href="/artworks/{{ $result_date->id }}"><img src="{{ $result_date->photo }}" alt=""></a>
           <figcaption>
@@ -54,7 +55,7 @@
     <p>총 {{$sum_result or 'Default'}}개의 결과가 있습니다.</p>
   </div>
   <div class="search-result-artworks">
-    @foreach( $result_types as $result_type )
+    @foreach( $result_tp as $result_type )
       <figure class="a-item">
         <a href="/artworks/{{ $result_type->id }}"><img src="{{ $result_type->photo }}" alt=""></a>
         <figcaption>
@@ -76,7 +77,7 @@
     <p>총 {{$sum_result or 'Default'}}개의 결과가 있습니다.</p>
   </div>
   <div class="search-result-artworks">
-    @foreach( $result_tags as $result_tag )
+    @foreach( $result_tg as $result_tag )
       <figure class="a-item">
         <a href="/artworks/{{ $result_tag->id }}"><img src="{{ $result_tag->photo }}" alt=""></a>
         <figcaption>

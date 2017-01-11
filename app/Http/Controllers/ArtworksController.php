@@ -1,6 +1,9 @@
 <?php
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 class ArtworksController extends Controller
 {
     public function __construct()
@@ -56,7 +59,17 @@ class ArtworksController extends Controller
         $result_tag1=[];
         $result_tags=[];
         $val2 = '%'.$val.'%';
-
+        $currentArtworks=[];
+        $currentStudents=Auth::user()->student()->get();
+        //검색
+        foreach($currentStudents as $currentStudent)
+        {
+          $csArtworks = \App\Artwork::whereStudentId($currentStudent['id'])->get();
+          foreach($csArtworks as $csArtwork)
+          {
+            array_push($currentArtworks,$csArtwork);
+          }
+        }
         //작품이름관련
         if($op_val ==0)
         {
@@ -65,7 +78,13 @@ class ArtworksController extends Controller
           {
             foreach($result_aw_names as $result_aw_name)
             {
-              array_push($result_n,$result_aw_name->id);
+              foreach($currentArtworks as $currentArtwork)
+              {
+                if($result_aw_name->id == $currentArtwork->id)
+                {
+                  array_push($result_n,$result_aw_name);
+                }
+              }
             }
           }
         }
@@ -77,12 +96,18 @@ class ArtworksController extends Controller
           {
             foreach($result_aw_dates as $result_aw_date)
             {
-              array_push($result_a_d, $result_aw_date);
+              foreach($currentArtworks as $currentArtwork)
+              {
+                if($result_aw_date->id==$currentArtwork->id)
+                {
+                  array_push($result_d, $result_aw_date);
+                }
+              }
             }
-            foreach($result_a_d as $result_a_ds)
-            {
-              array_push($result_d,$result_a_ds->id);
-            }
+            // foreach($result_a_d as $result_a_ds)
+            // {
+            //   array_push($result_d,$result_a_ds->id);
+            // }
           }
         }
           //작품유형관련
@@ -94,7 +119,13 @@ class ArtworksController extends Controller
               $result_types=\App\Artwork::where('type_id',$result_type0->id)->orderBy('id', 'desc')->get();
               foreach($result_types as $result_type)
               {
-                array_push($result_tp,$result_type->id);
+                foreach($currentArtworks as $currentArtwork)
+                {
+                  if($result_type->id==$currentArtwork->id)
+                  {
+                    array_push($result_tp,$result_type);
+                  }
+                }
               }
             }
           }
@@ -103,7 +134,7 @@ class ArtworksController extends Controller
         if($op_val == 3)
         {
           $result_tag0=\App\Tag::where('name','like', $val2)->first();
-          //비슷한 태그 없다는 가정 하에 first  아니면 get필요!  <-아마도..?
+          //비슷한 태그 없다는 가정 하에 first사용했음.  아니면 get필요!  <-아마도..?
           if(isset($result_tag0))
           {
             $result_tag1=\App\Artwork_tag::where('tag_id',$result_tag0->id)->orderBy('id', 'desc')->get();
@@ -113,16 +144,22 @@ class ArtworksController extends Controller
             }
             foreach($result_tags as $result_tag)
             {
-              array_push($result_tg, $result_tag ->id);
+              foreach($currentArtworks as $currentArtwork)
+              {
+                if($result_tag->id==$currentArtwork->id)
+                {
+                  array_push($result_tg, $result_tag);
+                }
+              }
             }
           }
         }
           $sum_result=count($result_n)+count($result_d)+count($result_tg)+count($result_tp);
         return view('artworks.serchresult', [
-            'result_aw_names' => $result_aw_names,
-          'result_a_d' => $result_a_d,
-          'result_types' => $result_types,
-          'result_tags' => $result_tags,
+            'result_n' => $result_n,
+          'result_d' => $result_d,
+          'result_tp' => $result_tp,
+          'result_tg' => $result_tg,
           'sum_result' => $sum_result,
           'op_val' => $op_val,
         ]);
