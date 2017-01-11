@@ -376,6 +376,39 @@ class StudentsController extends Controller
           $completenessAvg = 0;
         }
 
+        // // 그래프
+        // $studentData = [];
+        // $student1 = array("date" => "1/2", "engagement" =>	10, "difficulty" =>	3);
+        // $student2 = array("date" => "1/4", "engagement" =>	7, "difficulty" =>	5);
+        // $student3 = array("date" => "1/8", "engagement" =>	3, "difficulty" =>	9);
+        //
+        // // 3명의 정보를 memberData변수에 저장
+        // array_push($studentData, $student1);
+        // array_push($studentData, $student2);
+        // array_push($studentData, $student3);
+        //
+        // // 3명의 데이터가 JSON Array 문자열로 변환됨
+        // $graph_data = json_encode($studentData);
+        // // $graph_data = '{"test": "123", "test2": "456"}';
+
+
+        // $graph_data = [];
+        // $artwork01 = array(
+        //   "date" => $artworks[0]->date,
+        //   "engagement" => $artworks[0]->engagement,
+        //   "completeness" => $artworks[0]->completeness,
+        // );
+        // array_push($graph_data, $artwork01);
+
+        // $graph_data = \App\Artwork::where('student_id', $id)->orderBy('id', 'desc')->get()->toJson();
+        $graph_data = \App\Artwork::whereStudentId($id)->orderBy('date', 'asc')->get(['id', 'date', 'engagement', 'completeness']);
+        foreach ($graph_data as $value) {
+          // $year = preg_match("/[0-9]{4}-/", $value['date']);
+
+          $value['date']= preg_replace("/[0-9]{4}-/", '', $value['date']);
+        }
+        // dd($graph_data);
+
 
         return view('students.show', [
           'student' => $student,
@@ -390,6 +423,7 @@ class StudentsController extends Controller
           'dDay' => $dDay,
           'artwork_recent' => $artwork_recent,
           'maxType' => $maxType,
+          'graphData' => $graph_data,
         ]);
     }
 

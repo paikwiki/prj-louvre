@@ -2,11 +2,11 @@
 
 
 @section('content')
-
 <div class="s-profile clearfix">
-  <div class="profile-artwork">
-      {{-- <img src="/image/final-image/artwork01.png" alt=""> --}}
+  <div class="profile-artwork" style="background-image: url('{{ $artworks[0]->photo }}');">
+    {{--
       <img src="{{ $artworks[0]->photo ? $artworks[0]->photo : "http://placehold.it/96x96"}}" alt="" />
+    --}}
   </div>
   <div class="profile-div">
       <div class="profile-pic-box">
@@ -44,62 +44,59 @@
 </div> <!-- /.s-profile -->
 <div class="tab-selector clearfix">
   <ul>
-    <li><div class="tab-info tab01">정보</div></li>
-    <li><div href="" class="tab-artworks tab02">작품</div></li>
+    <li class="tab-item tab-info tab01"><div class=tab-text>정보</div></li>
+    <li class="tab-item tab-artworks tab02"><div class="tab-text">작품</div></li>
   </ul>
 </div>
 <div class="box-container">
   <div class="tab-box info-box tab-content01 clearfix show">
     <div class="section summary-box">
-        <div class="edge-triangle">
+      <div class="edge-triangle"></div>
+      <div class="box-header">
+        <h2><span class="box-header-icon icon-summary"></span>Summary</h2>
+      </div>
+      <ul>
+        <li>등록한지 <span>"{{ $dDay }}"</span>일 됐어요.</li>
+        <li><span>"{{ $maxType }}"</span>를 가장 많이 그렸어요.</li>
+        <li>최근에 <span>"{{$artwork_recent->name}}"</span>를 그렸어요.</li>
+        <li>앞으로 하고 싶은 건 <span>"{{ $student->purpose }}"</span>입니다.</li>
+      </ul>
+      <div class="s-total">
+        <div class="s-total-all">
+          <span>총 작품</span>
+          <p>{{ $artworksCount }}점</p>
         </div>
-         <div class="icon-summary">
-             <img src='/image/final-image/icon_translate.png'><span>Summary</span>
-         </div>
-         <div class="dotdotdot">
-             <img src='/image/final-image/dotdotdot.png'>
-         </div>
-
+        <div class="s-total-detail">
           <ul>
-            <li>등록한지 <span>"{{ $dDay }}"</span>일 됐어요.</li>
-            <li><span>{{ $maxType }}</span>를 가장 많이 그렸어요.</li>
-            <li>최근에 <span>"{{$artwork_recent->name}}"</span>를 그렸어요.</li>
-            <li>앞으로 하고 싶은 건 <span>"{{ $student->purpose }}"</span>입니다.</li>
+            @foreach ( $eachTypeCounts as $key=>$value )
+            <li><p>{{ $key }}<span> {{ $value }}개</span></p></li>
+            @endforeach
           </ul>
-          <div class="s-total">
-            <div class="s-total-all">
-            <span>총 작품</span>
-            <p>{{ $artworksCount }}점</p>
-            </div>
-
-            <div class="s-total-detail">
-            <ul>
-              @foreach ( $eachTypeCounts as $key=>$value )
-              <li><p>{{ $key }}<span> {{ $value }}개</span></p></li>
-              @endforeach
-            </ul>
-            </div>
         </div>
+      </div>
     </div>
-
-    <div class="section s-average clearfix">
-        <div class="edge-triangle"></div>
-
-      <div class="width-half">
-        <h2>몰입도</h2>
+    <div class="section s-evaluate clearfix">
+      <div class="edge-triangle"></div>
+      <div class="box-header">
+        <h2><span class="box-header-icon icon-evaluate"></span>Evaluation</h2>
+      </div>
+      <div class="width-half s-engagement">
+        <h3>몰입도 평균</h3>
         <p>{{ $engagementAvg }}</p>
       </div>
-      <div class="width-half">
-        <h2>작품 완성도</h2>
+      <div class="width-half s-completeness">
+        <h3>난이도 평균</h3>
         <p>{{ $completenessAvg }}</p>
       </div>
-      <div class="width-full">
-        <img src="/image/s-graph.jpg" alt="" />
+      <div id="graph-wrapper" class="width-full">
+        <div id="graph"></div>
       </div>
     </div>
 
     <div class="section s-tagcloud clearfix">
-      <img src="/image/final-image/icon_tag.png" alt=""><h2>태그 클라우드</h2>
+      <div class="box-header">
+        <h2><span class="box-header-icon icon-tagcloud"></span>Tag Cloud</h2>
+      </div>
      <div class="edge-triangle"></div>
      <ul>
        @foreach ( $eachTagCounts as $key=>$value )
@@ -108,20 +105,19 @@
      </ul>
     </div>
 
-    <div class="section s-comment-box clearfix">
-     <div class="edge-triangle"></div>
-      <div class="s-comment">
-        코멘트 모아보기
-        <ul>
-            @foreach( $artworks as $artwork )
-              <li>
-                <a href="/artworks/{{ $artwork->id }}">{{ $artwork->feedback }}</a> <span>{{ $artwork->date }}</span>
-              </li>
-            @endforeach
-        </ul>
+    <div class="section s-comment clearfix">
+      <div class="edge-triangle"></div>
+      <div class="box-header">
+        <h2><span class="box-header-icon icon-comment"></span>Comments</h2>
       </div>
+      <ul>
+        @foreach( $artworks as $artwork )
+          <li>
+            <a href="/artworks/{{ $artwork->id }}">{{ $artwork->feedback }}</a> <span>{{ $artwork->date }}</span>
+          </li>
+        @endforeach
+      </ul>
     </div>
-
   </div>
 
 
@@ -147,7 +143,11 @@
     <a href="/artworks/create?std_id={{  $student->id }}">작품 추가</a>
   </div>
 </div>
-
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script type="text/javascript">
+  var graphData = {!! $graphData !!};
+</script>
+<script src="/js/student.js" charset="utf-8"></script>
 @endsection
 
 @section('footer')
