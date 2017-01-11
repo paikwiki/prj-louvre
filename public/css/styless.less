@@ -1171,7 +1171,8 @@ img {
 .fixed {
   position: fixed;
   top: 50px;
-  width: @deviceWidth;
+  max-width: @deviceWidth;
+  width: 100%;
   z-index: 999;
 }
 .box-container {
@@ -1197,6 +1198,7 @@ img {
         float : left;
         width : 50%;
         border-right: 1px solid gray;
+        cursor: pointer;
         span {
           display: block;
           margin-top : 10px;
@@ -1231,6 +1233,12 @@ img {
       font-size: 16px;
       font-weight: bold;
     }
+    .s-engagement {
+      color: #71767a;
+    };
+    .s-completeness {
+      color: #9eb7cb;
+    };
     // 그래프
     #graph-wrapper {
       width: 100%;
@@ -1238,10 +1246,10 @@ img {
         width: 100%;
       }
       .y.axisRight text {
-        fill: orange;
+        fill: #9eb7cb;
       }
       .y.axisLeft text {
-        fill: steelblue;
+        fill: #71767a;
       }
       .axis path,
       .axis line {
@@ -1250,10 +1258,10 @@ img {
         shape-rendering: crispEdges;
       }
       .bar1 {
-        fill: steelblue;
+        fill: #71767a;
       }
       .bar2 {
-        fill: orange;
+        fill: #9eb7cb;
       }
       .x.axis path {
         display: none;

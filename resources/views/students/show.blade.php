@@ -79,11 +79,11 @@
       <div class="box-header">
         <h2><span class="box-header-icon icon-evaluate"></span>Evaluation</h2>
       </div>
-      <div class="width-half">
+      <div class="width-half s-engagement">
         <h3>몰입도 평균</h3>
         <p>{{ $engagementAvg }}</p>
       </div>
-      <div class="width-half">
+      <div class="width-half s-completeness">
         <h3>난이도 평균</h3>
         <p>{{ $completenessAvg }}</p>
       </div>

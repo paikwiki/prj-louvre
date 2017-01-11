@@ -17,6 +17,10 @@ $(function(){
     $('.tab01').removeClass('active');
     $('.tab02').addClass('active');
   });
+  // 총 작품 눌렀을 때 작품 탭 클릭 효과
+  $('.s-total-all').on('click', function() {
+    $('.tab-artworks').click();
+  })
   // 스크롤 대응
   $(window).scroll(function(){
     var tabSelectorTop = parseInt(($('.tab-selector').offset()).top);
@@ -26,8 +30,14 @@ $(function(){
 
     if( tabSelectorTop<(headerHeight + scrollPos) ) {
       $('.tab-selector').addClass('fixed');
+      $('.summary-box').css({
+        marginTop: headerHeight
+      })
     } else if((headerHeight + scrollPos)<450) {
       $('.tab-selector').removeClass('fixed');
+      $('.summary-box').css({
+        marginTop: 0
+      })
     }
   });
 
