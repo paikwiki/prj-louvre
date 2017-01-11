@@ -8,7 +8,7 @@ class Tag extends Model
 {
     protected $fillable = ['name'];
 
-    public function tag()
+    public function artwork()
     {
       return $this->BelongstoMany(Artwork::Class);
     }

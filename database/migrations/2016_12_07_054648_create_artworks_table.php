@@ -19,8 +19,8 @@ class CreateArtworksTable extends Migration
             $table->string('photo');
             $table->string('name');
             $table->date('date');
-            $table->integer('type_id')->unsigned();
-            $table->integer('student_id')->unsigned();
+            $table->integer('type_id')->unsigned()->nullable();
+            $table->integer('student_id')->unsigned()->nullable();
             $table->string('size')->nullable();
             $table->integer('engagement');
             $table->integer('completeness');
@@ -28,8 +28,8 @@ class CreateArtworksTable extends Migration
             $table->timestamps();
         });
         Schema::table('artworks',function ($table){
-        $table->foreign('type_id')->references('id')-> on('types');
-        $table->foreign('student_id')->references('id')->on('students');
+        $table->foreign('type_id')->references('id')-> on('types')->onDelete('cascade');
+        $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
         $table->engine = 'InnoDB';
       });
     }
@@ -41,6 +41,10 @@ class CreateArtworksTable extends Migration
      */
     public function down()
     {
+      Schema::table('artworks',function (Blueprint $table){
+        $table->dropForeign('artworks_type_id_foreign');
+        $table->dropForeign('artworks_student_id_foreign');
+      });
         Schema::dropIfExists('artworks');
     }
 }

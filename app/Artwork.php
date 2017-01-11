@@ -21,6 +21,6 @@ class Artwork extends Model
     }
     public function album()
     {
-      return $this->has(Album::class);
+      return $this->belongsTo(Album::class);
     }
 }

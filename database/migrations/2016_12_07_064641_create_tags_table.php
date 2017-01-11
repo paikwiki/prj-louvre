@@ -27,6 +27,9 @@ class CreateTagsTable extends Migration
      */
     public function down()
     {
+      Schema::table('artwork_tag',function (Blueprint $table){
+        $table->dropForeign('artwork_tag_tag_id_foreign');
+      });
         Schema::dropIfExists('tags');
     }
 }

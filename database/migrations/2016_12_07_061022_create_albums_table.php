@@ -34,6 +34,10 @@ class CreateAlbumsTable extends Migration
      */
     public function down()
     {
+      Schema::table('albums',function (Blueprint $table){
+        $table->dropForeign('albums_user_id_foreign');
+        $table->dropForeign('albums_artwork_id_foreign');
+      });
         Schema::dropIfExists('albums');
     }
 }

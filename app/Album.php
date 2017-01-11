@@ -14,7 +14,7 @@ class Album extends Model
     public function artwork()
     {
 
-      return $this->belongsto(Artwork::Class);
+      return $this->hasMany(Artwork::Class);
     }
 
 

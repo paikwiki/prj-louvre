@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon; //오늘의 date호출용
+use Illuminate\Support\Facades\Schema;
 
 class StudentsController extends Controller
 {
@@ -206,6 +207,17 @@ class StudentsController extends Controller
         return back()->with('flash_message', '글이 저장되지 않았습니다.')->withInput();
       }
 
+
+      //type 테이블에 아무 값도 없을 시 null참조error 임시방편용
+      $typecheck = \DB::table('types')->first();
+      if (is_null($typecheck)){
+        \App\Type::create([
+          'id'=>"1",
+          'name'=>"기타장르",
+        ]);
+      }
+
+
       //student를 신규생성할때 artwork가 없으므로 student상세보기를 할수 없기에 임시방편
       \App\Artwork::create([
         // 'photo' => $request['photo'],
@@ -389,7 +401,8 @@ class StudentsController extends Controller
      */
     public function edit(\App\Student $student)
     {
-        return view('students.edit', compact('student'));
+        $current_user_course = Auth::user()->course->name;
+        return view('students.edit', compact('student','current_user_course'));
         // var_dump($student);
     }
 
@@ -426,8 +439,25 @@ class StudentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+
+
+    public function destroy(\App\Student $student)
     {
-        //
+      /*foreach($student->artwork()->get() as $artwork){
+        foreach($artwork->tag()->get() as $tag){
+
+          $tag->artwork_tag->delete();
+          $tag->delete();
+        }
+        $artwork->delete();
+      }
+        foreach($student->attendance()->get() as $attendance){
+          $attendance->delete();
+        }*/
+
+
+        $student->delete();
+
+        return redirect('/')->with('message','프로젝트'.$student->name.'이 삭제되었습니다.');
     }
 }

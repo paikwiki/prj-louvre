@@ -1,6 +1,8 @@
 <?php
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 class ArtworksController extends Controller
 {
     public function __construct()
@@ -25,7 +27,7 @@ class ArtworksController extends Controller
     public function create()
     {
       $artwork = new \App\Artwork;
-      $students = \App\Student::get();
+      $students = Auth::user()->student()->get();
       $tags = \App\Tag::get();
       $types = \App\Type::get();
       return view('artworks.create', [
@@ -188,16 +190,24 @@ class ArtworksController extends Controller
      {
          if ((int)$id)
          {
-           $artwork = \App\Artwork::whereId($id)->first();
-           $type = \App\Type::whereId($artwork->type_id)->first();
-           $student = \App\Student::whereId($artwork->student_id)->first();
-           $artworkTagObjArr= \App\Artwork_tag::where('artwork_id', $id)->get();
-           $tagIdArr = []; //tag 찍기
-           foreach ($artworkTagObjArr as $key=>$artworkTagObj) {
-             $tagIdArr[$key] = $artworkTagObj->tag_id;
-            //  var_dump($key .' / '. $tagIdArr[$key]);
-             $tags[$key] = \App\Tag::whereId($tagIdArr[$key])->first();
-           }
+             $artwork = \App\Artwork::whereId($id)->first();
+             $type = \App\Type::whereId($artwork->type_id)->first();
+             $student = \App\Student::whereId($artwork->student_id)->first();
+             $artworkTagObjArr= \App\Artwork_tag::where('artwork_id', $id)->get();
+             if (is_null($artworkTagObjArr->first())){
+               $tags = [];
+               array_push($tags, \App\Tag::create([
+                 'id'=>1,
+                 'name'=>"기타태그",
+               ]));
+             }
+             $tagIdArr = []; //tag 찍기
+             foreach ($artworkTagObjArr as $key=>$artworkTagObj) {
+               $tagIdArr[$key] = $artworkTagObj->tag_id;
+              //  var_dump($key .' / '. $tagIdArr[$key]);
+               $tags[$key] = \App\Tag::whereId($tagIdArr[$key])->first();
+               }
+
            return view('artworks.show', [
              'artwork' => $artwork,
              'type' => $type,

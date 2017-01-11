@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Artwork_tag extends Model
+class Artwork_Tag extends Model
 {
     protected $table = 'artwork_tag';
 

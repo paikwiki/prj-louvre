@@ -27,7 +27,7 @@ class CreateAttendancesTable extends Migration
         });
         Schema::table('attendances',function($table){
         $table->timestamps();
-        $table->foreign('student_id')->references('id')->on('students');
+        $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
         $table->engine = 'InnoDB';
       });
     }
@@ -39,6 +39,9 @@ class CreateAttendancesTable extends Migration
      */
     public function down()
     {
+        Schema::table('attendances',function (Blueprint $table){
+          $table->dropForeign('attendances_student_id_foreign');
+        });
         Schema::dropIfExists('attendances');
     }
 }

@@ -37,6 +37,7 @@
       <li class='icon-mail'><a href="mailto:{{  $student->email }}"><img src='/image/final-image/icon_mail.png' alt="메일보내기"></a><span>Mail</span></li>
     </ul>
   </div>
+
   <div class="student-modify-box">
     <a href="/students/{{$student->id}}/edit">수정하기</a>
   </div>

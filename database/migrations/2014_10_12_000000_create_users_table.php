@@ -26,7 +26,7 @@ class CreateUsersTable extends Migration
 
         });
         Schema::table('users',function ($table){
-                $table->foreign('course_id')->references('id')->on('courses');
+                $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
                 $table->engine = 'InnoDB';
               });
     }
@@ -38,9 +38,12 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('comments',function (Blueprint $table){
-          $table->dropForegin('comments_course_id_foreign');
-        })
+        Schema::table('users',function (Blueprint $table){
+          $table->dropForeign('users_course_id_foreign');
+          $table->dropColumn('course_id');
+        });
         Schema::drop('users');
+
+
     }
 }

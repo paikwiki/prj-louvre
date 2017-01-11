@@ -14,7 +14,7 @@
     @if($weekdayOfToday=='sun' )일 @endif
  </h2>
   <ul class="clearfix">
-    @if( !$todayStudents )
+    @if( empty($todayStudents) )
       <li class="clearfix">오늘의 수강생이 없습니다.</li>
     @else
       @foreach( $todayStudents as $todayStudent)
@@ -70,9 +70,19 @@
               @endif
             @endforeach
         </p>
-        @if(substr($todayStudent->birth,-5)==$today)
+        @if(substr($student->birth,-5)==$today)
         <p>생일축하^^</p>
         @endif
+        <div class="student-delete-box">
+          <a href="{{route('students.destroy', $student->id)}}">삭제</a>
+        </div>
+        <div class="student-delete-box">
+          <form method="POST" action="{{route('students.destroy', $student->id)}}">
+            {{ csrf_field()}}
+            {{method_field('DELETE')}}
+            <button type="submit" class="btn btn-danger">삭제</button>
+          </form>
+        </div>
         </div>
         <div class="call-box">
           <a href="tel://{{ $student->tel }}">Call</a>

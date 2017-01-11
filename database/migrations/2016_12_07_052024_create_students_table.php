@@ -31,8 +31,8 @@ class CreateStudentsTable extends Migration
 
         });
         Schema::table('students',function ($table){
-          $table->foreign('user_id')->references('id')->on('users');
-          $table->foreign('course_id')->references('id')->on('courses');
+          $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+          $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
           $table->engine = 'InnoDB';
         });
     }
@@ -44,6 +44,10 @@ class CreateStudentsTable extends Migration
      */
     public function down()
     {
+        Schema::table('students',function (Blueprint $table){
+          $table->dropForeign('students_user_id_foreign');
+          $table->dropForeign('students_course_id_foreign');
+        });
         Schema::dropIfExists('students');
     }
 }
