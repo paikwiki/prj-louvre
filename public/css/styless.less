@@ -24,6 +24,7 @@ body {
     height : 10px;
     top : 0px;
     left : 0px;
+    opacity: 0.7;
   }
   .g-wrapper {
     position: relative;
@@ -42,23 +43,23 @@ body {
     .header {
       margin: 0 auto;
       max-width: @deviceWidth;
-      height: 100px;
-      h1 {
-        height: 64px;
-        line-height: 50px;
-        background-color: #fff;
-      }
-      .logo {
-        a {
-          text-indent: -9999px;
-          display: block;
-          background-image: url("/image/logo_Minimue.jpg");
-          background-repeat: no-repeat;
-          background-position: center;
-          background-size : 34%;
-            height: 64px;
-        }
-      }
+      height: 50px;
+      // h1 {
+      //   height: 64px;
+      //   line-height: 50px;
+      //   background-color: #fff;
+      // }
+      // .logo {
+      //   a {
+      //     text-indent: -9999px;
+      //     display: block;
+      //     background-image: url("/image/logo_Minimue.jpg");
+      //     background-repeat: no-repeat;
+      //     background-position: center;
+      //     background-size : 34%;
+      //       height: 64px;
+      //   }
+      // }
       ul {
         height: 50px;
         li {
@@ -66,62 +67,52 @@ body {
           width: 20%;
           height: 50px;
           text-align: center;
-
           background-color: #222631;
-
           a {
             display: block;
             width: 100%;
             padding: 12px 0;
             line-height: 25px;
             text-indent: -9999px;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.4;
           }
         }
-      }
-      .item01 {
-        a {
-          display: block;
-          background-image: url("/image/menu-icon/icon01.png");
-          background-size: 30px;
-          background-position: center;
-          background-repeat: no-repeat;
+        .active {
+          a {
+            opacity: 1;
+          }
         }
-      }
-      .item02 {
-        a {
-          display: block;
-          background-image: url("/image/menu-icon/icon02.png");
-          background-size: 27.5px;
-          background-position: center;
-          background-repeat: no-repeat;
+        .item01 {
+          a {
+            background-image: url("/image/menu-icon/icon01.png");
+            background-size: 30px;
+          }
         }
-      }
-      .item03 {
-        a {
-          display: block;
-          background-image: url("/image/menu-icon/icon03.png");
-          background-size: 38.5px;
-          background-position: center;
-          background-repeat: no-repeat;
+        .item02 {
+          a {
+            background-image: url("/image/menu-icon/icon02.png");
+            background-size: 27.5px;
+          }
         }
-      }
-      .item04{
-        a {
-          display: block;
-          background-image: url("/image/menu-icon/icon04.png");
-          background-size: 34px;
-          background-position: center;
-          background-repeat: no-repeat;
+        .item03 {
+          a {
+            background-image: url("/image/menu-icon/icon03.png");
+            background-size: 38.5px;
+          }
         }
-
-      }
-      .item05{
-        a{
-          display: block;
-          background-image: url("/image/menu-icon/icon05.png");
-          background-size: 32px;
-          background-position: center;
-          background-repeat: no-repeat;
+        .item04{
+          a {
+            background-image: url("/image/menu-icon/icon04.png");
+            background-size: 34px;
+          }
+        }
+        .item05{
+          a{
+            background-image: url("/image/menu-icon/icon05.png");
+            background-size: 32px;
+          }
         }
       }
       li:nth-child(2n) {
@@ -135,14 +126,14 @@ body {
     } // /.header-box
     .c-wrapper {
       position: relative;
-      margin-top: 114px;
+      margin-top: 50px;
       .content {
         position: relative;
         padding-top: 0.1px;
         padding-bottom: 10px;
 
       }
-      } // /.c-wrapper
+    } // /.c-wrapper
       /////////
       // 작은 요소들 (자기학생)
       ////////////
@@ -162,30 +153,21 @@ body {
         .artworks{
           column-count: 2;
           column-gap: 10px;
-
           figure{
-
             font-size: 0px;
-
             display: inline-block;
-
             padding : 10px;
-//            border : 1px solid black;
             background-color : #fff;
             margin-bottom : 10px;
             box-shadow: 0px 2px 4px 0px #ddd;
-
-
             figcaption{
               text-align: center;
               text-decoration: none;
               padding-top : 10px;
-
-
               a{
                 text-decoration: none;
                 color : black;
-            font-size: 14px;
+                font-size: 14px;
               }
             }
             img{
@@ -193,11 +175,7 @@ body {
             }
           }
         }
-
       }
-
-
-
 
       // ===================
       // 인트로
@@ -214,100 +192,78 @@ body {
           }
         }
       }
-
       .login-box {
         .form-horizontal{
-
-
           .form-group01{
             text-align: center;
-
             label {
               display : block;
-                text-align: left;
-                margin: 0 auto;
-                text-indent: 6px;
-             width : 240px;
+              text-align: left;
+              margin: 0 auto;
+              text-indent: 6px;
+              width : 240px;
               transform : translateY(32px);
               opacity: 0.4;
               transition : transform 0.5s, opacity 0.6s;
-
             }
-
             input {
               border : 1px solid rgb(230,230,230);
-                border-radius: 4px;
+              border-radius: 4px;
               margin: 6px auto;
               background-color : rgba(255,255,255,0);
               padding :10px 10px;
               width : 240px;
               text-indent : 6px;
-                font-size : 14px;
-
+              font-size : 14px;
             }
             .focused {
               transform : translateY(12px);
               opacity : 0;
             }
           }
-
           .form-group02{
             text-align: center;
-
             label {
               display : block;
-                text-align: left;
-                margin: 0 auto;
-                text-indent: 6px;
-             width : 64%;
+              text-align: left;
+              margin: 0 auto;
+              text-indent: 6px;
+              width : 64%;
               transform : translateY(30px);
               opacity: 0.4;
               transition : transform 0.5s, opacity 0.6s;
-
             }
-
             input {
-                border: none;
+              border: none;
               border-bottom : 2px solid rgb(230,230,230);
-
               margin: 6px auto;
               background-color : rgba(255,255,255,0);
               padding :10px 10px;
               width : 64%;
               text-indent : 6px;
-                font-size : 14px;
-
+              font-size : 14px;
             }
             .focused {
               transform : translateY(12px);
               opacity : 0;
             }
-
-              button{
-                  width : 70%;
-                  height : 36px;
-                  background-color: #000;
-                  color : #fff;
-                  margin : 28px 0px;
-                  border-radius: 4px;
-              }
+            button{
+              width : 70%;
+              height : 36px;
+              background-color: #000;
+              color : #fff;
+              margin : 28px 0px;
+              border-radius: 4px;
+            }
           }
-
-
-
           .form-group03{
             text-align: right;
             font-size : 70%;
             margin :10px 40px 0px 0px;
-              display: none;
-
+            display: none;
           }
-
-
           .form-group04{
             text-align: center;
-
-
             button {
               margin-top : 20px;
               border : none;
@@ -318,10 +274,9 @@ body {
               font-weight: bolder;
               font-size : 15px;
               color:white;
-                border-radius: 4px;
+              border-radius: 4px;
             }
-
-            a{
+            a {
               display: inline-block;
               margin-top : 30px;
               text-decoration: none;
@@ -333,30 +288,25 @@ body {
           }
         }
       }
-.intro-logo {
-
+      .intro-logo {
         position : relative;
         display: block;
         margin: 0px auto;
         margin-top : 118px;
         margin-bottom: 2px;
         width : 60%;
-
-
-
-        }
-        .subtitle{
-            display: block;
-            text-align: center;
-            width : 57.8%;
-            height: 10px;
-            background-color: black;
-            color: #fff;
-            margin: 0 auto;
-            font-size: 8px;
-
-            margin-bottom: 64px;
-        }
+      }
+      .subtitle{
+        display: block;
+        text-align: center;
+        width : 57.8%;
+        height: 10px;
+        background-color: black;
+        color: #fff;
+        margin: 0 auto;
+        font-size: 8px;
+        margin-bottom: 64px;
+      }
       .instruction {
         position : relative;
         text-align: center;
@@ -365,25 +315,17 @@ body {
         font-weight: bold;
         margin: 30px auto;
       }
-
-
       .sns-login {
         height: 120px;
         margin : 0 auto;
-
         ul{
           width : 40%;
           margin : 0 auto;
-
           li {
-
             float : left;
             width : 25%;
             margin : 30px 0;
             text-indent: -9999px;
-
-
-
           }
           .item01 a{
             display : block;
@@ -426,7 +368,6 @@ body {
             background-repeat: no-repeat;
             margin: 0 auto;
           }
-
         }
       }
       .user-agreement {
@@ -438,7 +379,6 @@ body {
           font-weight: bold;
         }
       }
-
 
       // ===================
       //  푸터
@@ -493,29 +433,22 @@ body {
                 border-radius: 29px;
                 overflow: hidden;
                 img {
-                  // display: block;
-                  // width: auto;
                   width: 100%;
                   height: 100%;
-                  // border-radius: 28.5px;
-                  // margin: 0 auto;
                 }
               }
             }
             .info-box {
               width: 60%;
               a {
-
                 display: block;
                 height: 30px;
                 line-height: 32px;
                 padding-left: 00px;
                 font-weight: bold;
                 font-size : 16px;
-
                 color : rgb(0,0,0);
                 text-decoration: none;
-
               }
               p {
                 margin-top : 4px;
@@ -526,14 +459,12 @@ body {
                 font-weight: normal;
                 float : left;
                 color: #7e7e84;
-
               }
             }
             .call-box {
               float: right;
               width: 10%;
               a {
-
                 text-indent: -6000px;
                 display: block;
                 background-image: url("/image/button_call.png");
@@ -544,9 +475,7 @@ body {
                 background-repeat: no-repeat;
                 background-size: cover;
                 margin-top: 10px;
-
               }
-
             }
           }
         }
@@ -555,8 +484,6 @@ body {
           top : 0px;
           opacity : 1;
         }
-
-
         .student-add-box {
           position : fixed;
           bottom : 30px;
@@ -581,15 +508,13 @@ body {
           background : #fff;
           box-shadow: 2px 3px 5px 0px gray;
           position : relative;
-
             .s-box1{
-                position : relative;
-                width : 90%;
-               border: none;
-                margin: 0px auto;
-                padding-top: 10px;
-
-                .top-left {
+              position : relative;
+              width : 90%;
+              border: none;
+              margin: 0px auto;
+              padding-top: 10px;
+              .top-left {
                     width : 30%;
 
                     float : left;
@@ -1001,9 +926,10 @@ body {
           background-color: #f8f9fb;
           .a-photo-box {
             position : relative;
-            border : 2px solid black;
-            box-shadow: 2px 3px 5px 0px gray;
-
+            // border : 2px solid black;
+            img {
+              box-shadow: 2px 3px 5px 0px gray;
+            }
             button {
               position : absolute;
               display: block;
@@ -1013,7 +939,7 @@ body {
               background-repeat: no-repeat;
               background-size: cover;
               background-position: center;
-              text-indent: -999px;
+              text-indent: -99999px;
               bottom : 2%;
               right : 2%;
               opacity: 0.8;
@@ -1251,11 +1177,14 @@ body {
           width: 100%;
           background-color: #fff;
           .profile-artwork {
-            height: 203.5px;
+            height: 204px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             overflow: hidden;
-              img{ width : 100%;
-
-              }
+              // img{
+              //   width : 100%;
+              // }
           }
           .profile-div{
             position: relative;
@@ -1362,14 +1291,17 @@ body {
         }
         .tab-selector {
           background : #fff;
+          box-shadow: 0px 2px 4px 0px #ddd;
           ul {
-            li {
+            .tab-item {
               float: left;
               width: 50%;
-              div {
-                display: block;
-                width: 100%;
-                padding: 10px 0;
+              height: 50px;
+              .tab-text {
+                margin: 0 auto;
+                width: 2em;
+                height: 50px;
+                line-height: 50px;
                 text-align: center;
                 text-decoration: none;
                 font-size: 18px;
@@ -1379,13 +1311,25 @@ body {
               a:hover {
                 font-weight: bold;
               }
-              .highlight {
-                font-weight: bold;
+            }
+            .tab01 {
+              border-right: 1px solid #ddd;
+            }
+            .active {
+              font-weight: bold;
+              .tab-text {
+
                 border-bottom: 3px solid #222631;
               }
             }
           }
-          } // /.tab-selector
+        } // /.tab-selector
+        .fixed {
+          position: fixed;
+          top: 50px;
+          width: @deviceWidth;
+          z-index: 999;
+        }
           .box-container {
             .tab-box {
 
@@ -1453,7 +1397,8 @@ body {
                 padding: 20px;
                 background: #fff;
                 border : 0.4px solid #ebebeb;
-                box-shadow: 2px 3px 5px 0px rgb(70,70,70);
+                // box-shadow: 2px 3px 5px 0px rgb(70,70,70);
+                box-shadow: 0px 2px 4px 0px #ddd;
                 margin: 20px 0;
 
                 .edge-triangle {
@@ -1519,6 +1464,34 @@ body {
                   text-align: center;
                   font-size: 16px;
                   font-weight: bold;
+                }
+                // 그래프
+                #graph-wrapper {
+                  width: 100%;
+                }
+                #graph {
+                  width: 100%;
+                }
+                .y.axisRight text {
+                  fill: orange;
+                }
+                .y.axisLeft text {
+                  fill: steelblue;
+                }
+                .axis path,
+                .axis line {
+                  fill: none;
+                  stroke: #000;
+                  shape-rendering: crispEdges;
+                }
+                .bar1 {
+                  fill: steelblue;
+                }
+                .bar2 {
+                  fill: orange;
+                }
+                .x.axis path {
+                  display: none;
                 }
               }
               .s-tagcloud {
@@ -1626,7 +1599,6 @@ body {
                 }
                 img{
                   width :100%;
-                    filter : hue-rotate(70deg);
                 }
               }
             }

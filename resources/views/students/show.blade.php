@@ -3,9 +3,10 @@
 
 @section('content')
 <div class="s-profile clearfix">
-  <div class="profile-artwork">
-      {{-- <img src="/image/final-image/artwork01.png" alt=""> --}}
+  <div class="profile-artwork" style="background-image: url('{{ $artworks[0]->photo }}');">
+    {{--
       <img src="{{ $artworks[0]->photo ? $artworks[0]->photo : "http://placehold.it/96x96"}}" alt="" />
+    --}}
   </div>
   <div class="profile-div">
       <div class="profile-pic-box">
@@ -42,8 +43,8 @@
 </div> <!-- /.s-profile -->
 <div class="tab-selector clearfix">
   <ul>
-    <li><div class="tab-info tab01">정보</div></li>
-    <li><div href="" class="tab-artworks tab02">작품</div></li>
+    <li class="tab-item tab-info tab01"><div class=tab-text>정보</div></li>
+    <li class="tab-item tab-artworks tab02"><div class="tab-text">작품</div></li>
   </ul>
 </div>
 <div class="box-container">
@@ -84,11 +85,11 @@
         <div class="edge-triangle"></div>
 
       <div class="width-half">
-        <h2>몰입도</h2>
+        <h2>몰입도 평균</h2>
         <p>{{ $engagementAvg }}</p>
       </div>
       <div class="width-half">
-        <h2>작품 완성도</h2>
+        <h2>난이도 평균</h2>
         <p>{{ $completenessAvg }}</p>
       </div>
       <div id="graph-wrapper" class="width-full">
@@ -149,36 +150,7 @@
 <script type="text/javascript">
   var graphData = {!! $graphData !!};
 </script>
-<script src="/js/graph.js" charset="utf-8"></script>
-<style>
-#graph-wrapper {
-  width: 100%;
-}
-#graph {
-  width: 100%;
-}
-.y.axisRight text {
-  fill: orange;
-}
-.y.axisLeft text {
-  fill: steelblue;
-}
-.axis path,
-.axis line {
-fill: none;
-stroke: #000;
-shape-rendering: crispEdges;
-}
-.bar1 {
-fill: steelblue;
-}
-.bar2 {
-fill: orange;
-}
-.x.axis path {
-display: none;
-}
-</style>
+<script src="/js/student.js" charset="utf-8"></script>
 @endsection
 
 @section('footer')
