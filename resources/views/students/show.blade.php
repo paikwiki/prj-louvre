@@ -50,46 +50,41 @@
 <div class="box-container">
   <div class="tab-box info-box tab-content01 clearfix show">
     <div class="section summary-box">
-        <div class="edge-triangle">
+      <div class="edge-triangle"></div>
+      <div class="box-header">
+        <h2><span class="box-header-icon icon-summary"></span>Summary</h2>
+      </div>
+      <ul>
+        <li>등록한지 <span>"{{ $dDay }}"</span>일 됐어요.</li>
+        <li><span>"{{ $maxType }}"</span>를 가장 많이 그렸어요.</li>
+        <li>최근에 <span>"{{$artwork_recent->name}}"</span>를 그렸어요.</li>
+        <li>앞으로 하고 싶은 건 <span>"{{ $student->purpose }}"</span>입니다.</li>
+      </ul>
+      <div class="s-total">
+        <div class="s-total-all">
+          <span>총 작품</span>
+          <p>{{ $artworksCount }}점</p>
         </div>
-         <div class="icon-summary">
-             <img src='/image/final-image/icon_translate.png'><span>Summary</span>
-         </div>
-         <div class="dotdotdot">
-             <img src='/image/final-image/dotdotdot.png'>
-         </div>
-
+        <div class="s-total-detail">
           <ul>
-            <li>등록한지 <span>"{{ $dDay }}"</span>일 됐어요.</li>
-            <li><span>{{ $maxType }}</span>를 가장 많이 그렸어요.</li>
-            <li>최근에 <span>"{{$artwork_recent->name}}"</span>를 그렸어요.</li>
-            <li>앞으로 하고 싶은 건 <span>"{{ $student->purpose }}"</span>입니다.</li>
+            @foreach ( $eachTypeCounts as $key=>$value )
+            <li><p>{{ $key }}<span> {{ $value }}개</span></p></li>
+            @endforeach
           </ul>
-          <div class="s-total">
-            <div class="s-total-all">
-            <span>총 작품</span>
-            <p>{{ $artworksCount }}점</p>
-            </div>
-
-            <div class="s-total-detail">
-            <ul>
-              @foreach ( $eachTypeCounts as $key=>$value )
-              <li><p>{{ $key }}<span> {{ $value }}개</span></p></li>
-              @endforeach
-            </ul>
-            </div>
         </div>
+      </div>
     </div>
-
-    <div class="section s-average clearfix">
-        <div class="edge-triangle"></div>
-
+    <div class="section s-evaluate clearfix">
+      <div class="edge-triangle"></div>
+      <div class="box-header">
+        <h2><span class="box-header-icon icon-evaluate"></span>Evaluation</h2>
+      </div>
       <div class="width-half">
-        <h2>몰입도 평균</h2>
+        <h3>몰입도 평균</h3>
         <p>{{ $engagementAvg }}</p>
       </div>
       <div class="width-half">
-        <h2>난이도 평균</h2>
+        <h3>난이도 평균</h3>
         <p>{{ $completenessAvg }}</p>
       </div>
       <div id="graph-wrapper" class="width-full">
@@ -98,7 +93,9 @@
     </div>
 
     <div class="section s-tagcloud clearfix">
-      <img src="/image/final-image/icon_tag.png" alt=""><h2>태그 클라우드</h2>
+      <div class="box-header">
+        <h2><span class="box-header-icon icon-tagcloud"></span>Tag Cloud</h2>
+      </div>
      <div class="edge-triangle"></div>
      <ul>
        @foreach ( $eachTagCounts as $key=>$value )
@@ -107,20 +104,19 @@
      </ul>
     </div>
 
-    <div class="section s-comment-box clearfix">
-     <div class="edge-triangle"></div>
-      <div class="s-comment">
-        코멘트 모아보기
-        <ul>
-            @foreach( $artworks as $artwork )
-              <li>
-                <a href="/artworks/{{ $artwork->id }}">{{ $artwork->feedback }}</a> <span>{{ $artwork->date }}</span>
-              </li>
-            @endforeach
-        </ul>
+    <div class="section s-comment clearfix">
+      <div class="edge-triangle"></div>
+      <div class="box-header">
+        <h2><span class="box-header-icon icon-comment"></span>Comments</h2>
       </div>
+      <ul>
+        @foreach( $artworks as $artwork )
+          <li>
+            <a href="/artworks/{{ $artwork->id }}">{{ $artwork->feedback }}</a> <span>{{ $artwork->date }}</span>
+          </li>
+        @endforeach
+      </ul>
     </div>
-
   </div>
 
 

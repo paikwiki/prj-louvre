@@ -1,5 +1,4 @@
 @import url("http://fonts.googleapis.com/earlyaccess/nanumgothic.css");
-
 @deviceWidth: 480px;
 @mmBlack: #222631;
 @mmGray: #71767a;
@@ -7,1599 +6,1349 @@
 body {
   background-color: #666;
   font-family: "Nanum Gothic";
+}
 
-  // 공통
-  .section {
-    .width-half {
-      float: left;
-      width: 50%;
+// 공통
+.section {
+  position :relative;
+  margin: 20px 0;
+  padding: 40px 20px 20px 20px;
+  background: #fff;
+  color: #444;
+  border : 0.4px solid #ebebeb;
+  box-shadow: 0px 2px 4px 0px #ddd;
+  .box-header {
+    text-align: center;
+    h2 {
+      display: inline-block;
+      margin-bottom: 10px;
+      height: 35px;
+      font-size: 16px;
+      background-image: url(/image/final-image/dotdotdot.png);
+      background-repeat: no-repeat;
+      background-position: center bottom;
+      background-size: 2px;
+      .box-header-icon {
+        display: block;
+        float: left;
+        width: 1em;
+        height: 1em;
+        margin-right: 1em;
+        background-size: 100%;
+        background-repeat: no-repeat;
+      }
+      .icon-summary {
+        background-image: url(/image/final-image/icon_translate.png);
+      }
+      .icon-evaluate {
+        background-image: url(/image/final-image/icon_evaluate.png);
+      }
+      .icon-tagcloud {
+        background-image: url(/image/final-image/icon_tag.png);
+      }
+      .icon-comment {
+        background-image: url(/image/final-image/icon_comment.png);
+      }
     }
   }
   .edge-triangle {
     position: absolute;
-    background-image: url(/image/final-image/edge-triangle.png);
+    background-image: url('/image/final-image/edge-triangle.png');
     background-repeat: no-repeat;
     background-size: cover;
     width : 10px;
     height : 10px;
     top : 0px;
     left : 0px;
-    opacity: 0.7;
+    opacity: 0.8;
   }
-  .g-wrapper {
-    position: relative;
+  .width-half {
+    float: left;
+    width: 50%;
+  }
+}
+.g-wrapper {
+  position: relative;
+  margin: 0 auto;
+  max-width: @deviceWidth;
+  min-height: 640px;
+  background-color: @mmBgColor;
+  font-size: 14px;
+}
+.header-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  .header {
     margin: 0 auto;
     max-width: @deviceWidth;
-    min-height: 640px;
-    background-color: @mmBgColor;
-    font-size: 14px;
-  }
-  .header-box {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 999;
-    .header {
-      margin: 0 auto;
-      max-width: @deviceWidth;
+    height: 50px;
+    ul {
       height: 50px;
-      // h1 {
-      //   height: 64px;
-      //   line-height: 50px;
-      //   background-color: #fff;
-      // }
-      // .logo {
-      //   a {
-      //     text-indent: -9999px;
-      //     display: block;
-      //     background-image: url("/image/logo_Minimue.jpg");
-      //     background-repeat: no-repeat;
-      //     background-position: center;
-      //     background-size : 34%;
-      //       height: 64px;
-      //   }
-      // }
-      ul {
+      li {
+        float: left;
+        width: 20%;
         height: 50px;
-        li {
-          float: left;
-          width: 20%;
-          height: 50px;
-          text-align: center;
-          background-color: #222631;
-          a {
-            display: block;
-            width: 100%;
-            padding: 12px 0;
-            line-height: 25px;
-            text-indent: -9999px;
-            background-position: center;
-            background-repeat: no-repeat;
-            opacity: 0.4;
-          }
-        }
-        .active {
-          a {
-            opacity: 1;
-          }
-        }
-        .item01 {
-          a {
-            background-image: url("/image/menu-icon/icon01.png");
-            background-size: 30px;
-          }
-        }
-        .item02 {
-          a {
-            background-image: url("/image/menu-icon/icon02.png");
-            background-size: 27.5px;
-          }
-        }
-        .item03 {
-          a {
-            background-image: url("/image/menu-icon/icon03.png");
-            background-size: 38.5px;
-          }
-        }
-        .item04{
-          a {
-            background-image: url("/image/menu-icon/icon04.png");
-            background-size: 34px;
-          }
-        }
-        .item05{
-          a{
-            background-image: url("/image/menu-icon/icon05.png");
-            background-size: 32px;
-          }
+        text-align: center;
+        background-color: #222631;
+        a {
+          display: block;
+          width: 100%;
+          padding: 12px 0;
+          line-height: 25px;
+          text-indent: -9999px;
+          background-position: center;
+          background-repeat: no-repeat;
+          opacity: 0.4;
         }
       }
-      li:nth-child(2n) {
-        background-color: #222631;
-        border-top : 0px solid black;
-        border-left : 0px solid rgb(230,230,230);
-        border-right : 0px solid rgb(230,230,230);
+      .active {
+        a {
+          opacity: 1;
+        }
+      }
+      .item01 {
+        a {
+          background-image: url("/image/menu-icon/icon01.png");
+          background-size: 30px;
+        }
+      }
+      .item02 {
+        a {
+          background-image: url("/image/menu-icon/icon02.png");
+          background-size: 28px;
+        }
+      }
+      .item03 {
+        a {
+          background-image: url("/image/menu-icon/icon03.png");
+          background-size: 39px;
+        }
+      }
+      .item04{
+        a {
+          background-image: url("/image/menu-icon/icon04.png");
+          background-size: 34px;
+        }
+      }
+      .item05{
+        a{
+          background-image: url("/image/menu-icon/icon05.png");
+          background-size: 32px;
+        }
       }
     }
-    } // /.header
-    } // /.header-box
-    .c-wrapper {
-      position: relative;
-      margin-top: 50px;
-      .content {
-        position: relative;
-        padding-top: 0.1px;
-        padding-bottom: 10px;
+    li:nth-child(2n) {
+      background-color: #222631;
+      border-top : 0px solid black;
+      border-left : 0px solid rgb(230,230,230);
+      border-right : 0px solid rgb(230,230,230);
+    }
+  } // /.header
+} // /.header-box
+.c-wrapper {
+  position: relative;
+  margin-top: 50px;
+  .content {
+    position: relative;
+    padding-top: 0.1px;
+    padding-bottom: 10px;
+
+  }
+} // /.c-wrapper
+/////////
+// 작은 요소들 (자기학생)
+////////////
+img {
+  max-width: 100%;
+}
+.show {
+  display: block;
+}
+.hide {
+  display: none;
+}
+.tab-box {
+  margin: 15px;
+}
+.tab-content02{
+  .artworks{
+    column-count: 2;
+    column-gap: 10px;
+    figure{
+      font-size: 0px;
+      display: inline-block;
+      padding : 10px;
+      background-color : #fff;
+      margin-bottom : 10px;
+      box-shadow: 0px 2px 4px 0px #ddd;
+      figcaption{
+        text-align: center;
+        text-decoration: none;
+        padding-top : 10px;
+        a{
+          text-decoration: none;
+          color : black;
+          font-size: 14px;
+        }
+      }
+      img{
+        width :100%;
+      }
+    }
+  }
+}
+
+// ===================
+// 인트로
+// ===================
+.intro {
+  .header-box {
+    display: none;
+  }
+  .c-wrapper {
+    margin-top: 0;
+    .content {
+      background-color : #fff;
+    }
+  }
+}
+.login-box {
+  .form-horizontal{
+    .form-group01{
+      text-align: center;
+      label {
+        display : block;
+        text-align: left;
+        margin: 0 auto;
+        text-indent: 6px;
+        width : 240px;
+        transform : translateY(32px);
+        opacity: 0.4;
+        transition : transform 0.5s, opacity 0.6s;
+      }
+      input {
+        border : 1px solid rgb(230,230,230);
+        border-radius: 4px;
+        margin: 6px auto;
+        background-color : rgba(255,255,255,0);
+        padding :10px 10px;
+        width : 240px;
+        text-indent : 6px;
+        font-size : 14px;
+      }
+      .focused {
+        transform : translateY(12px);
+        opacity : 0;
+      }
+    }
+    .form-group02{
+      text-align: center;
+      label {
+        display : block;
+        text-align: left;
+        margin: 0 auto;
+        text-indent: 6px;
+        width : 64%;
+        transform : translateY(30px);
+        opacity: 0.4;
+        transition : transform 0.5s, opacity 0.6s;
+      }
+      input {
+        border: none;
+        border-bottom : 2px solid rgb(230,230,230);
+        margin: 6px auto;
+        background-color : rgba(255,255,255,0);
+        padding :10px 10px;
+        width : 64%;
+        text-indent : 6px;
+        font-size : 14px;
+      }
+      .focused {
+        transform : translateY(12px);
+        opacity : 0;
+      }
+      button{
+        width : 70%;
+        height : 36px;
+        background-color: #000;
+        color : #fff;
+        margin : 28px 0px;
+        border-radius: 4px;
+      }
+    }
+    .form-group03{
+      text-align: right;
+      font-size : 70%;
+      margin :10px 40px 0px 0px;
+      display: none;
+    }
+    .form-group04{
+      text-align: center;
+      button {
+        margin-top : 20px;
+        border : none;
+        background : rgb(40,40,40);
+        width : 260px;
+        height : 37px;
+        cursor: pointer;
+        font-weight: bolder;
+        font-size : 15px;
+        color:white;
+        border-radius: 4px;
+      }
+      a {
+        display: inline-block;
+        margin-top : 30px;
+        text-decoration: none;
+        color : black;
+      }
+      a:hover {
+        color : rgb(240,50,50);
+      }
+    }
+  }
+}
+.intro-logo {
+  position : relative;
+  display: block;
+  margin: 0px auto;
+  margin-top : 118px;
+  margin-bottom: 2px;
+  width : 60%;
+}
+.subtitle {
+  display: block;
+  text-align: center;
+  width : 57.8%;
+  height: 10px;
+  background-color: black;
+  color: #fff;
+  margin: 0 auto;
+  font-size: 8px;
+  margin-bottom: 64px;
+}
+.instruction {
+  position : relative;
+  text-align: center;
+  font-size : 20px;
+  line-height: 25px;
+  font-weight: bold;
+  margin: 30px auto;
+}
+.sns-login {
+  height: 120px;
+  margin : 0 auto;
+  ul{
+    width : 40%;
+    margin : 0 auto;
+    li {
+      float : left;
+      width : 25%;
+      margin : 30px 0;
+      text-indent: -9999px;
+    }
+    .item01 a{
+      display : block;
+      background-image: url('/image/intro-image/128x128twitter.png');
+      background-size: 30px;
+      background-position : center;
+      background-repeat: no-repeat;
+      width : 30px;
+      height : 30px;
+      margin: 0 auto;
+    }
+    .item02 a{
+      display : block;
+      width : 30px;
+      height : 30px;
+      background-image: url('/image/intro-image/128x128facebook.png');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 30px;
+      margin: 0 auto;
+    }
+    .item03 a{
+      display : block;
+      width : 30px;
+      height : 30px;
+      background-image: url('/image/intro-image/128x128kakaotalk.png');
+      background-size : 30px;
+      background-position : center;
+      background-repeat: no-repeat;
+      margin: 0 auto;
+        filter: grayscale();
+    }
+    .item04 a{
+      display : block;
+      width : 30px;
+      height : 30px;
+      background-image : url('/image/intro-image/128x128instagram.png');
+      background-size : 30px;
+      background-position : center;
+      background-repeat: no-repeat;
+      margin: 0 auto;
+    }
+  }
+}
+.user-agreement {
+  font-size: 10px;
+  margin : 0 auto;
+  text-align: center;
+  line-height: 140%;
+  span {
+    font-weight: bold;
+  }
+}
+
+// ===================
+//  푸터
+// ===================
+.footer {
+  display: none;
+}
+// ===================
+//  오늘의 수강생
+// ===================
+.students {
+  position: relative;
+  background-color: #fff;
+  width : 96%;
+  margin: 0 auto;
+  box-shadow: 2px 3px 5px 0px grey;
+  top : 20px;
+
+  opacity: 0;
+  transition : top 0.6s, opacity 0.6s;
+
+  h2 {
+    padding: 5px 12px;
+    padding-bottom: 6px;
+    border-top : 1px solid #d2d2d2;
+    background-color: #f3f3f3;
+    height : 29px;
+    font-size: 16px;
+    font-weight: normal;
+    margin-top : 20px;
+  }
+
+  ul {
+    li {
+      margin-bottom: 10px;
+      padding-top : 5px;
+      padding-bottom : 5px;
+      border-bottom : 1px solid #eee;
+      div {
+        float: left;
 
       }
-    } // /.c-wrapper
-      /////////
-      // 작은 요소들 (자기학생)
-      ////////////
-      img {
-        max-width: 100%;
+      .photo-box {
+        margin-left: 5px;
+        width: 20%;
+        a {
+          display: block;
+          width :58px;
+          height : 58px;
+          border-radius: 29px;
+          overflow: hidden;
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
       }
-      .show {
+      .info-box {
+        width: 60%;
+        a {
+          display: block;
+          height: 30px;
+          line-height: 32px;
+          padding-left: 00px;
+          font-weight: bold;
+          font-size : 16px;
+          color : rgb(0,0,0);
+          text-decoration: none;
+        }
+        p {
+          margin-top : 4px;
+          margin-left :00px;
+          padding-left : 2px;
+          width :180px;
+          font-size: 12px;
+          font-weight: normal;
+          float : left;
+          color: #7e7e84;
+        }
+      }
+      .call-box {
+        float: right;
+        width: 10%;
+        a {
+          text-indent: -6000px;
+          display: block;
+          background-image: url("/image/button_call.png");
+          width : 30px;
+          height : 30px;
+          border-radius: 15px;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+          margin-top: 10px;
+        }
+      }
+    }
+  }
+} // /.students
+.students.motion {
+  top : 0px;
+  opacity : 1;
+}
+.student-add-box {
+  position : fixed;
+  bottom : 30px;
+  right : 30px;
+  a {
+    text-indent: -40000px;
+    display: block;
+    background-image: url("/image/button_addstudent.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width : 50px;
+    height : 50px;
+    border-radius: 25px;
+  }
+}
+/////////////////
+// 학생 추가
+/////////////////
+.s-info {
+  margin : 15px 15px 0 15px;
+  background : #fff;
+  box-shadow: 2px 3px 5px 0px gray;
+  position : relative;
+  .s-box1 {
+    position : relative;
+    width : 90%;
+    border: none;
+    margin: 0px auto;
+    padding-top: 10px;
+    .top-left {
+      width : 30%;
+      float : left;
+      label {
         display: block;
+        cursor: pointer;
       }
-      .hide {
+      input {
         display: none;
       }
-      .tab-box {
-        margin: 15px;
-      }
-      .tab-content02{
-        .artworks{
-          column-count: 2;
-          column-gap: 10px;
-          figure{
-            font-size: 0px;
-            display: inline-block;
-            padding : 10px;
-            background-color : #fff;
-            margin-bottom : 10px;
-            box-shadow: 0px 2px 4px 0px #ddd;
-            figcaption{
-              text-align: center;
-              text-decoration: none;
-              padding-top : 10px;
-              a{
-                text-decoration: none;
-                color : black;
-                font-size: 14px;
-              }
-            }
-            img{
-              width :100%;
-            }
-          }
-        }
-      }
-
-      // ===================
-      // 인트로
-      // ===================
-      .intro {
-        .header-box {
-          display: none;
-        }
-        .c-wrapper {
-          margin-top: 0;
-
-          .content {
-            background-color : #fff;
-          }
-        }
-      }
-      .login-box {
-        .form-horizontal{
-          .form-group01{
-            text-align: center;
-            label {
-              display : block;
-              text-align: left;
-              margin: 0 auto;
-              text-indent: 6px;
-              width : 240px;
-              transform : translateY(32px);
-              opacity: 0.4;
-              transition : transform 0.5s, opacity 0.6s;
-            }
-            input {
-              border : 1px solid rgb(230,230,230);
-              border-radius: 4px;
-              margin: 6px auto;
-              background-color : rgba(255,255,255,0);
-              padding :10px 10px;
-              width : 240px;
-              text-indent : 6px;
-              font-size : 14px;
-            }
-            .focused {
-              transform : translateY(12px);
-              opacity : 0;
-            }
-          }
-          .form-group02{
-            text-align: center;
-            label {
-              display : block;
-              text-align: left;
-              margin: 0 auto;
-              text-indent: 6px;
-              width : 64%;
-              transform : translateY(30px);
-              opacity: 0.4;
-              transition : transform 0.5s, opacity 0.6s;
-            }
-            input {
-              border: none;
-              border-bottom : 2px solid rgb(230,230,230);
-              margin: 6px auto;
-              background-color : rgba(255,255,255,0);
-              padding :10px 10px;
-              width : 64%;
-              text-indent : 6px;
-              font-size : 14px;
-            }
-            .focused {
-              transform : translateY(12px);
-              opacity : 0;
-            }
-            button{
-              width : 70%;
-              height : 36px;
-              background-color: #000;
-              color : #fff;
-              margin : 28px 0px;
-              border-radius: 4px;
-            }
-          }
-          .form-group03{
-            text-align: right;
-            font-size : 70%;
-            margin :10px 40px 0px 0px;
-            display: none;
-          }
-          .form-group04{
-            text-align: center;
-            button {
-              margin-top : 20px;
-              border : none;
-              background : rgb(40,40,40);
-              width : 260px;
-              height : 37px;
-              cursor: pointer;
-              font-weight: bolder;
-              font-size : 15px;
-              color:white;
-              border-radius: 4px;
-            }
-            a {
-              display: inline-block;
-              margin-top : 30px;
-              text-decoration: none;
-              color : black;
-            }
-            a:hover {
-              color : rgb(240,50,50);
-            }
-          }
-        }
-      }
-      .intro-logo {
-        position : relative;
+    }
+    .top-right {
+      width :70%;
+      float : left;
+      position : relative;
+      .name {
         display: block;
-        margin: 0px auto;
-        margin-top : 118px;
-        margin-bottom: 2px;
-        width : 60%;
+        width : 80%;
+        margin : 9px 10%
       }
-      .subtitle{
+      .birth{
         display: block;
-        text-align: center;
-        width : 57.8%;
-        height: 10px;
-        background-color: black;
-        color: #fff;
-        margin: 0 auto;
-        font-size: 8px;
-        margin-bottom: 64px;
+        width : 80%;
+        margin : 9px 10%
       }
-      .instruction {
-        position : relative;
-        text-align: center;
-        font-size : 20px;
-        line-height: 25px;
-        font-weight: bold;
-        margin: 30px auto;
+      .phone {
+        display: block;
+        width : 80%;
+        margin : 9px 10%;
       }
-      .sns-login {
-        height: 120px;
-        margin : 0 auto;
-        ul{
-          width : 40%;
-          margin : 0 auto;
-          li {
-            float : left;
-            width : 25%;
-            margin : 30px 0;
-            text-indent: -9999px;
-          }
-          .item01 a{
-            display : block;
-            background-image: url('/image/intro-image/128x128twitter.png');
-            background-size: 30px;
-            background-position : center;
-            background-repeat: no-repeat;
-            width : 30px;
-            height : 30px;
-            margin: 0 auto;
-          }
-          .item02 a{
-            display : block;
-            width : 30px;
-            height : 30px;
-            background-image: url('/image/intro-image/128x128facebook.png');
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: 30px;
-            margin: 0 auto;
-          }
-          .item03 a{
-            display : block;
-            width : 30px;
-            height : 30px;
-            background-image: url('/image/intro-image/128x128kakaotalk.png');
-            background-size : 30px;
-            background-position : center;
-            background-repeat: no-repeat;
-            margin: 0 auto;
-              filter: grayscale();
-          }
-          .item04 a{
-            display : block;
-            width : 30px;
-            height : 30px;
-            background-image : url('/image/intro-image/128x128instagram.png');
-            background-size : 30px;
-            background-position : center;
-            background-repeat: no-repeat;
-            margin: 0 auto;
-          }
-        }
+      .email {
+        display: block;
+        width : 80%;
+        margin : 9px 10%;
       }
-      .user-agreement {
-        font-size: 10px;
-        margin : 0 auto;
-        text-align: center;
-        line-height: 140%;
-        span {
+    }
+  }
+  .bottom {
+    font-weight: bold;
+    display: block;
+    width : 90%;
+    margin : 0 auto;
+    label{
+        display: block;
+        padding-bottom: 8px;
+        border-bottom: 1px solid gray;
+    }
+    input {
+        border: none;
+        margin: 6px 0;
+    }
+    .enroll-date{
+      ::-webkit-datetime-edit-year-field {
+        border : 1px solid black;
+        padding: 1px;
+        margin   : 4px;
+      }
+      ::-webkit-datetime-edit-text {
+        display: none;
+      }
+    }
+    .attendance-day {
+      padding-bottom: 20px;
+      label {
+        font-weight: normal;
+        margin-top: 3px;
+        display: inline-block;
+        border: none;
+        margin-right: 4px;
+      }
+      .inner-day {
+        display: block;
+        @media all and (max-width: 640px){
+          border-bottom : 1px solid gray;
+          margin-bottom: 10px;
+          margin-right : 0px;
           font-weight: bold;
         }
       }
-
-      // ===================
-      //  푸터
-      // ===================
-      .footer {
+      input{
+        display: none;
+        width : 0px;
+        height : 0px;
+      }
+      span{
+        padding : 5px;
+        border : 1px solid black;
+      }
+      input:checked + label > span{
+        background-color: #9e9e9e;
+      }
+    }
+    .attend {
+      margin-top : 40px;
+      button{
+        display: block;
+        padding: 10px;
+        margin: 0 auto;
+      }
+    }
+    .comment-box > textarea {
+        display: block;
+        margin: 10px auto;
+    }
+    .radiobutton{
+      display:inline;
+      border: 2px solid gray;
+      margin : 12px;
+      padding : 8px;
+    }
+    .radiobutton + input {
+      display:inline;
+    }
+    .status-box > input:checked + label  >span {
+      background: black;
+    }
+  }
+}
+// =================
+// 작품 추가
+///=================
+.a-add-box{
+  .addpicture {
+    text-align: center;
+    img{
+      width : 100px;
+      height : 100px;
+      margin: 30px auto;
+      cursor:pointer;
+    }
+    span {
+      display: block;
+      text-align: center;
+      font-size: 95%;
+      opacity: 0.8;
+    }
+    input {
+      display: none;
+    }
+  }
+  #blah {
+    margin: 0 auto;
+    padding-top: 30px;
+    width: 50%;
+  }
+  .hide {
+    display: none;
+  }
+  .sliders {
+    display: inline-block;
+    margin : 0 35%;
+    li {
+      float : left;
+    }
+  }
+  .write-box {
+    position: relative;
+    margin: 15px;
+    padding: 30px 15px;
+    background-color: #fff;
+    box-shadow: 2px 3px 5px 0px gray;
+    color: @mmGray;
+    h2 {
+      padding: 0 15px;
+      border-bottom: 1px solid #ebebeb;
+      height: 40px;
+      line-height: 50px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+    li {
+      padding: 0 15px;
+      height: 50px;
+      line-height: 50px;
+      border-bottom: 1px solid #ebebeb;
+      label {
+        color: #c7c7c7;
+      }
+      .a-name {
+        font-size: 12px;
+        width: 60%;
+        height: 30px;
+        border: 0;
+        font-size: 14px;
+      }
+      .type-id {
+        float: right;
+        margin-top: 10px;
+        width: 35%;
+      }
+      .date {
+        width: 50%;
+      }
+    }
+    .tags-box {
+      height: inherit;
+      line-height: 35px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      label {
+        span {
+          border: 1px solid #ececec;
+          padding: 4px;
+          word-break: keep-all;
+        }
+      }
+      input:checked + label > span{
+        background-color: #71767a;
+      }
+      input {
         display: none;
       }
+    }
+    .feedback-box {
+      height: inherit;
+      line-height: inherit;
+      .feedback {
+        display: block;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        width: 100%;
+        height: 40px;
+      }
+    }
+  }
+}
+.buttons {
+  display: flex;
+  justify-content: center;
+  margin : 20px auto ;
+}
+//////////////////////////////
+//   작품 상세보기
+////////////////////////////////
+.a-wrap {
+  position : relative;
+  // width : 94%;
+  // margin : 3%;
+  background-color: #f8f9fb;
+  .section {
+    margin: 15px;
+  }
+  .a-photo-box {
+    position : relative;
+    // border : 2px solid black;
+    img {
+      // box-shadow: 2px 3px 5px 0px gray;
+      width: 100%;
+    }
+    button {
+      position : absolute;
+      display: block;
+      width : 40px;
+      height : 40px;
+      background-image: url('/image/final-image/icon_like.png');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      text-indent: -99999px;
+      bottom : 2%;
+      right : 2%;
+      opacity: 0.8;
+      cursor: pointer;
+      border: 0;
+      background-color: inherit;;
+    }
+  }
 
-      // ===================
-      //  오늘의 수강생
-      // ===================
-
-      .students {
-        position: relative;
-        background-color: #fff;
-        width : 96%;
-        margin: 0 auto;
-        box-shadow: 2px 3px 5px 0px grey;
-        top : 20px;
-
-        opacity: 0;
-        transition : top 0.6s, opacity 0.6s;
-
-        h2 {
-          padding: 5px 12px;
-          padding-bottom: 6px;
-          border-top : 1px solid #d2d2d2;
-          background-color: #f3f3f3;
-          height : 29px;
+  .a-info-box {
+    .a-info {
+      margin : 50px 0 30px 0;
+      text-align: center;
+      display: block;
+      width : 100%;
+      // height : 100px;
+      // border-bottom: 1px solid rgb(60,60,60) ;
+      line-height: 20px;
+      font-size: 110%;
+      .a-name {
+        font-size: 20px;
+      }
+      .a-date {
+        margin-bottom: 5px;
+        font-size: 12px;
+        color: #ccc;
+      }
+      p {
+        .a-student-name {
           font-size: 16px;
-          font-weight: normal;
-          margin-top : 20px;
+          font-weight: bold;
+          a {
+            color: #555;
+            text-decoration: none;
+          }
         }
-
+        .a-type {
+          font-size: 16px;
+          color: #777;
+          font-weight: normal;
+        }
+      }
+    }
+  }
+  .a-point {
+    text-align: center;
+    p {
+      font-size : 25px;
+      font-weight: bold;
+    }
+    .a-engagement {
+      display: inline-block;
+      width : 50%;
+      float : left;
+      padding : 30px 0;
+      line-height: 30px;
+    }
+    .a-point {
+      display: inline-block;
+      width : 50%;
+      float : left;
+      padding : 30px 0;
+      line-height: 30px;
+    }
+  }
+  .a-comment{
+    display: inline-block;
+    padding : 20px 0;
+    width : 100%;
+    text-align: center;
+  }
+}
+// ===================
+// 02. 검색
+// ===================
+.search-box {
+  margin: 20px 15px 15px 15px;
+  #a-type {
+    margin-right: 4.5%;
+    width: 19%;
+    height: 20px;
+  }
+  #search-word {
+    // display: block;
+    height: 20px;
+    width: 54%;
+    margin-right: 2.5%;
+    border: 0;
+    border-bottom: 1px solid #797979;
+    background: none;
+  }
+  button {
+    width: 15%;
+  }
+}
+.search-recent {
+  border: 1px solid #ebebeb;
+  margin: 15px;
+  margin-top: 5px;
+  background-color: #fff;
+  h2 {
+    padding: 0 15px;
+    line-height: 50px;
+    height: 45px;
+    font-size: 12px;
+    border-bottom: 1px solid #ebebeb;
+    color: @mmGray;
+  }
+  ul {
+    li {
+      padding: 0 15px;
+      font-size: 13px;
+      line-height: 44px;
+      height: 45px;
+      border-bottom: 1px solid #ebebeb;
+      a {
+        color: @mmBlack;
+        text-decoration: none;
+      }
+      .box {
+        float: right;
+        .search-date {
+          font-size: 10px;
+          color: #c2c2c2;
+        }
+        .close-btn {
+          color: #c2c2c2;
+        }
+      }
+    }
+  }
+} // /.search-recent
+.search-result-box {
+  margin: 15px;
+  .search-result-text {
+    margin-bottom: 15px;
+    padding: 10px 15px 20px 15px;
+    height: 20px;
+    line-height: 20px;
+    color: @mmGray;
+  }
+  .search-result-artworks {
+    column-count: 2;
+    column-gap: 10px;
+    figure {
+      display: inline-block;
+      border : 0px solid gray;
+      background-color : #fff;
+      margin-bottom : 10px;
+      box-shadow: 0px 2px 4px 0px #ddd;
+      figcaption {
+        text-decoration: none;
+        padding: 15px 10px;
         ul {
           li {
-            margin-bottom: 10px;
-            padding-top : 5px;
-            padding-bottom : 5px;
-            border-bottom : 1px solid #eee;
-            div {
-              float: left;
-
-            }
-            .photo-box {
-              margin-left: 5px;
-              width: 20%;
-              a {
-                display: block;
-                width :58px;
-                height : 58px;
-                border-radius: 29px;
-                overflow: hidden;
-                img {
-                  width: 100%;
-                  height: 100%;
-                }
-              }
-            }
-            .info-box {
-              width: 60%;
-              a {
-                display: block;
-                height: 30px;
-                line-height: 32px;
-                padding-left: 00px;
-                font-weight: bold;
-                font-size : 16px;
-                color : rgb(0,0,0);
-                text-decoration: none;
-              }
-              p {
-                margin-top : 4px;
-                margin-left :00px;
-                padding-left : 2px;
-                width :180px;
-                font-size: 12px;
-                font-weight: normal;
-                float : left;
-                color: #7e7e84;
-              }
-            }
-            .call-box {
-              float: right;
-              width: 10%;
-              a {
-                text-indent: -6000px;
-                display: block;
-                background-image: url("/image/button_call.png");
-                width : 30px;
-                height : 30px;
-                border-radius: 15px;
-                background-position: center;
-                background-repeat: no-repeat;
-                background-size: cover;
-                margin-top: 10px;
-              }
-            }
-          }
-        }
-        } // /.students
-        .students.motion {
-          top : 0px;
-          opacity : 1;
-        }
-        .student-add-box {
-          position : fixed;
-          bottom : 30px;
-          right : 30px;
-          a {
-            text-indent: -40000px;
-            display: block;
-            background-image: url("/image/button_addstudent.png");
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            width : 50px;
-            height : 50px;
-            border-radius: 25px;
-          }
-        }
-        /////////////////
-        // 학생 추가
-        /////////////////
-        .s-info {
-          margin : 15px 15px 0 15px;
-          background : #fff;
-          box-shadow: 2px 3px 5px 0px gray;
-          position : relative;
-            .s-box1{
-              position : relative;
-              width : 90%;
-              border: none;
-              margin: 0px auto;
-              padding-top: 10px;
-              .top-left {
-                    width : 30%;
-
-                    float : left;
-
-                    label {
-                      display: block;
-                      cursor: pointer;
-                      // img
-                    }
-                    input {
-                      display: none;
-                    }
-
-                }
-                .top-right {
-
-                    width :70%;
-
-                        float : left;
-                    position : relative;
-
-
-                        .name{
-                            display: block;
-
-                            width : 80%;
-                            margin : 9px 10%
-
-                        }
-
-                        .birth{
-                            display: block;
-
-
-                              width : 80%;
-                            margin : 9px 10%
-                        }
-
-                         .phone {
-                        display: block;
-                        width : 80%;
-                        margin : 9px 10%;
-
-                        }
-                        .email {
-                            display: block;
-                            width : 80%;
-                            margin : 9px 10%;
-
-                    }
-               }
-            }
-
-            .bottom {
-                font-weight: bold;
-                display: block;
-                width : 90%;
-                margin : 0 auto;
-                label{
-                    display: block;
-                    padding-bottom: 8px;
-                    border-bottom: 1px solid gray;
-                }
-                input {
-                    border: none;
-
-                    margin: 6px 0;
-                }
-                .enroll-date{
-                   ::-webkit-datetime-edit-year-field {
-                       border : 1px solid black;
-                       padding: 1px;
-                      margin   : 4px;
-                    }
-                    ::-webkit-datetime-edit-text {
-                        display: none;
-                    }
-
-                }
-
-
-                .attendance-day {
-
-                    padding-bottom: 20px;
-                    label{
-                        font-weight: normal;
-                        margin-top: 3px;
-                       display: inline-block;
-                      border: none;
-                      margin-right: 4px;
-
-                    }
-                .inner-day {
-                    display: block;
-                  @media all and (max-width: 640px){
-                    border-bottom : 1px solid gray;
-                    margin-bottom: 10px;
-                      margin-right : 0px;
-                      font-weight: bold;
-                  }
-                }
-                input{
-                  display: none;
-                  width : 0px;
-                  height : 0px;
-                }
-                span{
-
-                  padding : 5px;
-                  border : 1px solid black;
-
-                }
-                input:checked + label > span{
-                  background-color: #9e9e9e;
-                }
-              }
-
-
-              .attend {
-                margin-top : 40px;
-                button{
-                  display: block;
-                  padding: 10px;
-                  margin: 0 auto;
-                }
-
-              }
-
-
-                .comment-box > textarea {
-                    display: block;
-
-                    margin: 10px auto;
-                }
-
-                .radiobutton{
-
-                        display:inline;
-
-                        border: 2px solid gray;
-                    margin : 12px;
-                 padding : 8px;
-
-
-                    }
-                .radiobutton + input {
-                    display:inline;
-
-                    }
-                .status-box > input:checked + label  >span {
-
-                    background: black;
-
-
-
-
-                }
-
-
-                }
-
-
-
-
-            }
-
-
-
-
-
-
-
-//          ul {
-//            li {
-//              display: inline-block;
-//              margin-top : 20px;
-//              label{
-//                display: block;
-//                transform: translateY(-5px);
-//              }
-//              input {
-//                border: none;
-//                padding: 3px 0;
-//                background : rgb(70,70,70);
-//                color :aliceblue;
-//              }
-//            }
-//          }
-//          .top-left {
-//            float: left;
-//            padding: 30px;
-//            padding-top: 60px;
-//            width : 50%;
-//            label {
-//              display: block;
-//              cursor: pointer;
-//              // img
-//            }
-//            input {
-//              display: none;
-//            }
-//          }
-//          .top-right {
-//            float: right;
-//            padding: 30px;
-//            width : 50%;
-//            // margin: 20px 0px 20px 60px;
-//            li {
-//              input {
-//                width: 100%;
-//              }
-//              #birth {
-//                width: 70%;
-//              }
-//            }
-//          }
-//          .bottom {
-//            padding: 30px;
-//            ul {
-//              li {
-//                display: block;
-//                label {
-//                  // display: block;
-//                  float: left;
-//                  width: 20%;
-//                  @media all and (max-width: 640px){
-//                    width: 100%;
-//                  }
-//                }
-//              }
-//              .comment-box {
-//                input {
-//                  width: 80%;
-//                  min-height: 60px;
-//                }
-//              }
-//              .attendance-day {
-//                padding-bottom: 20px;
-//                label{
-//                  // display: inline-block;
-//                  width: inherit;
-//                  margin-right: 4px;
-//                }
-//                .inner-day {
-//                  @media all and (max-width: 640px){
-//                    width: 100%;
-//                    margin-bottom: 10px;
-//                  }
-//                }
-//                input{
-//                  display: none;
-//                  width : 0px;
-//                  height : 0px;
-//                }
-//                span{
-//                  padding : 5px;
-//                  border : 1px solid black;
-//                }
-//                input:checked + label > span{
-//                  background-color: #9e9e9e;
-//                }
-//              }
-//              .attend {
-//                margin-top : 40px;
-//                button{
-//                  display: block;
-//                  padding: 10px;
-//                  margin: 0 auto;
-//                }
-//              }
-//              .course-id-box,
-//              .status-box {
-//                display: none;
-//              }
-//            }
-//          }
-
-
-        // =================
-        //
-        // 작품 추가
-        ///=================
-        .a-add-box{
-          width: 100%;
-          .addpicture {
-            text-align: center;
-            img{
-              width : 100px;
-              height : 100px;
-              margin: 30px auto;
-              cursor:pointer;
-            }
-            span {
-              display: block;
-              text-align: center;
-              font-size: 95%;
-              opacity: 0.8;
-            }
-            input {
-              display: none;
-            }
-          }
-          #blah {
-            margin: 0 auto;
-            padding-top: 30px;
-            width: 50%;
-          }
-          .hide {
-            display: none;
-          }
-          .sliders {
-            display: inline-block;
-            margin : 0 35%;
-            li {
-              float : left;
-            }
-          }
-          .write-box {
-            position: relative;
-            margin: 15px;
-            padding: 30px 15px;
-            background-color: #fff;
-            box-shadow: 2px 3px 5px 0px gray;
-            color: @mmGray;
-            h2 {
-              padding: 0 15px;
-              border-bottom: 1px solid #ebebeb;
-              height: 40px;
-              line-height: 50px;
-              font-size: 12px;
-              font-weight: bold;
-            }
-            li {
-              padding: 0 15px;
-              height: 50px;
-              line-height: 50px;
-              border-bottom: 1px solid #ebebeb;
-              label {
-                color: #c7c7c7;
-              }
-              .a-name {
-                width: 60%;
-                height: 30px;
-                border: 0;
-                font-size: 14px;
-                // color: #c7c7c7;
-                // border-bottom: 1px solid #ebebeb;
-              }
-              .type-id {
-                float: right;
-                margin-top: 10px;
-                width: 35%;
-              }
-              .date {
-                width: 50%;
-              }
-            }
-            .tags-box {
-              height: inherit;
-              line-height: 35px;
-              padding-top: 10px;
-              padding-bottom: 10px;
-              label {
-                // display: block;
-                span {
-                  border: 1px solid #ececec;
-                  padding: 4px;
-                  word-break: keep-all;
-                }
-              }
-              input:checked + label > span{
-                background-color: #71767a;
-              }
-              input {
-                display: none;
-              }
-            }
-            .feedback-box {
-              height: inherit;
-              line-height: inherit;
-              .feedback {
-                display: block;
-                margin-top: 10px;
-                margin-bottom: 10px;
-                width: 100%;
-                height: 40px;
-              }
-            }
-          }
-        }
-        .buttons {
-          display: flex;
-          justify-content: center;
-          margin : 20px auto ;
-
-
-
-        }
-        //////////////////////////////
-        //   작품 상세보기
-        //
-        ////////////////////////////////
-
-
-        .a-wrap {
-          position : relative;
-          width : 94%;
-          margin : 3%;
-          background-color: #f8f9fb;
-          .a-photo-box {
-            position : relative;
-            // border : 2px solid black;
-            img {
-              box-shadow: 2px 3px 5px 0px gray;
-            }
-            button {
-              position : absolute;
-              display: block;
-              width : 40px;
-              height : 40px;
-              background-image: url('/image/final-image/icon_like.png');
-              background-repeat: no-repeat;
-              background-size: cover;
-              background-position: center;
-              text-indent: -99999px;
-              bottom : 2%;
-              right : 2%;
-              opacity: 0.8;
-              cursor: pointer;
-              border: 0;
-              background-color: inherit;;
-            }
-          }
-
-          .a-info-full {
-            margin-top: 40px;
-            background-color: #fff;
-            border : 1px solid rgb(60,60,60);
-            border-radius: 10px;
-            box-shadow: 2px 3px 5px 0px gray;
-            span {
-              font-weight: bold;
-            }
-
-            .a-info {
-              margin : 20px 0;
-              text-align: center;
-              display: block;
-              width : 100%;
-              height : 100px;
-              border-bottom: 1px solid rgb(60,60,60) ;
-              line-height: 20px;
-              font-size: 110%;
-            }
-            .a-point{
-              text-align: center;
-              p{
-                font-size : 25px;
-                font-weight: bold;
-              }
-
-              .a-engagement{
-                display: inline-block;
-                width : 50%;
-                float : left;
-                padding : 30px 0;
-                line-height: 30px;
-              }
-              .a-point{
-                display: inline-block;
-                width : 50%;
-                float : left;
-                padding : 30px 0;
-                line-height: 30px;
-              }
-            }
-            .a-comment{
-              border-top : 1px solid #123;
-              display: inline-block;
-              width : 100%;
-              text-align: center;
-              margin-top : 30px;
-              padding : 20px 0;
-            }
-          }
-
-        }
-
-
-        // ===================
-        // 02. 검색
-        // ===================
-
-        .search-box {
-          margin: 20px 15px 15px 15px;
-          // background-color: red;
-          #a-type {
-            margin-right: 4.5%;
-            width: 19%;
-            height: 20px;
-          }
-          #search-word {
-            // display: block;
-            height: 20px;
-            width: 54%;
-            margin-right: 2.5%;
-            border: 0;
-            border-bottom: 1px solid #797979;
-            background: none;
-          }
-          button {
-            width: 15%;
-          }
-        }
-        .search-recent {
-          border: 1px solid #ebebeb;
-          margin: 15px;
-          margin-top: 5px;
-          background-color: #fff;
-          h2 {
-            padding: 0 15px;
-            line-height: 50px;
-            height: 45px;
-            font-size: 12px;
-            border-bottom: 1px solid #ebebeb;
-            color: @mmGray;
-          }
-          ul {
-            li {
-              padding: 0 15px;
-              font-size: 13px;
-              line-height: 44px;
-              height: 45px;
-              border-bottom: 1px solid #ebebeb;
-              a {
-                color: @mmBlack;
-                text-decoration: none;
-              }
-              .box {
-                float: right;
-                .search-date {
-
-                  font-size: 10px;
-                  color: #c2c2c2;
-                }
-                .close-btn {
-                  color: #c2c2c2;
-                }
-              }
-            }
-          }
-        } // /.search-recent
-        .search-result-box {
-          margin: 15px;
-          .search-result-text {
-            margin-bottom: 15px;
-            padding: 10px 15px 20px 15px;
-            height: 20px;
-            line-height: 20px;
-            color: @mmGray;
-            // background-color: #fff;
-          }
-          .search-result-artworks {
-            column-count: 2;
-            column-gap: 10px;
-            figure {
-              display: inline-block;
-              // padding : 10px;
-              border : 0px solid gray;
-              background-color : #fff;
-              margin-bottom : 10px;
-              box-shadow: 0px 2px 4px 0px #ddd;
-              figcaption {
-                // text-align: center;
-                text-decoration: none;
-                padding: 15px 10px;
-                ul {
-                  li {
-                    a {
-                      text-decoration: none;
-                      color : @mmBlack;
-                      font-size: 13px;
-                      font-weight: bold;
-                    }
-                    .name {
-                      padding: 10px 0;
-                      float: left;
-                      font-size: 10px;
-                      color: #c2c2c2;
-                    }
-                    .date {
-                      padding: 10px 0;
-                      float: right;
-                      font-size: 10px;
-                      color: #c2c2c2;
-                    }
-                  }
-                }
-              }
-              img {
-                width :100%;
-              }
-            }
-          }
-        } // /.search-result-box
-
-
-        // ===================
-        // 05. settings
-        // ===================
-
-        .settings {
-          margin: 15px;
-          background-color: #fff;
-          border: 1px solid #ebebeb;
-          h2 {
-            padding: 0 15px;
-            height: 40px;
-            line-height: 50px;
-            font-size: 12px;
-            border-bottom: 1px solid #ebebeb;
-            color: @mmGray;
-          }
-          ul {
-            li {
-              padding: 0 15px;
-              height: 45px;
-              line-height: 44px;
-              border-bottom: 1px solid #ebebeb;
-              color: @mmGray;
-              a {
-                text-decoration: none;
-                color: @mmBlack;
-              }
-            }
-          }
-        }
-        // ===================
-        // 학생 상세 페이지
-        // ===================
-
-        .artwork-add-box {
-          position : fixed;
-          bottom : 30px;
-          right : 30px;
-          a {
-            text-indent: -40000px;
-            display: block;
-            background-image: url("/image/button_addartwork.png");
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            width : 50px;
-            height : 50px;
-            border-radius: 25px;
-          }
-        }
-        .s-profile {
-          position: relative;
-          width: 100%;
-          background-color: #fff;
-          .profile-artwork {
-            height: 204px;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            overflow: hidden;
-              // img{
-              //   width : 100%;
-              // }
-          }
-          .profile-div{
-            position: relative;
-            margin: 0 auto;
-            margin-top: -48px;
-            width: 96px;
-            .profile-pic-box {
-              img{
-                width: 96px;
-                height: 96px;
-                border-radius: 48px;
-              }
-            }
-          }
-          .student-info-box {
-            margin-top : 10px;
-            text-align: center;
-            width: 100%;
-            li{
-              margin-top:6px;
-            }
-            .student-name {
-              font-size: 20px;
-              font-weight: bold;
-              color : #222631;
-            }
-            .student-enroll-date{
-              font-size: 12px;
-              opacity : 0.6;
-            }
-            .student-attendant-day{
-              margin-top : 8px;
-              font-size : 16px;
-              color : @mmGray;
-            }
-          }
-          .contact-box {
-
-            position : relative;
-            margin-top : 5px;
-            padding: 10px 0;
-
-            ul{
-
-              width : 25%;
-              margin: 0 auto;
-              height : 50px;
-
-              .icon-call{
-                float : left;
-                width : 30%;
-                margin :0 10%;
-
-                a{
-                  img{
-                    width : 100%;
-                  }
-                }
-                span {
-                  display: block;
-                  font-size: 50%;
-                  text-align: center;
-                  margin-top : 2px;
-                  color : #3a3a3a;
-
-                }
-              }
-              .icon-mail{
-                float : left;
-                width : 30%;
-                margin : 0 10%;
-
-                a{
-                  img{
-                    width : 100%;
-                  }
-
-                }
-                span {
-                  display: block;
-                  font-size: 50%;
-                  text-align: center;
-                  margin-top : 2px;
-                  color : #3a3a3a;
-                }
-              }
-            }
-          }
-          .student-modify-box {
-            position: absolute;
-            top: 219px;
-            right: 15.5px;
             a {
-              display: block;
-              width: 20px;
-              height: 20px;
-              text-indent: -9999px;
-              background-color: ;
-              background-image: url('/image/final-image/icon_modify.png');
-              background-size: 20px;
-              background-repeat : no-repeat;
-            }
-          }
-        }
-        .tab-selector {
-          background : #fff;
-          box-shadow: 0px 2px 4px 0px #ddd;
-          ul {
-            .tab-item {
-              float: left;
-              width: 50%;
-              height: 50px;
-              .tab-text {
-                margin: 0 auto;
-                width: 2em;
-                height: 50px;
-                line-height: 50px;
-                text-align: center;
-                text-decoration: none;
-                font-size: 18px;
-                color: @mmBlack;
-                cursor: pointer;
-              }
-              a:hover {
-                font-weight: bold;
-              }
-            }
-            .tab01 {
-              border-right: 1px solid #ddd;
-            }
-            .active {
+              text-decoration: none;
+              color : @mmBlack;
+              font-size: 13px;
               font-weight: bold;
-              .tab-text {
-
-                border-bottom: 3px solid #222631;
-              }
+            }
+            .name {
+              padding: 10px 0;
+              float: left;
+              font-size: 10px;
+              color: #c2c2c2;
+            }
+            .date {
+              padding: 10px 0;
+              float: right;
+              font-size: 10px;
+              color: #c2c2c2;
             }
           }
-        } // /.tab-selector
-        .fixed {
-          position: fixed;
-          top: 50px;
-          width: @deviceWidth;
-          z-index: 999;
         }
-          .box-container {
-            .tab-box {
+      }
+      img {
+        width :100%;
+      }
+    }
+  }
+} // /.search-result-box
 
-            }
-            .info-box {
-              // padding: 0px 15px;
-
-              .summary-box {
-                position : relative;
-                padding: 20px;
-                background: #fff;
-                border : 0.4px solid #ebebeb;
-                box-shadow: 2px 3px 5px 0px rgb(70,70,70);
-                .edge-triangle {
-                  position: absolute;
-                  background-image: url(/image/final-image/edge-triangle.png);
-                  background-repeat: no-repeat;
-                  background-size: cover;
-                  width : 10px;
-                  height : 10px;
-                  top : 0px;
-                  left : 0px;
-                }
-                .icon-summary {
-                  display: flex;
-                  justify-content: center;
-                  margin : 20px 0 10px 0;
-                  img{
-                    width : 20px;
-                    height :20px;
-                    margin : 0px 10px;
-
-                  }
-                  span {
-
-                    font-weight: bold;
-                    font-size:18px;
-                    margin-top: 4px;
-                  }
-                }
-                .dotdotdot {
-                  display: flex;
-                  justify-content: center;
-                  margin-bottom: 10px;
-                  img {
-                    height: 10px;
-                  }
-                }
-                ul {
-                  text-align: center;
-                  font-size: 14px;
-                  li {
-                    span{
-                      font-weight: bold;
-                    }
-                    margin-bottom: 10px;
-                  }
-                  li:last-child {
-                    margin-bottom: 0;
-                  }
-                }
-              }
-              .section {
-                position :relative;
-                padding: 20px;
-                background: #fff;
-                border : 0.4px solid #ebebeb;
-                // box-shadow: 2px 3px 5px 0px rgb(70,70,70);
-                box-shadow: 0px 2px 4px 0px #ddd;
-                margin: 20px 0;
-
-                .edge-triangle {
-                  position: absolute;
-                  background-image: url(/image/final-image/edge-triangle.png);
-                  background-repeat: no-repeat;
-                  background-size: cover;
-                  width : 10px;
-                  height : 10px;
-                  top : 0px;
-                  left : 0px;
-                }
-
-                h2 {
-                  padding: 10px 10px;
-                  background-color: #ccc;
-                }
-                .s-total {
-                  display: flex;
-                  margin : 60px 0px 40px;
-                  text-align: center;
-                  .s-total-all {
-                    float : left;
-                    width : 50%;
-                    border-right: 1px solid gray;
-                    span {
-                      display: block;
-                      margin-top : 10px;
-                    }
-                    p  {
-                      margin-top : 15px;
-                      font-weight : bold;
-                      font-size: 200%;
-                    }
-                  }
-                  .s-total-detail {
-                    float : left;
-                    width: 50%;
-
-                    span {
-
-                      font-weight: bold;
-                    }
-
-
-                    ul {
-                      padding-top: ;
-                      li {
-                      }
-                      li:last-child {
-                        margin-bottom: 0;
-                      }
-                    }
-                  }
-                }
-              }
-              .s-average {
-                h2 {
-                  text-align: center;
-                  background: none;
-                }
-                p {
-                  text-align: center;
-                  font-size: 16px;
-                  font-weight: bold;
-                }
-                // 그래프
-                #graph-wrapper {
-                  width: 100%;
-                }
-                #graph {
-                  width: 100%;
-                }
-                .y.axisRight text {
-                  fill: orange;
-                }
-                .y.axisLeft text {
-                  fill: steelblue;
-                }
-                .axis path,
-                .axis line {
-                  fill: none;
-                  stroke: #000;
-                  shape-rendering: crispEdges;
-                }
-                .bar1 {
-                  fill: steelblue;
-                }
-                .bar2 {
-                  fill: orange;
-                }
-                .x.axis path {
-                  display: none;
-                }
-              }
-              .s-tagcloud {
-                  img{
-                      position: absolute;
-                      width : 20px;
-                      height : 20px;
-                      left : 120px;
-                    top : 25px;
-
-                  }
-
-                h2 {
-                  text-align: center;
-                  background: none;
-                }
-                ul {
-                  margin-top: 10px;
-
-                  padding: 0 5%;
-                  li {
-
-                    float: left;
-                    margin-right: 5px;
-                    line-height: 35px;
-                    span {
-                      border: 1px solid gray;
-                        border-radius: 8px;
-                      padding: 4px;
-                      word-break: keep-all;
-                        color: gray;
-                    }
-                  }
-                }
-              }
-              .s-comment-box {
-                .s-comment {
-                  ul {
-                    margin-top: 10px;
-                    margin-left: 20px;
-                    li {
-                      list-style: circle;
-                      text-indent: -5px;
-                      line-height: 20px;
-                      a {
-                        text-decoration: none;
-                        color: @mmBlack;
-                      }
-                      span {
-                        font-size: 10px;
-                        color: @mmGray;
-                      }
-                    }
-                  }
-                }
-              }
-            }
-            ///// /.info-box//////
-            ////////////////////////
-            .artworks-box {
-              ul {
-                li {
-                  float: left;
-                  width: 50%;
-                  a {
-                    display: block;
-                    width: 100%;
-                    img {
-                      width: 100%;
-                    }
-                    p {
-                      text-align: center;
-                    }
-                  }
-                }
-              }
-            }
+// ===================
+// 05. settings
+// ===================
+.settings {
+  margin: 15px;
+  background-color: #fff;
+  border: 1px solid #ebebeb;
+  h2 {
+    padding: 0 15px;
+    height: 40px;
+    line-height: 50px;
+    font-size: 12px;
+    border-bottom: 1px solid #ebebeb;
+    color: @mmGray;
+  }
+  ul {
+    li {
+      padding: 0 15px;
+      height: 45px;
+      line-height: 44px;
+      border-bottom: 1px solid #ebebeb;
+      color: @mmGray;
+      a {
+        text-decoration: none;
+        color: @mmBlack;
+      }
+    }
+  }
+}
+// ===================
+// 학생 상세 페이지
+// ===================
+.artwork-add-box {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  a {
+    text-indent: -40000px;
+    display: block;
+    background-image: url("/image/button_addartwork.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width : 50px;
+    height : 50px;
+    border-radius: 25px;
+  }
+}
+.s-profile {
+  position: relative;
+  width: 100%;
+  background-color: #fff;
+  .profile-artwork {
+    height: 204px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+      // img{
+      //   width : 100%;
+      // }
+  }
+  .profile-div{
+    position: relative;
+    margin: 0 auto;
+    margin-top: -48px;
+    width: 96px;
+    .profile-pic-box {
+      img {
+        width: 96px;
+        height: 96px;
+        border-radius: 48px;
+      }
+    }
+  }
+  .student-info-box {
+    margin-top: 10px;
+    text-align: center;
+    width: 100%;
+    li{
+      margin-top: 6px;
+    }
+    .student-name {
+      font-size: 20px;
+      font-weight: bold;
+      color: #222631;
+    }
+    .student-enroll-date{
+      font-size: 12px;
+      opacity: 0.6;
+    }
+    .student-attendant-day{
+      margin-top: 8px;
+      font-size: 16px;
+      color: @mmGray;
+    }
+  }
+  .contact-box {
+    position: relative;
+    margin-top: 5px;
+    padding: 10px 0;
+    ul {
+      width: 25%;
+      margin: 0 auto;
+      height: 50px;
+      .icon-call{
+        float: left;
+        width: 30%;
+        margin:0 10%;
+        a {
+          img {
+            width: 100%;
           }
-
-          /////////////////
-          // album_index 앨범앨범앨범
-          ///////////
-          .album-box {
-            margin : 10px ;
-            .album-artworks{
-              column-count: 2;
-              column-gap: 10px;
-
-              figure{
-                display: inline-block;
-                padding : 4px;
-                border : 0px solid gray;
-                background-color : #fff;
-                margin-bottom : 10px;
-                box-shadow: 0px 2px 4px 0px #ddd;
-                figcaption{
-                  text-align: center;
-                  text-decoration: none;
-                  padding-top : 10px;
-                  border-top : 1px solid black;
-                  a{
-                    text-decoration: none;
-                    color : black;
-                  }
-                }
-                img{
-                  width :100%;
-                }
-              }
-            }
+        }
+        span {
+          display: block;
+          font-size: 50%;
+          text-align: center;
+          margin-top : 2px;
+          color : #3a3a3a;
+        }
+      }
+      .icon-mail {
+        float : left;
+        width : 30%;
+        margin : 0 10%;
+        a {
+          img {
+            width : 100%;
           }
+        }
+        span {
+          display: block;
+          font-size: 50%;
+          text-align: center;
+          margin-top : 2px;
+          color : #3a3a3a;
+        }
+      }
+    }
+  }
+  .student-modify-box {
+    position: absolute;
+    top: 219px;
+    right: 15.5px;
+    a {
+      display: block;
+      width: 20px;
+      height: 20px;
+      text-indent: -9999px;
+      background-color: ;
+      background-image: url('/image/final-image/icon_modify.png');
+      background-size: 20px;
+      background-repeat : no-repeat;
+    }
+  }
+}
+.tab-selector {
+  background : #fff;
+  box-shadow: 0px 2px 4px 0px #ddd;
+  ul {
+    .tab-item {
+      float: left;
+      width: 50%;
+      height: 50px;
+      .tab-text {
+        margin: 0 auto;
+        width: 2em;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 18px;
+        color: @mmBlack;
+        cursor: pointer;
+      }
+      a:hover {
+        font-weight: bold;
+      }
+    }
+    .tab01 {
+      border-right: 1px solid #ddd;
+    }
+    .active {
+      font-weight: bold;
+      .tab-text {
+        border-bottom: 3px solid #222631;
+      }
+    }
+  }
+} // /.tab-selector
+.fixed {
+  position: fixed;
+  top: 50px;
+  width: @deviceWidth;
+  z-index: 999;
+}
+.box-container {
+  .summary-box {
+    ul {
+      text-align: center;
+      font-size: 14px;
+      li {
+        span{
+          font-weight: bold;
+        }
+        margin-bottom: 10px;
+      }
+      li:last-child {
+        margin-bottom: 0;
+      }
+    }
+    .s-total {
+      display: flex;
+      margin : 60px 0px 40px;
+      text-align: center;
+      .s-total-all {
+        float : left;
+        width : 50%;
+        border-right: 1px solid gray;
+        span {
+          display: block;
+          margin-top : 10px;
+        }
+        p {
+          margin-top : 15px;
+          font-weight : bold;
+          font-size: 200%;
+        }
+      }
+      .s-total-detail {
+        float : left;
+        width: 50%;
+        span {
+          font-weight: bold;
+        }
+        ul {
+          li:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+  .s-evaluate {
+    h3 {
+      text-align: center;
+      background: none;
+    }
+    p {
+      text-align: center;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    // 그래프
+    #graph-wrapper {
+      width: 100%;
+      #graph {
+        width: 100%;
+      }
+      .y.axisRight text {
+        fill: orange;
+      }
+      .y.axisLeft text {
+        fill: steelblue;
+      }
+      .axis path,
+      .axis line {
+        fill: none;
+        stroke: #000;
+        shape-rendering: crispEdges;
+      }
+      .bar1 {
+        fill: steelblue;
+      }
+      .bar2 {
+        fill: orange;
+      }
+      .x.axis path {
+        display: none;
+      }
+    }
+  } // /#graph-wrapper
+  .s-tagcloud {
+    ul {
+      margin-top: 10px;
+      padding: 0 5%;
+      text-align: center;
+      li {
+        display: inline-block;
+        margin-right: 5px;
+        line-height: 35px;
+        span {
+          border: 1px solid gray;
+          border-radius: 18px;
+          padding: 6px 12px;
+          word-break: keep-all;
+          color: gray;
+        }
+      }
+    }
+  }
+  .s-comment {
+    ul {
+      margin-top: 10px;
+      margin-left: 20px;
+      li {
+        list-style: circle;
+        text-indent: -5px;
+        line-height: 20px;
+        a {
+          text-decoration: none;
+          color: @mmBlack;
+        }
+        span {
+          font-size: 10px;
+          color: @mmGray;
+        }
+      }
+    }
+  }
+  ///// /.info-box//////
+
+  ////////////////////////
+  .artworks-box {
+    ul {
+      li {
+        float: left;
+        width: 50%;
+        a {
+          display: block;
+          width: 100%;
+          img {
+            width: 100%;
+          }
+          p {
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+}
+
+/////////////////
+// album_index 앨범앨범앨범
+///////////
+.album-box {
+  margin : 10px ;
+  .album-artworks{
+    column-count: 2;
+    column-gap: 10px;
+    figure {
+      display: inline-block;
+      padding : 4px;
+      border : 0px solid gray;
+      background-color : #fff;
+      margin-bottom : 10px;
+      box-shadow: 0px 2px 4px 0px #ddd;
+      figcaption {
+        text-align: center;
+        text-decoration: none;
+        padding-top : 10px;
+        border-top : 1px solid black;
+        a {
+          text-decoration: none;
+          color : black;
+        }
+      }
+      img {
+        width :100%;
+      }
+    }
+  }
+}

@@ -2,38 +2,64 @@
 
 
 @section('content')
-<div class='a-wrap'>
-    <div class="a-photo-box">
-      <img src="{{ $artwork->photo }}" alt="artwork" class="a-photo">
-      <form class="like-btn" action="{{ route('albums.store') }}" method="POST" enctype="multipart/form-data">
-        {!! csrf_field() !!}
-        <input type="hidden" name="aid" value="{{ $artwork->id }}">
-        <button type="submit" name="button">좋아요</button>
-      </form>
+<div class='a-wrap box-container'>
+  <div class="a-photo-box">
+    <img src="{{ $artwork->photo }}" alt="artwork" class="a-photo">
+    <form class="like-btn" action="{{ route('albums.store') }}" method="POST" enctype="multipart/form-data">
+      {!! csrf_field() !!}
+      <input type="hidden" name="aid" value="{{ $artwork->id }}">
+      <button type="submit" name="button">좋아요</button>
+    </form>
+  </div>
+  <div class="a-info-box">
+    <div class="a-info">
+      <h2 class="a-name">{{ $artwork->name }}</h2>
+      <p class="a-date">{{ $artwork->date }}</p>
+      <p calss=""><span class="a-student-name"><a href="/students/{{ $student->id }}">{{ $student->name }}</a></span> | <span class="a-type"> {{ $type->name }}</span></p>
     </div>
-    <div class="a-info-full">
-      <div class="a-info">
-        <p>작품명 : <span>{{ $artwork->name }}</span>({{ $type->name }})</p>
-        <p>학생이름 : <a href="/students/{{ $student->id }}"<span>{{ $student->name }}</span><a></p>
-        <p><span>@foreach ( $tags as $tag )
-          #{{ $tag->name }}&nbsp;
-        @endforeach</span></p>
-        <p>그린 날짜 : <span>{{ $artwork->date }}</span></p>
+  </div>
+  <div class="section clearfix">
+    <div class="edge-triangle"></div>
+    <div class="box-header">
+      <h2><span class="box-header-icon icon-evaluate"></span>Evaluation</h2>
+    </div>
+    <div class="a-point">
+      <div class="width-half a-engagement">
+        <span>강의 몰입도</span>
+        <p>{{ $artwork->engagement }}</p>
       </div>
-      <div class="a-point">
-        <div class="width-half a-engagement">
-          <p>{{ $artwork->engagement }}</p> <span>몰입도</span>
-        </div>
-        <div class="width-half a-point">
-           <p>{{ $artwork->completeness }}</p> <span>완성도</span>
-        </div>
-      </div>
-      <div class="a-comment-box">
-        <div class="a-comment">
-          {{ $artwork->feedback }}
-        </div>
+      <div class="width-half a-point">
+        <span>학습 난이도</span>
+         <p>{{ $artwork->completeness }}</p>
       </div>
     </div>
+  </div>
+  <div class="section s-tagcloud clearfix">
+    <div class="edge-triangle"></div>
+    <div class="box-header">
+      <h2><span class="box-header-icon icon-tagcloud"></span>Tag Cloud</h2>
+    </div>
+    <ul>
+      @foreach ( $tags as $tag )
+      <li><span>{{ $tag->name }}</span></li>
+    @endforeach
+    </ul>
+  </div>
+  <div class="section clearfix">
+    <div class="edge-triangle"></div>
+    <div class="box-header">
+      <h2><span class="box-header-icon icon-comment"></span>Comment</h2>
+    </div>
+    <div class="a-comment-box">
+      <div class="a-comment">
+        {{ $artwork->feedback }}
+      </div>
+    </div>
+  </div>
+
+
+
+
 </div>
 @endsection
 
