@@ -119,9 +119,9 @@ class StudentsController extends Controller
     public function create()
     {
       $student = new \App\Student;
-      $current_user_course = Auth::user()->course->name;
+      // $current_user_course = Auth::user()->course->name;
       // var_dump($student);
-      return view('students.create', compact('student','current_user_course'));
+      return view('students.create', compact('student'));
     }
 
 
@@ -178,7 +178,6 @@ class StudentsController extends Controller
         'profile_pic' => $profilePicUrl,
         'birth' => $request['birth'],
         'enroll_date' => $request['enroll_date'],
-        'course_id' => $user->course->id,
         'purpose' => $request['purpose'],
         'status' => $request['status'],
         'comment' => $request['comment'],

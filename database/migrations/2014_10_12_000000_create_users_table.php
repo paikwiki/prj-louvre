@@ -20,12 +20,11 @@ class CreateUsersTable extends Migration
           $table->string('password',60);
           $table->string('name');
           $table->string('email')->unique();
-          $table->integer('course_id');
+          $table->string('course');
           $table->rememberToken();
           $table->timestamps();
         });
         Schema::table('users',function ($table){
-          $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
           $table->engine = 'InnoDB';
         });
     }
@@ -37,10 +36,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users',function (Blueprint $table){
-          $table->dropForeign('users_course_id_foreign');
-          $table->dropColumn('course_id');
-        });
         Schema::drop('users');
 
 

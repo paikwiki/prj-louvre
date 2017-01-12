@@ -64,25 +64,17 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $pswd = $data['password'];
-        var_dump($pswd);
+        // var_dump($pswd);
 
         // course_name으로 검색결과 나중에 해봐야지
         // $course_id = Users::where('name', '=', $data['course_name'])->first().id;
 
-        $user = User::create([
+        return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'uid' => $data['uid'],
-            // 'course_id' => $course['id'],
-        ]);
-
-        $course = Course::create([
-          'name'=>$data['course_name'],
-          'user_id'=>$user['id'],
-        ]);
-        $user['course_id'] = $course['id'];
-
-        return $user;
+            'course' => $data['course'],
+        ]);;
     }
 }

@@ -91,9 +91,6 @@
 
 <!--          <input type="textarea" placeholder="메모하세요">-->
         </li>
-        <li class="course-id-box">
-          <label for="course-id">수강반</label><input type="text" id="course-id" name="course_id"  value={{$current_user_course}}>
-        </li>
         <li class="status-box">
           <label>학적 상태</label>
           <label for="yes" class="radiobutton">재학</label>
