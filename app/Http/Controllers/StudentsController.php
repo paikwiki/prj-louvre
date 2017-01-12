@@ -245,7 +245,6 @@ class StudentsController extends Controller
     public function show($id)
     {
         $student = \App\Student::where('id', $id)->first();
-
         // 수강일 구하기
         $attendanceInfo = \App\Attendance::where('student_id', $id)->first();
         $weekdayArr = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
@@ -256,32 +255,25 @@ class StudentsController extends Controller
             array_push($attends, $weekday);
           }
         }
-
         // 강사 이름 구하기
         $user = \App\User::where('id', $student->user_id)->first();
         $userName = $user->name;
-
         // 등록일 구하기
         $startDateTime = $student->enroll_date.' 00:00:00';
         $start = new \DateTime($startDateTime);
         $now = new \DateTime();
         $dDay = date_diff($start, $now)->days;
-        $a=[];
-        // var_dump($dDay);
-
 
         $artworkTypeArr = []; // 작품 유형
         $artworkTagsCounts = []; // 태그별 갯수
         // 작품 가져오기
         $artworks = \App\Artwork::where('student_id', $id)->orderBy('id', 'desc')->get();
-// dd($artworks);
         // 작품이 있는지 확인
         if( count($artworks)>0 )
         { // 작품이 있을 경우!
           $artworkBool = true;
           // 총 작품 수
           $artworksCount = count($artworks);
-
           // 작품 유형 가져오기
           foreach( $artworks as $artwork )
           {
@@ -290,7 +282,6 @@ class StudentsController extends Controller
           $eachTypeCounts = array_count_values($artworkTypeArr);
           arsort($eachTypeCounts);
           $maxType = array_search(max($eachTypeCounts),$eachTypeCounts);
-
           // 지금까지한 태그 구하기
           $tagArr = \App\Tag::get();
           $artworkTagArr = \App\Artwork_tag::get();
@@ -307,11 +298,8 @@ class StudentsController extends Controller
             }
           }
           $artworkTagsUniques = array_unique($artworkTags);
-
-
           // 개별 태그 수 세기
           $eachTagCounts = array_count_values($artworkTags);
-
           // 몰입도와 작품 완성도 평균 구하기
           $engagementSum = 0;
           $engagementAvg = 0;
@@ -322,7 +310,6 @@ class StudentsController extends Controller
             $engagementSum += $artwork->engagement;
             $completenessSum += $artwork->completeness;
           }
-
           // 참여도 평균
           if ( $engagementSum > 0 )
           {
@@ -330,7 +317,6 @@ class StudentsController extends Controller
           } else {
             $engagementAvg = 0;
           }
-
           // 완성도 평균
           if ( $completenessSum > 0 )
           {
@@ -338,15 +324,12 @@ class StudentsController extends Controller
           } else {
             $completenessAvg = 0;
           }
-
           // 그래프
           $graph_data = \App\Artwork::whereStudentId($id)->orderBy('date', 'asc')->get(['id', 'date', 'engagement', 'completeness']);
           foreach ($graph_data as $value) {
             // $year = preg_match("/[0-9]{4}-/", $value['date']);
-
             $value['date']= preg_replace("/[0-9]{4}-/", '', $value['date']);
           }
-
         } else { // 작품이 없을 경우!
           $artworkBool = false;
           $artworks[0] = [];
@@ -403,48 +386,31 @@ class StudentsController extends Controller
     public function update(Request $request, \App\Student $student)
     {
       // var_dump($student->id);
-        // $student=\App\Student::where('id',$id)->get();
-        $student ->update([
-          'name' => $request['name'],
-          'tel' => $request['tel'],
-          'email' => $request['email'],
-          'profile_pic' => $request['profile_pic'],
-          'birth' => $request['birth'],
-          'enroll_date' => $request['enroll_date'],
-          // 'course_id' => $request['course_id'],
-          'purpose' => $request['purpose'],
-          // 'status' => $request['status'],
-          'comment' => $request['comment'],
+      // $student=\App\Student::where('id',$id)->get();
+      $student ->update([
+        'name' => $request['name'],
+        'tel' => $request['tel'],
+        'email' => $request['email'],
+        'profile_pic' => $request['profile_pic'],
+        'birth' => $request['birth'],
+        'enroll_date' => $request['enroll_date'],
+        // 'course_id' => $request['course_id'],
+        'purpose' => $request['purpose'],
+        // 'status' => $request['status'],
+        'comment' => $request['comment'],
 
-        ]);
-        return redirect(route('students.show',$student->id));
-      }
-
+      ]);
+      return redirect(route('students.show',$student->id));
+    }
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
-
     public function destroy(\App\Student $student)
     {
-      /*foreach($student->artwork()->get() as $artwork){
-        foreach($artwork->tag()->get() as $tag){
-
-          $tag->artwork_tag->delete();
-          $tag->delete();
-        }
-        $artwork->delete();
-      }
-        foreach($student->attendance()->get() as $attendance){
-          $attendance->delete();
-        }*/
-
-
         $student->delete();
-
         return redirect('/')->with('message','프로젝트'.$student->name.'이 삭제되었습니다.');
     }
 }
