@@ -3,7 +3,7 @@
 
 @section('content')
 <div class="s-profile clearfix">
-  <div class="profile-artwork" style="background-image: url('{{ $artworks[0]->photo }}');">
+  <div class="profile-artwork" style="background-image: url('https://louvrebucket.s3.amazonaws.com/artworkuploads/{{ $artworks[0]->photo }}');">
     {{--
       <img src="{{ $artworks[0]->photo ? $artworks[0]->photo : "http://placehold.it/96x96"}}" alt="" />
     --}}

@@ -160,8 +160,9 @@ class StudentsController extends Controller
       $target_file = $target_dir . basename($_FILES["profile_pic"]["name"]);
       move_uploaded_file($_FILES["profile_pic"]["tmp_name"], $target_file);
 
+      // dd($_FILES["profile_pic"]["name"] );
       // 사진 경로를 profile_pic에 저장하기
-      if ( isset($_FILES["profile_pic"]["name"]) ) {
+      if( !($_FILES["profile_pic"]["name"]) ) {
         $profilePicUrl = '/pfpic/'.$_FILES["profile_pic"]["name"];
       } else {
         $profilePicUrl = '/pfpic/noimg.png';

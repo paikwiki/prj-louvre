@@ -29,9 +29,9 @@ class CreateMaterialsTable extends Migration
     public function down()
     {
       Schema::table('materials',function (Blueprint $table){
-        $table->dropForeign('artwork_material_material_id_foreign');
+        $table->dropForeign('materials_user_id_foreign');
       });
-      Schema::dropIfExists('types');
+      Schema::dropIfExists('materials');
     }
 
 }

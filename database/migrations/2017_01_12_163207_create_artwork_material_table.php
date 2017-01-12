@@ -34,6 +34,11 @@ class CreateArtworkMaterialTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('artwork_material');
+      Schema::table('artwork_material',function (Blueprint $table){
+        $table->dropForeign('artwork_material_artwork_id_foreign');
+      if (Schema::hastable('materials')){
+        $table->dropForeign('artwork_material_material_id_foreign');}
+      });
+      Schema::dropIfExists('artwork_material');
     }
 }
