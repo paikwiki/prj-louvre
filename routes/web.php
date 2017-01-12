@@ -65,10 +65,28 @@ Route::get('/settings', function () {
     {
       return view('settings.index');
     }
-
     return redirect('users');
 });
 
+// 6-1. tags
+Route::resource('tags', 'ElemEditController');
+Route::resource('types', 'ElemEditController');
+Route::resource('materials', 'ElemEditController');
+
+// Route::get('/tags', function () {
+//     if (auth()->check())
+//     {
+//       $elemType = 'tag';
+//
+//       return view('elemEdit.index', [
+//         'elemType' => $elemType,
+//       ]);
+//     }
+//     return redirect('users');
+// });
+// 6-2. types
+
+// 6-3. materials
 // 7.auth
 Auth::routes();
 

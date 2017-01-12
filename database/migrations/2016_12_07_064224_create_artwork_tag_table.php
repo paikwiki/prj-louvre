@@ -14,17 +14,17 @@ class CreateArtworkTagTable extends Migration
     public function up()
     {
       Schema::disableForeignKeyConstraints();
-        Schema::create('artwork_tag', function (Blueprint $table) {
-            $table->integer('id')->nullable();
-            $table->integer('artwork_id')->unsigned();
-            $table->integer('tag_id')->unsigned();
-        });
-        Schema::table('artwork_tag', function( $table){
-          $table->foreign('artwork_id')->references('id')->on('artworks')->onDelete('cascade');
-          $table->foreign('tag_id')->references('id')->on('tags')->onDelete('cascade');
-          $table->unique(['artwork_id','tag_id']);
-          $table->engine = 'InnoDB';
-        });
+      Schema::create('artwork_tag', function (Blueprint $table) {
+          $table->integer('id')->nullable();
+          $table->integer('artwork_id')->unsigned();
+          $table->integer('tag_id')->unsigned();
+      });
+      Schema::table('artwork_tag', function( $table){
+        $table->foreign('artwork_id')->references('id')->on('artworks')->onDelete('cascade');
+        $table->foreign('tag_id')->references('id')->on('tags')->onDelete('cascade');
+        $table->unique(['artwork_id','tag_id']);
+        $table->engine = 'InnoDB';
+      });
     }
 
     /**

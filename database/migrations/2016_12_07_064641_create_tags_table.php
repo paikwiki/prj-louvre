@@ -13,11 +13,11 @@ class CreateTagsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tags', function (Blueprint $table) {
-            $table->increments('id')->unique;
-            $table->string('name');
-            $table->timestamps();
-        });
+      Schema::create('tags', function (Blueprint $table) {
+        $table->increments('id')->unique;
+        $table->string('name');
+        $table->timestamps();
+      });
     }
 
     /**
@@ -30,6 +30,6 @@ class CreateTagsTable extends Migration
       Schema::table('artwork_tag',function (Blueprint $table){
         $table->dropForeign('artwork_tag_tag_id_foreign');
       });
-        Schema::dropIfExists('tags');
+      Schema::dropIfExists('tags');
     }
 }

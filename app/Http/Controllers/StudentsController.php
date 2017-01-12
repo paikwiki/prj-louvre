@@ -167,16 +167,18 @@ class StudentsController extends Controller
         $profilePicUrl = '/pfpic/noimg.png';
       }
 
+      $user = Auth::user();
+      // dd($user);
       //$student = /App/User::find(Auth::user()->id)->student()->create([
       $student = Auth::user()->student()->create([
         'name' => $request['name'],
         'tel' => $request['tel'],
         'email' => $request['email'],
-        'user_id' => $request['user_id'],
+        'user_id' => $user->id,
         'profile_pic' => $profilePicUrl,
         'birth' => $request['birth'],
         'enroll_date' => $request['enroll_date'],
-        'course_id' => Auth::user()->course->id,
+        'course_id' => $user->course->id,
         'purpose' => $request['purpose'],
         'status' => $request['status'],
         'comment' => $request['comment'],
@@ -212,11 +214,11 @@ class StudentsController extends Controller
       $typecheck = \DB::table('types')->first();
       if (is_null($typecheck)){
         \App\Type::create([
-          'id'=>"1",
-          'name'=>"기타장르",
+          'id' => "1",
+          'name' => "기타장르",
+          'user_id' => $user->id,
         ]);
       }
-
 
       //student를 신규생성할때 artwork가 없으므로 student상세보기를 할수 없기에 임시방편
       \App\Artwork::create([
@@ -232,8 +234,7 @@ class StudentsController extends Controller
         'feedback' => "sample작품입니다.",
       ]);
 
-
-      return redirect('students/'.$student->id)->with('flash_message', '작성하신 글이 저장되었습니다.');
+      return redirect('students/'.$student->id)->with('flash_message', '새로운 학생을 생성했습니다.');
     }
 
     /**

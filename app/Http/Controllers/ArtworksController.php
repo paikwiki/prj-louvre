@@ -173,6 +173,7 @@ class ArtworksController extends Controller
           return back()->withErrors($validator)->withInput();
         }
 
+
         // 사진 경로 따고 옮기기
         $url = $_FILES["photo"]["tmp_name"];
         $target_dir = "files/";
@@ -183,7 +184,7 @@ class ArtworksController extends Controller
         if ( isset($_FILES["photo"]["name"]) ) {
           $photoUrl = '/files/'.$_FILES["photo"]["name"];
         } else {
-          $profilePicUrl = '/files/noimg.png';
+          $photoUrl = '/files/noimg.png';
         }
 
         $artwork = \App\Artwork::create([

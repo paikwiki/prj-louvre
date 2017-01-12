@@ -15,20 +15,19 @@ class CreateUsersTable extends Migration
     {
         Schema::disableForeignKeyConstraints();
         Schema::create('users', function (Blueprint $table) {
-            $table->increments('id')->unique();
-            $table->string('uid');
-            $table->string('password',60);
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->integer('course_id')->unsigned();
-            $table->rememberToken();
-            $table->timestamps();
-
+          $table->increments('id')->unique();
+          $table->string('uid');
+          $table->string('password',60);
+          $table->string('name');
+          $table->string('email')->unique();
+          $table->integer('course_id');
+          $table->rememberToken();
+          $table->timestamps();
         });
         Schema::table('users',function ($table){
-                $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
-                $table->engine = 'InnoDB';
-              });
+          $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
+          $table->engine = 'InnoDB';
+        });
     }
 
     /**

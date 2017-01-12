@@ -67,15 +67,22 @@ class RegisterController extends Controller
         var_dump($pswd);
 
         // course_name으로 검색결과 나중에 해봐야지
-        //$course_id = Users::where('name', '=', $data['course_name'])->first().id;
-        $course = Course::create(['name'=>$data['course_name'],]);
+        // $course_id = Users::where('name', '=', $data['course_name'])->first().id;
 
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'uid' => $data['uid'],
-            'course_id' => $course['id'],
+            // 'course_id' => $course['id'],
         ]);
+
+        $course = Course::create([
+          'name'=>$data['course_name'],
+          'user_id'=>$user['id'],
+        ]);
+        $user['course_id'] = $course['id'];
+
+        return $user;
     }
 }

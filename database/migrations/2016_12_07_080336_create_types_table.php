@@ -16,6 +16,7 @@ class CreateTypesTable extends Migration
         Schema::create('types', function (Blueprint $table) {
             $table->increments('id')->unique();
             $table->string('name');
+            $table->string('user_id')->references('id')->on('user')->onDelete('cascade');
             $table->timestamps();
         });
     }
