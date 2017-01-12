@@ -1,8 +1,12 @@
 <?php
 namespace App\Http\Controllers;
 
+use Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Contracts\Filesystem\Filesystem;
+use Illuminate\Support\Facades\Storage;
+
 class ArtworksController extends Controller
 {
     public function __construct()
@@ -155,7 +159,7 @@ class ArtworksController extends Controller
         }
           $sum_result=count($result_n)+count($result_d)+count($result_tg)+count($result_tp);
         return view('artworks.serchresult', [
-            'result_n' => $result_n,
+          'result_n' => $result_n,
           'result_d' => $result_d,
           'result_tp' => $result_tp,
           'result_tg' => $result_tg,
@@ -163,11 +167,27 @@ class ArtworksController extends Controller
           'op_val' => $op_val,
         ]);
       }
+
+
+
+
+
+
+      $imageFileName = time() . '.' . basename($_FILES["photo"]["name"]);
+      $s3 = \Storage::disk('s3');
+      $photoPath = '/artworkuploads/' . $imageFileName;
+      $s3->put($photoPath, file_get_contents($_FILES["photo"]["tmp_name"]), 'public');
+      //$photoUrl=\Storage::url($imageFileName);
+      //$photo = Storage::disk('s3')->get($photoPath);
+
+
+  /**file시도주석2
         $rules = [
           'name' => 'required',
           'files' => ['array'],
           'files.*' => ['mimes:jpg,jpeg,png,bmp,gif', 'max:30000'],
         ];
+
         $validator = \Validator::make($request->all(), $rules);
         if ($validator->fails()) {
           return back()->withErrors($validator)->withInput();
@@ -175,7 +195,7 @@ class ArtworksController extends Controller
 
 
         // 사진 경로 따고 옮기기
-        $url = $_FILES["photo"]["tmp_name"];
+       $url = $_FILES["photo"]["tmp_name"];
         $target_dir = "files/";
         $target_file = $target_dir . basename($_FILES["photo"]["name"]);
         move_uploaded_file($_FILES["photo"]["tmp_name"], $target_file);
@@ -187,9 +207,11 @@ class ArtworksController extends Controller
           $photoUrl = '/files/noimg.png';
         }
 
+        **/
+
         $artwork = \App\Artwork::create([
           // 'photo' => $request['photo'],
-          'photo' => $photoUrl,
+          'photo' => $imageFileName,
           'name' => $request['name'],
           'date' => $request['date'],
           'type_id' => $request['type_id'],
@@ -214,13 +236,17 @@ class ArtworksController extends Controller
           return back()->with('flash_message', '작품이 저장되지 않았습니다.')->withInput();
         }
         return redirect('artworks/'.$artwork->id)->with('flash_message', '작품이 저장됐습니다.');
+
+
     }
+
     /**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
      public function show($id)
      {
          if ((int)$id)
@@ -229,6 +255,7 @@ class ArtworksController extends Controller
              $type = \App\Type::whereId($artwork->type_id)->first();
              $student = \App\Student::whereId($artwork->student_id)->first();
              $artworkTagObjArr= \App\Artwork_tag::where('artwork_id', $id)->get();
+
              if (is_null($artworkTagObjArr->first())){
                $tags = [];
                array_push($tags, \App\Tag::create([
@@ -236,12 +263,14 @@ class ArtworksController extends Controller
                  'name'=>"기타태그",
                ]));
              }
+
              $tagIdArr = []; //tag 찍기
              foreach ($artworkTagObjArr as $key=>$artworkTagObj) {
                $tagIdArr[$key] = $artworkTagObj->tag_id;
               //  var_dump($key .' / '. $tagIdArr[$key]);
                $tags[$key] = \App\Tag::whereId($tagIdArr[$key])->first();
                }
+
 
            return view('artworks.show', [
              'artwork' => $artwork,
