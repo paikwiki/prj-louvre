@@ -160,9 +160,8 @@ class StudentsController extends Controller
       $target_file = $target_dir . basename($_FILES["profile_pic"]["name"]);
       move_uploaded_file($_FILES["profile_pic"]["tmp_name"], $target_file);
 
-      // dd($_FILES["profile_pic"]["name"] );
       // 사진 경로를 profile_pic에 저장하기
-      if( !($_FILES["profile_pic"]["name"]) ) {
+      if( strlen($_FILES["profile_pic"]["name"])>0 ) {
         $profilePicUrl = '/pfpic/'.$_FILES["profile_pic"]["name"];
       } else {
         $profilePicUrl = '/pfpic/noimg.png';
@@ -211,28 +210,28 @@ class StudentsController extends Controller
 
 
       //type 테이블에 아무 값도 없을 시 null참조error 임시방편용
-      $typecheck = \DB::table('types')->first();
-      if (is_null($typecheck)){
-        \App\Type::create([
-          'id' => "1",
-          'name' => "기타장르",
-          'user_id' => $user->id,
-        ]);
-      }
+      // $typecheck = \App\Type::whereUserId($user->id)->first();
+      // dd($typecheck->id);
+      // if ($typecheck->id > 0){
+      //   \App\Type::create([
+      //     'name' => "기타장르",
+      //     'user_id' => $user->id,
+      //   ]);
+      // }
 
       //student를 신규생성할때 artwork가 없으므로 student상세보기를 할수 없기에 임시방편
-      \App\Artwork::create([
-        // 'photo' => $request['photo'],
-        'photo' => "http://www.pacinno.eu/wp-content/uploads/2014/05/placeholder1.png",
-        'name' => "sample작품",
-        'date' => Carbon::now(),
-        'type_id' => 1,
-        'student_id' => $student->id,
-        'size' => "0호",
-        'engagement' => 10,
-        'completeness' => 10,
-        'feedback' => "sample작품입니다.",
-      ]);
+      // \App\Artwork::create([
+      //   // 'photo' => $request['photo'],
+      //   'photo' => "http://www.pacinno.eu/wp-content/uploads/2014/05/placeholder1.png",
+      //   'name' => "sample작품",
+      //   'date' => Carbon::now(),
+      //   'type_id' => 1,
+      //   'student_id' => $student->id,
+      //   'size' => "0호",
+      //   'engagement' => 10,
+      //   'completeness' => 10,
+      //   'feedback' => "sample작품입니다.",
+      // ]);
 
       return redirect('students/'.$student->id)->with('flash_message', '새로운 학생을 생성했습니다.');
     }
@@ -270,148 +269,101 @@ class StudentsController extends Controller
         $a=[];
         // var_dump($dDay);
 
+
+        $artworkTypeArr = []; // 작품 유형
+        $artworkTagsCounts = []; // 태그별 갯수
         // 작품 가져오기
         $artworks = \App\Artwork::where('student_id', $id)->orderBy('id', 'desc')->get();
+// dd($artworks);
+        // 작품이 있는지 확인
+        if( count($artworks)>0 )
+        { // 작품이 있을 경우!
+          $artworkBool = true;
+          // 총 작품 수
+          $artworksCount = count($artworks);
 
-
-        //최근 작품
-        $artwork_recent=\App\Artwork::where('student_id', $id)->orderBy('id', 'desc')->first();
-        //많이 그린 작품
-        // $typesmany=\App\Type::get();
-        // foreach($typesmany as $typesman)
-        // {
-        //   for($i=1;$i<=count($typesman);$i++)
-        //   {
-        //     if($typesman->id==$i)
-        //     {
-        //       $a[$i]++;
-        //     }
-        //   }
-        // }
-        // for($i=1; $i <= count($a); $i++)
-        // {
-        //   for($j=1; $j <= count($a); $j++)
-        //   {
-        //     if(max($a[$i]=$j))
-        //     {
-        //       $k=$j;
-        //     }
-        //   }
-        // }
-        // foreach($typeman as $typema)
-        // {
-        //   if($typema->id == $k)
-        //   {
-        //     $type=$typema->name;
-        //   }
-        // }
-
-
-        // 총 작품 수 구하기
-        $artworksCount = count($artworks);
-        // var_dump($artworksCount);
-
-        // 작품 유형 가져오기
-        $artworkTypeArr = [];
-        foreach( $artworks as $artwork )
-        {
-          array_push($artworkTypeArr, $artwork->type->name);
-        }
-
-        $eachTypeCounts = array_count_values($artworkTypeArr);
-        arsort($eachTypeCounts);
-        // dd($eachTypeCounts);
-
-        $maxType = array_search(max($eachTypeCounts),$eachTypeCounts);
-        // var_dump(array_pop($eachTypeCounts));
-        // dd($eachTypeCounts);
-        // $test = ['a'=>1,'b'=>5,'c'=>5];
-        // dd(array_search(max($test),$test));
-
-        // 지금까지한 태그 구하기
-        $tagArr = \App\Tag::get();
-        $artworkTagArr = \App\Artwork_tag::get();
-        $artworkTags = [];
-        foreach( $artworkTagArr as $artworkTag )
-        {
+          // 작품 유형 가져오기
           foreach( $artworks as $artwork )
           {
-            if( $artworkTag->artwork_id == $artwork->id )
+            array_push($artworkTypeArr, $artwork->type->name);
+          }
+          $eachTypeCounts = array_count_values($artworkTypeArr);
+          arsort($eachTypeCounts);
+          $maxType = array_search(max($eachTypeCounts),$eachTypeCounts);
+
+          // 지금까지한 태그 구하기
+          $tagArr = \App\Tag::get();
+          $artworkTagArr = \App\Artwork_tag::get();
+          $artworkTags = [];
+          foreach( $artworkTagArr as $artworkTag )
+          {
+            foreach( $artworks as $artwork )
             {
-              // var_dump($tagArr->where('id', $artworkTag->tag_id)->first()->name);
-              array_push($artworkTags, $tagArr->where('id', $artworkTag->tag_id)->first()->name);
+              if( $artworkTag->artwork_id == $artwork->id )
+              {
+                // var_dump($tagArr->where('id', $artworkTag->tag_id)->first()->name);
+                array_push($artworkTags, $tagArr->where('id', $artworkTag->tag_id)->first()->name);
+              }
             }
           }
-        }
-        $artworkTagsUniques = array_unique($artworkTags);
-        $artworkTagsCounts = [];
-        // var_dump($artworkTagsUniques);
+          $artworkTagsUniques = array_unique($artworkTags);
 
-        // 개별 태그 수 세기
-        $eachTagCounts = array_count_values($artworkTags);
 
-        // 몰입도와 작품 완성도 평균 구하기
-        $engagementSum = 0;
-        $engagementAvg = 0;
-        $completenessSum = 0;
-        $completenessAvg = 0;
-        foreach( $artworks as $artwork )
-        {
-          $engagementSum += $artwork->engagement;
-          $completenessSum += $artwork->completeness;
-        }
+          // 개별 태그 수 세기
+          $eachTagCounts = array_count_values($artworkTags);
 
-        // 참여도 평균
-        if ( $engagementSum > 0 )
-        {
-          $engagementAvg = round($engagementSum/count($artworks), 2);
-        } else {
+          // 몰입도와 작품 완성도 평균 구하기
+          $engagementSum = 0;
           $engagementAvg = 0;
-        }
-
-        // 완성도 평균
-        if ( $completenessSum > 0 )
-        {
-          $completenessAvg = round($completenessSum/count($artworks), 2);
-        } else {
+          $completenessSum = 0;
           $completenessAvg = 0;
+          foreach( $artworks as $artwork )
+          {
+            $engagementSum += $artwork->engagement;
+            $completenessSum += $artwork->completeness;
+          }
+
+          // 참여도 평균
+          if ( $engagementSum > 0 )
+          {
+            $engagementAvg = round($engagementSum/count($artworks), 2);
+          } else {
+            $engagementAvg = 0;
+          }
+
+          // 완성도 평균
+          if ( $completenessSum > 0 )
+          {
+            $completenessAvg = round($completenessSum/count($artworks), 2);
+          } else {
+            $completenessAvg = 0;
+          }
+
+          // 그래프
+          $graph_data = \App\Artwork::whereStudentId($id)->orderBy('date', 'asc')->get(['id', 'date', 'engagement', 'completeness']);
+          foreach ($graph_data as $value) {
+            // $year = preg_match("/[0-9]{4}-/", $value['date']);
+
+            $value['date']= preg_replace("/[0-9]{4}-/", '', $value['date']);
+          }
+
+        } else { // 작품이 없을 경우!
+          $artworkBool = false;
+          $artworks[0] = [];
+          $artworksCount = 0;
+          $eachTypeCounts = 0;
+          $eachTagCounts = 0;
+          $maxType = '';
+          $engagementAvg = 0;
+          $completenessAvg = 0;
+          $graph_data = "[]";
         }
 
-        // // 그래프
-        // $studentData = [];
-        // $student1 = array("date" => "1/2", "engagement" =>	10, "difficulty" =>	3);
-        // $student2 = array("date" => "1/4", "engagement" =>	7, "difficulty" =>	5);
-        // $student3 = array("date" => "1/8", "engagement" =>	3, "difficulty" =>	9);
-        //
-        // // 3명의 정보를 memberData변수에 저장
-        // array_push($studentData, $student1);
-        // array_push($studentData, $student2);
-        // array_push($studentData, $student3);
-        //
-        // // 3명의 데이터가 JSON Array 문자열로 변환됨
-        // $graph_data = json_encode($studentData);
-        // // $graph_data = '{"test": "123", "test2": "456"}';
-
-
-        // $graph_data = [];
-        // $artwork01 = array(
-        //   "date" => $artworks[0]->date,
-        //   "engagement" => $artworks[0]->engagement,
-        //   "completeness" => $artworks[0]->completeness,
-        // );
-        // array_push($graph_data, $artwork01);
-
-        // $graph_data = \App\Artwork::where('student_id', $id)->orderBy('id', 'desc')->get()->toJson();
-        $graph_data = \App\Artwork::whereStudentId($id)->orderBy('date', 'asc')->get(['id', 'date', 'engagement', 'completeness']);
-        foreach ($graph_data as $value) {
-          // $year = preg_match("/[0-9]{4}-/", $value['date']);
-
-          $value['date']= preg_replace("/[0-9]{4}-/", '', $value['date']);
-        }
-        // dd($graph_data);
-
+        //최근 작품
+        $artwork_recent = $artworks[0];
 
         return view('students.show', [
+          'artworkBool' => $artworkBool,
           'student' => $student,
           'attends' => $attends,
           'userName' => $userName,

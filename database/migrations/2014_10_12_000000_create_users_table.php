@@ -28,7 +28,6 @@ class CreateUsersTable extends Migration
           $table->engine = 'InnoDB';
         });
     }
-
     /**
      * Reverse the migrations.
      *
