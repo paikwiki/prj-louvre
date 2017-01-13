@@ -20,6 +20,16 @@
   <h2>최근검색어</h2>
   <ul>
     <li>
+      <p>최근 검색어 보기 기능은 준비중이에요.</p>
+    </li>
+  </ul>
+</div>
+
+{{-- 최근검색어 레이아웃만 잡아둠. 주석처리!
+<div class="search-recent">
+  <h2>최근검색어</h2>
+  <ul>
+    <li>
       <a href="">
         <span class="item-name">유웅기</span>
       </a>
@@ -66,6 +76,8 @@
     </li>
   </ul>
 </div>
+--}}
+
 @endsection
 
 @section('footer')

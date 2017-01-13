@@ -169,10 +169,6 @@ class ArtworksController extends Controller
         ]);
       }
 
-
-
-
-
       if(strlen($_FILES["photo"]["name"])>0)
       {
         $imageFileName = time() . '.' . basename($_FILES["photo"]["name"]);

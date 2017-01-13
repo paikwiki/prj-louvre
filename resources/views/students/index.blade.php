@@ -1,21 +1,29 @@
 @extends('layouts.master')
 
 @section('content')
-
-
 <div class="students students-today">
-  <h2>오늘의 수강생! -
-    @if($weekdayOfToday=='mon' )월 @endif
-    @if($weekdayOfToday=='tue' )화 @endif
-    @if($weekdayOfToday=='wed' )수 @endif
-    @if($weekdayOfToday=='thu' )목 @endif
-    @if($weekdayOfToday=='fri' )금 @endif
-    @if($weekdayOfToday=='sat' )토 @endif
-    @if($weekdayOfToday=='sun' )일 @endif
- </h2>
+  <h2>오늘의 정보</h2>
   <ul class="clearfix">
+    <li class="students-info clearfix">
+      <div class="today">
+        <p>{{ $localizedToday }}</p>
+        <p>
+          @if( $weekdayOfToday=='mon' )월요일@endif
+          @if( $weekdayOfToday=='tue' )화요일@endif
+          @if( $weekdayOfToday=='wed' )수요일@endif
+          @if( $weekdayOfToday=='thu' )목요일@endif
+          @if( $weekdayOfToday=='fri' )금요일@endif
+          @if( $weekdayOfToday=='sat' )토요일@endif
+          @if( $weekdayOfToday=='sun' )일요일@endif
+        </p>
+      </div>
+      <div class="student-count">
+        <p>오늘의 수강생</p>
+        <p>{{ count($todayStudents) }}명</p>
+      </div>
+    </li>
     @if( empty($todayStudents) )
-      <li class="clearfix">오늘의 수강생이 없습니다.</li>
+      <li><p class="empty-alert">오늘의 수강생이 없습니다.</p></li>
     @else
       @foreach( $todayStudents as $todayStudent)
         @if($todayStudent) <!--null값 때문에 에러나서 if문추가한거임 -수지- -->
@@ -52,9 +60,9 @@
 <div class="students students-all clearfix">
   <h2>수강생 전체 목록</h2>
   <ul class="clearfix">
-    @if( empty($students) )
-      <li>등록된 수강생이 없습니다.</li>
-      <li><a href="/students/create">수강생 등록하러 가기</a></li>
+    @if( count($students) == 0 )
+      <li><p class="empty-alert">등록된 수강생이 없습니다.</p></li>
+      <li><p class="empty-alert"><a href="/students/create">수강생 등록하러 가기</a></p></li>
     @else
       @foreach( $students as $student)
         <li class="clearfix">

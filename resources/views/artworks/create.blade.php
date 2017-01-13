@@ -49,16 +49,15 @@
           <div id="output"></div>
         </li>
         <li class="tags-box">
-          @foreach ( $tags as $key=>$tag )
-            <input type="checkbox" id="tag{{ $key+1 }}" name="tag{{ $key+1 }}"><label for="tag{{ $key+1 }}"><span>{{ $tag->name }}</span></label>
-          @endforeach
+          @if( count($tags)>0 )
+            @foreach ( $tags as $tag )
+              <input type="checkbox" id="tag{{ $tag->id }}" name="tag{{ $tag->id }}"><label for="tag{{ $tag->id }}"><span>{{ $tag->name }}</span></label>
+            @endforeach
+          @else
+            <p class="empty-alert">생성한 태그가 없습니다.</p>
+          @endif
+
         </li>
-        {{-- 새로운 태그 기능 잠시 막아둠
-        <li>
-          <label for="tags">새로운 태그</label>
-          <input type="text" id="tags" name="tags"><span>(콤마로 구분)</span>
-        </li>
-        --}}
         <li class="feedback-box">
           <!-- <label for="feedback">코멘트</label> -->
           <input type="textarea" id="feedback" name="feedback" class="feedback" placeholder="코멘트">
@@ -71,6 +70,23 @@
       <div class="edge-triangle">
       </div>
     </div> <!-- /.write-box -->
+  </form>
+  <form class="a-add" action="{{ route('elemedit.store') }}" method="POST">
+    <div class="write-box">
+      <ul>
+        <li>
+          {!! csrf_field() !!}
+          <label for="new-elem">태그 생성</label>
+          <input type="text" name="new_elem" id="new-elem" class="new-elem" value="">
+          <input type="hidden" name="new_elem_type" class="new-elem-type" value="태그">
+          <button type="submit"><span class="icon-submit"></span>저장</button>
+
+        </li>
+        <li>지금 태그를 생성하면 입력하던 게 사라집니다!</li>
+        <li>태그 이름에 공백을 쓸 수 없습니다.</li>
+        <li>콤마로 구분해서 입력하면 여러 개의 태그 추가가 가능합니다.</li>
+      </ul>
+    </div>
   </form>
   @else
   <div class='write-box'>

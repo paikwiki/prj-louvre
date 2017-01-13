@@ -98,8 +98,8 @@ class StudentsController extends Controller
         $birthday = substr($birthTemp,-5);
         array_push($birthdayArr, $birthday);
       }
-      $today=date("m-d");
-
+      $today = date("m-d");
+      $localizedToday = date("n"."월 "."j"."일"); // 0월 0일
 
       return view('students.index', [
         'students' => $students,
@@ -108,6 +108,7 @@ class StudentsController extends Controller
         'attendances' => $attendances,
         'birthdayArr' => $birthdayArr,
         'today' => $today,
+        'localizedToday' => $localizedToday,
       ]);
     }
 

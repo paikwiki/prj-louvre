@@ -3,7 +3,7 @@
 @section('content')
 <div class="settings settings-elem">
   <h2>{{ $targetElemType }} 관리</h2>
-  <h3>등록된 {{ $targetElemType }} 목록</h3>
+  <h3>http://geonsaem.vdoob.gethompy.com/users{{ $targetElemType }} 목록</h3>
   <ul>
     @if( count($targetElemArr)>0 )
       @foreach( $targetElemArr as $targetElem )
