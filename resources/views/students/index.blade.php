@@ -52,43 +52,48 @@
 <div class="students students-all clearfix">
   <h2>수강생 전체 목록</h2>
   <ul class="clearfix">
-    @foreach( $students as $student)
-      <li class="clearfix">
-        <div class="photo-box"><a href="/students/{{ $student->id }}"><img src="{{ $student->profile_pic ? $student->profile_pic : 'http://placehold.it/50x50' }}"></a></div>
-        <div class="info-box">
-          <a href="/students/{{ $student->id }}">{{ $student->name }}</a>
-          <p>
-            @foreach ($attendances as $attendance)
-              @if( $attendance->student_id == $student->id )
-                @if( $attendance->mon ==1 )<span>월</span>@endif
-                @if($attendance->tue==1)<span>화</span>@endif
-                @if($attendance->wed==1)<span>수</span>@endif
-                @if($attendance->thu==1)<span>목</span>@endif
-                @if($attendance->fri==1)<span>금</span>@endif
-                @if($attendance->sat==1)<span>토</span>@endif
-                @if($attendance->sun==1)<span>일</span>@endif
-              @endif
-            @endforeach
-        </p>
-        @if(substr($student->birth,-5)==$today)
-        <p>생일축하^^</p>
-        @endif
-        <div class="student-delete-box">
-          <a href="{{route('students.destroy', $student->id)}}">삭제</a>
-        </div>
-        <div class="student-delete-box">
-          <form method="POST" action="{{route('students.destroy', $student->id)}}">
-            {{ csrf_field()}}
-            {{method_field('DELETE')}}
-            <button type="submit" class="btn btn-danger">삭제</button>
-          </form>
-        </div>
-        </div>
-        <div class="call-box">
-          <a href="tel://{{ $student->tel }}">Call</a>
-        </div>
-      </li>
-    @endforeach
+    @if( empty($todayStudents) )
+      <li>등록된 수강생이 없습니다.</li>
+      <li><a href="/students/create">수강생 등록하러 가기</a></li>
+    @else
+      @foreach( $students as $student)
+        <li class="clearfix">
+          <div class="photo-box"><a href="/students/{{ $student->id }}"><img src="{{ $student->profile_pic ? $student->profile_pic : 'http://placehold.it/50x50' }}"></a></div>
+          <div class="info-box">
+            <a href="/students/{{ $student->id }}">{{ $student->name }}</a>
+            <p>
+              @foreach ($attendances as $attendance)
+                @if( $attendance->student_id == $student->id )
+                  @if( $attendance->mon ==1 )<span>월</span>@endif
+                  @if($attendance->tue==1)<span>화</span>@endif
+                  @if($attendance->wed==1)<span>수</span>@endif
+                  @if($attendance->thu==1)<span>목</span>@endif
+                  @if($attendance->fri==1)<span>금</span>@endif
+                  @if($attendance->sat==1)<span>토</span>@endif
+                  @if($attendance->sun==1)<span>일</span>@endif
+                @endif
+              @endforeach
+          </p>
+          @if(substr($student->birth,-5)==$today)
+          <p>생일축하^^</p>
+          @endif
+          <div class="student-delete-box">
+            <a href="{{route('students.destroy', $student->id)}}">삭제</a>
+          </div>
+          <div class="student-delete-box">
+            <form method="POST" action="{{route('students.destroy', $student->id)}}">
+              {{ csrf_field()}}
+              {{method_field('DELETE')}}
+              <button type="submit" class="btn btn-danger">삭제</button>
+            </form>
+          </div>
+          </div>
+          <div class="call-box">
+            <a href="tel://{{ $student->tel }}">Call</a>
+          </div>
+        </li>
+      @endforeach
+    @endif
   </ul>
 </div>
 <div class="student-add-box">

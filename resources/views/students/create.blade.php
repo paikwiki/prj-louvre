@@ -88,13 +88,11 @@
         </li>
         <li class="comment-box">
           <label for="comment">메모</label><textarea cols="52" rows= "4"id="comment" name="comment" value="{{ old('comment') }}"></textarea>
-
-<!--          <input type="textarea" placeholder="메모하세요">-->
         </li>
         <li class="status-box">
           <label>학적 상태</label>
           <label for="yes" class="radiobutton">재학</label>
-          <input type="radio" id="yes" name="status" value="재학" >
+          <input type="radio" id="yes" name="status" value="재학" checked>
           <label for="no" class="radiobutton">휴학</label>
           <input type="radio" id="no" name="status" value="휴학">
         </li>
