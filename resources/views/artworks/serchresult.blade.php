@@ -16,7 +16,8 @@
   <div class="search-result-artworks">
     @foreach( $result_n as $result_name )
       <figure class="a-item">
-        <a href="/artworks/{{ $result_name->id }}"><img src="{{ $result_name->photo }}" alt=""></a>
+        <a href="/artworks/{{ $result_name->id }}"><img src="https://louvrebucket.s3.amazonaws.com/artworkuploads/{{$result_name->photo}}" alt="artwork" class="a-photo">
+        </a>
         <figcaption>
           <ul>
             <li><a href="/artworks/{{ $result_name->id }}">{{ $result_name->name }}</a></li>

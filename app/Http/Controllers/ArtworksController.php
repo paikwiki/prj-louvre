@@ -314,6 +314,17 @@ class ArtworksController extends Controller
      */
     public function update(Request $request, $id)
     {
+      if(strlen($_FILES["photo"]["name"])>0)
+      {
+        $imageFileName = time() . '.' . basename($_FILES["photo"]["name"]);
+        $s3 = \Storage::disk('s3');
+        $photoPath = '/artworkuploads/' . $imageFileName;
+        $s3->put($photoPath, file_get_contents($_FILES["photo"]["tmp_name"]), 'public');
+        //$photoUrl=\Storage::url($imageFileName);
+        //$photo = Storage::disk('s3')->get($photoPath);
+      } else {
+        dd('사진이 없는 경우 에러처리 해야함-StudentsController');
+      }
         //
     }
     /**
