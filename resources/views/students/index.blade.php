@@ -20,7 +20,12 @@
       @foreach( $todayStudents as $todayStudent)
         @if($todayStudent) <!--null값 때문에 에러나서 if문추가한거임 -수지- -->
           <li class="clearfix">
-            <div class="photo-box"><a href="/students/{{ $todayStudent->id }}"><img src="{{ $todayStudent->profile_pic ? $todayStudent->profile_pic : 'http://placehold.it/50x50' }}" alt="" class="photo"></a></div>
+            @if($todayStudent->profile_pic)
+              <div class="photo-box"><a href="/students/{{ $todayStudent->id }}"><img src="https://louvrebucket.s3.amazonaws.com/studentuploads/{{$todayStudent->profile_pic}}" alt="" class="photo"></a></div>
+            @else
+              <div class="photo-box"><a href="/students/{{ $todayStudent->id }}"><img src="http://placehold.it/50x50" alt="" class="photo"></a></div>
+            @endif
+            <div class="photo-box"><a href="/students/{{ $todayStudent->id }}"><img src=$profile_pic alt="" class="photo"></a></div>
             <div class="info-box">
               <a href="/students/{{ $todayStudent->id }}">{{ $todayStudent->name }} </a>
               <p>

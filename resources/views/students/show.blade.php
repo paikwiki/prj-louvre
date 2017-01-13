@@ -4,7 +4,7 @@
 
   <div class="s-profile clearfix">
     @if($artworkBool)
-      <div class="profile-artwork" style="background-image: url('https://louvrebucket.s3.amazonaws.com/artworkuploads/{{ $artwork_recent['photo'] }}');">
+      <div class="profile-artwork" style="background-image: url('https://louvrebucket.s3.amazonaws.com/studentuploads/{{ $artwork_recent['photo'] }}');">
       </div>
     @else
     <div class="profile-artwork" style="background-image: url('http://placehold.it/460x250');">
@@ -12,7 +12,7 @@
     @endif
     <div class="profile-div">
         <div class="profile-pic-box">
-          <img src="{{ $student->profile_pic }}" alt="" class="profile-pic">
+          <img src="https://louvrebucket.s3.amazonaws.com/studentuploads/{{$student->profile_pic}}" alt="student" class="a-photo">
         </div>
     </div>
     <div class="student-info-box">

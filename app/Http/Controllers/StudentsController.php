@@ -155,18 +155,17 @@ class StudentsController extends Controller
       }
 
       // 사진 경로 따고 옮기기
-      $url = $_FILES["profile_pic"]["tmp_name"];
-      $target_dir = "pfpic/";
-      $target_file = $target_dir . basename($_FILES["profile_pic"]["name"]);
-      move_uploaded_file($_FILES["profile_pic"]["tmp_name"], $target_file);
-
-      // 사진 경로를 profile_pic에 저장하기
-      if( strlen($_FILES["profile_pic"]["name"])>0 ) {
-        $profilePicUrl = '/pfpic/'.$_FILES["profile_pic"]["name"];
+      if(strlen($_FILES["profile_pic"]["name"])>0)
+      {
+        $imageFileName = time() . '.' . basename($_FILES["profile_pic"]["name"]);
+        $s3 = \Storage::disk('s3');
+        $photoPath = '/studentuploads/' . $imageFileName;
+        $s3->put($photoPath, file_get_contents($_FILES["profile_pic"]["tmp_name"]), 'public');
+        //$photoUrl=\Storage::url($imageFileName);
+        //$photo = Storage::disk('s3')->get($photoPath);
       } else {
-        $profilePicUrl = '/pfpic/noimg.png';
+        dd('사진이 없는 경우 에러처리 해야함-StudentsController');
       }
-
       $user = Auth::user();
       // dd($user);
       //$student = /App/User::find(Auth::user()->id)->student()->create([
@@ -175,7 +174,7 @@ class StudentsController extends Controller
         'tel' => $request['tel'],
         'email' => $request['email'],
         'user_id' => $user->id,
-        'profile_pic' => $profilePicUrl,
+        'profile_pic' => $imageFileName,
         'birth' => $request['birth'],
         'enroll_date' => $request['enroll_date'],
         'purpose' => $request['purpose'],
@@ -371,9 +370,20 @@ class StudentsController extends Controller
      */
     public function edit(\App\Student $student)
     {
-        $current_user_course = Auth::user()->course->name;
-        return view('students.edit', compact('student','current_user_course'));
+
+      $attendValueArr = [];
+
+      $attendValueArr[0] = $student->attendance()->first()->sun;
+      $attendValueArr[1] = $student->attendance()->first()->mon;
+      $attendValueArr[2] = $student->attendance()->first()->tue;
+      $attendValueArr[3] = $student->attendance()->first()->wed;
+      $attendValueArr[4] = $student->attendance()->first()->thu;
+      $attendValueArr[5] = $student->attendance()->first()->fri;
+      $attendValueArr[6] = $student->attendance()->first()->sat;
+
+        return view('students.edit', compact('student', 'attendValueArr'));
         // var_dump($student);
+
     }
 
     /**
@@ -387,11 +397,25 @@ class StudentsController extends Controller
     {
       // var_dump($student->id);
       // $student=\App\Student::where('id',$id)->get();
+      if(strlen($_FILES["profile_pic"]["name"])>0)
+      {
+        $imageFileName = time() . '.' . basename($_FILES["profile_pic"]["name"]);
+        $s3 = \Storage::disk('s3');
+        $photoPath = '/studentuploads/' . $imageFileName;
+        $s3->put($photoPath, file_get_contents($_FILES["profile_pic"]["tmp_name"]), 'public');
+        //$photoUrl=\Storage::url($imageFileName);
+        //$photo = Storage::disk('s3')->get($photoPath);
+      } else {
+        dd('사진이 없는 경우 에러처리 해야함-StudentsController');
+      }
+
+
+
       $student ->update([
         'name' => $request['name'],
         'tel' => $request['tel'],
         'email' => $request['email'],
-        'profile_pic' => $request['profile_pic'],
+        'profile_pic' => $imageFileName,
         'birth' => $request['birth'],
         'enroll_date' => $request['enroll_date'],
         // 'course_id' => $request['course_id'],
@@ -400,6 +424,36 @@ class StudentsController extends Controller
         'comment' => $request['comment'],
 
       ]);
+
+
+      // 요일
+      $weekdayNameArr = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+      $attendValueArr = [];
+      foreach( $weekdayNameArr as $key=>$weekdayName )
+      {
+        if( $request[$weekdayName] == 'on' )
+        {
+          $attendValueArr[$key] = 1;
+        } else {
+          $attendValueArr[$key] = 0;
+        }
+      }
+      $student->attendance()->update([
+        'sun' => $attendValueArr[0],
+        'mon' => $attendValueArr[1],
+        'tue' => $attendValueArr[2],
+        'wed' => $attendValueArr[3],
+        'thu' => $attendValueArr[4],
+        'fri' => $attendValueArr[5],
+        'sat' => $attendValueArr[6],
+      ]);
+
+      if (! $student) {
+        return back()->with('flash_message', '글이 저장되지 않았습니다.')->withInput();
+      }
+
+
+
       return redirect(route('students.show',$student->id));
     }
     /**
