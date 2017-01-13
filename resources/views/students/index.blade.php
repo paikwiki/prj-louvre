@@ -52,7 +52,7 @@
 <div class="students students-all clearfix">
   <h2>수강생 전체 목록</h2>
   <ul class="clearfix">
-    @if( empty($todayStudents) )
+    @if( empty($students) )
       <li>등록된 수강생이 없습니다.</li>
       <li><a href="/students/create">수강생 등록하러 가기</a></li>
     @else
