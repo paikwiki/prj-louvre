@@ -530,6 +530,7 @@ img {
     border-radius: 25px;
   }
 }
+
 /////////////////
 // 학생 추가
 /////////////////
@@ -996,21 +997,44 @@ img {
   h2 {
     padding: 0 15px;
     height: 40px;
-    line-height: 50px;
+    line-height: 40px;
     font-size: 12px;
-    border-bottom: 1px solid #ebebeb;
     color: @mmGray;
+    background-color: #eee;
+  }
+  h3 {
+    padding: 0 15px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 12px;
+    color: @mmGray;
+    border-bottom: 1px solid #ebebeb;
+    // background-color: #eee;
   }
   ul {
     li {
-      padding: 0 15px;
+      padding: 0 15px 0 25px;
       height: 45px;
       line-height: 44px;
+      font-size: 12px;
       border-bottom: 1px solid #ebebeb;
       color: @mmGray;
       a {
         text-decoration: none;
         color: @mmBlack;
+      }
+    }
+  }
+}
+.settings-elem {
+  ul {
+    li {
+      .btn-box {
+        float: right;
+        display: inline-block;;
+        form {
+          float: left;
+        }
       }
     }
   }

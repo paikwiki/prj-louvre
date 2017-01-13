@@ -64,7 +64,8 @@ class ElemEditController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      dd('test');
+        return 'test';
     }
 
     /**

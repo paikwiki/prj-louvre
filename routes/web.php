@@ -72,7 +72,7 @@ Route::get('/settings', function () {
 Route::resource('tags', 'ElemEditController');
 Route::resource('types', 'ElemEditController');
 Route::resource('materials', 'ElemEditController');
-
+Route::resource('elemedit', 'ElemEditController');
 // Route::get('/tags', function () {
 //     if (auth()->check())
 //     {

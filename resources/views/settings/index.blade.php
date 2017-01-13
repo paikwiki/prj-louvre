@@ -8,7 +8,7 @@
   <ul>
     <li><a href="/tags">태그</a></li>
     <li><a href="/types">작품 유형</a></li>
-    <li><a href="#" class="link-disable">재료</a></li>
+    <li><a href="/materials">재료</a></li>
   </ul>
   <h3>사용자 관련</h3>
   <ul>
