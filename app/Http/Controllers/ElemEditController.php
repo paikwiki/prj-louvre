@@ -17,25 +17,31 @@ class ElemEditController extends Controller
       {
         return redirect('users');
       }
+
+      $user = \Auth::user();
       $parseUrl = parse_url(url()->current());
       $urlPath = $parseUrl['path'];
 
       if( $urlPath == '/tags' )
       {
-        $targetModel = \App\Tag::get();
+        $targetElemType = '태그';
+        $targetElemArr = \App\Tag::whereUserId($user->id)->get();
       }
       if( $urlPath == '/types' )
       {
-        $targetModel = \App\Type::get();
+        $targetElemType = '유형';
+        $targetElemArr = \App\Type::whereUserId($user->id)->get();
       }
       if( $urlPath == '/materials' )
       {
-          // $targetModel = ;
+        $targetElemType = '재료';
+        $targetElemArr = \App\Material::whereUserId($user->id)->get();
       }
-      dd($targetModel);
+      // dd($targetElemArr);
 
       return view('elemEdit.index', [
-        'urlPath' => $urlPath,
+        'targetElemType' => $targetElemType,
+        'targetElemArr' => $targetElemArr,
       ]);
 
     }

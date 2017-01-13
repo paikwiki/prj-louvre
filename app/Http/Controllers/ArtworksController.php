@@ -30,10 +30,11 @@ class ArtworksController extends Controller
      */
     public function create()
     {
+      $user = Auth::user();
       $artwork = new \App\Artwork;
-      $students = Auth::user()->student()->get();
-      $tags = \App\Tag::get();
-      $types = \App\Type::get();
+      $students = $user->student()->get();
+      $tags = \App\Tag::whereUserId($user->id)->get();
+      $types = \App\Type::whereUserId($user->id)->get();
       return view('artworks.create', [
         'artwork' => $artwork,
         'students' => $students,

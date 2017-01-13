@@ -19,11 +19,5 @@ class TestUserSeeder extends Seeder
         'email' => 'test@test.com',
         'course' => '피카소미술학원',
       ]);
-
-      // type
-      App\Type::create([
-        'name' => '기본 유형',
-        'user_id' => $user->id,
-      ]);
     }
 }

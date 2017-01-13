@@ -16,6 +16,7 @@ class CreateTagsTable extends Migration
       Schema::create('tags', function (Blueprint $table) {
         $table->increments('id')->unique;
         $table->string('name');
+        $table->string('user_id')->references('id')->on('user')->onDelete('cascade');
         $table->timestamps();
       });
     }
@@ -27,8 +28,8 @@ class CreateTagsTable extends Migration
      */
     public function down()
     {
-      Schema::table('artwork_tag',function (Blueprint $table){
-        $table->dropForeign('artwork_tag_tag_id_foreign');
+      Schema::table('tags',function (Blueprint $table){
+        $table->dropForeign('tags_user_id_foreign');
       });
       Schema::dropIfExists('tags');
     }

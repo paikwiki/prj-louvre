@@ -1,1 +1,2 @@
-<h1>elemEdit index - {{ $urlPath }}</h1>
+<h1>elemEdit index - {{ $targetElemType }}</h1>
+{{$targetElemArr}}

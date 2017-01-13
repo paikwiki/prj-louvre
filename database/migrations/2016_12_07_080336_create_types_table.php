@@ -28,8 +28,8 @@ class CreateTypesTable extends Migration
      */
     public function down()
     {
-      Schema::table('artworks',function (Blueprint $table){
-        $table->dropForeign('artworks_type_id_foreign');
+      Schema::table('types',function (Blueprint $table){
+        $table->dropForeign('types_user_id_foreign');
       });
         Schema::dropIfExists('types');
     }
