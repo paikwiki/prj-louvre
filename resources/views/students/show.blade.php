@@ -4,7 +4,7 @@
 
   <div class="s-profile clearfix">
     @if($artworkBool)
-      <div class="profile-artwork" style="background-image: url('https://louvrebucket.s3.amazonaws.com/studentuploads/{{ $artwork_recent['photo'] }}');">
+      <div class="profile-artwork" style="background-image: url('https://louvrebucket.s3.amazonaws.com/artworkuploads/{{ $artwork_recent['photo'] }}');">
       </div>
     @else
     <div class="profile-artwork" style="background-image: url('http://placehold.it/460x250');">
@@ -61,7 +61,7 @@
           <li>등록한지 <span>"{{ $dDay }}"</span>일 됐어요.</li>
           @if($artworkBool)
             <li><span>"{{ $maxType }}"</span>를 가장 많이 그렸어요.</li>
-            <li>최근에 <span>"{{$artwork_recent->name}}"</span> 작품을 그렸어요.</li>
+            <li>최근에 <a href="/artworks/{{ $artworks[0]->id }}"><span>"{{$artwork_recent->name}}"</span></a> 작품을 그렸어요.</li>
           @else
             <li>아직 그린 작품이 없어요.</li>
           @endif
@@ -108,12 +108,12 @@
         </div>
        <div class="edge-triangle"></div>
        <ul>
-          @if($artworkBool)
+          @if(count($eachTagCounts)>0)
             @foreach ( $eachTagCounts as $key=>$value )
               <li><span>{{ $key }}</span></li>
             @endforeach
           @else
-            <li>아직 없습니다.</li>
+            <li>태그가 없습니다.</li>
           @endif
        </ul>
       </div>
