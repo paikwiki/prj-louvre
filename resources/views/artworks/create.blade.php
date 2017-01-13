@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="a-add-box">
+  @if( count($students) > 0 )
   <form class="a-add" action="{{ route('artworks.store') }}" method="POST" enctype="multipart/form-data">
     {!! csrf_field() !!}
     <ul>
@@ -19,8 +20,8 @@
           <input type="text" id="name" name="name" class="a-name" placeholder="작품명">
           <select id="type-id" class="type-id" name="type_id">
             <option>유형 선택</option>
-            @foreach ( $types as $key=>$type )
-              <option value="{{ $key+1 }}">{{ $type->name }}</option>
+            @foreach ( $types as $type )
+              <option value="{{ $type->id }}">{{ $type->name }}</option>
             @endforeach
           </select>
         </li>
@@ -28,8 +29,8 @@
           <label for="student-id">학생명</label>
           <select id="student-id" class="student-id" name="student_id">
             <option>학생 선택</option>
-            @foreach ( $students as $key=>$student )
-              <option value="{{ $key+1 }}">{{ $student->name }}</option>
+            @foreach ( $students as $student )
+              <option value="{{ $student->id }}">{{ $student->name }}</option>
             @endforeach
           </select>
         </li>
@@ -69,9 +70,21 @@
       </div>
       <div class="edge-triangle">
       </div>
-    </div>
+    </div> <!-- /.write-box -->
   </form>
-</div>
+  @else
+  <div class='write-box'>
+    <h2>앗! 작품을 등록하시려면 수강생이 있어야 합니다.</h2>
+    <ul>
+      <li>담당하고 계신 수강생이 없어요. :(</li>
+      <li>작품을 등록하기 전에 학생을 등록해주세요.</li>
+    </ul>
+
+    <div class="edge-triangle">
+    </div>
+  </div> <!-- /.write-box -->
+  @endif
+</div> <!-- /.a-add-box-->
 @endsection
 
 @section('footer')

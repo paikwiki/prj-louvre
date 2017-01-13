@@ -40,9 +40,13 @@
       <h2><span class="box-header-icon icon-tagcloud"></span>Tag Cloud</h2>
     </div>
     <ul>
-      @foreach ( $tags as $tag )
-      <li><span>{{ $tag->name }}</span></li>
-    @endforeach
+      @if( count($tags) > 0)
+        @foreach ( $tags as $tag )
+        <li><span>{{ $tag->name }}</span></li>
+        @endforeach
+      @else
+        <li><span>태그가 없습니다.</span></li>
+      @endif
     </ul>
   </div>
   <div class="section clearfix">

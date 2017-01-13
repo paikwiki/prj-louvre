@@ -173,13 +173,18 @@ class ArtworksController extends Controller
 
 
 
+      if(strlen($_FILES["photo"]["name"])>0)
+      {
+        $imageFileName = time() . '.' . basename($_FILES["photo"]["name"]);
+        $s3 = \Storage::disk('s3');
+        $photoPath = '/artworkuploads/' . $imageFileName;
+        $s3->put($photoPath, file_get_contents($_FILES["photo"]["tmp_name"]), 'public');
+        //$photoUrl=\Storage::url($imageFileName);
+        //$photo = Storage::disk('s3')->get($photoPath);
+      } else {
+        dd('사진이 없는 경우 에러처리 해야함-StudentsController');
+      }
 
-      $imageFileName = time() . '.' . basename($_FILES["photo"]["name"]);
-      $s3 = \Storage::disk('s3');
-      $photoPath = '/artworkuploads/' . $imageFileName;
-      $s3->put($photoPath, file_get_contents($_FILES["photo"]["tmp_name"]), 'public');
-      //$photoUrl=\Storage::url($imageFileName);
-      //$photo = Storage::disk('s3')->get($photoPath);
 
 
   /**file시도주석2
@@ -254,23 +259,34 @@ class ArtworksController extends Controller
          {
              $artwork = \App\Artwork::whereId($id)->first();
              $type = \App\Type::whereId($artwork->type_id)->first();
+            //  dd($type);
              $student = \App\Student::whereId($artwork->student_id)->first();
+
+
              $artworkTagObjArr= \App\Artwork_tag::where('artwork_id', $id)->get();
 
-             if (is_null($artworkTagObjArr->first())){
+             //태그가 있을 때
+             if( !is_null($artworkTagObjArr->first()) )
+             {
+               $tagIdArr = []; //tag 찍기
+               foreach ($artworkTagObjArr as $key=>$artworkTagObj) {
+                 $tagIdArr[$key] = $artworkTagObj->tag_id;
+                //  var_dump($key .' / '. $tagIdArr[$key]);
+                 $tags[$key] = \App\Tag::whereId($tagIdArr[$key])->first();
+               }
+             } else {
                $tags = [];
-               array_push($tags, \App\Tag::create([
-                 'id'=>1,
-                 'name'=>"기타태그",
-               ]));
              }
 
-             $tagIdArr = []; //tag 찍기
-             foreach ($artworkTagObjArr as $key=>$artworkTagObj) {
-               $tagIdArr[$key] = $artworkTagObj->tag_id;
-              //  var_dump($key .' / '. $tagIdArr[$key]);
-               $tags[$key] = \App\Tag::whereId($tagIdArr[$key])->first();
-               }
+            //  if (is_null($artworkTagObjArr->first())){
+            //    $tags = [];
+            //    array_push($tags, \App\Tag::create([
+            //      'id'=>1,
+            //      'name'=>"기타태그",
+            //    ]));
+            //  }
+
+
 
 
            return view('artworks.show', [
