@@ -33,7 +33,6 @@
             @else
               <div class="photo-box"><a href="/students/{{ $todayStudent->id }}"><img src="http://placehold.it/50x50" alt="" class="photo"></a></div>
             @endif
-            <div class="photo-box"><a href="/students/{{ $todayStudent->id }}"><img src=$profile_pic alt="" class="photo"></a></div>
             <div class="info-box">
               <a href="/students/{{ $todayStudent->id }}">{{ $todayStudent->name }} </a>
               <p>
@@ -71,7 +70,12 @@
     @else
       @foreach( $students as $student)
         <li class="clearfix">
-          <div class="photo-box"><a href="/students/{{ $student->id }}"><img src="{{ $student->profile_pic ? $student->profile_pic : 'http://placehold.it/50x50' }}"></a></div>
+          @if($todayStudent->profile_pic)
+            <div class="photo-box"><a href="/students/{{ $student->id }}"><img src="https://louvrebucket.s3.amazonaws.com/studentuploads/{{$student->profile_pic}}" alt="" class="photo"></a></div>
+          @else
+            <div class="photo-box"><a href="/students/{{ $student->id }}"><img src="http://placehold.it/50x50" alt="" class="photo"></a></div>
+          @endif
+
           <div class="info-box">
             <a href="/students/{{ $student->id }}">{{ $student->name }}</a>
             <p>
