@@ -47,7 +47,7 @@ class StudentsController extends Controller
       $todayMyStudents = [];
       foreach($todayStudents as $todayStudent)
       {
-        if($todayStudent->course_id==Auth::user()->course_id)
+        if($todayStudent->user_id==Auth::user()->id)
         {array_push($todayMyStudents, $todayStudent);}
 
       }

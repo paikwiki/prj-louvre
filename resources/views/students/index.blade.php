@@ -90,20 +90,22 @@
                   @if($attendance->sun==1)<span>일</span>@endif
                 @endif
               @endforeach
-          </p>
-          @if(substr($student->birth,-5)==$today)
-          <p>생일축하^^</p>
-          @endif
-          <div class="student-delete-box">
-            <a href="{{route('students.destroy', $student->id)}}">삭제</a>
-          </div>
-          <div class="student-delete-box">
-            <form method="POST" action="{{route('students.destroy', $student->id)}}">
-              {{ csrf_field()}}
-              {{method_field('DELETE')}}
-              <button type="submit" class="btn btn-danger">삭제</button>
-            </form>
-          </div>
+            </p>
+            @if(substr($student->birth,-5)==$today)
+            <p>생일축하^^</p>
+            @endif
+  {{--
+            <div class="student-delete-box">
+              <a href="{{route('students.destroy', $student->id)}}">삭제</a>
+            </div>
+            <div class="student-delete-box">
+              <form method="POST" action="{{route('students.destroy', $student->id)}}">
+                {{ csrf_field()}}
+                {{method_field('DELETE')}}
+                <button type="submit" class="btn btn-danger">삭제</button>
+              </form>
+            </div>
+  --}}
           </div>
           <div class="call-box">
             <a href="tel://{{ $student->tel }}">Call</a>
