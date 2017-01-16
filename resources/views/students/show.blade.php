@@ -4,8 +4,13 @@
 
   <div class="s-profile clearfix">
     @if($artworkBool)
-      <div class="profile-artwork" style="background-image: url('https://louvrebucket.s3.amazonaws.com/artworkuploads/{{ $artwork_recent['photo'] }}');">
-      </div>
+      @if($artwork_recent['photo']=="default")
+        <div class="profile-artwork" style="background-image: url('https://louvrebucket.s3.amazonaws.com/defaultuploads/defaultartwork.png');">
+        </div>
+      @else
+        <div class="profile-artwork" style="background-image: url('https://louvrebucket.s3.amazonaws.com/artworkuploads/{{ $artwork_recent['photo'] }}');">
+        </div>
+      @endif
     @else
     <div class="profile-artwork" style="background-image: url('http://placehold.it/460x250');">
     </div>
