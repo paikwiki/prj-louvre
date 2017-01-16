@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 
+
 @section('content')
 <form class="s-add" action="{{ route('students.store') }}" method="POST" enctype="multipart/form-data">
 
@@ -94,11 +95,10 @@
           <label>학적 상태</label>
 
 
-
           <label for="yes" class="radiobutton">재학</label>
-          <input type="radio" id="yes" name="status" value="재학" {{ old('status')=="재학" ? checked : ''}}>
+          <input type="radio" id="yes" name="status" value="재학" {{ $student->status=="재학" ? 'checked' : ''}}>
           <label for="no" class="radiobutton">휴학</label>
-          <input type="radio" id="no" name="status" value="휴학" {{ old('status')=="휴학" ? checked : ''}}>
+          <input type="radio" id="no" name="status" value="휴학" {{ $student->status=="휴학" ? 'checked' : ''}}>
         </li>
 
         <li>
