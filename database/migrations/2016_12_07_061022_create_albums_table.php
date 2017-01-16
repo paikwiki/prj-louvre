@@ -21,8 +21,8 @@ class CreateAlbumsTable extends Migration
             $table->timestamps();
         });
         Schema::table('albums', function ($table){
-        $table->foreign('user_id')->references('id')->on('users');
-        $table->foreign('artwork_id')->references('id')->on('artworks');
+        $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');;
+        $table->foreign('artwork_id')->references('id')->on('artworks')->onDelete('cascade');;
         $table->engine = 'InnoDB';
       });
     }

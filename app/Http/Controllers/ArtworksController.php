@@ -377,8 +377,10 @@ class ArtworksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(\App\Artwork $artwork)
     {
-        //
+      $artwork->album()->delete();
+      $artwork->delete();
+      return redirect('/')->with('message','작품'.$artwork->name.'이 삭제되었습니다.');//
     }
 }
