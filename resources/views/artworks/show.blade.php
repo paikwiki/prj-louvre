@@ -4,7 +4,11 @@
 @section('content')
 <div class='a-wrap box-container'>
   <div class="a-photo-box">
-    <img src="https://louvrebucket.s3.amazonaws.com/artworkuploads/{{$artwork->photo}}" alt="artwork" class="a-photo">
+    @if($artwork->photo=="default")
+      <img src="https://louvrebucket.s3.amazonaws.com/defaultuploads/defaultartwork.png" alt="artwork" class="a-photo">
+    @else
+      <img src="https://louvrebucket.s3.amazonaws.com/artworkuploads/{{$artwork->photo}}" alt="artwork" class="a-photo">
+    @endif
     <form class="like-btn" action="{{ route('albums.store') }}" method="POST" enctype="multipart/form-data">
       {!! csrf_field() !!}
       <input type="hidden" name="aid" value="{{ $artwork->id }}">

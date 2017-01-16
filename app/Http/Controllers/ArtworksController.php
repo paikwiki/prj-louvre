@@ -169,6 +169,8 @@ class ArtworksController extends Controller
         ]);
       }
 
+
+
       if(strlen($_FILES["photo"]["name"])>0)
       {
         $imageFileName = time() . '.' . basename($_FILES["photo"]["name"]);
@@ -178,7 +180,8 @@ class ArtworksController extends Controller
         //$photoUrl=\Storage::url($imageFileName);
         //$photo = Storage::disk('s3')->get($photoPath);
       } else {
-        dd('사진이 없는 경우 에러처리 해야함-StudentsController');
+        $imageFileName = "default";
+        //$imageFileName = '/public/files/noimg.png';
       }
 
 
@@ -323,7 +326,8 @@ class ArtworksController extends Controller
         //$photoUrl=\Storage::url($imageFileName);
         //$photo = Storage::disk('s3')->get($photoPath);
       } else {
-        dd('사진이 없는 경우 에러처리 해야함-StudentsController');
+        $imageFileName = "default";
+        //dd('사진이 없는 경우 에러처리 해야함-StudentsController');
       }
         //
     }
