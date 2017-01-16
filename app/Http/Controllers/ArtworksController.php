@@ -306,7 +306,18 @@ class ArtworksController extends Controller
      */
     public function edit($id)
     {
-        //
+
+      $artwork = \App\Artwork::whereId($id)->first();
+      $user = Auth::user();
+      $students = $user->student()->get();
+      $tags = \App\Tag::whereUserId($user->id)->get();
+      $types = \App\Type::whereUserId($user->id)->get();
+      return view('artworks.edit', [
+        'artwork' => $artwork,
+        'students' => $students,
+        'tags' => $tags,
+        'types' => $types,
+      ]);
     }
     /**
      * Update the specified resource in storage.
@@ -315,7 +326,7 @@ class ArtworksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, \App\Artwork $artwork)
     {
       if(strlen($_FILES["photo"]["name"])>0)
       {
@@ -329,6 +340,35 @@ class ArtworksController extends Controller
         $imageFileName = "default";
         //dd('사진이 없는 경우 에러처리 해야함-StudentsController');
       }
+
+      $artwork ->update([
+        // 'photo' => $request['photo'],
+        'photo' => $imageFileName,
+        'name' => $request['name'],
+        'date' => $request['date'],
+        'type_id' => $request['type_id'],
+        'student_id' => $request['student_id'],
+        'size' => $request['size'],
+        'engagement' => $request['engagement'],
+        'completeness' => $request['completeness'],
+        'feedback' => $request['feedback'],
+      ]);
+
+      $selectTags = [];
+      for( $i=0; $i<20; $i++ )
+      {
+        $selectTag = 'tag'.($i+1);
+        if( $request[$selectTag] == 'on' )
+        {
+          array_push($selectTags, $i+1);
+        }
+      }
+      $artwork->tag()->sync($selectTags);
+      if (! $artwork) {
+        return back()->with('flash_message', '작품이 저장되지 않았습니다.')->withInput();
+      }
+      return redirect('artworks/'.$artwork->id)->with('flash_message', '작품이 저장됐습니다.');
+
         //
     }
     /**

@@ -19,6 +19,9 @@
       @endif
     </form>
   </div>
+  <div class="artwork-modify-box">
+    <a href="{{route('artworks.edit', $artwork->id)}}">수정하기</a>
+  </div>
   <div class="a-info-box">
     <div class="a-info">
       <h2 class="a-name">{{ $artwork->name }}</h2>

@@ -70,7 +70,7 @@
     @else
       @foreach( $students as $student)
         <li class="clearfix">
-          @if($student->profile_pic)
+          @if($student->profile_pic=="default")
             <div class="photo-box"><a href="/students/{{ $todayStudent->id }}"><img src="https://louvrebucket.s3.amazonaws.com/defaultuploads/defaultpfpic.png" alt="" class="photo"></a></div>
           @else
             <div class="photo-box"><a href="/students/{{ $todayStudent->id }}"><img src="https://louvrebucket.s3.amazonaws.com/studentuploads/{{$student->profile_pic}}" alt="" class="photo"></a></div>
