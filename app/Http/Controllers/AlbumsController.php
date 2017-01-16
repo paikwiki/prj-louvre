@@ -21,7 +21,7 @@ class AlbumsController extends Controller
     public function index()
     {
         $artworks = \App\Artwork::get();
-        $albumArtworksObjs = \App\Album::where('user_id', 1)->orderBy('id', 'desc')->get();
+        $albumArtworksObjs = \App\Album::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->get();
         $albumArtworksIds = [];
         $albumArtworks = [];
 
