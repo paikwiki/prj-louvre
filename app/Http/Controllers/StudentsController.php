@@ -165,7 +165,8 @@ class StudentsController extends Controller
         //$photoUrl=\Storage::url($imageFileName);
         //$photo = Storage::disk('s3')->get($photoPath);
       } else {
-        dd('사진이 없는 경우 에러처리 해야함-StudentsController');
+        $imageFileName = "default";
+        //dd('사진이 없는 경우 에러처리 해야함-StudentsController');
       }
       $user = Auth::user();
       // dd($user);
@@ -345,6 +346,7 @@ class StudentsController extends Controller
         //최근 작품
         $artwork_recent = $artworks[0];
 
+
         return view('students.show', [
           'artworkBool' => $artworkBool,
           'student' => $student,
@@ -407,6 +409,7 @@ class StudentsController extends Controller
         //$photoUrl=\Storage::url($imageFileName);
         //$photo = Storage::disk('s3')->get($photoPath);
       } else {
+        $imageFileName = "default";
         dd('사진이 없는 경우 에러처리 해야함-StudentsController');
       }
 

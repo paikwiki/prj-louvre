@@ -12,7 +12,11 @@
     @endif
     <div class="profile-div">
         <div class="profile-pic-box">
-          <img src="https://louvrebucket.s3.amazonaws.com/studentuploads/{{$student->profile_pic}}" alt="student" class="a-photo">
+          @if($student->profile_pic=="default")
+            <img src="https://louvrebucket.s3.amazonaws.com/defaultuploads/defaultpfpic.png" alt="artwork" class="a-photo">
+          @else
+            <img src="https://louvrebucket.s3.amazonaws.com/studentuploads/{{$student->profile_pic}}" alt="artwork" class="a-photo">
+          @endif
         </div>
     </div>
     <div class="student-info-box">
@@ -108,7 +112,8 @@
         </div>
        <div class="edge-triangle"></div>
        <ul>
-          @if(count($eachTagCounts)>0)
+          @if(count($eachTagCounts)>1)
+          <!--원래는  eachTagCoungs>0 이였는데 에러나서 고쳤어요 한번봐주세요 -수지-->
             @foreach ( $eachTagCounts as $key=>$value )
               <li><span>{{ $key }}</span></li>
             @endforeach
