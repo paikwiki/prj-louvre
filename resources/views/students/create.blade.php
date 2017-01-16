@@ -18,12 +18,15 @@
         </div>
     <div class="s-box1">
 
-         <div class="top-left">
-          <label for="profile-pic">
-            <img src='/image/final-image/icon_input_profile.png'>
-          </label>
-          <input type="file" id="profile-pic" name="profile_pic" value="{{ old('profile_pic') }}">
-        </div>
+    <div class="top-left">
+      <ul>
+         <li class="addpicture">
+            <label for="imgInp"><img src='/image/final-image/icon_input_profile.png'></label>
+            <input type="file" id="imgInp" name="profile_pic" value="{{ old('profile_pic') }}">
+          </li>
+            <img id="blah" src="#" alt="your image"/>
+      </ul>
+    </div>
 
         <div class="top-right">
 

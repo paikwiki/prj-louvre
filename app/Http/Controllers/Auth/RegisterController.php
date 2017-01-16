@@ -64,7 +64,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $pswd = $data['password'];
-        
+
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -88,6 +88,13 @@ class RegisterController extends Controller
           'name' => '판화',
           'user_id' => $user->id,
         ]);
+
+
+        \App\Tag::create([
+          'name' => 'etc',
+          'user_id' => $user->id,
+        ]);
+
         return $user;
     }
 }

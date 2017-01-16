@@ -4,7 +4,7 @@
 
   <div class="s-profile clearfix">
     @if($artworkBool)
-      @if($artwork_recent['photo']=="default")
+      @if($artwork_recent['photo']=="default") <!--첫번째 등록작품에 사진이 등록되어있지 않을때-->
         <div class="profile-artwork" style="background-image: url('https://louvrebucket.s3.amazonaws.com/defaultuploads/defaultartwork.png');">
         </div>
       @else
