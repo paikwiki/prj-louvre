@@ -144,7 +144,11 @@
           @foreach( $artworks as $artwork )
             <figure class="myartwork">
               <a href="/artworks/{{ $artwork->id }}">
-                <img src="https://louvrebucket.s3.amazonaws.com/artworkuploads/{{ $artwork->photo }}" alt=""> </a>
+                @if($artwork->photo=="default")
+                  <img src="https://louvrebucket.s3.amazonaws.com/defaultuploads/defaultartwork.png" alt="artwork" class="a-photo">
+                @else
+                  <img src="https://louvrebucket.s3.amazonaws.com/artworkuploads/{{$artwork->photo}}" alt="artwork" class="a-photo">
+                @endif
                 <figcaption>
                     <a href="/artworks/{{ $artwork->id }}">
                       {{ $artwork->name }}</a>

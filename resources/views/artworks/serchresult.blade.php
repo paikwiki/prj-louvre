@@ -16,7 +16,12 @@
   <div class="search-result-artworks">
     @foreach( $result_n as $result_name )
       <figure class="a-item">
-        <a href="https://louvrebucket.s3.amazonaws.com/artworkuploads/{{ $result_name->id }}"><img src="https://louvrebucket.s3.amazonaws.com/artworkuploads/{{$result_name->photo}}" alt="artwork" class="a-photo">
+        <a href="https://louvrebucket.s3.amazonaws.com/artworkuploads/{{ $result_name->id }}">
+          @if($result_name->photo=="default")
+            <img src="https://louvrebucket.s3.amazonaws.com/defaultuploads/defaultartwork.png" alt="artwork" class="a-photo">
+          @else
+            <img src="https://louvrebucket.s3.amazonaws.com/artworkuploads/{{$result_name->photo}}" alt="artwork" class="a-photo">
+          @endif
         </a>
         <figcaption>
           <ul>
