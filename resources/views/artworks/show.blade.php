@@ -1,5 +1,5 @@
-@extends('layouts.master')
 
+@extends('layouts.master')
 
 @section('content')
 <div class='a-wrap box-container'>
@@ -11,8 +11,12 @@
     @endif
     <form class="like-btn" action="{{ route('albums.store') }}" method="POST" enctype="multipart/form-data">
       {!! csrf_field() !!}
-      <input type="hidden" name="aid" value="{{ $artwork->id }}">
-      <button type="submit" name="button">좋아요</button>
+      <input type="hidden" name="artwork_id" value="{{ $artwork->id }}">
+      @if(\App\Album::where('user_id','=',Auth::user()->id)->first() and App\Album::where('artwork_id','=', $artwork->id)->first())
+        <button type="submit" id="like_red" name="button">좋아요</button>
+      @else
+        <button type="submit" id="like_empty" name="button">좋아요</button>
+      @endif
     </form>
   </div>
   <div class="a-info-box">
