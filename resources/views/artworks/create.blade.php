@@ -72,12 +72,14 @@
       </ul>
       <div class='buttons'>
         <button><span class="icon-cancel"></span>취소</button>
-        <button type="submit"><span class="icon-submit"></span>저장</button>
+        <button id="a-add-btn" type="submit" onclick="this.disabled=true;this.form.submit();"><span class="icon-submit"></span>저장</button>
       </div>
       <div class="edge-triangle">
       </div>
     </div> <!-- /.write-box -->
   </form>
+
+
   <form class="a-add" action="{{ route('elemedit.store') }}" method="POST">
     <div class="write-box">
       <ul>

@@ -101,7 +101,7 @@
 
         <li>
           <div class="attend">
-            <button type="summit">등록하기</button>
+            <button type="summit" onclick="this.disabled=true;this.form.submit();">등록하기</button>
           </div>
         </li>
       </ul>
