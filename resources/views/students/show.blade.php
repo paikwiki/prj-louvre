@@ -49,6 +49,24 @@
       </ul>
     </div>
 
+    <div class="student-delete-box">
+      <a href="javascript:void(0);" onclick="$(this).find('form').submit();" >
+          <form id="myform" action="{{ route('students.destroy', $student->id) }}" method="post">
+              <input type="hidden" name="_method" value="DELETE">
+              <input type="hidden" name="_token" value="{{ csrf_token() }}">
+          </form>
+      </a>
+    </div>
+    <script>
+    jQuery(document).ready(function($){
+         $('#myform').on('submit',function(e){
+            if(!confirm('삭제하시겠습니까?')){
+                  e.preventDefault();
+            }
+          });
+    });
+    </script>
+
     <div class="student-modify-box">
       <a href="/students/{{$student->id}}/edit">수정하기</a>
     </div>

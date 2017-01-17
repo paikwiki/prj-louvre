@@ -3,7 +3,8 @@
 @section('content')
 <div class="a-add-box">
   @if( count($students) > 0 )
-  <form class="a-add" action="{{ route('artworks.store') }}" method="POST" enctype="multipart/form-data">
+  <form class="a-add" action="{{ route('artworks.update', $artwork->id)}}" method="POST" enctype="multipart/form-data">
+    {{!! method_field('PUT')!!}}
     {!! csrf_field() !!}
     <ul>
       <li class="addpicture">
