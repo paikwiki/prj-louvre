@@ -32,7 +32,7 @@
               <label for="name"></label><input type="text" id="name" name="name" value="{{ old('name', $student->name) }}"placeholder="학생명">
                </div>
                 <div class="birth">
-              <label for="birth"></label><input type="date" id="birth" name="birth" value="{{ old('birth', $student->birh) }}">
+              <label for="birth"></label><input type="date" id="birth" name="birth" value="{{ old('birth', $student->birth) }}">
                </div>
 
             <div class="phone">
