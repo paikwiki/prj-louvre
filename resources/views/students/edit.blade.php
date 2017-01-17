@@ -4,7 +4,7 @@
 
 @section('content')
 <form class="s-add" action="{{ route('students.update', $student->id)}}" method="POST" enctype="multipart/form-data">
-    {{!! method_field('PUT') !!}}
+  {!! method_field('PUT') !!}
   {!! csrf_field() !!}
   <div class="s-info form-group">
        <div class="edge-triangle">
