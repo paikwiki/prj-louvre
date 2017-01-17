@@ -21,12 +21,21 @@
   </div>
   <div class="artwork-delete-box">
     <a href="javascript:void(0);" onclick="$(this).find('form').submit();" >
-        <form action="{{ route('artworks.destroy', $artwork->id) }}" method="post">
+        <form id="myform" action="{{ route('artworks.destroy', $artwork->id) }}" method="post">
             <input type="hidden" name="_method" value="DELETE">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
         </form>
     </a>
   </div>
+  <script>
+  jQuery(document).ready(function($){
+       $('#myform').on('submit',function(e){
+          if(!confirm('삭제하시겠습니까?')){
+                e.preventDefault();
+          }
+        });
+  });
+  </script>
   <div class="artwork-modify-box">
     <a href="{{route('artworks.edit', $artwork->id)}}">수정하기</a>
   </div>
