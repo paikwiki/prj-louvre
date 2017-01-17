@@ -24,16 +24,18 @@ class AlbumsController extends Controller
         $albumArtworksObjs = \App\Album::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->get();
         $albumArtworksIds = [];
         $albumArtworks = [];
-
-        foreach( $albumArtworksObjs as $albumArtworksObj )
+        if(!empty($albumArtworksObjs[0]))
         {
-          array_push($albumArtworksIds, $albumArtworksObj->artwork_id);
-        }
-        // var_dump($albumArtworksIds);
+          foreach( $albumArtworksObjs as $albumArtworksObj )
+          {
+            array_push($albumArtworksIds, $albumArtworksObj->artwork_id);
+          }
+          // var_dump($albumArtworksIds);
 
-        foreach( $albumArtworksIds as $albumArtworksId )
-        {
-          array_push($albumArtworks, $artworks->where('id', $albumArtworksId)->first());
+          foreach( $albumArtworksIds as $albumArtworksId )
+          {
+            array_push($albumArtworks, $artworks->where('id', $albumArtworksId)->first());
+          }
         }
         // var_dump($albumArtworks);
 
