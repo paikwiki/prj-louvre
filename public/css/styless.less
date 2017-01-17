@@ -202,6 +202,14 @@ img {
   display: none;
 }
 
+.form-error {
+  display: block;
+  padding: 5px;
+  border: 0;
+  font-size: 30%;
+  font-weight: normal;
+  color: #f00;
+}
 /////////
 // 작은 요소들 (자기학생)
 ////////////
@@ -588,46 +596,57 @@ img {
   background : #fff;
   box-shadow: 2px 3px 5px 0px gray;
   position : relative;
-  .s-box1 {
-    position : relative;
-    width : 90%;
-    border: none;
-    margin: 0px auto;
-    padding-top: 10px;
-    .top-left {
-      width : 30%;
-      float : left;
-      label {
-        display: block;
-        cursor: pointer;
-      }
-      input {
-        display: none;
-      }
-    }
-    .top-right {
-      width :70%;
-      float : left;
+  .top-box {
+    margin-bottom: 40px;
+    .s-box1 {
       position : relative;
-      .name {
-        display: block;
-        width : 80%;
-        margin : 9px 10%
+      width : 90%;
+      border: none;
+      margin: 0px auto;
+      padding-top: 10px;
+      .top-left {
+        width : 30%;
+        float : left;
+        label {
+          display: block;
+          cursor: pointer;
+        }
+        input {
+          display: none;
+        }
       }
-      .birth{
-        display: block;
-        width : 80%;
-        margin : 9px 10%
-      }
-      .phone {
-        display: block;
-        width : 80%;
-        margin : 9px 10%;
-      }
-      .email {
-        display: block;
-        width : 80%;
-        margin : 9px 10%;
+      .top-right {
+        width :70%;
+        float : left;
+        position : relative;
+        input {
+          width: 130px;
+        }
+        .name {
+          display: block;
+          width : 80%;
+          margin : 9px 10%
+        }
+        .birth{
+          display: block;
+          width : 80%;
+          margin : 9px 10%;
+          label {
+            margin-left: 5px;
+            font-size: 80%;
+            color: @mmGray;
+          }
+        }
+        .phone {
+          display: block;
+          width : 80%;
+          margin : 9px 10%;
+        }
+        .email {
+          display: block;
+          width : 80%;
+          margin : 9px 10%;
+        }
       }
     }
   }
@@ -642,73 +661,77 @@ img {
         border-bottom: 1px solid gray;
     }
     input {
-        border: none;
+        // border: none;
         margin: 6px 0;
     }
-    .enroll-date{
-      ::-webkit-datetime-edit-year-field {
-        border : 1px solid black;
-        padding: 1px;
-        margin   : 4px;
-      }
-      ::-webkit-datetime-edit-text {
-        display: none;
-      }
+    .enroll-date {
+      margin-bottom: 30px;
     }
     .attendance-day {
-      padding-bottom: 20px;
-      label {
+      margin-bottom: 30px;
+      .weekday {
         font-weight: normal;
         margin-top: 3px;
         display: inline-block;
         border: none;
         margin-right: 4px;
+        span{
+          padding : 5px;
+          border : 1px solid black;
+        }
       }
       .inner-day {
         display: block;
-        @media all and (max-width: 640px){
-          border-bottom : 1px solid gray;
-          margin-bottom: 10px;
-          margin-right : 0px;
-          font-weight: bold;
-        }
+        border-bottom : 1px solid gray;
+        margin-bottom: 20px;
+        margin-right : 0px;
+        font-weight: bold;
       }
       input{
         display: none;
         width : 0px;
         height : 0px;
       }
-      span{
-        padding : 5px;
-        border : 1px solid black;
-      }
       input:checked + label > span{
         background-color: #9e9e9e;
       }
     }
-    .attend {
-      margin-top : 40px;
-      button{
-        display: block;
-        padding: 10px;
-        margin: 0 auto;
-      }
+    .comment-box {
+      margin-bottom: 30px;
     }
     .comment-box > textarea {
         display: block;
         margin: 10px auto;
     }
-    .radiobutton{
-      display:inline;
-      border: 2px solid gray;
-      margin : 12px;
-      padding : 8px;
+    .status-box {
+      margin-bottom: 30px;
+      > label {
+        margin-bottom: 20px;
+      }
+      input {
+        display: none;
+      }
+      .radiobutton{
+        display:inline;
+        margin-right: 12px;
+        padding : 8px;
+        border: 2px solid gray;
+        font-weight: normal;
+      }
+      // .radiobutton + input {
+      //   display:inline;
+      // }
     }
-    .radiobutton + input {
-      display:inline;
+    .status-box > input:checked + label {
+      background: #9e9e9e;
     }
-    .status-box > input:checked + label  >span {
-      background: black;
+    .attend {
+      padding-bottom : 20px;
+      button{
+        display: block;
+        padding: 10px;
+        margin: 0 auto;
+      }
     }
   }
 }

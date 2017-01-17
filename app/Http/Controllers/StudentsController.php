@@ -136,23 +136,28 @@ class StudentsController extends Controller
     {
 
       $rules = [
-        'name' => 'required',
-        // 'tel' => [],
+        'name' => ['required'],
+        'tel' => ['required'],
         // 'email' => [],
         // 'user_id' => [],
         // 'profile_pic' => [],
         // 'birth' => [],
-        // 'enroll_date' => [],
+        'enroll_date' => ['required'],
         // 'course_id' => [],
-        // 'purpose' => [],
+        // // 'purpose' => [],
         // 'status' => [],
         // 'comment' => [],
       ];
-      // var_dump($request->all());
-      $validator = \Validator::make($request->all(), $rules);
+      $messages = [
+        'name.required' => '이름을 말씀해주세요.',
+        'tel.required' => '연락처를 입력해 주세요.',
+        'enroll_date.required' => '어떤 요일에 학원에 나오는지 알려주세요.',
+      ];
+      $validator = \Validator::make($request->all(), $rules, $messages);
       if ($validator->fails()) {
         // var_dump('발리데이터 실패');
-        return back()->withErrors($validator)->withInput();
+          return back()->withErrors($validator)->withInput();
+
       }
 
       // 사진 경로 따고 옮기기
