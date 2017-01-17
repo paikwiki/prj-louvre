@@ -415,7 +415,7 @@ class StudentsController extends Controller
         //$photo = Storage::disk('s3')->get($photoPath);
       } else {
         $imageFileName = "default";
-        
+
       }
 
 
@@ -440,13 +440,14 @@ class StudentsController extends Controller
       $attendValueArr = [];
       foreach( $weekdayNameArr as $key=>$weekdayName )
       {
-        if( $request[$weekdayName] == 'on' )
+        if( $request[$weekdayName] == $weekdayNameArr[$key] ) //왜.. create 코드랑 다르지.. -수지-
         {
           $attendValueArr[$key] = 1;
         } else {
           $attendValueArr[$key] = 0;
         }
       }
+
       $student->attendance()->update([
         'sun' => $attendValueArr[0],
         'mon' => $attendValueArr[1],

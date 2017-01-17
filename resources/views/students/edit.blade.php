@@ -83,6 +83,7 @@
             <label for="sat" class="weekday">
                <span>토</span>
             </label>
+            {!! $errors->first('enroll_date', '<span class="form-error">:message</span>') !!}
         </li>
         <li>
           <label for="purpose">수강 목적</label><input type="text" id="purpose" name="purpose" value="{{ old('purpose',$student->purpose) }}">
