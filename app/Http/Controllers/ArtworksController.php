@@ -310,13 +310,22 @@ class ArtworksController extends Controller
       $artwork = \App\Artwork::whereId($id)->first();
       $user = Auth::user();
       $students = $user->student()->get();
-      $tags = \App\Tag::whereUserId($user->id)->get();
+      $tags = \App\Tag::whereUserId($user->id)->get(); //나의 태그만 불러오기
+      $old_tags=[];
+      foreach($artwork->tag as $old_tag){
+        if($old_tag->user_id==Auth::user()->id) //작품에 해당하는 모든 태그들중 해당 유저가 기록한 태그만 불러오기
+        {
+          array_push($old_tags,$old_tag->id);
+        }
+      }
+      //dd(\App\Tag::whereIn('id', [7,8,9])->first());
       $types = \App\Type::whereUserId($user->id)->get();
       return view('artworks.edit', [
         'artwork' => $artwork,
         'students' => $students,
         'tags' => $tags,
         'types' => $types,
+        'oldtags' => $old_tags,
       ]);
     }
     /**

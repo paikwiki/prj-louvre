@@ -59,12 +59,11 @@
         <li class="tags-box">
           @if( count($tags)>0 )
             @foreach ( $tags as $tag )
-              <input type="checkbox" id="tag{{ $tag->id }}" name="tag{{ $tag->id }}"><label for="tag{{ $tag->id }}"><span>{{ $tag->name }}</span></label>
+              <input type="checkbox" id="tag{{ $tag->id }}" name="tag{{ $tag->id }}"  {{ in_array($tag->id, $oldtags)? 'checked' : ''}}><label for="tag{{ $tag->id }}"><span>{{ $tag->name }}</span></label>
             @endforeach
           @else
             <p class="empty-alert">생성한 태그가 없습니다.</p>
           @endif
-
         </li>
         <li class="feedback-box">
           <!-- <label for="feedback">코멘트</label> -->
