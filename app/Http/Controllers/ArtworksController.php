@@ -28,18 +28,21 @@ class ArtworksController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
       $user = Auth::user();
       $artwork = new \App\Artwork;
       $students = $user->student()->get();
       $tags = \App\Tag::whereUserId($user->id)->get();
       $types = \App\Type::whereUserId($user->id)->get();
+      $student_id = $request['std_id'] ? $request['std_id'] : 0;
+
       return view('artworks.create', [
         'artwork' => $artwork,
         'students' => $students,
         'tags' => $tags,
         'types' => $types,
+        'student_id' => $student_id,
       ]);
     }
     /**
@@ -50,6 +53,7 @@ class ArtworksController extends Controller
      */
     public function store(Request $request)
     {
+      // 검색 기능
       if($request['testName'] == 'louvre' ) {
         $result_n=[];
         $result_d=[];
@@ -158,7 +162,7 @@ class ArtworksController extends Controller
             }
           }
         }
-          $sum_result=count($result_n)+count($result_d)+count($result_tg)+count($result_tp);
+        $sum_result=count($result_n)+count($result_d)+count($result_tg)+count($result_tp);
         return view('artworks.serchresult', [
           'result_n' => $result_n,
           'result_d' => $result_d,
@@ -167,9 +171,23 @@ class ArtworksController extends Controller
           'sum_result' => $sum_result,
           'op_val' => $op_val,
         ]);
+      } // 검색 기능 끝
+
+      $rules = [
+        'type_id' => ['required'],
+        'student_id' => ['required'],
+        'date' => ['required'],
+      ];
+      $messages = [
+        'type_id.required' => '작품 유형을 선택해 주세요.',
+        'student_id.required' => '작품을 그린 학생을 선택해 주세요.',
+        'date.required' => '완성한 날짜를 선택해 주세요.',
+      ];
+      $validator = \Validator::make($request->all(), $rules, $messages);
+      if ($validator->fails()) {
+        // var_dump('발리데이터 실패');
+          return back()->withErrors($validator)->withInput();
       }
-
-
 
       if(strlen($_FILES["photo"]["name"])>0)
       {

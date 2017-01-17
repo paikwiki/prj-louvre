@@ -19,24 +19,31 @@
           <!-- <label for="name">작품명</label> -->
           <input type="text" id="name" name="name" class="a-name" placeholder="작품명">
           <select id="type-id" class="type-id" name="type_id">
-            <option>유형 선택</option>
+            <option value="">유형 선택</option>
             @foreach ( $types as $type )
               <option value="{{ $type->id }}">{{ $type->name }}</option>
             @endforeach
           </select>
+          {!! $errors->first('type_id', '<span class="form-error form-error-type">:message</span>') !!}
         </li>
         <li>
           <label for="student-id">학생명</label>
           <select id="student-id" class="student-id" name="student_id">
-            <option>학생 선택</option>
+            <option value="">학생 선택</option>
             @foreach ( $students as $student )
-              <option value="{{ $student->id }}">{{ $student->name }}</option>
+              @if( $student->id == $student_id )
+                <option value="{{ $student->id }}" selected>{{ $student->name }}</option>
+              @else
+                <option value="{{ $student->id }}">{{ $student->name }}</option>
+              @endif
             @endforeach
           </select>
+          {!! $errors->first('student_id', '<span class="form-error">:message</span>') !!}
         </li>
         <li>
           <label for="date">등록일</label>
           <input type="date" id="date" class="date" name="date">
+          {!! $errors->first('date', '<span class="form-error">:message</span>') !!}
         </li>
         <li>
           <label for="completeness">완성도</label>
