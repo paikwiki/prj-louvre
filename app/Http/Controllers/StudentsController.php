@@ -415,7 +415,7 @@ class StudentsController extends Controller
         //$photo = Storage::disk('s3')->get($photoPath);
       } else {
         $imageFileName = "default";
-        dd('사진이 없는 경우 에러처리 해야함-StudentsController');
+        
       }
 
 

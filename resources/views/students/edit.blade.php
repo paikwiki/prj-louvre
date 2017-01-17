@@ -3,8 +3,8 @@
 
 
 @section('content')
-<form class="s-add" action="{{ route('students.store') }}" method="POST" enctype="multipart/form-data">
-
+<form class="s-add" action="{{ route('students.update', $student->id)}}" method="POST" enctype="multipart/form-data">
+    {{!! method_field('PUT') !!}}
   {!! csrf_field() !!}
   <div class="s-info form-group">
        <div class="edge-triangle">
@@ -22,7 +22,7 @@
         <ul>
            <li class="addpicture">
               <label for="imgInp"><img src='/image/final-image/icon_input_profile.png'></label>
-              <input type="file" id="imgInp" name="profile_pic" value="{{ old('profile_pic') }}">
+              <input type="file" id="imgInp" name="profile_pic" value="{{ old('profile_pic', $student->profile_pic) }}">
             </li>
               <img id="blah" src="#" alt="your image"/>
         </ul>
