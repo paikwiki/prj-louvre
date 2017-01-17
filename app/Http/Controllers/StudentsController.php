@@ -149,9 +149,9 @@ class StudentsController extends Controller
         // 'comment' => [],
       ];
       $messages = [
-        'name.required' => '이름을 말씀해주세요.',
+        'name.required' => '이름을 입력해 주세요.',
         'tel.required' => '연락처를 입력해 주세요.',
-        'enroll_date.required' => '어떤 요일에 학원에 나오는지 알려주세요.',
+        'enroll_date.required' => '학원에 나오는 요일을 알려주세요.',
       ];
       $validator = \Validator::make($request->all(), $rules, $messages);
       if ($validator->fails()) {
