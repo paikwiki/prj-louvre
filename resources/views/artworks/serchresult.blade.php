@@ -16,7 +16,7 @@
   <div class="search-result-artworks">
     @foreach( $result_n as $result_name )
       <figure class="a-item">
-        <a href="https://louvrebucket.s3.amazonaws.com/artworkuploads/{{ $result_name->id }}">
+        <a href="/artworks/{{ $result_name->id }}">
           @if($result_name->photo=="default")
             <img src="https://louvrebucket.s3.amazonaws.com/defaultuploads/defaultartwork.png" alt="artwork" class="a-photo">
           @else
@@ -25,7 +25,7 @@
         </a>
         <figcaption>
           <ul>
-            <li><a href="https://louvrebucket.s3.amazonaws.com/artworkuploads/{{ $result_name->id }}">{{ $result_name->name }}</a></li>
+            <li><a href="/artworks/{{ $result_name->id }}}">{{ $result_name->name }}</a></li>
             <li><span class="name">작가명</span><span class="date">2016.12.25.</span></li>
           </ul>
         </figcaption>
@@ -43,10 +43,10 @@
     <div class="search-result-artworks">
       @foreach( $result_d as $result_date )
         <figure class="a-item">
-          <a href="https://louvrebucket.s3.amazonaws.com/artworkuploads/{{ $result_date->id }}"><img src="{{ $result_date->photo }}" alt=""></a>
+          <a href="/artworks/{{ $result_date->id }}"><img src="https://louvrebucket.s3.amazonaws.com/artworkuploads/{{ $result_date->photo }}" alt=""></a>
           <figcaption>
             <ul>
-              <li><a href="https://louvrebucket.s3.amazonaws.com/artworkuploads/{{ $result_date->id }}">{{ $result_date->name }}</a></li>
+              <li><a href="/artworks/{{ $result_date->id }}">{{ $result_date->name }}</a></li>
               <li><span class="name">작가명</span><span class="date">2016.12.25.</span></li>
             </ul>
           </figcaption>
@@ -63,7 +63,7 @@
   <div class="search-result-artworks">
     @foreach( $result_tp as $result_type )
       <figure class="a-item">
-        <a href="https://louvrebucket.s3.amazonaws.com/artworkuploads/{{ $result_type->id }}"><img src="{{ $result_type->photo }}" alt=""></a>
+        <a href="/artworks/{{ $result_type->id }}"><img src="https://louvrebucket.s3.amazonaws.com/artworkuploads/{{ $result_type->photo }}" alt=""></a>
         <figcaption>
           <ul>
               <li><a href="https://louvrebucket.s3.amazonaws.com/artworkuploads/{{ $result_type->id }}">{{ $result_type->name }}</a></li>
@@ -85,10 +85,10 @@
   <div class="search-result-artworks">
     @foreach( $result_tg as $result_tag )
       <figure class="a-item">
-        <a href="https://louvrebucket.s3.amazonaws.com/artworkuploads/{{ $result_tag->id }}"><img src="{{ $result_tag->photo }}" alt=""></a>
+        <a href="/artworks/{{ $result_tag->id }}"><img src="https://louvrebucket.s3.amazonaws.com/artworkuploads/{{ $result_tag->photo }}" alt=""></a>
         <figcaption>
           <ul>
-            <li><a href="https://louvrebucket.s3.amazonaws.com/artworkuploads/{{ $result_tag->id }}">{{ $result_tag->name }}</a></li>
+            <li><a href="/artworks/{{ $result_tag->id }}">{{ $result_tag->name }}</a></li>
             <li><span class="name">작가명</span><span class="date">2016.12.25.</span></li>
           </ul>
         </figcaption>
