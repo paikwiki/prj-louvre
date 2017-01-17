@@ -18,25 +18,26 @@
         <div class="edge-triangle">
         </div>
     <div class="s-box1">
-
-         <div class="top-left">
-          <label for="profile-pic">
-            <img src='/image/final-image/icon_input_profile.png'>
-          </label>
-          <input type="file" id="profile-pic" name="profile_pic" value="{{ old('profile_pic', $student->profile_pic) }}">
-        </div>
-
+      <div class="top-left">
+        <ul>
+           <li class="addpicture">
+              <label for="imgInp"><img src='/image/final-image/icon_input_profile.png'></label>
+              <input type="file" id="imgInp" name="profile_pic" value="{{ old('profile_pic') }}">
+            </li>
+              <img id="blah" src="#" alt="your image"/>
+        </ul>
+      </div>
         <div class="top-right">
-
               <div class="name">
-              <label for="name"></label><input type="text" id="name" name="name" value="{{ old('name', $student->name) }}"placeholder="학생명">
-               </div>
-                <div class="birth">
-              <label for="birth"></label><input type="date" id="birth" name="birth" value="{{ old('birth', $student->birth) }}">
-               </div>
-
+                <label for="name"></label><input type="text" id="name" name="name" value="{{ old('name', $student->name) }}"placeholder="학생명">
+                {!! $errors->first('name', '<span class="form-error">:message</span>') !!}
+              </div>
+              <div class="birth">
+                <label for="birth"></label><input type="date" id="birth" name="birth" value="{{ old('birth', $student->birth) }}">
+              </div>
             <div class="phone">
               <label for="tel"></label><input type="text" id="tel" name="tel" value="{{ old('tel', $student->tel) }}"placeholder="전화번호">
+              {!! $errors->first('tel', '<span class="form-error">:message</span>') !!}
             </div>
             <div class="email">
               <label for="email"></label><input type="email" id="email" name="email" value="{{ old('email', $student->email) }}" placeholder="이메일">
@@ -55,31 +56,31 @@
           <label class="inner-day" for="attendance">수강요일</label>
           <!-- <select type="checkbox" id="attendance" name="attendance"> -->
             <input type="checkbox" id="sun" name="sun" value="sun" {{ $attendValueArr[0]==1 ? 'checked' : ''}}>
-            <label for="sun">
+            <label for="sun" class="weekday">
                <span>일</span>
             </label>
             <input type="checkbox" id="mon" name="mon" value="mon" {{ $attendValueArr[1]==1 ? 'checked' : ''}}>
-            <label for="mon">
+            <label for="mon" class="weekday">
                <span>월</span>
             </label>
             <input type="checkbox" id="tue" name="tue" value="tue" {{ $attendValueArr[2]==1 ? 'checked' : ''}}>
-            <label for="tue">
+            <label for="tue" class="weekday">
                <span>화</span>
             </label>
             <input type="checkbox" id="wed" name="wed" value="wed" {{ $attendValueArr[3]==1 ? 'checked' : ''}}>
-            <label for="wed">
+            <label for="wed" class="weekday">
                <span>수</span>
             </label>
             <input type="checkbox" id="thu" name="thu" value="thu" {{ $attendValueArr[4]==1 ? 'checked' : ''}}>
-            <label for="thu">
+            <label for="thu" class="weekday">
                <span>목</span>
             </label>
             <input type="checkbox" id="fri" name="fri" value="fri" {{ $attendValueArr[5]==1 ? 'checked' : ''}}>
-            <label for="fri">
+            <label for="fri" class="weekday">
                <span>금</span>
             </label>
             <input type="checkbox" id="sat" name="sat" value="sat" {{ $attendValueArr[6]==1 ? 'checked' : ''}}>
-            <label for="sat">
+            <label for="sat" class="weekday">
                <span>토</span>
             </label>
         </li>
@@ -87,14 +88,10 @@
           <label for="purpose">수강 목적</label><input type="text" id="purpose" name="purpose" value="{{ old('purpose',$student->purpose) }}">
         </li>
         <li class="comment-box">
-          <label for="comment">메모</label><textarea cols="52" rows= "4"id="comment" name="comment" value="{{ old('comment',$student->comment) }}"></textarea>
-
-<!--          <input type="textarea" placeholder="메모하세요">-->
-        </li>
+         <label for="comment">메모</label><textarea cols="52" rows= "4" id="comment" name="comment">{{ old('comment', $student->comment) }}</textarea>
+       </li>
         <li class="status-box">
           <label>학적 상태</label>
-
-
           <label for="yes" class="radiobutton">재학</label>
           <input type="radio" id="yes" name="status" value="재학" {{ $student->status=="재학" ? 'checked' : ''}}>
           <label for="no" class="radiobutton">휴학</label>
