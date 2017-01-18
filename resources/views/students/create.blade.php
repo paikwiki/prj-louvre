@@ -88,7 +88,7 @@
           <input type="text" id="purpose" name="purpose" value="{{ old('purpose') }}">
         </li>
         <li class="comment-box">
-          <label for="comment">메모</label><textarea cols="52" rows= "4" id="comment" name="comment">{{ old('comment') }}</textarea>
+          <label for="comment">메모</label><textarea id="comment" name="comment">{{ old('comment') }}</textarea>
         </li>
         <li class="status-box">
           <label>학적 상태</label>
