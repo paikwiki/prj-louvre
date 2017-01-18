@@ -656,11 +656,6 @@ img {
     display: block;
     width : 90%;
     margin : 0 auto;
-    label{
-        display: block;
-        padding-bottom: 8px;
-        border-bottom: 1px solid gray;
-    }
     input {
         // border: none;
         margin: 6px 0;
@@ -709,24 +704,31 @@ img {
     .status-box {
       margin-bottom: 30px;
       > label {
+        display: block;
         margin-bottom: 20px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid gray;
+        span {
+          padding : 5px;
+          border : 1px solid black;
+        }
       }
       input {
         display: none;
       }
+      input:checked + label > span {
+        background: #9e9e9e;
+      }
       .radiobutton{
         display:inline;
-        margin-right: 12px;
-        padding : 8px;
-        border: 2px solid gray;
+        margin-right: 5px;
+        // padding : 8px;
+        border-bottom: 0;
         font-weight: normal;
       }
       // .radiobutton + input {
       //   display:inline;
       // }
-    }
-    .status-box > input:checked + label {
-      background: #9e9e9e;
     }
     .attend {
       padding-bottom : 20px;

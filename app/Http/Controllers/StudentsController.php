@@ -403,23 +403,16 @@ class StudentsController extends Controller
      */
     public function update(Request $request, \App\Student $student)
     {
-      // var_dump($student->id);
-      // $student=\App\Student::where('id',$id)->get();
-      if(strlen($_FILES["profile_pic"]["name"])>0)
+      if(isset($_FILES["profile_pic"]["name"]))
       {
         $imageFileName = time() . '.' . basename($_FILES["profile_pic"]["name"]);
         $s3 = \Storage::disk('s3');
         $photoPath = '/studentuploads/' . $imageFileName;
         $s3->put($photoPath, file_get_contents($_FILES["profile_pic"]["tmp_name"]), 'public');
-        //$photoUrl=\Storage::url($imageFileName);
-        //$photo = Storage::disk('s3')->get($photoPath);
       } else {
-        $imageFileName = "default";
-
+        // 프로필 사진이 텍스트 값으로 넘어올 경우엔 그 값을 그대로 유지, 그렇지 않으면 기본값으로 설정
+        $imageFileName = isset($request["profile_pic"]) ? $request["profile_pic"] : "default";
       }
-
-
-
       $student ->update([
         'name' => $request['name'],
         'tel' => $request['tel'],
@@ -427,9 +420,8 @@ class StudentsController extends Controller
         'profile_pic' => $imageFileName,
         'birth' => $request['birth'],
         'enroll_date' => $request['enroll_date'],
-        // 'course_id' => $request['course_id'],
         'purpose' => $request['purpose'],
-        // 'status' => $request['status'],
+        'status' => $request['status'],
         'comment' => $request['comment'],
 
       ]);
