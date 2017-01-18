@@ -2,6 +2,7 @@
 // 학생 추가
 // ===================
 
+// 등록일을 오늘로 설정
 $(function(){
   var now = new Date();
   var day = ("0" + now.getDate()).slice(-2);
