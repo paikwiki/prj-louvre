@@ -17,7 +17,7 @@
     <div class="s-box1">
       <div class="top-left">
         <ul>
-          @if( empty($student->profile_pic) )
+          @if( empty($student->profile_pic) ||  $student->profile_pic == 'default' )
             <li class="addpicture">
               <label for="imgInp"><img src='/image/final-image/icon_input_profile.png'></label>
               <input type="file" id="imgInp" name="profile_pic" value="{{ old('profile_pic', $student->profile_pic) }}">
