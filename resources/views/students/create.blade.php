@@ -103,6 +103,7 @@
     </div>
   </div>
 </form>
+<script src="/js/studentCreate.js" charset="utf-8"></script>
 @endsection
 
 @section('footer')
