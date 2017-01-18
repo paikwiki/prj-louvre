@@ -268,7 +268,11 @@ class StudentsController extends Controller
         $startDateTime = $student->enroll_date.' 00:00:00';
         $start = new \DateTime($startDateTime);
         $now = new \DateTime();
-        $dDay = date_diff($start, $now)->days;
+        if( $start > $now ) {
+            $dDay = -(date_diff($start, $now)->days);
+        } else {
+            $dDay = date_diff($start, $now)->days;
+        }
 
         $artworkTypeArr = []; // 작품 유형
         $artworkTagsCounts = []; // 태그별 갯수

@@ -85,7 +85,13 @@
           <h2><span class="box-header-icon icon-summary"></span>Summary</h2>
         </div>
         <ul>
-          <li>등록한지 <span>"{{ $dDay }}"</span>일 됐어요.</li>
+          @if( $dDay < 0 )
+            <li>첫 수업까지 <span>"{{ -($dDay) }}일"</span> 남았어요.</li>
+          @elseif ( $dDay == 0 )
+            <li>오늘이 학원 첫 수업하는 날입니다.</li>
+          @else
+            <li>등록한지 <span>"{{ $dDay }}일"</span> 됐어요.</li>
+          @endif
           @if($artworkBool)
             <li><span>"{{ $maxType }}"</span>를 가장 많이 그렸어요.</li>
             <li>최근에 <a href="/artworks/{{ $artworks[0]->id }}"><span>"{{$artwork_recent->name}}"</span></a> 작품을 그렸어요.</li>
