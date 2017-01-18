@@ -13,15 +13,23 @@
       </div>
     @endif
     <div class="top-box clearfix">
-        <div class="edge-triangle"></div>
+      <div class="edge-triangle"></div>
     <div class="s-box1">
       <div class="top-left">
         <ul>
-           <li class="addpicture">
+          @if( empty($student->profile_pic) )
+            <li class="addpicture">
               <label for="imgInp"><img src='/image/final-image/icon_input_profile.png'></label>
               <input type="file" id="imgInp" name="profile_pic" value="{{ old('profile_pic', $student->profile_pic) }}">
             </li>
-              <img id="blah" src="#" alt="your image"/>
+            <img id="blah" src="" alt="your image"/>
+          @else
+            <li class="addpicture hide">
+              <label for="imgInp"><img src='/image/final-image/icon_input_profile.png'></label>
+              <input type="text" id="imgInp" name="profile_pic" value="{{ $student->profile_pic }}">
+            </li>
+            <img id="blah" src="https://louvrebucket.s3.amazonaws.com/studentuploads/{{ $student->profile_pic }}" alt="your image" style="display: block;"/>
+          @endif
         </ul>
       </div>
         <div class="top-right">

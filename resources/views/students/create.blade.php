@@ -21,7 +21,7 @@
                 <label for="imgInp"><img src='/image/final-image/icon_input_profile.png'></label>
                 <input type="file" id="imgInp" name="profile_pic" value="{{ old('profile_pic') }}">
               </li>
-                <img id="blah" src="#" alt="your image"/>
+                <img id="blah" src="" alt="your image"/>
           </ul>
         </div>
         <div class="top-right">
