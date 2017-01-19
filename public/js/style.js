@@ -26,14 +26,14 @@ $(function(){
 });
 
 $(function(){
-  $("#blah").addClass('hide');
+  $("#image_preview").addClass('hide');
   function readURL(input) {
     $(".addpicture").addClass('hide');
     if (input.files && input.files[0]) {
       var reader = new FileReader();
       reader.onload = function (e) {
-        $('#blah').attr('src', e.target.result);
-        $('#blah').css({
+        $('#image_preview').attr('src', e.target.result);
+        $('#image_preview').css({
           display: 'block'
         })
       }
@@ -42,6 +42,6 @@ $(function(){
   }
   $("#imgInp").change(function(){
     readURL(this);
-    $("#blah").removeClass('hide');
+    $("#image_preview").removeClass('hide');
   });
 });

@@ -22,13 +22,13 @@
               <label for="imgInp"><img src='/image/final-image/icon_input_profile.png'></label>
               <input type="file" id="imgInp" name="profile_pic" value="{{ old('profile_pic', $student->profile_pic) }}">
             </li>
-            <img id="blah" src="" alt="your image"/>
+            <img id="image_preview" src="" alt="your image"/>
           @else
             <li class="addpicture hide">
-              <label for="imgInp"><img src='/image/final-image/icon_input_profile.png'></label>
-              <input type="text" id="imgInp" name="profile_pic" value="{{ $student->profile_pic }}">
+              <label for="imgInp"><img id="image_preview" src="https://louvrebucket.s3.amazonaws.com/studentuploads/{{ $student->profile_pic }}" alt="your image" style="display: block;"/></label>
+              <input type="file" id="imgInp" name="profile_pic" value="{{ $student->profile_pic }}">
             </li>
-            <img id="blah" src="https://louvrebucket.s3.amazonaws.com/studentuploads/{{ $student->profile_pic }}" alt="your image" style="display: block;"/>
+
           @endif
         </ul>
       </div>
