@@ -110,6 +110,7 @@
   </div> <!-- /.write-box -->
   @endif
 </div> <!-- /.a-add-box-->
+<script src="/js/artworkCreate.js" charset="utf-8"></script>
 @endsection
 
 @section('footer')

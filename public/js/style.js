@@ -46,11 +46,13 @@ $(function(){
   });
   // 이미 이미지가 있을 경우 수정하고자 할 때
   $('.exist-profile-img').on('click', function() {
+    $('#imgInp').attr('type', 'file');
     $("label[for='imgInp']").click();
     readURL(this);
   });
   // 이미 이미지가 있을 경우 수정하고자 할 때
   $('.exist-artwork-img').on('click', function() {
+    $('#imgInp').attr('type', 'file');
     $("label[for='imgInp']").click();
     readURL(this);
   });

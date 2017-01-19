@@ -407,7 +407,7 @@ class StudentsController extends Controller
      */
     public function update(Request $request, \App\Student $student)
     {
-      if(isset($_FILES["profile_pic"]["name"]))
+      if(isset($_FILES["profile_pic"]["name"]) && strlen($_FILES["profile_pic"]["name"]) > 0)
       {
         $imageFileName = time() . '.' . basename($_FILES["profile_pic"]["name"]);
         $s3 = \Storage::disk('s3');
