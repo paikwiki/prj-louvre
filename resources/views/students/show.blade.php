@@ -18,9 +18,9 @@
     <div class="profile-div">
         <div class="profile-pic-box">
           @if($student->profile_pic=="default")
-            <img src="https://louvrebucket.s3.amazonaws.com/defaultuploads/defaultpfpic.png" alt="artwork" class="a-photo">
+            <img src="https://louvrebucket.s3.amazonaws.com/defaultuploads/defaultpfpic.png" alt="artwork" class="a-photo centered-image">
           @else
-            <img src="https://louvrebucket.s3.amazonaws.com/studentuploads/{{$student->profile_pic}}" alt="artwork" class="a-photo">
+            <img src="https://louvrebucket.s3.amazonaws.com/studentuploads/{{$student->profile_pic}}" alt="artwork" class="a-photo centered-image">
           @endif
         </div>
     </div>
