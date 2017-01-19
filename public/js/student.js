@@ -76,7 +76,7 @@ var svg = d3.select("#graph").append("svg")
   .attr("class", "graph")
   .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 var data = graphData;
-console.log(data);
+// console.log(data);
 x.domain(data.map(function(d) { return d.date; }));
 svg.append("g")
   .attr("class", "x axis")

@@ -6,7 +6,6 @@ $(document).ready(function(){
 });
 
 $(function(){
-
   $('.form-group01 > input').focus(function(){
     $(this).siblings().addClass('focused');
   });
@@ -25,6 +24,7 @@ $(function(){
   });
 });
 
+// 이미지 업로드 기능
 $(function(){
   $("#image_preview").addClass('hide');
   function readURL(input) {
@@ -43,5 +43,32 @@ $(function(){
   $("#imgInp").change(function(){
     readURL(this);
     $("#image_preview").removeClass('hide');
+  });
+});
+
+// 프로파일 동그랗게 만들기
+$(function(){
+  var containerWidth = $('.centered-image').parent().width();
+  $('.centered-image').each(function() {
+    var $this = $(this);
+    var imgXY = [$this[0].naturalWidth, $this[0].naturalHeight];
+    var modifiedXY = imgXY[0] >= imgXY[1] ? [imgXY[0]*(containerWidth/imgXY[1]), containerWidth] : [containerWidth, imgXY[1]*(containerWidth/imgXY[0])];
+    modifiedXY = modifiedXY.map(function(v) {
+      return parseInt(v);
+    });
+    var imgPos = [-(modifiedXY[0]/2-(containerWidth/2)), -(modifiedXY[1]/2-(containerWidth/2))]
+    $this.parent().css({
+      position: 'relative'
+    })
+    $this.css({
+      maxWidth: 'inherit',
+      width: modifiedXY[0],
+      height: modifiedXY[1],
+      left: imgPos[0],
+      top: imgPos[1]
+    }).animate({
+      opacity: 1
+    }, 600)
+    console.log(modifiedXY);
   });
 });
