@@ -16,7 +16,7 @@
       @else
         <li class="addpicture hide">
           <label for="imgInp"><img src='/image/final-image/icon_plus.png' alt='작품 사진'><span>작품을 추가하세요</span> </label>
-          <input type="file" id="imgInp" name="photo" value="{{ old('photo', $artwork->photo) }}" >
+          <input type="text" id="imgInp" name="photo" value="{{ old('photo', $artwork->photo) }}" >
         </li>
         <img id="image_preview" class="exist-artwork-img" style="display: block;" src="https://louvrebucket.s3.amazonaws.com/artworkuploads/{{ old('photo', $artwork->photo) }}" alt="your image"/>
       @endif

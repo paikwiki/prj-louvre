@@ -185,11 +185,11 @@
             </figure>
           @endforeach
         @else
-          <figure class="myartwork">
-            <a>
-              <img src="http://placehold.it/360x360" alt="temp-image"> </a>
+          <figure class="myartwork no-artwork">
+            <a href="/artworks/create?std_id={{  $student->id }}">
+              <img src="/image/final-image/icon_plus.png" alt="temp-image"></a>
               <figcaption>
-                  <a>아직 그린 그림이 없습니다.</a>
+                  <a href="/artworks/create?std_id={{  $student->id }}">아직 그린 그림이 없습니다.</a>
               </figcaption>
           </figure>
         @endif

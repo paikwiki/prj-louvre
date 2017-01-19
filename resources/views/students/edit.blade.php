@@ -26,7 +26,7 @@
           @else
             <li class="addpicture hide">
               <label for="imgInp"></label>
-              <input type="file" id="imgInp" name="profile_pic" value="{{ $student->profile_pic }}">
+              <input type="text" id="imgInp" name="profile_pic" value="{{ $student->profile_pic }}">
             </li>
             <img id="image_preview" class="exist-profile-img" style="display: block;" src="https://louvrebucket.s3.amazonaws.com/studentuploads/{{ $student->profile_pic }}" alt="your image"/>
           @endif

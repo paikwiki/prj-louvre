@@ -157,65 +157,34 @@ class ArtworksController extends Controller
         //$imageFileName = '/public/files/noimg.png';
       }
 
+      // 작품 이미지 저장
+      $artwork = \App\Artwork::create([
+        // 'photo' => $request['photo'],
+        'photo' => $imageFileName,
+        'name' => $request['name'],
+        'date' => $request['date'],
+        'type_id' => $request['type_id'],
+        'student_id' => $request['student_id'],
+        'size' => $request['size'],
+        'engagement' => $request['engagement'],
+        'completeness' => $request['completeness'],
+        'feedback' => $request['feedback'],
+      ]);
 
-
-  /**file시도주석2
-        $rules = [
-          'name' => 'required',
-          'files' => ['array'],
-          'files.*' => ['mimes:jpg,jpeg,png,bmp,gif', 'max:30000'],
-        ];
-
-        $validator = \Validator::make($request->all(), $rules);
-        if ($validator->fails()) {
-          return back()->withErrors($validator)->withInput();
-        }
-
-
-        // 사진 경로 따고 옮기기
-       $url = $_FILES["photo"]["tmp_name"];
-        $target_dir = "files/";
-        $target_file = $target_dir . basename($_FILES["photo"]["name"]);
-        move_uploaded_file($_FILES["photo"]["tmp_name"], $target_file);
-
-        // 사진 경로를 photo에 저장하기
-        if ( isset($_FILES["photo"]["name"]) ) {
-          $photoUrl = '/files/'.$_FILES["photo"]["name"];
-        } else {
-          $photoUrl = '/files/noimg.png';
-        }
-
-        **/
-
-        $artwork = \App\Artwork::create([
-          // 'photo' => $request['photo'],
-          'photo' => $imageFileName,
-          'name' => $request['name'],
-          'date' => $request['date'],
-          'type_id' => $request['type_id'],
-          'student_id' => $request['student_id'],
-          'size' => $request['size'],
-          'engagement' => $request['engagement'],
-          'completeness' => $request['completeness'],
-          'feedback' => $request['feedback'],
-        ]);
-
-        $selectTags = [];
-        for( $i=0; $i<20; $i++ )
+      $selectTags = [];
+      for( $i=0; $i<20; $i++ )
+      {
+        $selectTag = 'tag'.($i+1);
+        if( $request[$selectTag] == 'on' )
         {
-          $selectTag = 'tag'.($i+1);
-          if( $request[$selectTag] == 'on' )
-          {
-            array_push($selectTags, $i+1);
-          }
+          array_push($selectTags, $i+1);
         }
-        $artwork->tag()->sync($selectTags);
-        if (! $artwork) {
-          return back()->with('flash_message', '작품이 저장되지 않았습니다.')->withInput();
-        }
-        return redirect('artworks/'.$artwork->id)->with('flash_message', '작품이 저장됐습니다.');
-
-
+      }
+      $artwork->tag()->sync($selectTags);
+      if (! $artwork) {
+        return back()->with('flash_message', '작품이 저장되지 않았습니다.')->withInput();
+      }
+      return redirect('artworks/'.$artwork->id)->with('flash_message', '작품이 저장됐습니다.');
     }
 
     /**
@@ -279,7 +248,6 @@ class ArtworksController extends Controller
      */
     public function edit($id)
     {
-
       $artwork = \App\Artwork::whereId($id)->first();
       $user = Auth::user();
       $students = $user->student()->get();
@@ -310,7 +278,7 @@ class ArtworksController extends Controller
      */
     public function update(Request $request, \App\Artwork $artwork)
     {
-      if(strlen($_FILES["photo"]["name"])>0)
+      if( isset($_FILES["photo"]["name"]) )
       {
         $imageFileName = time() . '.' . basename($_FILES["photo"]["name"]);
         $s3 = \Storage::disk('s3');
@@ -319,8 +287,8 @@ class ArtworksController extends Controller
         //$photoUrl=\Storage::url($imageFileName);
         //$photo = Storage::disk('s3')->get($photoPath);
       } else {
-        $imageFileName = "default";
-        //dd('사진이 없는 경우 에러처리 해야함-StudentsController');
+        // 기존의 이미지가 있었거나 여전히 없을 경우
+        $imageFileName = isset($request["photo"]) ? $request["photo"] : "default";
       }
 
       $artwork ->update([

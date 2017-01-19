@@ -227,11 +227,11 @@ img {
 .tab-box {
   margin: 15px;
 }
-.tab-content02{
-  .artworks{
+.tab-content02 {
+  .artworks {
     column-count: 2;
     column-gap: 10px;
-    figure{
+    figure {
       font-size: 0px;
       display: inline-block;
       padding : 10px;
@@ -244,12 +244,28 @@ img {
         padding-top : 10px;
         a{
           text-decoration: none;
-          color : black;
+          color : @mmGray;
           font-size: 14px;
         }
       }
       img{
         width :100%;
+      }
+    }
+    .no-artwork {
+      a {
+        display: block;
+        margin: 0 auto;
+        width: 90%;
+        padding: 10px 0;
+      }
+      figcaption{
+        text-align: center;
+        text-decoration: none;
+        padding-top : 10px;
+        a {
+          font-size: 12px;
+        }
       }
     }
   }
