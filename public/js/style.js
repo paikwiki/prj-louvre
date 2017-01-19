@@ -44,6 +44,16 @@ $(function(){
     readURL(this);
     $("#image_preview").removeClass('hide');
   });
+  // 이미 이미지가 있을 경우 수정하고자 할 때
+  $('.exist-profile-img').on('click', function() {
+    $("label[for='imgInp']").click();
+    readURL(this);
+  });
+  // 이미 이미지가 있을 경우 수정하고자 할 때
+  $('.exist-artwork-img').on('click', function() {
+    $("label[for='imgInp']").click();
+    readURL(this);
+  });
 });
 
 // 프로파일 동그랗게 만들기
@@ -68,7 +78,6 @@ $(function(){
       top: imgPos[1]
     }).animate({
       opacity: 1
-    }, 600)
-    console.log(modifiedXY);
+    }, 600);
   });
 });

@@ -17,18 +17,11 @@
       <div class="s-box1">
         <div class="top-left">
           <ul>
-            @if( empty($student->profile_pic) ||  $student->profile_pic == 'default' )
-              <li class="addpicture">
-                <label for="imgInp"><img src='/image/final-image/icon_input_profile.png'></label>
-                <input type="file" id="imgInp" name="profile_pic" value="{{ old('profile_pic', $student->profile_pic) }}">
-              </li>
-              <img id="image_preview" src="" alt="your image"/>
-            @else
-              <li class="addpicture hide">
-                <label for="imgInp"><img id="image_preview" src="https://louvrebucket.s3.amazonaws.com/studentuploads/{{ $student->profile_pic }}" alt="your image" style="display: block;"/></label>
-                <input type="file" id="imgInp" name="profile_pic" value="{{ $student->profile_pic }}">
-              </li>
-            @endif
+            <li class="addpicture">
+              <label for="imgInp"><img src='/image/final-image/icon_input_profile.png'></label>
+              <input type="file" id="imgInp" name="profile_pic" value="{{ old('profile_pic', $student->profile_pic) }}">
+            </li>
+            <img id="image_preview" src="" alt="your image"/>
           </ul>
         </div>
         <div class="top-right">
