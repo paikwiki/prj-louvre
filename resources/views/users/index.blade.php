@@ -1,12 +1,12 @@
 @extends('layouts.master', [
 'intro' => 'true'
 ])
-
+@section('title', 'User-login')
 
 @section('content')
 
 <div class="intro-logo">
-    <img src="/image/intro-image/logo-minimue.png" alt="mini:mue">    
+    <img src="/image/intro-image/logo-minimue.png" alt="mini:mue">
 </div>
 
 <div class="subtitle">
@@ -46,14 +46,14 @@
           </label>
       </div>
     </div>
-    
+
     <div class="form-group04">
       <button type="submit" class="btn btn-primary">
           로그인
       </button>
-      
+
      <p></p>
-     
+
       <a href="/users/join">회원가입</a> / <a href="{{ url('/password/reset') }}">ID,PW 찾기</a>
     </div>
   </form>

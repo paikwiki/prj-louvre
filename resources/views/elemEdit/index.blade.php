@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
+@section('title', 'Settings-'.$targetElemType)
+
 @section('content')
 <div class="settings settings-elem">
   <h2>{{ $targetElemType }} 관리</h2>

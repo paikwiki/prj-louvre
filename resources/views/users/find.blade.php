@@ -1,5 +1,5 @@
 @extends('layouts.master')
-
+@section('title', 'User-find')
 
 @section('content')
 <div class="login-box">

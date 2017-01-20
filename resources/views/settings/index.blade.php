@@ -1,5 +1,5 @@
 @extends('layouts.master')
-
+@section('title', 'Settings')
 
 @section('content')
 <div class="settings">
@@ -13,6 +13,7 @@
   <h3>사용자 관련</h3>
   <ul>
     <li><a href="/users/logout">logout</a></li>
+    <li><a href="">사용 가이드</a></li>
   </ul>
 </div>
 @endsection

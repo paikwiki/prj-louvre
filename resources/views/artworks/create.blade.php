@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
+@section('title', 'Artwork-create')
+
 @section('content')
 <div class="a-add-box">
   @if( count($students) > 0 )

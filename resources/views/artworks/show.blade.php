@@ -1,5 +1,6 @@
-
 @extends('layouts.master')
+
+@section('title', 'Artwork-'.$artwork->id)
 
 @section('content')
 <div class='a-wrap box-container'>
