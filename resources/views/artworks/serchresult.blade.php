@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
+@section('title', 'Artwork-searchresult')
+
 @section('content')
 <div class="search-result-box">
   <div class="search-result-text">

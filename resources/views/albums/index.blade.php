@@ -1,5 +1,6 @@
 @extends('layouts.master')
 
+@section('title', 'Album')
 
 @section('content')
 <div class="album-box">

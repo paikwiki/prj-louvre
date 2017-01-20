@@ -1,7 +1,7 @@
 @extends('layouts.master', [
 'intro' => 'true'
 ])
-
+@section('title', 'User-join')
 
 @section('content')
 <div class="intro-logo">

@@ -1,4 +1,5 @@
 @extends('layouts.master')
+@section('title', 'Student-edit')
 
 @section('content')
 <form class="s-add" action="{{ route('students.update', $student->id)}}" method="POST" enctype="multipart/form-data">

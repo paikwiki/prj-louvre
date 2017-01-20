@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
+@section('title', 'Student-create')
+
 @section('content')
 <form class="s-add" action="{{ route('students.store') }}" method="POST" enctype="multipart/form-data">
 
