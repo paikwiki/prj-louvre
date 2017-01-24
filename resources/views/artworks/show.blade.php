@@ -54,11 +54,11 @@
     </div>
     <div class="a-point">
       <div class="width-half a-engagement">
-        <span>강의 몰입도</span>
+        <span>수업흥미도</span>
         <p>{{ $artwork->engagement }}</p>
       </div>
       <div class="width-half a-point">
-        <span>학습 난이도</span>
+        <span>작품만족도</span>
          <p>{{ $artwork->completeness }}</p>
       </div>
     </div>
