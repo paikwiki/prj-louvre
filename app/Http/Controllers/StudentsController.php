@@ -31,10 +31,6 @@ class StudentsController extends Controller
       // $weekdayOfToday = 'thu';
       // var_dump($weekdayOfToday);
 
-/***************/
-/***바뀐코드*****///student collection에 계속 이상한 null객체 생겨서 에러남. 그래서 다시짬.
-/*****시작******/
-
       // 모든선생님들의 '오늘의 수강생' 아이디 확인하기
       $todayAttendances = \App\Attendance::where($weekdayOfToday, 1)->get();
       $todayStudents = [];
@@ -52,43 +48,8 @@ class StudentsController extends Controller
 
       }
 
-/***************/
-/***바뀐코드*****/
-/*****끝******/
-
-
-
-/*******************/
-/***바뀌기 전코드***/
-/******시작*******/
-
-      /*
-      $todayStudentIds = \App\Attendance::where($weekdayOfToday, 1)->get();
-      $todayStudentIdArr = [];
-      foreach($todayStudentIds as $todayStudentId)
-      {
-        array_push($todayStudentIdArr, $todayStudentId->id);
-      }
-      //  var_dump($todayStudentIdArr);
-      // 오늘의 수강생 목록 만들기
-      $todayStudents = [];
-      foreach( $todayStudentIdArr as $todayStudentId   ) {
-        $target = $students->where('id', $todayStudentId)->first();
-        array_push($todayStudents, $target);
-        // var_dump($target->name);
-        // if($target->id = $todayStudentIdArr)
-
-      }
-
-/*******************/
-/***바뀌기 전코드***/
-/******끝*********/
-
-
-
       //수강생 요일 보여주기
       $attendances = \App\Attendance::get();
-
 
       //생일 보내기
       $birthdayArr=[];
@@ -214,31 +175,6 @@ class StudentsController extends Controller
         return back()->with('flash_message', '글이 저장되지 않았습니다.')->withInput();
       }
 
-
-      //type 테이블에 아무 값도 없을 시 null참조error 임시방편용
-      // $typecheck = \App\Type::whereUserId($user->id)->first();
-      // dd($typecheck->id);
-      // if ($typecheck->id > 0){
-      //   \App\Type::create([
-      //     'name' => "기타장르",
-      //     'user_id' => $user->id,
-      //   ]);
-      // }
-
-      //student를 신규생성할때 artwork가 없으므로 student상세보기를 할수 없기에 임시방편
-      // \App\Artwork::create([
-      //   // 'photo' => $request['photo'],
-      //   'photo' => "http://www.pacinno.eu/wp-content/uploads/2014/05/placeholder1.png",
-      //   'name' => "sample작품",
-      //   'date' => Carbon::now(),
-      //   'type_id' => 1,
-      //   'student_id' => $student->id,
-      //   'size' => "0호",
-      //   'engagement' => 10,
-      //   'completeness' => 10,
-      //   'feedback' => "sample작품입니다.",
-      // ]);
-
       return redirect('students/'.$student->id)->with('flash_message', '새로운 학생을 생성했습니다.');
     }
 
@@ -268,7 +204,11 @@ class StudentsController extends Controller
         $startDateTime = $student->enroll_date.' 00:00:00';
         $start = new \DateTime($startDateTime);
         $now = new \DateTime();
-        $dDay = date_diff($start, $now)->days;
+        if( $start > $now ) {
+            $dDay = -(date_diff($start, $now)->days);
+        } else {
+            $dDay = date_diff($start, $now)->days;
+        }
 
         $artworkTypeArr = []; // 작품 유형
         $artworkTagsCounts = []; // 태그별 갯수
@@ -298,7 +238,6 @@ class StudentsController extends Controller
             {
               if( $artworkTag->artwork_id == $artwork->id )
               {
-                // var_dump($tagArr->where('id', $artworkTag->tag_id)->first()->name);
                 array_push($artworkTags, $tagArr->where('id', $artworkTag->tag_id)->first()->name);
               }
             }
@@ -332,10 +271,20 @@ class StudentsController extends Controller
           }
           // 그래프
           $graph_data = \App\Artwork::whereStudentId($id)->orderBy('date', 'asc')->get(['id', 'date', 'engagement', 'completeness']);
+          $sameDayIndex = 2;
           foreach ($graph_data as $value) {
-            // $year = preg_match("/[0-9]{4}-/", $value['date']);
             $value['date']= preg_replace("/[0-9]{4}-/", '', $value['date']);
+            if( isset($preDateVal) && $preDateVal == $value['date'] ) {
+              $preDateVal = $value['date'];
+              $value['date'] .= '('.$sameDayIndex.')';
+              $sameDayIndex += 1;
+            } else {
+              $preDateVal = $value['date'];
+            }
           }
+          // dd($graph_data);
+          // array_push(['id', 'date', 'engagement', 'completeness'], $graph_data);
+          // dd($graph_data);
         } else { // 작품이 없을 경우!
           $artworkBool = false;
           $artworks[0] = [];
@@ -403,23 +352,16 @@ class StudentsController extends Controller
      */
     public function update(Request $request, \App\Student $student)
     {
-      // var_dump($student->id);
-      // $student=\App\Student::where('id',$id)->get();
-      if(strlen($_FILES["profile_pic"]["name"])>0)
+      if(isset($_FILES["profile_pic"]["name"]) && strlen($_FILES["profile_pic"]["name"]) > 0)
       {
         $imageFileName = time() . '.' . basename($_FILES["profile_pic"]["name"]);
         $s3 = \Storage::disk('s3');
         $photoPath = '/studentuploads/' . $imageFileName;
         $s3->put($photoPath, file_get_contents($_FILES["profile_pic"]["tmp_name"]), 'public');
-        //$photoUrl=\Storage::url($imageFileName);
-        //$photo = Storage::disk('s3')->get($photoPath);
       } else {
-        $imageFileName = "default";
-
+        // 프로필 사진이 텍스트 값으로 넘어올 경우엔 그 값을 그대로 유지, 그렇지 않으면 기본값으로 설정
+        $imageFileName = isset($request["profile_pic"]) ? $request["profile_pic"] : "default";
       }
-
-
-
       $student ->update([
         'name' => $request['name'],
         'tel' => $request['tel'],
@@ -427,9 +369,8 @@ class StudentsController extends Controller
         'profile_pic' => $imageFileName,
         'birth' => $request['birth'],
         'enroll_date' => $request['enroll_date'],
-        // 'course_id' => $request['course_id'],
         'purpose' => $request['purpose'],
-        // 'status' => $request['status'],
+        'status' => $request['status'],
         'comment' => $request['comment'],
 
       ]);

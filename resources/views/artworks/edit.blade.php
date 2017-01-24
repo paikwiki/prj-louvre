@@ -1,17 +1,27 @@
 @extends('layouts.master')
 
+@section('title', 'Artwork-edit')
+
 @section('content')
 <div class="a-add-box">
   @if( count($students) > 0 )
   <form class="a-add" action="{{ route('artworks.update', $artwork->id)}}" method="POST" enctype="multipart/form-data">
-    {{!! method_field('PUT')!!}}
+    {!! method_field('PUT')!!}
     {!! csrf_field() !!}
     <ul>
-      <li class="addpicture">
-        <label for="imgInp"> <img src='/image/final-image/icon_plus.png' alt='작품 사진'><span>작품을 추가하세요</span> </label>
-        <input type="file" id="imgInp" name="photo" value="{{ old('photo', $artwork->photo) }}" >
-      </li>
-      <img id="blah" src="#" alt="your image"/>
+      @if( empty($artwork->photo) ||  $artwork->photo == 'default' )
+        <li class="addpicture">
+          <label for="imgInp"><img src='/image/final-image/icon_plus.png' alt='작품 사진'><span>작품을 추가하세요</span> </label>
+          <input type="file" id="imgInp" name="photo" value="{{ old('photo', $artwork->photo) }}" >
+        </li>
+        <img id="image_preview" class="hide" src="" alt="your image"/>
+      @else
+        <li class="addpicture hide">
+          <label for="imgInp"><img src='/image/final-image/icon_plus.png' alt='작품 사진'><span>작품을 추가하세요</span> </label>
+          <input type="text" id="imgInp" name="photo" value="{{ old('photo', $artwork->photo) }}" >
+        </li>
+        <img id="image_preview" class="exist-artwork-img" style="display: block;" src="https://louvrebucket.s3.amazonaws.com/artworkuploads/{{ old('photo', $artwork->photo) }}" alt="your image"/>
+      @endif
     </ul>
     <div class='write-box'>
       <h2>작품정보</h2>

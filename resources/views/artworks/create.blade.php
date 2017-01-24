@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
+@section('title', 'Artwork-create')
+
 @section('content')
 <div class="a-add-box">
   @if( count($students) > 0 )
@@ -10,7 +12,7 @@
         <label for="imgInp"> <img src='/image/final-image/icon_plus.png' alt='작품 사진'><span>작품을 추가하세요</span> </label>
         <input type="file" id="imgInp" name="photo" value="{{ old('photo') }}" >
       </li>
-      <img id="blah" src="#" alt="your image"/>
+      <img id="image_preview" class="hide" src="" alt="your image"/>
     </ul>
     <div class='write-box'>
       <h2>작품정보</h2>
@@ -110,6 +112,7 @@
   </div> <!-- /.write-box -->
   @endif
 </div> <!-- /.a-add-box-->
+<script src="/js/artworkCreate.js" charset="utf-8"></script>
 @endsection
 
 @section('footer')

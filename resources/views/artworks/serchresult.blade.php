@@ -1,103 +1,38 @@
 @extends('layouts.master')
 
+@section('title', 'Artwork-searchresult')
 
 @section('content')
-
-
-@if($op_val ==0)
 <div class="search-result-box">
   <div class="search-result-text">
-    <p>총 {{$sum_result or 'Default'}}개의 결과가 있습니다.</p>
-{{--    <p>작품명검색결과:
-      @foreach ($result_aw_names as $result_name)
-      {{$result_name->name or 'Default'}} &nbsp;&nbsp;
-      @endforeach </p> --}}
+    @if( count($resultArtworkArr) == 0 )
+      <p>검색어에 해당하는 작품이 없어요. :(</p>
+    @elseif ( $searchWord == '' )
+      <p>검색어를 입력하지 않았어요 :( 모든 작품 목록을 보여드릴게요.</p>
+    @else
+      <p>"{{ $searchCategory[$optionVal] }}"에서 "{{ $searchWord }}" 찾기 : {{ count($resultArtworkArr) }}개 찾았습니다.</p>
+    @endif
   </div>
   <div class="search-result-artworks">
-    @foreach( $result_n as $result_name )
+    @foreach( $resultArtworkArr as $resultArtwork )
       <figure class="a-item">
-        <a href="/artworks/{{ $result_name->id }}">
-          @if($result_name->photo=="default")
+        <a href="/artworks/{{ $resultArtwork->id }}">
+          @if($resultArtwork->photo=="default")
             <img src="https://louvrebucket.s3.amazonaws.com/defaultuploads/defaultartwork.png" alt="artwork" class="a-photo">
           @else
-            <img src="https://louvrebucket.s3.amazonaws.com/artworkuploads/{{$result_name->photo}}" alt="artwork" class="a-photo">
+            <img src="https://louvrebucket.s3.amazonaws.com/artworkuploads/{{$resultArtwork->photo}}" alt="artwork" class="a-photo">
           @endif
         </a>
         <figcaption>
           <ul>
-            <li><a href="/artworks/{{ $result_name->id }}}">{{ $result_name->name }}</a></li>
-            <li><span class="name">작가명</span><span class="date">2016.12.25.</span></li>
+            <li><a href="/artworks/{{ $resultArtwork->id }}}">{{ $resultArtwork->name }}</a></li>
+            <li><span class="name">{{ $resultArtwork->student->name }}</span><span class="date">{{ $resultArtwork->date }}</span></li>
           </ul>
         </figcaption>
       </figure>
     @endforeach
-    @endif
     </div>
 </div>
-
-@if($op_val ==1)
-<div class="search-result-box">
-  <div class="search-result-text">
-    <p>총 {{$sum_result or 'Default'}}개의 결과가 있습니다.</p>
-    </div>
-    <div class="search-result-artworks">
-      @foreach( $result_d as $result_date )
-        <figure class="a-item">
-          <a href="/artworks/{{ $result_date->id }}"><img src="https://louvrebucket.s3.amazonaws.com/artworkuploads/{{ $result_date->photo }}" alt=""></a>
-          <figcaption>
-            <ul>
-              <li><a href="/artworks/{{ $result_date->id }}">{{ $result_date->name }}</a></li>
-              <li><span class="name">작가명</span><span class="date">2016.12.25.</span></li>
-            </ul>
-          </figcaption>
-        </figure>
-      @endforeach
-    </div>
-</div>
-@endif
-@if($op_val==2)
-<div class="search-result-box">
-  <div class="search-result-text">
-    <p>총 {{$sum_result or 'Default'}}개의 결과가 있습니다.</p>
-  </div>
-  <div class="search-result-artworks">
-    @foreach( $result_tp as $result_type )
-      <figure class="a-item">
-        <a href="/artworks/{{ $result_type->id }}"><img src="https://louvrebucket.s3.amazonaws.com/artworkuploads/{{ $result_type->photo }}" alt=""></a>
-        <figcaption>
-          <ul>
-              <li><a href="https://louvrebucket.s3.amazonaws.com/artworkuploads/{{ $result_type->id }}">{{ $result_type->name }}</a></li>
-              <li class="name">작가명</li>
-              <li class="date">2016.12.25</li>
-            </ul>
-        </figcaption>
-      </figure>
-    @endforeach
-  </div>
-</div>
-@endif
-
-@if($op_val==3)
-<div class="search-result-box">
-  <div class="search-result-text">
-    <p>총 {{$sum_result or 'Default'}}개의 결과가 있습니다.</p>
-  </div>
-  <div class="search-result-artworks">
-    @foreach( $result_tg as $result_tag )
-      <figure class="a-item">
-        <a href="/artworks/{{ $result_tag->id }}"><img src="https://louvrebucket.s3.amazonaws.com/artworkuploads/{{ $result_tag->photo }}" alt=""></a>
-        <figcaption>
-          <ul>
-            <li><a href="/artworks/{{ $result_tag->id }}">{{ $result_tag->name }}</a></li>
-            <li><span class="name">작가명</span><span class="date">2016.12.25.</span></li>
-          </ul>
-        </figcaption>
-      </figure>
-    @endforeach
-  </div>
-</div>
-@endif
-
 @endsection
 
 @section('footer')

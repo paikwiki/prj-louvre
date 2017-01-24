@@ -1,4 +1,5 @@
 @extends('layouts.master')
+@section('title', 'Student-'.$student->id)
 
 @section('content')
 
@@ -18,9 +19,9 @@
     <div class="profile-div">
         <div class="profile-pic-box">
           @if($student->profile_pic=="default")
-            <img src="https://louvrebucket.s3.amazonaws.com/defaultuploads/defaultpfpic.png" alt="artwork" class="a-photo">
+            <img src="https://louvrebucket.s3.amazonaws.com/defaultuploads/defaultpfpic.png" alt="artwork" class="a-photo centered-image">
           @else
-            <img src="https://louvrebucket.s3.amazonaws.com/studentuploads/{{$student->profile_pic}}" alt="artwork" class="a-photo">
+            <img src="https://louvrebucket.s3.amazonaws.com/studentuploads/{{$student->profile_pic}}" alt="artwork" class="a-photo centered-image">
           @endif
         </div>
     </div>
@@ -85,7 +86,13 @@
           <h2><span class="box-header-icon icon-summary"></span>Summary</h2>
         </div>
         <ul>
-          <li>등록한지 <span>"{{ $dDay }}"</span>일 됐어요.</li>
+          @if( $dDay < 0 )
+            <li>첫 수업까지 <span>"{{ -($dDay) }}일"</span> 남았어요.</li>
+          @elseif ( $dDay == 0 )
+            <li>오늘이 학원 첫 수업하는 날입니다.</li>
+          @else
+            <li>등록한지 <span>"{{ $dDay }}일"</span> 됐어요.</li>
+          @endif
           @if($artworkBool)
             <li><span>"{{ $maxType }}"</span>를 가장 많이 그렸어요.</li>
             <li>최근에 <a href="/artworks/{{ $artworks[0]->id }}"><span>"{{$artwork_recent->name}}"</span></a> 작품을 그렸어요.</li>
@@ -118,11 +125,11 @@
           <h2><span class="box-header-icon icon-evaluate"></span>Evaluation</h2>
         </div>
         <div class="width-half s-engagement">
-          <h3>몰입도 평균</h3>
+          <h3>수업흥미도 평균</h3>
           <p>{{ $engagementAvg }}</p>
         </div>
         <div class="width-half s-completeness">
-          <h3>난이도 평균</h3>
+          <h3>작품만족도 평균</h3>
           <p>{{ $completenessAvg }}</p>
         </div>
         <div id="graph-wrapper" class="width-full">
@@ -179,11 +186,11 @@
             </figure>
           @endforeach
         @else
-          <figure class="myartwork">
-            <a>
-              <img src="http://placehold.it/360x360" alt="temp-image"> </a>
+          <figure class="myartwork no-artwork">
+            <a href="/artworks/create?std_id={{  $student->id }}">
+              <img src="/image/final-image/icon_plus.png" alt="temp-image"></a>
               <figcaption>
-                  <a>아직 그린 그림이 없습니다.</a>
+                  <a href="/artworks/create?std_id={{  $student->id }}">아직 그린 그림이 없습니다.</a>
               </figcaption>
           </figure>
         @endif

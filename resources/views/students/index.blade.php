@@ -1,4 +1,5 @@
 @extends('layouts.master')
+@section('title', 'Students')
 
 @section('content')
 <div class="students students-today">
@@ -28,9 +29,9 @@
         @if($todayStudent) <!--null값 때문에 에러나서 if문추가한거임 -수지- -->
           <li class="clearfix">
             @if($todayStudent->profile_pic=="default")
-              <div class="photo-box"><a href="/students/{{ $todayStudent->id }}"><img src="https://louvrebucket.s3.amazonaws.com/defaultuploads/defaultpfpic.png" alt="" class="photo"></a></div>
+              <div class="photo-box"><a href="/students/{{ $todayStudent->id }}"><img src="https://louvrebucket.s3.amazonaws.com/defaultuploads/defaultpfpic.png" alt="" class="photo centered-image"></a></div>
             @else
-              <div class="photo-box"><a href="/students/{{ $todayStudent->id }}"><img src="https://louvrebucket.s3.amazonaws.com/studentuploads/{{$todayStudent->profile_pic}}" alt="" class="photo"></a></div>
+              <div class="photo-box"><a href="/students/{{ $todayStudent->id }}"><img src="https://louvrebucket.s3.amazonaws.com/studentuploads/{{$todayStudent->profile_pic}}" alt="" class="photo centered-image"></a></div>
             @endif
             <div class="info-box">
               <a href="/students/{{ $todayStudent->id }}">{{ $todayStudent->name }} </a>
@@ -70,9 +71,9 @@
       @foreach( $students as $student)
         <li class="clearfix">
           @if($student->profile_pic=="default")
-            <div class="photo-box"><a href="/students/{{ $student->id }}"><img src="https://louvrebucket.s3.amazonaws.com/defaultuploads/defaultpfpic.png" alt="" class="photo"></a></div>
+            <div class="photo-box"><a href="/students/{{ $student->id }}"><img src="https://louvrebucket.s3.amazonaws.com/defaultuploads/defaultpfpic.png" alt="" class="photo centered-image"></a></div>
           @else
-            <div class="photo-box"><a href="/students/{{ $student->id }}"><img src="https://louvrebucket.s3.amazonaws.com/studentuploads/{{$student->profile_pic}}" alt="" class="photo"></a></div>
+            <div class="photo-box"><a href="/students/{{ $student->id }}"><img src="https://louvrebucket.s3.amazonaws.com/studentuploads/{{$student->profile_pic}}" alt="" class="photo centered-image"></a></div>
           @endif
 
           <div class="info-box">

@@ -10,7 +10,7 @@
 	<script src="/css/less.min.js" type="text/javascript"></script>
   <script src="/js/jquery-3.1.1.min.js" type="text/javascript"></script>
   <link rel="stylesheet" type="text/css" href="/css/style.css">
-  <title>Project Louvre</title>
+  <title>@yield('title', 'MINIMUSEUM')</title>
 </head>
 <body>
 <div class="g-wrapper {{ isset($intro) ? 'intro' : '' }}">
@@ -26,5 +26,13 @@
   </div> <!-- /.footer -->
 </div> <!-- /.g-wrapper -->
 <script src="/js/style.js" type="text/javascript"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-90662505-1', 'auto');
+  ga('send', 'pageview');
+</script>
 </body>
 </html>
