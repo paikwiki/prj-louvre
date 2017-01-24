@@ -99,7 +99,7 @@ class StudentsController extends Controller
         array_push($birthdayArr, $birthday);
       }
       $today = date("m-d");
-      $localizedToday = date("n"."월 "."j"."일"); // 0월 0일
+      $localizedToday = date("n"."/ "."j"); // 0월 0일
 
       return view('students.index', [
         'students' => $students,
@@ -211,7 +211,7 @@ class StudentsController extends Controller
       ]);
 
       if (! $student) {
-        return back()->with('flash_message', '글이 저장되지 않았습니다.')->withInput();
+        return back()->with('flash_message', '글이 저장되지 않았습니다.')->withInput();
       }
 
 
@@ -459,7 +459,7 @@ class StudentsController extends Controller
       ]);
 
       if (! $student) {
-        return back()->with('flash_message', '글이 저장되지 않았습니다.')->withInput();
+        return back()->with('flash_message', '글이 저장되지 않았습니다.')->withInput();
       }
 
 

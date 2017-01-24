@@ -6,20 +6,19 @@
   <ul class="clearfix">
     <li class="students-info clearfix">
       <div class="today">
-        <p>{{ $localizedToday }}</p>
-        <p>
-          @if( $weekdayOfToday=='mon' )월요일@endif
-          @if( $weekdayOfToday=='tue' )화요일@endif
-          @if( $weekdayOfToday=='wed' )수요일@endif
-          @if( $weekdayOfToday=='thu' )목요일@endif
-          @if( $weekdayOfToday=='fri' )금요일@endif
-          @if( $weekdayOfToday=='sat' )토요일@endif
-          @if( $weekdayOfToday=='sun' )일요일@endif
+        <p>{{ $localizedToday }}
+          @if( $weekdayOfToday=='mon' )(월)@endif
+          @if( $weekdayOfToday=='tue' )(화)@endif
+          @if( $weekdayOfToday=='wed' )(수)@endif
+          @if( $weekdayOfToday=='thu' )(목)@endif
+          @if( $weekdayOfToday=='fri' )(금)@endif
+          @if( $weekdayOfToday=='sat' )(토)@endif
+          @if( $weekdayOfToday=='sun' )(일)@endif
         </p>
       </div>
       <div class="student-count">
         <p>오늘의 수강생</p>
-        <p>{{ count($todayStudents) }}명</p>
+        <p class="student-number">{{ count($todayStudents) }}명</p>
       </div>
     </li>
     @if( empty($todayStudents) )
